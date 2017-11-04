@@ -11,9 +11,7 @@ public class Diseniador {
     protected double salario;
     protected String nombreProyecto;
     protected String evaluacionAnual;
-	public String getIdentificador() {
-		return identificador;
-	}
+
 	
 	public Diseniador(String identificador, String nombre, String apellidos, String direccion, String sexo, int edad,
 			double salario, String nombreProyecto, String evaluacionAnual) {
@@ -27,6 +25,10 @@ public class Diseniador {
 		this.salario = salario;
 		this.nombreProyecto = nombreProyecto;
 		this.evaluacionAnual = evaluacionAnual;
+	}
+	
+	public String getIdentificador() {
+		return identificador;
 	}
 	public void setIdentificador(String identificador) {
 		this.identificador = identificador;
