@@ -1,8 +1,8 @@
 package logic;
 
-public class Jefe_Proyecto extends Diseniador {
+public class JefeProyecto extends Diseniador {
 	protected int conteo_Trabajadores;
-	public Jefe_Proyecto(String identificador, String nombre, String apellidos, String direccion, String sexo, int edad,
+	public JefeProyecto(String identificador, String nombre, String apellidos, String direccion, String sexo, int edad,
 			double salario, String nombreProyecto, String evaluacionAnual, int conteo_Trabajadores) {
 		super(identificador, nombre, apellidos, direccion, sexo, edad, salario, nombreProyecto, evaluacionAnual);
 		this.conteo_Trabajadores = conteo_Trabajadores;

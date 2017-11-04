@@ -13,6 +13,7 @@ public class Programador extends Diseniador {
 	public void setLenguaje(String lenguaje) {
 		this.lenguaje = lenguaje;
 	}
-
+	
 	
 }
+ 
