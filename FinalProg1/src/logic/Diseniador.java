@@ -1,6 +1,6 @@
 package logic;
 
-public class Disenador {
+public class Diseniador {
 	
 	protected String identificador;
 	protected String nombre;
@@ -15,7 +15,7 @@ public class Disenador {
 		return identificador;
 	}
 	
-	public Disenador(String identificador, String nombre, String apellidos, String direccion, String sexo, int edad,
+	public Diseniador(String identificador, String nombre, String apellidos, String direccion, String sexo, int edad,
 			double salario, String nombreProyecto, String evaluacionAnual) {
 		super();
 		this.identificador = identificador;
