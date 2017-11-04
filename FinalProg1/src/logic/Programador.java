@@ -7,6 +7,12 @@ public class Programador extends Diseniador {
 		super(identificador, nombre, apellidos, direccion, sexo, edad, salario, nombreProyecto, evaluacionAnual);
 		this.lenguaje = lenguaje;
 	}
+	public String getLenguaje() {
+		return lenguaje;
+	}
+	public void setLenguaje(String lenguaje) {
+		this.lenguaje = lenguaje;
+	}
 
 	
 }

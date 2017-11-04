@@ -7,4 +7,10 @@ public class Jefe_Proyecto extends Diseniador {
 		super(identificador, nombre, apellidos, direccion, sexo, edad, salario, nombreProyecto, evaluacionAnual);
 		this.conteo_Trabajadores = conteo_Trabajadores;
 	}
+	public int getConteo_Trabajadores() {
+		return conteo_Trabajadores;
+	}
+	public void setConteo_Trabajadores(int conteo_Trabajadores) {
+		this.conteo_Trabajadores = conteo_Trabajadores;
+	}
 }

@@ -7,4 +7,10 @@ public class Planificador extends Diseniador {
 		super(identificador, nombre, apellidos, direccion, sexo, edad, salario, nombreProyecto, evaluacionAnual);
 		this.cantDias = cantDias;
 	}
+	public int getCantDias() {
+		return cantDias;
+	}
+	public void setCantDias(int cantDias) {
+		this.cantDias = cantDias;
+	}
 }
