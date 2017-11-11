@@ -2,25 +2,25 @@ package logic;
 
 public class Contrato {
 
-	private String identificador;
+	private String codigoContrato;
 	private String idCliente;
 	private String nombreProyecto;
 	private String descipcionDelProyecto;
 
 	public Contrato(String identificador, String idCliente, String nombreProyecto, String descipcionDelProyecto) {
 		super();
-		this.identificador = identificador;
+		this.codigoContrato = identificador;
 		this.idCliente = idCliente;
 		this.nombreProyecto = nombreProyecto;
 		this.descipcionDelProyecto = descipcionDelProyecto;
 	}
 	
 	public String getIdentificador() {
-		return identificador;
+		return codigoContrato;
 	}
 
 	public void setIdentificador(String identificador) {
-		this.identificador = identificador;
+		this.codigoContrato = identificador;
 	}
 
 	public String getIdCliente() {

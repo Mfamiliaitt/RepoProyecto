@@ -9,9 +9,6 @@ public class Cliente {
 	private String direccion;
 	private int cantproyectos;
 	private ArrayList<Contrato> contratosCliente;
-	
-	
-
 	public Cliente(String id, String nombre, String direccion, int cantproyectos,
 			ArrayList<Contrato> contratosCliente) {
 		super();
