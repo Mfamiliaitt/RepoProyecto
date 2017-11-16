@@ -1,6 +1,6 @@
 package logic;
 
-public class Diseniador {
+public abstract class Empleado {
 	
 	protected String identificador;
 	protected String nombre;
@@ -11,9 +11,10 @@ public class Diseniador {
     protected double salario;
     protected String nombreProyecto;
     protected String evaluacionAnual;
+    protected boolean ocupado=false;
 
 	
-	public Diseniador(String identificador, String nombre, String apellidos, String direccion, String sexo, int edad,
+	public Empleado(String identificador, String nombre, String apellidos, String direccion, String sexo, int edad,
 			double salario, String nombreProyecto, String evaluacionAnual) {
 		super();
 		this.identificador = identificador;
@@ -80,6 +81,14 @@ public class Diseniador {
 	}
 	public void setEvaluacionAnual(String evaluacionAnual) {
 		this.evaluacionAnual = evaluacionAnual;
+	}
+
+	public boolean isOcupado() {
+		return ocupado;
+	}
+
+	public void setOcupado(boolean ocupado) {
+		this.ocupado = ocupado;
 	}
     
     

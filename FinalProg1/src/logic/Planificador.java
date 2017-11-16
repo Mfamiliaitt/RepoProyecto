@@ -1,6 +1,6 @@
 package logic;
 
-public class Planificador extends Diseniador {
+public class Planificador extends Empleado {
 	protected int cantDias;
 	
 	public Planificador(String identificador, String nombre, String apellidos, String direccion, String sexo, int edad,

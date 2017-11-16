@@ -1,6 +1,6 @@
 package logic;
 
-public class Programador extends Diseniador {
+public class Programador extends Empleado {
 	protected String lenguaje;
 	
 	public Programador(String identificador, String nombre, String apellidos, String direccion, String sexo, int edad,

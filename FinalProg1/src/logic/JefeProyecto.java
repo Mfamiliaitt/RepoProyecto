@@ -1,6 +1,6 @@
 package logic;
 
-public class JefeProyecto extends Diseniador {
+public class JefeProyecto extends Empleado {
 	protected int conteo_Trabajadores;
 	public JefeProyecto(String identificador, String nombre, String apellidos, String direccion, String sexo, int edad,
 			double salario, String nombreProyecto, String evaluacionAnual, int conteo_Trabajadores) {
