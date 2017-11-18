@@ -55,7 +55,7 @@ public class Proyecto {
 		boolean respuesta=false;
 		
 		if(cantidadDeJefeDeProyecto()<1){
-		Empleado JefeAux=new JefeProyecto(identificador, nombre, apellidos, direccion, sexo, edad, salario, nombreProyecto, evaluacionAnual, conteo_Trabajadores);
+		Empleado JefeAux=new JefeProyecto(identificador, nombre, apellidos, direccion, sexo, edad, salario, nombreProyecto, evaluacionAnual, null, conteo_Trabajadores);
 	
 		elEquipo.add(JefeAux);
 		Empresa.getInstance().addEmpleado(JefeAux);
@@ -72,7 +72,7 @@ public class Proyecto {
 			double salario, String nombreProyecto, String evaluacionAnual, String lenguaje){
 		boolean respuesta=false;
 		if(cantidadDeProgramadores()<2){
-		Empleado programadorAux=new Programador(identificador, nombre, apellidos, direccion, sexo, edad, salario, nombreProyecto, evaluacionAnual, lenguaje);
+		Empleado programadorAux=new Programador(identificador, nombre, apellidos, direccion, sexo, edad, salario, nombreProyecto, evaluacionAnual, null, lenguaje);
 	 elEquipo.add(programadorAux);
 	 Empresa.getInstance().addEmpleado(programadorAux);
 	 respuesta=true;
@@ -88,7 +88,7 @@ public class Proyecto {
 		boolean respuesta=false;
 		
 		if(cantidadDePlanificadores()<1){
-		Empleado planificadorAux=new Planificador(identificador, nombre, apellidos, direccion, sexo, edad, salario, nombreProyecto, evaluacionAnual, cantDias);
+		Empleado planificadorAux=new Planificador(identificador, nombre, apellidos, direccion, sexo, edad, salario, nombreProyecto, evaluacionAnual, null, cantDias);
 		elEquipo.add(planificadorAux);
 		Empresa.getInstance().addEmpleado(planificadorAux);
 		respuesta=true;}
@@ -102,7 +102,7 @@ public class Proyecto {
 	public void agregarDiseniador(String identificador, String nombre, String apellidos, String direccion, String sexo, int edad,
 			double salario, String nombreProyecto, String evaluacionAnual, String tipoDisenio){
 		
-		Empleado diseniadorAux=new Diseniador(identificador, nombre, apellidos, direccion, sexo, edad, salario, nombreProyecto, evaluacionAnual, tipoDisenio);
+		Empleado diseniadorAux=new Diseniador(identificador, nombre, apellidos, direccion, sexo, edad, salario, nombreProyecto, evaluacionAnual, null, tipoDisenio);
 	    elEquipo.add(diseniadorAux);
 	    Empresa.getInstance().addEmpleado(diseniadorAux);
 	}
