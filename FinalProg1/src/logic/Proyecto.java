@@ -1,6 +1,6 @@
 package logic;
 
-import java.lang.reflect.Array;
+
 import java.util.ArrayList;
 
 public class Proyecto {
@@ -64,7 +64,19 @@ public class Proyecto {
 	 elEquipo.add(programadorAux);
 	}
 	
+	public void agregarPlanificador(String identificador, String nombre, String apellidos, String direccion, String sexo, int edad,
+			double salario, String nombreProyecto, String evaluacionAnual, int cantDias){
+		Empleado planificadorAux=new Planificador(identificador, nombre, apellidos, direccion, sexo, edad, salario, nombreProyecto, evaluacionAnual, cantDias);
+		
+		elEquipo.add(planificadorAux);
+	}
 	
+	public void agregarDiseniador(String identificador, String nombre, String apellidos, String direccion, String sexo, int edad,
+			double salario, String nombreProyecto, String evaluacionAnual, String tipoDisenio){
+		
+		Empleado diseniadorAux=new Diseniador(identificador, nombre, apellidos, direccion, sexo, edad, salario, nombreProyecto, evaluacionAnual, tipoDisenio);
+	    elEquipo.add(diseniadorAux);
+	}
 	
 
 }
