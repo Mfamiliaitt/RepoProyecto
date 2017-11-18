@@ -9,12 +9,13 @@ public class Proyecto {
 	private Boolean activo; //Proyecto activo o pasivo
 	private String estado; //prorrogado,atrazado o terminado
 	private ArrayList<Empleado> elEquipo;
-	public Proyecto(String tipo, String codigoProyecto, Boolean activo, String estado) {
+	public Proyecto(String tipo, String codigoProyecto, Boolean activo, String estado, ArrayList<Empleado> elEquipo) {
 		super();
 		this.tipo = tipo;
 		this.codigoProyecto = codigoProyecto;
 		this.activo = activo;
 		this.estado = estado;
+		this.elEquipo = new ArrayList<>();
 	}
 	public String getTipo() {
 		return tipo;
@@ -47,28 +48,55 @@ public class Proyecto {
 		this.elEquipo = elEquipo;
 	}
 	
-	
-	public void agregarJefeProyecto(String identificador, String nombre, String apellidos, String direccion, String sexo, int edad,
+
+	public boolean agregarJefeProyecto(String identificador, String nombre, String apellidos, String direccion, String sexo, int edad,
 			double salario, String nombreProyecto, String evaluacionAnual, int conteo_Trabajadores){
+		
+		boolean respuesta=false;
+		
+		if(cantidadDeJefeDeProyecto()<1){
 		Empleado JefeAux=new JefeProyecto(identificador, nombre, apellidos, direccion, sexo, edad, salario, nombreProyecto, evaluacionAnual, conteo_Trabajadores);
+	
 		elEquipo.add(JefeAux);
 		Empresa.getInstance().addEmpleado(JefeAux);
+		respuesta=true;
+		
+		}else if(cantidadDeJefeDeProyecto()>=1){
+			respuesta=false;
+		}
+		
+		return respuesta;
 	}
 	
-	public void agregarProgramador(String identificador, String nombre, String apellidos, String direccion, String sexo, int edad,
+	public boolean agregarProgramador(String identificador, String nombre, String apellidos, String direccion, String sexo, int edad,
 			double salario, String nombreProyecto, String evaluacionAnual, String lenguaje){
+		boolean respuesta=false;
+		if(cantidadDeProgramadores()<2){
 		Empleado programadorAux=new Programador(identificador, nombre, apellidos, direccion, sexo, edad, salario, nombreProyecto, evaluacionAnual, lenguaje);
-		
 	 elEquipo.add(programadorAux);
 	 Empresa.getInstance().addEmpleado(programadorAux);
+	 respuesta=true;
+	}else if(cantidadDeProgramadores()>=2){
+		respuesta=false;
+	}
+		
+	return respuesta; 
 	}
 	
-	public void agregarPlanificador(String identificador, String nombre, String apellidos, String direccion, String sexo, int edad,
+	public boolean agregarPlanificador(String identificador, String nombre, String apellidos, String direccion, String sexo, int edad,
 			double salario, String nombreProyecto, String evaluacionAnual, int cantDias){
-		Empleado planificadorAux=new Planificador(identificador, nombre, apellidos, direccion, sexo, edad, salario, nombreProyecto, evaluacionAnual, cantDias);
+		boolean respuesta=false;
 		
+		if(cantidadDePlanificadores()<1){
+		Empleado planificadorAux=new Planificador(identificador, nombre, apellidos, direccion, sexo, edad, salario, nombreProyecto, evaluacionAnual, cantDias);
 		elEquipo.add(planificadorAux);
 		Empresa.getInstance().addEmpleado(planificadorAux);
+		respuesta=true;}
+		else if(cantidadDePlanificadores()>=1){
+		respuesta=false;	
+		}
+		
+		return respuesta;
 	}
 	
 	public void agregarDiseniador(String identificador, String nombre, String apellidos, String direccion, String sexo, int edad,
@@ -79,5 +107,57 @@ public class Proyecto {
 	    Empresa.getInstance().addEmpleado(diseniadorAux);
 	}
 	
+	public int cantidadDeDiseniadores(){
+		int countAux=0;
+		
+		for (Empleado empleado : elEquipo) {
+			if(empleado instanceof Diseniador){
+				countAux++;
+			}	
+		}	
+		return countAux;
+	}
+	
+	
+public int cantidadDeJefeDeProyecto(){
+	
+	int countAux=0;
+	
+	for (Empleado empleado : elEquipo) {
+		if(empleado instanceof JefeProyecto){
+			countAux++;
+		}	
+	}	
+	return countAux;
+	
+}
 
+
+public int cantidadDePlanificadores(){
+	
+int countAux=0;
+	
+	for (Empleado empleado : elEquipo) {
+		if(empleado instanceof JefeProyecto){
+			countAux++;
+		}	
+	}	
+	return countAux;
+}
+
+
+
+
+public int cantidadDeProgramadores(){
+	
+int countAux=0;
+	
+	for (Empleado empleado : elEquipo) {
+		if(empleado instanceof Programador){
+			countAux++;
+		}	
+	}	
+	return countAux;
+}
+	
 }
