@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Empresa {
 	
- private ArrayList<Empleado> misDiseniadores;
+ private ArrayList<Empleado> misEmpleados;
  private ArrayList<Contrato> misContratos;
  private ArrayList<Cliente> misClientes;
 
