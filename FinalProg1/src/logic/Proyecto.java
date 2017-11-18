@@ -7,7 +7,7 @@ public class Proyecto {
 	private String tipo;
 	private String codigoProyecto;
 	private Boolean activo; //Proyecto activo o pasivo
-	private String estado; //prorrogado,atrazado
+	private String estado; //prorrogado,atrazado o terminado
 	private ArrayList<Empleado> elEquipo;
 	public Proyecto(String tipo, String codigoProyecto, Boolean activo, String estado, ArrayList<Empleado> elEquipo) {
 		super();
