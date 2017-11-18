@@ -48,6 +48,23 @@ public class Proyecto {
 		this.elEquipo = elEquipo;
 	}
 	
+
+	public void agregarJefeProyecto(String identificador, String nombre, String apellidos, String direccion, String sexo, int edad,
+			double salario, String nombreProyecto, String evaluacionAnual, int conteo_Trabajadores){
+		Empleado JefeAux=new JefeProyecto(identificador, nombre, apellidos, direccion, sexo, edad, salario, nombreProyecto, evaluacionAnual, conteo_Trabajadores);
+		
+		elEquipo.add(JefeAux);
+			
+	}
+	
+	public void agregarProgramador(String identificador, String nombre, String apellidos, String direccion, String sexo, int edad,
+			double salario, String nombreProyecto, String evaluacionAnual, String lenguaje){
+		Empleado programadorAux=new Programador(identificador, nombre, apellidos, direccion, sexo, edad, salario, nombreProyecto, evaluacionAnual, lenguaje);
+		
+	 elEquipo.add(programadorAux);
+	}
+	
+	
 	
 
 }
