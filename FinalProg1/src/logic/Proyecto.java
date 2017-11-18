@@ -15,7 +15,7 @@ public class Proyecto {
 		this.codigoProyecto = codigoProyecto;
 		this.activo = activo;
 		this.estado = estado;
-		this.elEquipo = elEquipo;
+		this.elEquipo = new ArrayList<>();
 	}
 	public String getTipo() {
 		return tipo;

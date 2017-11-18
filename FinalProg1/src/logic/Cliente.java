@@ -9,7 +9,7 @@ public class Cliente {
 	private String id;
 	private String nombre;
 	private String direccion;
-	private ArrayList<Contrato> miContrato;
+	private ArrayList<Contrato> miContrato = new ArrayList<>();
 	public Cliente(String id, String nombre, String direccion) {
 		super();
 		this.id = id;
