@@ -3,6 +3,8 @@ package logic;
 import java.util.ArrayList;
 import java.util.Date;
 
+
+
 public class Cliente {
 	private String id;
 	private String nombre;
@@ -44,6 +46,7 @@ public void agregarContrato(String codigoProyecto, String idCliente, double cost
 	miContrato.add(c);
 	Empresa.getInstance().addContrato(c);
 }
+
 
 
 	

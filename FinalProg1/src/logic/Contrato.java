@@ -8,6 +8,7 @@ public class Contrato {
 	private double costoProyecto;
 	private Date fechaInicio;
 	private Date fechaTermino;
+	
 	private Boolean firmado=false;
 	public Contrato(String codigoProyecto, String idCliente, double costoProyecto, Date fechaInicio, Date fechaTermino,
 			Boolean firmado) {

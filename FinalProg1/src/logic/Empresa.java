@@ -1,7 +1,6 @@
 package logic;
 
 import java.util.ArrayList;
-
 public class Empresa {
 private ArrayList<Empleado> misEmpleados;
  private ArrayList<Contrato> misContratos;
@@ -48,5 +47,22 @@ public void addContrato(Contrato c){
 public void addEmpleado(Empleado e){
 	misEmpleados.add(e);
 }
-
+public Cliente buscarClientePorCedula(String cedula){
+	Cliente c=null;
+	for (Cliente losClientes : misClientes) {
+		if(losClientes.getId().equalsIgnoreCase(cedula)){
+			c=losClientes;
+		}		
+	}
+	return c;
+}
+public Contrato buscarContratoDadoID(String idContrato){
+	Contrato c=null;
+	for (Contrato elContrato : misContratos) {
+		if(elContrato.getCodigoProyecto().equalsIgnoreCase(idContrato)){
+			c=elContrato;
+		}
+	}
+	return c;
+}
 }
