@@ -72,4 +72,14 @@ public void verificacionDeFechasDeContratos(){
 		contrato.estadoDeProyecto();
 	}	
 }
+public ArrayList<Proyecto> proyectosAtrazados(){
+	ArrayList<Proyecto> aux=new ArrayList<>();
+	for (Contrato losContratos : misContratos) {
+		if(losContratos.getMiProyecto().getEstado().equalsIgnoreCase("Atrazado")){
+		aux.add(losContratos.getMiProyecto());
+		}
+	}
+	return aux;	
+}
+
 }
