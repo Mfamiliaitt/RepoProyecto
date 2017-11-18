@@ -61,11 +61,20 @@ public class Contrato {
 		boolean respuesta=false;		
 		Date dateAux=new Date();
 		if(fechaTermino.before(dateAux)){			
-		respuesta=true;	
+		respuesta=true;		
 		}		
 	return respuesta;	
 	/*Si verificacion de fecha=true, significa que el contrato esta atrazado, porque dateAux devuelve la fecha actual*/
 	}
+	
+	public void estadoDeProyecto(){
+		if(VerificacionDeFechas()&& !(miProyecto.getEstado().equalsIgnoreCase("Prorrogado"))){
+		 miProyecto.setEstado("Atrazado");	
+		}
+		
+	}
+	
+	
 	public Proyecto getMiProyecto() {
 		return miProyecto;
 	}
