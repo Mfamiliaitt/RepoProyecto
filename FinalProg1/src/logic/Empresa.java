@@ -3,11 +3,22 @@ package logic;
 import java.util.ArrayList;
 
 public class Empresa {
-	
- private ArrayList<Empleado> misEmpleados;
+private ArrayList<Empleado> misEmpleados;
  private ArrayList<Contrato> misContratos;
  private ArrayList<Cliente> misClientes;
- 
+ private static Empresa laEmpresa;
+ private Empresa() {
+		super();
+		this.misEmpleados = new ArrayList<>();
+		this.misContratos = new ArrayList<>();
+		this.misClientes = new ArrayList<>();
+	}
+ public static Empresa getInstance(){
+		if(laEmpresa==null){
+			laEmpresa=new Empresa();
+		}
+		return laEmpresa;
+	}
 public ArrayList<Empleado> getMisEmpleados() {
 	return misEmpleados;
 }
@@ -31,6 +42,11 @@ public void agregarClientes(String id, String nombre, String direccion){
 	Cliente c = new Cliente(id, nombre, direccion);
 	misClientes.add(c);
 }
-	
+public void addContrato(Contrato c){
+	misContratos.add(c);
+}
+public void addEmpleado(Empleado e){
+	misEmpleados.add(e);
+}
 
 }

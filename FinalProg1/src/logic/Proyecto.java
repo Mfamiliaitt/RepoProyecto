@@ -52,9 +52,8 @@ public class Proyecto {
 	public void agregarJefeProyecto(String identificador, String nombre, String apellidos, String direccion, String sexo, int edad,
 			double salario, String nombreProyecto, String evaluacionAnual, int conteo_Trabajadores){
 		Empleado JefeAux=new JefeProyecto(identificador, nombre, apellidos, direccion, sexo, edad, salario, nombreProyecto, evaluacionAnual, conteo_Trabajadores);
-		
 		elEquipo.add(JefeAux);
-			
+		Empresa.getInstance().addEmpleado(JefeAux);
 	}
 	
 	public void agregarProgramador(String identificador, String nombre, String apellidos, String direccion, String sexo, int edad,
@@ -62,6 +61,7 @@ public class Proyecto {
 		Empleado programadorAux=new Programador(identificador, nombre, apellidos, direccion, sexo, edad, salario, nombreProyecto, evaluacionAnual, lenguaje);
 		
 	 elEquipo.add(programadorAux);
+	 Empresa.getInstance().addEmpleado(programadorAux);
 	}
 	
 	public void agregarPlanificador(String identificador, String nombre, String apellidos, String direccion, String sexo, int edad,
@@ -69,6 +69,7 @@ public class Proyecto {
 		Empleado planificadorAux=new Planificador(identificador, nombre, apellidos, direccion, sexo, edad, salario, nombreProyecto, evaluacionAnual, cantDias);
 		
 		elEquipo.add(planificadorAux);
+		Empresa.getInstance().addEmpleado(planificadorAux);
 	}
 	
 	public void agregarDiseniador(String identificador, String nombre, String apellidos, String direccion, String sexo, int edad,
@@ -76,6 +77,7 @@ public class Proyecto {
 		
 		Empleado diseniadorAux=new Diseniador(identificador, nombre, apellidos, direccion, sexo, edad, salario, nombreProyecto, evaluacionAnual, tipoDisenio);
 	    elEquipo.add(diseniadorAux);
+	    Empresa.getInstance().addEmpleado(diseniadorAux);
 	}
 	
 

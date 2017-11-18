@@ -42,6 +42,7 @@ public void agregarContrato(String codigoProyecto, String idCliente, double cost
 		Boolean firmado){
 	Contrato c = new Contrato(codigoProyecto, idCliente, costoProyecto, fechaInicio, fechaTermino, firmado);
 	miContrato.add(c);
+	Empresa.getInstance().addContrato(c);
 }
 
 
