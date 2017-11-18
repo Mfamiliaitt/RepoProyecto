@@ -7,9 +7,9 @@ public class Contrato {
 	private String idCliente;
 	private double costoProyecto;
 	private Date fechaInicio;
-	private Date fechaTermino;
-	
+	private Date fechaTermino;	
 	private Boolean firmado=false;
+	private Proyecto miProyecto;
 	public Contrato(String codigoProyecto, String idCliente, double costoProyecto, Date fechaInicio, Date fechaTermino,
 			Boolean firmado) {
 		super();
@@ -58,16 +58,19 @@ public class Contrato {
 	}
 	
 	public boolean VerificacionDeFechas(){
-		boolean respuesta=false;
-		
+		boolean respuesta=false;		
 		Date dateAux=new Date();
-		if(fechaTermino.before(dateAux)){
-			
+		if(fechaTermino.before(dateAux)){			
 		respuesta=true;	
-		}
-		
+		}		
 	return respuesta;	
+	/*Si verificacion de fecha=true, significa que el contrato esta atrazado, porque dateAux devuelve la fecha actual*/
 	}
-	
+	public Proyecto getMiProyecto() {
+		return miProyecto;
+	}
+	public void setMiProyecto(Proyecto miProyecto) {
+		this.miProyecto = miProyecto;
+	}	
 
 }

@@ -37,6 +37,7 @@ public void setMisClientes(ArrayList<Cliente> misClientes) {
 	this.misClientes = misClientes;
 }
 
+
 public void agregarClientes(String id, String nombre, String direccion){
 	Cliente c = new Cliente(id, nombre, direccion);
 	misClientes.add(c);
