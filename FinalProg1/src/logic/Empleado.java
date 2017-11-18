@@ -11,9 +11,7 @@ public abstract class Empleado {
     protected double salario;
     protected String nombreProyecto;
     protected String evaluacionAnual;
-    protected boolean ocupado=false;
-
-	
+    protected boolean ocupado=false;	
 	public Empleado(String identificador, String nombre, String apellidos, String direccion, String sexo, int edad,
 			double salario, String nombreProyecto, String evaluacionAnual) {
 		super();
