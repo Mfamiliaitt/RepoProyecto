@@ -3,70 +3,46 @@ package logic;
 import java.util.ArrayList;
 
 public class Cliente {
-	
 	private String id;
 	private String nombre;
 	private String direccion;
-	private int cantproyectos;
-	private ArrayList<Contrato> contratosCliente;
-	public Cliente(String id, String nombre, String direccion, int cantproyectos,
-			ArrayList<Contrato> contratosCliente) {
+	private ArrayList<Proyecto> miProyecto;
+
+	public Cliente(String id, String nombre, String direccion, ArrayList<Proyecto> miProyecto) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.direccion = direccion;
-		this.cantproyectos = cantproyectos;
-		this.contratosCliente = contratosCliente;
+		this.miProyecto = miProyecto;
 	}
-
-	public String getCedula() {
-		return id;
-	}
-
-	public void setCedula(String cedula) {
-		this.id = cedula;
-	}
-
-	public String getNombre() {
-		return nombre;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-	public String getDireccion() {
-		return direccion;
-	}
-
-	public void setDireccion(String direccion) {
-		this.direccion = direccion;
-	}
-
-	public int getCantproyectos() {
-		return cantproyectos;
-	}
-
-	public void setCantproyectos(int cantproyectos) {
-		this.cantproyectos = cantproyectos;
-	}
-
 	public String getId() {
 		return id;
 	}
-
 	public void setId(String id) {
 		this.id = id;
 	}
-
-	public ArrayList<Contrato> getContratosCliente() {
-		return contratosCliente;
+	public String getNombre() {
+		return nombre;
+	}
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+	public String getDireccion() {
+		return direccion;
+	}
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
+	}
+	public ArrayList<Proyecto> getMiProyecto() {
+		return miProyecto;
+	}
+	public void setMiProyecto(ArrayList<Proyecto> miProyecto) {
+		this.miProyecto = miProyecto;
 	}
 
-	public void setContratosCliente(ArrayList<Contrato> contratosCliente) {
-		this.contratosCliente = contratosCliente;
-	}
-	
+
+
+
 	
 
 }

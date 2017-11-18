@@ -1,52 +1,62 @@
 package logic;
 
+import java.util.Date;
+
 public class Contrato {
-
-	private String codigoContrato;
+	private String codigoProyecto;
 	private String idCliente;
-	private String nombreProyecto;
-	private String descipcionDelProyecto;
-
-	public Contrato(String identificador, String idCliente, String nombreProyecto, String descipcionDelProyecto) {
+	private double costoProyecto;
+	private Date fechaInicio;
+	private Date fechaTermino;
+	private Boolean firmado=false;
+	public Contrato(String codigoProyecto, String idCliente, double costoProyecto, Date fechaInicio, Date fechaTermino,
+			Boolean firmado) {
 		super();
-		this.codigoContrato = identificador;
+		this.codigoProyecto = codigoProyecto;
 		this.idCliente = idCliente;
-		this.nombreProyecto = nombreProyecto;
-		this.descipcionDelProyecto = descipcionDelProyecto;
+		this.costoProyecto = costoProyecto;
+		this.fechaInicio = fechaInicio;
+		this.fechaTermino = fechaTermino;
+		this.firmado = firmado;
 	}
-	
-	public String getIdentificador() {
-		return codigoContrato;
+	public String getCodigoProyecto() {
+		return codigoProyecto;
 	}
-
-	public void setIdentificador(String identificador) {
-		this.codigoContrato = identificador;
+	public void setCodigoProyecto(String codigoProyecto) {
+		this.codigoProyecto = codigoProyecto;
 	}
-
 	public String getIdCliente() {
 		return idCliente;
 	}
-
 	public void setIdCliente(String idCliente) {
 		this.idCliente = idCliente;
 	}
-
-	public String getNombreProyecto() {
-		return nombreProyecto;
+	public double getCostoProyecto() {
+		return costoProyecto;
 	}
-
-	public void setNombreProyecto(String nombreProyecto) {
-		this.nombreProyecto = nombreProyecto;
+	public void setCostoProyecto(double costoProyecto) {
+		this.costoProyecto = costoProyecto;
 	}
-
-	public String getDescipcionDelProyecto() {
-		return descipcionDelProyecto;
+	public Date getFechaInicio() {
+		return fechaInicio;
 	}
-
-	public void setDescipcionDelProyecto(String descipcionDelProyecto) {
-		this.descipcionDelProyecto = descipcionDelProyecto;
+	public void setFechaInicio(Date fechaInicio) {
+		this.fechaInicio = fechaInicio;
+	}
+	public Date getFechaTermino() {
+		return fechaTermino;
+	}
+	public void setFechaTermino(Date fechaTermino) {
+		this.fechaTermino = fechaTermino;
+	}
+	public Boolean getFirmado() {
+		return firmado;
+	}
+	public void setFirmado(Boolean firmado) {
+		this.firmado = firmado;
 	}
 	
+
 	
 
 }
