@@ -3,7 +3,17 @@ package logic;
 import java.util.ArrayList;
 
 public abstract class Empleado {
-	
+	protected String identificador;
+	protected String nombre;
+	protected String apellidos;
+	protected String direccion;
+    protected String sexo;
+    protected int edad;
+    protected double salario;
+    protected String idProyecto;
+    protected String evaluacionAnual;
+    protected boolean ocupado=false;
+    protected ArrayList<String> misEstados=new ArrayList<>();
 	public Empleado(String identificador, String nombre, String apellidos, String direccion, String sexo, int edad,
 			double salario, String idProyecto, String evaluacionAnual, ArrayList<String> misEstados) {
 		super();
@@ -19,31 +29,6 @@ public abstract class Empleado {
 		this.misEstados = misEstados;
 	}
 
-	protected String identificador;
-	protected String nombre;
-	protected String apellidos;
-	protected String direccion;
-    protected String sexo;
-    protected int edad;
-    protected double salario;
-    protected String idProyecto;
-    protected String evaluacionAnual;
-    protected boolean ocupado=false;
-    protected ArrayList<String> misEstados=new ArrayList<>();
-/*	public Empleado(String identificador, String nombre, String apellidos, String direccion, String sexo, int edad,
-			double salario, String idProyecto, String evaluacionAnual) {
-		super();
-		this.identificador = identificador;
-		this.nombre = nombre;
-		this.apellidos = apellidos;
-		this.direccion = direccion;
-		this.sexo = sexo;
-		this.edad = edad;
-		this.salario = salario;
-		this.idProyecto = idProyecto;
-		this.evaluacionAnual = evaluacionAnual;
-	}*/
-	
 	public String getIdentificador() {
 		return identificador;
 	}
@@ -105,6 +90,22 @@ public abstract class Empleado {
 
 	public void setOcupado(boolean ocupado) {
 		this.ocupado = ocupado;
+	}
+
+	public String getIdProyecto() {
+		return idProyecto;
+	}
+
+	public void setIdProyecto(String idProyecto) {
+		this.idProyecto = idProyecto;
+	}
+
+	public ArrayList<String> getMisEstados() {
+		return misEstados;
+	}
+
+	public void setMisEstados(ArrayList<String> misEstados) {
+		this.misEstados = misEstados;
 	}
     
     

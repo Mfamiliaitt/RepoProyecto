@@ -57,6 +57,15 @@ public Cliente buscarClientePorCedula(String cedula){
 	}
 	return c;
 }
+public Empleado buscarEmpleadoPorCedula(String cedula){
+	Empleado c=null;
+	for (Empleado losEmpleados : misEmpleados) {
+		if(losEmpleados.getIdentificador().equalsIgnoreCase(cedula)){
+			c=losEmpleados;
+		}		
+	}
+	return c;
+}
 public Contrato buscarContratoDadoID(String idContrato){
 	Contrato c=null;
 	for (Contrato elContrato : misContratos) {
@@ -66,20 +75,18 @@ public Contrato buscarContratoDadoID(String idContrato){
 	}
 	return c;
 }
-
 public void verificacionDeFechasDeContratos(){	
 	for (Contrato contrato : misContratos) {
 		contrato.estadoDeProyecto();
 	}	
 }
-public ArrayList<Proyecto> proyectosAtrazados(){
-	ArrayList<Proyecto> aux=new ArrayList<>();
-	for (Contrato losContratos : misContratos) {
-		if(losContratos.getMiProyecto().getEstado().equalsIgnoreCase("Atrazado")){
-		aux.add(losContratos.getMiProyecto());
-		}
+public void terminarProyecto(String id){
+	buscarContratoDadoID(id).getMiProyecto().setTerminado(true);
+	for (Empleado empleado : buscarContratoDadoID(id).getMiProyecto().getElEquipo()) {
+		buscarEmpleadoPorCedula(empleado.getIdentificador()).getMisEstados().add(buscarContratoDadoID(id).getMiProyecto().getEstado());
 	}
-	return aux;	
+	
 }
+/*Termina un proyecto y le asigna al equipo de ese proyecto el estado en el que quedo el proyecto*/
 
 }

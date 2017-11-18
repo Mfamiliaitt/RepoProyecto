@@ -7,7 +7,8 @@ public class Proyecto {
 	private String tipo;
 	private String codigoProyecto;
 	private Boolean activo; //Proyecto activo o pasivo
-	private String estado; //prorrogado,atrazado o terminado
+	private String estado; //prorrogado,atrazado 
+	private boolean terminado=false;
 	private ArrayList<Empleado> elEquipo;
 	public Proyecto(String tipo, String codigoProyecto, Boolean activo, String estado, ArrayList<Empleado> elEquipo) {
 		super();
@@ -50,8 +51,7 @@ public class Proyecto {
 	
 
 	public boolean agregarJefeProyecto(String identificador, String nombre, String apellidos, String direccion, String sexo, int edad,
-			double salario, String nombreProyecto, String evaluacionAnual, int conteo_Trabajadores){
-		
+			double salario, String nombreProyecto, String evaluacionAnual, int conteo_Trabajadores){		
 		boolean respuesta=false;
 		
 		if(cantidadDeJefeDeProyecto()<1){
@@ -158,6 +158,12 @@ int countAux=0;
 		}	
 	}	
 	return countAux;
+}
+public boolean isTerminado() {
+	return terminado;
+}
+public void setTerminado(boolean terminado) {
+	this.terminado = terminado;
 }
 	
 }
