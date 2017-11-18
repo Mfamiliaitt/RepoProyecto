@@ -57,7 +57,17 @@ public class Contrato {
 		this.firmado = firmado;
 	}
 	
-
+	public boolean VerificacionDeFechas(){
+		boolean respuesta=false;
+		
+		Date dateAux=new Date();
+		if(fechaTermino.before(dateAux)){
+			
+		respuesta=true;	
+		}
+		
+	return respuesta;	
+	}
 	
 
 }
