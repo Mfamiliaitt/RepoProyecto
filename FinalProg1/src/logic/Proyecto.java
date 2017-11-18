@@ -9,13 +9,12 @@ public class Proyecto {
 	private Boolean activo; //Proyecto activo o pasivo
 	private String estado; //prorrogado,atrazado o terminado
 	private ArrayList<Empleado> elEquipo;
-	public Proyecto(String tipo, String codigoProyecto, Boolean activo, String estado, ArrayList<Empleado> elEquipo) {
+	public Proyecto(String tipo, String codigoProyecto, Boolean activo, String estado) {
 		super();
 		this.tipo = tipo;
 		this.codigoProyecto = codigoProyecto;
 		this.activo = activo;
 		this.estado = estado;
-		this.elEquipo = new ArrayList<>();
 	}
 	public String getTipo() {
 		return tipo;
@@ -48,7 +47,7 @@ public class Proyecto {
 		this.elEquipo = elEquipo;
 	}
 	
-
+	
 	public void agregarJefeProyecto(String identificador, String nombre, String apellidos, String direccion, String sexo, int edad,
 			double salario, String nombreProyecto, String evaluacionAnual, int conteo_Trabajadores){
 		Empleado JefeAux=new JefeProyecto(identificador, nombre, apellidos, direccion, sexo, edad, salario, nombreProyecto, evaluacionAnual, conteo_Trabajadores);

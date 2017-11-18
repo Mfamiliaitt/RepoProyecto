@@ -67,14 +67,9 @@ public Contrato buscarContratoDadoID(String idContrato){
 	return c;
 }
 
-public void verificacionDeFechasDeContratos(){
-	
+public void verificacionDeFechasDeContratos(){	
 	for (Contrato contrato : misContratos) {
 		contrato.estadoDeProyecto();
-	}
-	
-	
-	
-	
+	}	
 }
 }

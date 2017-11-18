@@ -9,11 +9,11 @@ public abstract class Empleado {
     protected String sexo;
     protected int edad;
     protected double salario;
-    protected String nombreProyecto;
+    protected String idProyecto;
     protected String evaluacionAnual;
     protected boolean ocupado=false;	
 	public Empleado(String identificador, String nombre, String apellidos, String direccion, String sexo, int edad,
-			double salario, String nombreProyecto, String evaluacionAnual) {
+			double salario, String idProyecto, String evaluacionAnual) {
 		super();
 		this.identificador = identificador;
 		this.nombre = nombre;
@@ -22,7 +22,7 @@ public abstract class Empleado {
 		this.sexo = sexo;
 		this.edad = edad;
 		this.salario = salario;
-		this.nombreProyecto = nombreProyecto;
+		this.idProyecto = idProyecto;
 		this.evaluacionAnual = evaluacionAnual;
 	}
 	
@@ -69,10 +69,10 @@ public abstract class Empleado {
 		this.salario = salario;
 	}
 	public String getNombreProyecto() {
-		return nombreProyecto;
+		return idProyecto;
 	}
 	public void setNombreProyecto(String nombreProyecto) {
-		this.nombreProyecto = nombreProyecto;
+		this.idProyecto = nombreProyecto;
 	}
 	public String getEvaluacionAnual() {
 		return evaluacionAnual;

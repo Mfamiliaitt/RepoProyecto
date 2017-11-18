@@ -71,7 +71,7 @@ public class Contrato {
 		if(VerificacionDeFechas()&& !(miProyecto.getEstado().equalsIgnoreCase("Prorrogado"))){
 		 miProyecto.setEstado("Atrazado");	
 		}
-		
+		/*El metodo pone en "atrazado" los proyectos que esten atrazados*/
 	}
 	
 	
