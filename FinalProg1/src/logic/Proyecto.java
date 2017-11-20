@@ -10,13 +10,15 @@ public class Proyecto {
 	private String estado; //prorrogado,atrazado 
 	private boolean terminado=false;
 	private ArrayList<Empleado> elEquipo;
-	public Proyecto(String tipo, String codigoProyecto, Boolean activo, String estado, ArrayList<Empleado> elEquipo) {
+	private String descripcionDeProyecto;
+	public Proyecto(String tipo, String codigoProyecto, Boolean activo, String estado, ArrayList<Empleado> elEquipo,String descripcionDeProyecto ) {
 		super();
 		this.tipo = tipo;
 		this.codigoProyecto = codigoProyecto;
 		this.activo = activo;
 		this.estado = estado;
 		this.elEquipo = new ArrayList<>();
+		this.descripcionDeProyecto=descripcionDeProyecto;
 	}
 	public String getTipo() {
 		return tipo;
@@ -165,5 +167,22 @@ public boolean isTerminado() {
 public void setTerminado(boolean terminado) {
 	this.terminado = terminado;
 }
-	
+public String getDescripcionDeProyecto() {
+	return descripcionDeProyecto;
 }
+public void setDescripcionDeProyecto(String descripcionDeProyecto) {
+	this.descripcionDeProyecto = descripcionDeProyecto;
+}
+	
+public float sumatoriaDeSueldosBases(){
+	float auxValue=0;
+	for (Empleado empleado : elEquipo) {
+		auxValue+=empleado.getSalario();
+	}
+	
+	return auxValue;
+} 
+
+
+}
+

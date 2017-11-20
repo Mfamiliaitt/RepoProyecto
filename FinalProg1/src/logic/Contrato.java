@@ -80,7 +80,24 @@ public class Contrato {
 	}
 	public void setMiProyecto(Proyecto miProyecto) {
 		this.miProyecto = miProyecto;
-	}	
+	}
 	
+	
+	public int cantidadDeDias(){
+	
+	 int cant=(int)((fechaTermino.getTime())-(fechaInicio.getTime())/86400000);
+		
+		return cant;
+	} 
 
+	
+	public double costoDeProyectoAtiempo(){
+		
+		costoProyecto=(cantidadDeDias()*8)*(miProyecto.sumatoriaDeSueldosBases())+((cantidadDeDias()*8)*(miProyecto.sumatoriaDeSueldosBases())*0.15);
+		
+		return costoProyecto;
+	}
+	
+	
+	
 }
