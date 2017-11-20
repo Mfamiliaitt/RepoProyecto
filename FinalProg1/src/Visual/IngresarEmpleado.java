@@ -58,6 +58,7 @@ public class IngresarEmpleado extends JDialog {
 	 * Create the dialog.
 	 */
 	public IngresarEmpleado() {
+		setTitle("Agregar empleado");
 		setBounds(100, 100, 740, 500);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -138,7 +139,7 @@ public class IngresarEmpleado extends JDialog {
 			contentPanel.add(PDatos);
 			PDatos.setLayout(null);
 			{
-				JLabel lblNewLabel_1 = new JLabel("Identificador:");
+				JLabel lblNewLabel_1 = new JLabel("C\u00E9dula:");
 				lblNewLabel_1.setBounds(10, 23, 96, 14);
 				PDatos.add(lblNewLabel_1);
 			}
@@ -169,7 +170,7 @@ public class IngresarEmpleado extends JDialog {
 			}
 			
 			txtId = new JTextField();
-			txtId.setBounds(116, 20, 129, 20);
+			txtId.setBounds(105, 20, 129, 20);
 			PDatos.add(txtId);
 			txtId.setColumns(10);
 			

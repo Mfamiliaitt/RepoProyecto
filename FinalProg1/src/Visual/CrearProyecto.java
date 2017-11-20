@@ -50,7 +50,7 @@ public class CrearProyecto extends JDialog {
 		{
 			JLabel lblNewLabel = new JLabel("Icono de un proyecto \r\nque se va a dise\u00F1ar");
 			lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-			lblNewLabel.setBounds(47, 41, 247, 178);
+			lblNewLabel.setBounds(47, 41, 200, 178);
 			contentPanel.add(lblNewLabel);
 		}
 		{

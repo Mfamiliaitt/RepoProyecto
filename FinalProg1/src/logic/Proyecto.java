@@ -53,11 +53,11 @@ public class Proyecto {
 	
 
 	public boolean agregarJefeProyecto(String identificador, String nombre, String apellidos, String direccion, String sexo, int edad,
-			double salario, String nombreProyecto, String evaluacionAnual, int conteo_Trabajadores){		
+			double salario, String nombreProyecto, String evaluacionAnual, int conteo_Trabajadores,boolean certificadoEnProjectManaguer){		
 		boolean respuesta=false;
 		
 		if(cantidadDeJefeDeProyecto()<1){
-		Empleado JefeAux=new JefeProyecto(identificador, nombre, apellidos, direccion, sexo, edad, salario, nombreProyecto, evaluacionAnual, null, conteo_Trabajadores);
+		Empleado JefeAux=new JefeProyecto(identificador, nombre, apellidos, direccion, sexo, edad, salario, nombreProyecto, evaluacionAnual, null, conteo_Trabajadores,certificadoEnProjectManaguer);
 	
 		elEquipo.add(JefeAux);
 		Empresa.getInstance().addEmpleado(JefeAux);
