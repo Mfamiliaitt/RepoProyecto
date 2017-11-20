@@ -89,7 +89,14 @@ public class Contrato {
 		
 		return cant;
 	} 
-
+      
+	public int cantidadDeDiasAtrazados(){
+		Date dateAux=new Date();
+		
+		int cant=(int)((dateAux.getTime()-fechaTermino.getTime())/86400000);
+		
+		return cant;
+	}
 	
 	public double costoDeProyectoAtiempo(){
 		
@@ -98,6 +105,11 @@ public class Contrato {
 		return costoProyecto;
 	}
 	
-	
+	public double costoDeProyectoAtrazado(){
+		if(miProyecto.getEstado().equalsIgnoreCase("Atrazado")){
+		costoProyecto=costoDeProyectoAtiempo()-(costoDeProyectoAtiempo()*0.01*cantidadDeDiasAtrazados());}
+		
+		return costoProyecto;
+	}
 	
 }
