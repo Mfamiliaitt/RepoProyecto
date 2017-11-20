@@ -29,7 +29,7 @@ public class IngresarEmpleado extends JDialog {
 	private JTextField txtNombre;
 	private JTextField txtApellidos;
 	private JTextField txtDireccion;
-	private JPanel panelCargo;
+	private JPanel PCargoDelEmpleado;
 	private JPanel panelDiseniador;
 	private JPanel panelVacio;
 	private JPanel panelProgramador;
@@ -132,84 +132,84 @@ public class IngresarEmpleado extends JDialog {
 		btnCargar.setBounds(77, 228, 89, 23);
 		contentPanel.add(btnCargar);
 		{
-			JPanel panelDatos = new JPanel();
-			panelDatos.setBorder(new TitledBorder(null, "Datos:", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-			panelDatos.setBounds(243, 23, 455, 240);
-			contentPanel.add(panelDatos);
-			panelDatos.setLayout(null);
+			JPanel PDatos = new JPanel();
+			PDatos.setBorder(new TitledBorder(null, "Datos:", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+			PDatos.setBounds(243, 23, 455, 240);
+			contentPanel.add(PDatos);
+			PDatos.setLayout(null);
 			{
 				JLabel lblNewLabel_1 = new JLabel("Identificador:");
 				lblNewLabel_1.setBounds(10, 23, 96, 14);
-				panelDatos.add(lblNewLabel_1);
+				PDatos.add(lblNewLabel_1);
 			}
 			{
 				JLabel lblNewLabel_2 = new JLabel("Nombre:");
 				lblNewLabel_2.setBounds(10, 59, 62, 14);
-				panelDatos.add(lblNewLabel_2);
+				PDatos.add(lblNewLabel_2);
 			}
 			{
 				JLabel lblNewLabel_3 = new JLabel("Apellidos:");
 				lblNewLabel_3.setBounds(10, 95, 62, 14);
-				panelDatos.add(lblNewLabel_3);
+				PDatos.add(lblNewLabel_3);
 			}
 			{
 				JLabel lblNewLabel_4 = new JLabel("Direcci\u00F3n:");
 				lblNewLabel_4.setBounds(10, 131, 62, 14);
-				panelDatos.add(lblNewLabel_4);
+				PDatos.add(lblNewLabel_4);
 			}
 			{
 				JLabel lblNewLabel_5 = new JLabel("Sexo:");
 				lblNewLabel_5.setBounds(10, 167, 46, 14);
-				panelDatos.add(lblNewLabel_5);
+				PDatos.add(lblNewLabel_5);
 			}
 			{
 				JLabel lblNewLabel_6 = new JLabel("Edad:");
 				lblNewLabel_6.setBounds(10, 203, 46, 14);
-				panelDatos.add(lblNewLabel_6);
+				PDatos.add(lblNewLabel_6);
 			}
 			
 			txtId = new JTextField();
 			txtId.setBounds(116, 20, 129, 20);
-			panelDatos.add(txtId);
+			PDatos.add(txtId);
 			txtId.setColumns(10);
 			
 			txtNombre = new JTextField();
 			txtNombre.setColumns(10);
 			txtNombre.setBounds(105, 53, 307, 20);
-			panelDatos.add(txtNombre);
+			PDatos.add(txtNombre);
 			
 			txtApellidos = new JTextField();
 			txtApellidos.setColumns(10);
 			txtApellidos.setBounds(105, 89, 307, 20);
-			panelDatos.add(txtApellidos);
+			PDatos.add(txtApellidos);
 			
 			txtDireccion = new JTextField();
 			txtDireccion.setColumns(10);
 			txtDireccion.setBounds(105, 125, 307, 20);
-			panelDatos.add(txtDireccion);
+			PDatos.add(txtDireccion);
 			
 			rdnFemenino = new JRadioButton("Femenino");
 			rdnFemenino.setBounds(71, 163, 77, 23);
-			panelDatos.add(rdnFemenino);
+			PDatos.add(rdnFemenino);
 			
 			rdnMaculino = new JRadioButton("Masculino");
 			rdnMaculino.setBounds(161, 163, 77, 23);
-			panelDatos.add(rdnMaculino);
+			PDatos.add(rdnMaculino);
 			
 			spnEdad = new JSpinner();
 			spnEdad.setBounds(71, 203, 62, 20);
-			panelDatos.add(spnEdad);
+			PDatos.add(spnEdad);
 		}
 		{
-			panelCargo = new JPanel();
-			panelCargo.setBorder(new TitledBorder(null, "Cargo del empleado", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-			panelCargo.setBounds(30, 262, 365, 54);
-			contentPanel.add(panelCargo);
-			panelCargo.setLayout(null);
+			PCargoDelEmpleado = new JPanel();
+			PCargoDelEmpleado.setBorder(new TitledBorder(null, "Cargo del empleado", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+			PCargoDelEmpleado.setBounds(30, 262, 365, 54);
+			contentPanel.add(PCargoDelEmpleado);
+			PCargoDelEmpleado.setLayout(null);
 			{
 				JLabel lblNewLabel_7 = new JLabel("Cargo:");
 				lblNewLabel_7.setBounds(10, 26, 46, 14);
-				panelCargo.add(lblNewLabel_7);
+				PCargoDelEmpleado.add(lblNewLabel_7);
 			}
 			{
 				cbxCargo = new JComboBox();
@@ -269,7 +269,7 @@ public class IngresarEmpleado extends JDialog {
 				});
 				cbxCargo.setModel(new DefaultComboBoxModel(new String[] {"<Seleccione>", "Jefe de proyecto", "Dise\u00F1ador", "Planificador", "Programador"}));
 				cbxCargo.setBounds(112, 23, 167, 20);
-				panelCargo.add(cbxCargo);
+				PCargoDelEmpleado.add(cbxCargo);
 			}
 		}
 		setLocationRelativeTo(null);

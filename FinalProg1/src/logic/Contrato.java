@@ -81,5 +81,6 @@ public class Contrato {
 	public void setMiProyecto(Proyecto miProyecto) {
 		this.miProyecto = miProyecto;
 	}	
+	
 
 }
