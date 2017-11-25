@@ -21,6 +21,7 @@ import javax.swing.UIManager;
 import java.awt.Color;
 import javax.swing.border.EtchedBorder;
 import javax.swing.ButtonGroup;
+import javax.swing.SpinnerNumberModel;
 
 
 public class IngresarEmpleado extends JDialog {
@@ -206,6 +207,7 @@ public class IngresarEmpleado extends JDialog {
 			PDatos.add(rdnMaculino);
 			
 			spnEdad = new JSpinner();
+			spnEdad.setModel(new SpinnerNumberModel(new Integer(18), new Integer(18), null, new Integer(1)));
 			spnEdad.setBounds(71, 203, 62, 20);
 			PDatos.add(spnEdad);
 		}
