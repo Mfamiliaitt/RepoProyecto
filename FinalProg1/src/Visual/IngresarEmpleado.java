@@ -13,6 +13,8 @@ import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.border.TitledBorder;
 
+import com.sun.management.jmx.Trace;
+
 import logic.Diseniador;
 import logic.Empleado;
 import logic.Empresa;
@@ -353,19 +355,22 @@ public class IngresarEmpleado extends JDialog {
 						
 	Empleado aux = new JefeProyecto(identificador, nombre, apellidos, direccion, sexo, edad, salario, "","Bueno", 0, chckbxProjectManager.isSelected());
 						
-	                Empresa.getInstance().addEmpleado(aux);
+  Empresa.getInstance().addEmpleado(aux);
+	                
 					}
-					if(rdbDiseniador.isSelected()){
+					else if(rdbDiseniador.isSelected()){
 	Empleado aux= new Diseniador(identificador, nombre, apellidos, direccion, sexo, edad, salario, "", "Bueno", cmbTipoDisenio.getSelectedItem().toString());				
-	                Empresa.getInstance().addEmpleado(aux);	
+    
+	Empresa.getInstance().addEmpleado(aux);	
 					}
-					if(rdbPlanificador.isSelected()){
+					else if(rdbPlanificador.isSelected()){
 	Empleado aux=new Planificador(identificador, nombre, apellidos, direccion, sexo, edad, salario, "", "Bueno", (int) spnFrecuencia.getValue());					
 	Empresa.getInstance().addEmpleado(aux);	
 					}
-					if(rdbProgramador.isSelected()){}
+					else if(rdbProgramador.isSelected()){
 				Empleado aux=new Programador(identificador, nombre, apellidos, direccion, sexo, edad, salario, "", "Bueno", CmbLenguaje.getSelectedItem().toString());		
 	Empresa.getInstance().addEmpleado(aux);
+	}
 					}
 				});
 				okButton.setActionCommand("OK");

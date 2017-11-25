@@ -46,7 +46,9 @@ public void addContrato(Contrato c){
 	misContratos.add(c);
 }
 public void addEmpleado(Empleado e){
+	
 	misEmpleados.add(e);
+	
 }
 public Cliente buscarClientePorCedula(String cedula){
 	Cliente c=null;
