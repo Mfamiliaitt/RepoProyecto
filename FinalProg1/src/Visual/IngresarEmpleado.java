@@ -12,6 +12,14 @@ import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.border.TitledBorder;
+
+import logic.Diseniador;
+import logic.Empleado;
+import logic.Empresa;
+import logic.JefeProyecto;
+import logic.Planificador;
+import logic.Programador;
+
 import javax.swing.JRadioButton;
 import javax.swing.JSpinner;
 import javax.swing.DefaultComboBoxModel;
@@ -48,6 +56,12 @@ public class IngresarEmpleado extends JDialog {
 	private JRadioButton rdbProgramador;
 	private JRadioButton rdbJefeDeProyecto;
 	private JRadioButton rdbPlanificador;
+	private JComboBox cmbTipoDisenio;
+	private JComboBox CmbLenguaje;
+	private JLabel lblSalario;
+	private JTextField txtSalario;
+	private JCheckBox chckbxProjectManager;
+	private JSpinner spnFrecuencia;
 
 	/**
 	 * Launch the application.
@@ -79,7 +93,7 @@ public class IngresarEmpleado extends JDialog {
 			contentPanel.add(panelJefedeproyecto);
 			panelJefedeproyecto.setLayout(null);
 			
-			JCheckBox chckbxProjectManager = new JCheckBox("Certificacion en project manager");
+			chckbxProjectManager = new JCheckBox("Certificacion en project manager");
 			chckbxProjectManager.setBounds(16, 38, 247, 23);
 			panelJefedeproyecto.add(chckbxProjectManager);
 			panelJefedeproyecto.setVisible(false);
@@ -96,9 +110,9 @@ public class IngresarEmpleado extends JDialog {
 			lblFrecuenciaDePlanificacion.setBounds(10, 32, 144, 30);
 			panelPlanificador.add(lblFrecuenciaDePlanificacion);
 			
-			JSpinner spinner = new JSpinner();
-			spinner.setBounds(164, 37, 29, 20);
-			panelPlanificador.add(spinner);
+			spnFrecuencia = new JSpinner();
+			spnFrecuencia.setBounds(164, 37, 29, 20);
+			panelPlanificador.add(spnFrecuencia);
 			panelPlanificador.setVisible(true);
 		}
 		{
@@ -114,7 +128,7 @@ public class IngresarEmpleado extends JDialog {
 				panelProgramador.add(lblNewLabel_9);
 			}
 			{
-				JComboBox CmbLenguaje = new JComboBox();
+				CmbLenguaje = new JComboBox();
 				CmbLenguaje.setModel(new DefaultComboBoxModel(new String[] {"C", "C++", "C#", "Fortran", "Java", "Python", "Swift", "Assembler "}));
 				CmbLenguaje.setBounds(81, 35, 127, 20);
 				panelProgramador.add(CmbLenguaje);
@@ -134,7 +148,7 @@ public class IngresarEmpleado extends JDialog {
 			panelDiseniador.add(lblNewLabel_8);
 		}
 		{
-			JComboBox cmbTipoDisenio = new JComboBox();
+			cmbTipoDisenio = new JComboBox();
 			cmbTipoDisenio.setModel(new DefaultComboBoxModel(new String[] {"Web", "Desktop", "Android", "iOS"}));
 			cmbTipoDisenio.setBounds(112, 26, 164, 20);
 			panelDiseniador.add(cmbTipoDisenio);
@@ -219,6 +233,23 @@ public class IngresarEmpleado extends JDialog {
 			spnEdad.setModel(new SpinnerNumberModel(new Integer(18), new Integer(18), null, new Integer(1)));
 			spnEdad.setBounds(71, 203, 62, 20);
 			PDatos.add(spnEdad);
+			
+			lblSalario = new JLabel("Salario:");
+			lblSalario.setBounds(192, 203, 46, 14);
+			PDatos.add(lblSalario);
+			
+			txtSalario = new JTextField();
+			txtSalario.setBounds(245, 200, 86, 20);
+			PDatos.add(txtSalario);
+			txtSalario.setColumns(10);
+		}
+		{
+		    pVacio = new JPanel();
+		    pVacio.setBounds(0, 0, 724, 15);
+		    contentPanel.add(pVacio);
+		    pVacio.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+			pVacio.setVisible(true);
+			
 		}
 		{
 			PCargoDelEmpleado = new JPanel();
@@ -302,18 +333,41 @@ public class IngresarEmpleado extends JDialog {
 		}
 		setLocationRelativeTo(null);
 		{
-		    pVacio = new JPanel();
-		    getContentPane().add(pVacio, BorderLayout.NORTH);
-		    pVacio.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-			pVacio.setVisible(true);
-			
-		}
-		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				JButton okButton = new JButton("OK");
+				okButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						String identificador=txtId.getText();
+						String nombre=txtNombre.getText();
+						String direccion=txtDireccion.getText();
+						String apellidos=txtApellidos.getText();
+						String sexo="Masculino";
+						if(rdnMaculino.isSelected()){ sexo="Masculino";}
+						if(rdnFemenino.isSelected()){ sexo="Femenino";}
+						int edad=(int) spnEdad.getValue();
+					    Double salario=Double.parseDouble(txtSalario.getText());
+					if(rdbJefeDeProyecto.isSelected()){
+						
+	Empleado aux = new JefeProyecto(identificador, nombre, apellidos, direccion, sexo, edad, salario, "","Bueno", 0, chckbxProjectManager.isSelected());
+						
+	                Empresa.getInstance().addEmpleado(aux);
+					}
+					if(rdbDiseniador.isSelected()){
+	Empleado aux= new Diseniador(identificador, nombre, apellidos, direccion, sexo, edad, salario, "", "Bueno", cmbTipoDisenio.getSelectedItem().toString());				
+	                Empresa.getInstance().addEmpleado(aux);	
+					}
+					if(rdbPlanificador.isSelected()){
+	Empleado aux=new Planificador(identificador, nombre, apellidos, direccion, sexo, edad, salario, "", "Bueno", (int) spnFrecuencia.getValue());					
+	Empresa.getInstance().addEmpleado(aux);	
+					}
+					if(rdbProgramador.isSelected()){}
+				Empleado aux=new Programador(identificador, nombre, apellidos, direccion, sexo, edad, salario, "", "Bueno", CmbLenguaje.getSelectedItem().toString());		
+					Empresa.getInstance().addEmpleado(aux);
+					}
+				});
 				okButton.setActionCommand("OK");
 				buttonPane.add(okButton);
 				getRootPane().setDefaultButton(okButton);

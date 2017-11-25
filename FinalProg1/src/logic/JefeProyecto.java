@@ -10,11 +10,10 @@ public class JefeProyecto extends Empleado {
 	
 	
 	public JefeProyecto(String identificador, String nombre, String apellidos, String direccion, String sexo, int edad,
-			double salario, String idProyecto, String evaluacionAnual, ArrayList<String> misEstados,
+			double salario, String idProyecto, String evaluacionAnual, 
 			int conteo_Trabajadores, boolean certificadoEnProjectManaguer) {
 		
-		super(identificador, nombre, apellidos, direccion, sexo, edad, salario, idProyecto, evaluacionAnual,
-				misEstados);
+		super(identificador, nombre, apellidos, direccion, sexo, edad, salario, idProyecto, evaluacionAnual);
 		this.conteo_Trabajadores = conteo_Trabajadores;
 		this.certificadoEnProjectManaguer=certificadoEnProjectManaguer;
 		

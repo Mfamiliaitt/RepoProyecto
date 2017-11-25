@@ -15,7 +15,7 @@ public abstract class Empleado {
     protected boolean ocupado=false;
     protected ArrayList<String> misEstados=new ArrayList<>();
 	public Empleado(String identificador, String nombre, String apellidos, String direccion, String sexo, int edad,
-			double salario, String idProyecto, String evaluacionAnual, ArrayList<String> misEstados) {
+			double salario, String idProyecto, String evaluacionAnual) {
 		super();
 		this.identificador = identificador;
 		this.nombre = nombre;
@@ -26,7 +26,7 @@ public abstract class Empleado {
 		this.salario = salario;
 		this.idProyecto = idProyecto;
 		this.evaluacionAnual = evaluacionAnual;
-		this.misEstados = misEstados;
+		
 	}
 
 	public String getIdentificador() {

@@ -57,7 +57,7 @@ public class Proyecto {
 		boolean respuesta=false;
 		
 		if(cantidadDeJefeDeProyecto()<1){
-		Empleado JefeAux=new JefeProyecto(identificador, nombre, apellidos, direccion, sexo, edad, salario, nombreProyecto, evaluacionAnual, null, conteo_Trabajadores,certificadoEnProjectManaguer);
+		Empleado JefeAux=new JefeProyecto(identificador, nombre, apellidos, direccion, sexo, edad, salario, "", evaluacionAnual, conteo_Trabajadores, certificadoEnProjectManaguer);
 	
 		elEquipo.add(JefeAux);
 		
@@ -74,7 +74,7 @@ public class Proyecto {
 			double salario, String nombreProyecto, String evaluacionAnual, String lenguaje){
 		boolean respuesta=false;
 		if(cantidadDeProgramadores()<2){
-		Empleado programadorAux=new Programador(identificador, nombre, apellidos, direccion, sexo, edad, salario, nombreProyecto, evaluacionAnual, null, lenguaje);
+		Empleado programadorAux=new Programador(identificador, nombre, apellidos, direccion, sexo, edad, salario, "", evaluacionAnual, lenguaje);
 	 elEquipo.add(programadorAux);
 	
 	 respuesta=true;
@@ -90,7 +90,7 @@ public class Proyecto {
 		boolean respuesta=false;
 		
 		if(cantidadDePlanificadores()<1){
-		Empleado planificadorAux=new Planificador(identificador, nombre, apellidos, direccion, sexo, edad, salario, nombreProyecto, evaluacionAnual, null, cantDias);
+		Empleado planificadorAux=new Planificador(identificador, nombre, apellidos, direccion, sexo, edad, salario, "", evaluacionAnual, cantDias);
 		elEquipo.add(planificadorAux);
 		
 		respuesta=true;}
@@ -104,7 +104,7 @@ public class Proyecto {
 	public void agregarDiseniador(String identificador, String nombre, String apellidos, String direccion, String sexo, int edad,
 			double salario, String nombreProyecto, String evaluacionAnual, String tipoDisenio){
 		
-		Empleado diseniadorAux=new Diseniador(identificador, nombre, apellidos, direccion, sexo, edad, salario, nombreProyecto, evaluacionAnual, null, tipoDisenio);
+		Empleado diseniadorAux=new Diseniador(identificador, nombre, apellidos, direccion, sexo, edad, salario, "", evaluacionAnual, tipoDisenio);
 	    elEquipo.add(diseniadorAux);
 	    
 	}

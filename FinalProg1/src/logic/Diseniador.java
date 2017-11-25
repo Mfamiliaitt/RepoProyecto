@@ -6,10 +6,10 @@ public class Diseniador extends Empleado {
 	private String tipoDisenio;
 
 	public Diseniador(String identificador, String nombre, String apellidos, String direccion, String sexo, int edad,
-			double salario, String idProyecto, String evaluacionAnual, ArrayList<String> misEstados,
+			double salario, String idProyecto, String evaluacionAnual, 
 			String tipoDisenio) {
-		super(identificador, nombre, apellidos, direccion, sexo, edad, salario, idProyecto, evaluacionAnual,
-				misEstados);
+		super(identificador, nombre, apellidos, direccion, sexo, edad, salario, idProyecto, evaluacionAnual
+				);
 		this.tipoDisenio = tipoDisenio;
 	}
 	public String getTipoDisenio() {
