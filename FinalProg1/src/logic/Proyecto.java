@@ -76,7 +76,7 @@ public class Proyecto {
 		if(cantidadDeProgramadores()<2){
 		Empleado programadorAux=new Programador(identificador, nombre, apellidos, direccion, sexo, edad, salario, nombreProyecto, evaluacionAnual, null, lenguaje);
 	 elEquipo.add(programadorAux);
-	 Empresa.getInstance().addEmpleado(programadorAux);
+	 Empresa.getInstance().addEmpleado(programadorAux);//se agregaron empleados en la empresa de nuevo, se debe crear un metodo para registrar empleado aparte
 	 respuesta=true;
 	}else if(cantidadDeProgramadores()>=2){
 		respuesta=false;
