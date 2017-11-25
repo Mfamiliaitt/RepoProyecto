@@ -60,7 +60,7 @@ public class Proyecto {
 		Empleado JefeAux=new JefeProyecto(identificador, nombre, apellidos, direccion, sexo, edad, salario, nombreProyecto, evaluacionAnual, null, conteo_Trabajadores,certificadoEnProjectManaguer);
 	
 		elEquipo.add(JefeAux);
-		Empresa.getInstance().addEmpleado(JefeAux);
+		
 		respuesta=true;
 		
 		}else if(cantidadDeJefeDeProyecto()>=1){
@@ -76,7 +76,7 @@ public class Proyecto {
 		if(cantidadDeProgramadores()<2){
 		Empleado programadorAux=new Programador(identificador, nombre, apellidos, direccion, sexo, edad, salario, nombreProyecto, evaluacionAnual, null, lenguaje);
 	 elEquipo.add(programadorAux);
-	 Empresa.getInstance().addEmpleado(programadorAux);//se agregaron empleados en la empresa de nuevo, se debe crear un metodo para registrar empleado aparte
+	
 	 respuesta=true;
 	}else if(cantidadDeProgramadores()>=2){
 		respuesta=false;
@@ -92,7 +92,7 @@ public class Proyecto {
 		if(cantidadDePlanificadores()<1){
 		Empleado planificadorAux=new Planificador(identificador, nombre, apellidos, direccion, sexo, edad, salario, nombreProyecto, evaluacionAnual, null, cantDias);
 		elEquipo.add(planificadorAux);
-		Empresa.getInstance().addEmpleado(planificadorAux);
+		
 		respuesta=true;}
 		else if(cantidadDePlanificadores()>=1){
 		respuesta=false;	
@@ -106,7 +106,7 @@ public class Proyecto {
 		
 		Empleado diseniadorAux=new Diseniador(identificador, nombre, apellidos, direccion, sexo, edad, salario, nombreProyecto, evaluacionAnual, null, tipoDisenio);
 	    elEquipo.add(diseniadorAux);
-	    Empresa.getInstance().addEmpleado(diseniadorAux);
+	    
 	}
 	
 	public int cantidadDeDiseniadores(){
