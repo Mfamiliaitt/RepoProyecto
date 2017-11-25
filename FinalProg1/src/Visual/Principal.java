@@ -49,6 +49,32 @@ public class Principal extends JFrame {
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		
+		JMenu mnVer = new JMenu("Ver");
+		menuBar.add(mnVer);
+		
+		JMenuItem mntmListadoDeClientes = new JMenuItem("Listado de Clientes");
+		mntmListadoDeClientes.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ListadoClientes c = new ListadoClientes();
+				c.setVisible(true);
+				c.setLocationRelativeTo(null);
+			}
+		});
+		mnVer.add(mntmListadoDeClientes);
+		
+		JMenuItem mntmListadoDeEmpleados = new JMenuItem("Listado de Empleados");
+		mntmListadoDeEmpleados.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ListadoEmpleados c = new ListadoEmpleados();
+				c.setVisible(true);
+				c.setLocationRelativeTo(null);
+			}
+		});
+		
+		JMenuItem mntmListaDeContratos = new JMenuItem("Listado de Contratos");
+		mnVer.add(mntmListaDeContratos);
+		mnVer.add(mntmListadoDeEmpleados);
+		
 		JMenu mnNewMenu = new JMenu("Empleados");
 		menuBar.add(mnNewMenu);
 		
@@ -63,9 +89,6 @@ public class Principal extends JFrame {
 			}
 		});
 		mnNewMenu.add(mntmNewMenuItem);
-		
-		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Informaci\u00F3n");
-		mnNewMenu.add(mntmNewMenuItem_1);
 		
 		JMenuItem mntmNewMenuItem_7 = new JMenuItem("Evaluaci\u00F3n anual");
 		mnNewMenu.add(mntmNewMenuItem_7);
@@ -84,27 +107,6 @@ public class Principal extends JFrame {
 			}
 		});
 		mnNewMenu_1.add(mntmNewMenuItem_2);
-		
-		JMenu mnNewMenu_3 = new JMenu("Clientes");
-		menuBar.add(mnNewMenu_3);
-		
-		JMenu mnNewMenu_4 = new JMenu("Revisi\u00F3n");
-		mnNewMenu_3.add(mnNewMenu_4);
-		
-		JMenuItem mntmNewMenuItem_3 = new JMenuItem("Informaci\u00F3n");
-		mnNewMenu_4.add(mntmNewMenuItem_3);
-		
-		JMenuItem mntmNewMenuItem_4 = new JMenuItem("Consultar contratos");
-		mnNewMenu_4.add(mntmNewMenuItem_4);
-		
-		JMenu mnNewMenu_2 = new JMenu("Revisiones");
-		menuBar.add(mnNewMenu_2);
-		
-		JMenuItem mntmNewMenuItem_5 = new JMenuItem("Contratos");
-		mnNewMenu_2.add(mntmNewMenuItem_5);
-		
-		JMenuItem mntmNewMenuItem_6 = new JMenuItem("Proyectos ");
-		mnNewMenu_2.add(mntmNewMenuItem_6);
 		
 		JMenu mnNewMenu_5 = new JMenu("");
 		menuBar.add(mnNewMenu_5);
