@@ -365,7 +365,7 @@ public class IngresarEmpleado extends JDialog {
 					}
 					if(rdbProgramador.isSelected()){}
 				Empleado aux=new Programador(identificador, nombre, apellidos, direccion, sexo, edad, salario, "", "Bueno", CmbLenguaje.getSelectedItem().toString());		
-					Empresa.getInstance().addEmpleado(aux);
+	Empresa.getInstance().addEmpleado(aux);
 					}
 				});
 				okButton.setActionCommand("OK");
