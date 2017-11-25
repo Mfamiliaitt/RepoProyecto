@@ -10,7 +10,14 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
 import javax.swing.border.TitledBorder;
+import javax.swing.table.DefaultTableModel;
+
+import logic.Contrato;
+import logic.Empleado;
+import logic.Empresa;
+
 import javax.swing.border.EtchedBorder;
 import javax.swing.UIManager;
 import java.awt.Color;
@@ -39,11 +46,17 @@ public class CrearProyecto extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
+	private JTextField txtDireccion;
+	private JTextField txtNombre;
 	private JPanel P1;
 	private JPanel P2;
+	private JTable table;
+	private JTable table_1;
+	private static Object[] fila;
+	private static DefaultTableModel model;
+	private JTextField txtApellido;
+	private JTable table_2;
+	
 
 	/**
 	 * Launch the application.
@@ -68,6 +81,126 @@ public class CrearProyecto extends JDialog {
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
+		P2 = new JPanel();
+		P2.setBounds(0, 0, 724, 428);
+		contentPanel.add(P2);
+		P2.setLayout(null);
+		P2.setVisible(false);
+		{
+			JPanel panelBusqueda = new JPanel();
+			panelBusqueda.setLayout(null);
+			panelBusqueda.setBorder(new TitledBorder(new LineBorder(new Color(100, 149, 237)), "Busqueda de cliente", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+			panelBusqueda.setBackground(SystemColor.control);
+			panelBusqueda.setBounds(10, 26, 387, 104);
+			P2.add(panelBusqueda);
+			{
+				JLabel label = new JLabel("C\u00E9dula: ");
+				label.setBounds(10, 40, 55, 14);
+				panelBusqueda.add(label);
+			}
+			{
+				JFormattedTextField formattedTextField = new JFormattedTextField((AbstractFormatter) null);
+				formattedTextField.setColumns(10);
+				formattedTextField.setBounds(76, 37, 165, 20);
+				panelBusqueda.add(formattedTextField);
+			}
+			{
+				JButton button = new JButton("<html><font color = black>Buscar</font></html>");
+				button.setBackground(new Color(100, 149, 237));
+				button.setBounds(251, 36, 102, 23);
+				panelBusqueda.add(button);
+			}
+		}
+		{
+			JPanel panelInfo = new JPanel();
+			panelInfo.setLayout(null);
+			panelInfo.setBorder(new TitledBorder(new LineBorder(new Color(100, 149, 237)), "Informaci\u00F3n del cliente", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+			panelInfo.setBackground(SystemColor.control);
+			panelInfo.setBounds(10, 153, 387, 239);
+			P2.add(panelInfo);
+			{
+				JLabel label = new JLabel("C\u00E9dula:");
+				label.setBounds(10, 35, 46, 14);
+				panelInfo.add(label);
+			}
+			{
+				JLabel label = new JLabel("Tel\u00E9fono:");
+				label.setBounds(10, 196, 63, 14);
+				panelInfo.add(label);
+			}
+			{
+				JLabel label = new JLabel("Nombre: ");
+				label.setBounds(10, 84, 63, 14);
+				panelInfo.add(label);
+			}
+			{
+				JLabel label = new JLabel("Direcci\u00F3n: ");
+				label.setBounds(10, 157, 63, 14);
+				panelInfo.add(label);
+			}
+			{
+				txtDireccion = new JTextField();
+				txtDireccion.setEditable(false);
+				txtDireccion.setColumns(10);
+				txtDireccion.setBounds(76, 154, 292, 20);
+				panelInfo.add(txtDireccion);
+			}
+			{
+				txtNombre = new JTextField();
+				txtNombre.setEditable(false);
+				txtNombre.setColumns(10);
+				txtNombre.setBounds(76, 81, 292, 20);
+				panelInfo.add(txtNombre);
+			}
+			{
+				JLabel lblNewLabel = new JLabel("Apellido:");
+				lblNewLabel.setBounds(10, 121, 46, 14);
+				panelInfo.add(lblNewLabel);
+			}
+			{
+				txtApellido = new JTextField();
+				txtApellido.setEditable(false);
+				txtApellido.setColumns(10);
+				txtApellido.setBounds(76, 118, 292, 20);
+				panelInfo.add(txtApellido);
+			}
+			
+			JFormattedTextField formattedtxtTelefono = new JFormattedTextField();
+			formattedtxtTelefono.setBounds(76, 193, 140, 20);
+			panelInfo.add(formattedtxtTelefono);
+			{
+				JFormattedTextField formattedTextField = new JFormattedTextField();
+				formattedTextField.setBounds(76, 32, 140, 20);
+				panelInfo.add(formattedTextField);
+			}
+		}
+		{
+			JLabel lblNewLabel_1 = new JLabel("Imagen que se quiera poner");
+			lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+			lblNewLabel_1.setBounds(458, 26, 217, 104);
+			P2.add(lblNewLabel_1);
+		}
+		{
+			JPanel panelproyectoscliente = new JPanel();
+			panelproyectoscliente.setBorder(new TitledBorder(null, "Proyectos del cliente", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+			panelproyectoscliente.setBounds(407, 153, 307, 239);
+			P2.add(panelproyectoscliente);
+			panelproyectoscliente.setLayout(new BorderLayout(0, 0));
+			{
+				JScrollPane scrollPane = new JScrollPane();
+				panelproyectoscliente.add(scrollPane, BorderLayout.CENTER);
+				{
+					table_2 = new JTable();
+					table_2.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+					String[] columnNames = {"Código","Fecha inicio","Fecha final"};
+					model = new DefaultTableModel();
+					model.setColumnIdentifiers(columnNames);
+					table_2.setModel(model);
+					//loadTable2(formattedtxtCedulaAbajo.getText().toString());
+					scrollPane.setViewportView(table_2);
+				}
+			}
+		}
 		{
 			P1 = new JPanel();
 			P1.setBounds(0, 0, 724, 428);
@@ -75,7 +208,7 @@ public class CrearProyecto extends JDialog {
 			P1.setLayout(null);
 			{
 				JPanel panelProyecto = new JPanel();
-				panelProyecto.setBounds(0, 0, 350, 187);
+				panelProyecto.setBounds(364, 0, 350, 187);
 				P1.add(panelProyecto);
 				panelProyecto.setLayout(null);
 				panelProyecto.setBorder(new TitledBorder(null, "Datos del proyecto", TitledBorder.LEADING, TitledBorder.TOP, null, null));
@@ -125,13 +258,8 @@ public class CrearProyecto extends JDialog {
 				}
 			}
 			{
-				JLabel lblImagen = new JLabel("Imagen del proyecto");
-				lblImagen.setBounds(360, 11, 354, 170);
-				P1.add(lblImagen);
-			}
-			{
 				JPanel panelEmpleado = new JPanel();
-				panelEmpleado.setBounds(0, 189, 714, 228);
+				panelEmpleado.setBounds(10, 189, 704, 228);
 				P1.add(panelEmpleado);
 				panelEmpleado.setBorder(new TitledBorder(null, "Datos del equipo", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 				panelEmpleado.setLayout(null);
@@ -146,114 +274,66 @@ public class CrearProyecto extends JDialog {
 					cbxCargoEmpl.setBounds(66, 30, 121, 20);
 					panelEmpleado.add(cbxCargoEmpl);
 				}
-				{
-					JScrollPane scrollPane = new JScrollPane();
-					scrollPane.setBounds(10, 58, 286, 159);
-					panelEmpleado.add(scrollPane);
-				}
-				
-				JScrollPane scrollPane = new JScrollPane();
-				scrollPane.setBounds(370, 58, 324, 159);
-				panelEmpleado.add(scrollPane);
 				
 				JButton btnAgregar = new JButton(">");
-				btnAgregar.setBounds(306, 94, 54, 29);
+				btnAgregar.setBounds(328, 94, 54, 29);
 				panelEmpleado.add(btnAgregar);
 				
 				JButton btnEliminar = new JButton("X");
-				btnEliminar.setBounds(306, 136, 54, 29);
+				btnEliminar.setBounds(328, 136, 54, 29);
 				panelEmpleado.add(btnEliminar);
+				{
+					JPanel panel = new JPanel();
+					panel.setBounds(20, 58, 298, 159);
+					panelEmpleado.add(panel);
+					panel.setLayout(new BorderLayout(0, 0));
+					{
+						JScrollPane scrollPane = new JScrollPane();
+						panel.add(scrollPane, BorderLayout.CENTER);
+						{
+							table = new JTable();
+							table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+							String[] columnNames = {"Cédula","Nombre","Apellido","Salario","Estado"};
+							model = new DefaultTableModel();
+							model.setColumnIdentifiers(columnNames);
+							table.setModel(model);
+							loadTable();
+							scrollPane.setViewportView(table);
+						}
+					}
+				}
+				{
+					JPanel panel = new JPanel();
+					panel.setBounds(392, 58, 298, 159);
+					panelEmpleado.add(panel);
+					panel.setLayout(new BorderLayout(0, 0));
+					{
+						JScrollPane scrollPane = new JScrollPane();
+						panel.add(scrollPane, BorderLayout.CENTER);
+						{
+							table_1 = new JTable();
+							table_1 = new JTable();
+							table_1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+							String[] columnNames = {"Cédula","Nombre","Apellido","Salario","Estado"};
+							model = new DefaultTableModel();
+							model.setColumnIdentifiers(columnNames);
+							table_1.setModel(model);
+							loadTable1();
+							scrollPane.setViewportView(table_1);
+						}
+					}
+				}
+			}
+			{
+				JLabel label = new JLabel("Imagen del proyecto");
+				label.setHorizontalAlignment(SwingConstants.CENTER);
+				label.setBounds(23, 11, 253, 154);
+				P1.add(label);
 			}
 		}
 		{
-			P2 = new JPanel();
-			P2.setBounds(0, 0, 724, 428);
-			contentPanel.add(P2);
-			P2.setLayout(null);
-			P2.setVisible(false);
 			
 			;
-			{
-				JPanel panelBusqueda = new JPanel();
-				panelBusqueda.setLayout(null);
-				panelBusqueda.setBorder(new TitledBorder(new LineBorder(new Color(100, 149, 237)), "Busqueda de cliente", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-				panelBusqueda.setBackground(SystemColor.control);
-				panelBusqueda.setBounds(10, 11, 495, 94);
-				P2.add(panelBusqueda);
-				{
-					JLabel label = new JLabel("C\u00E9dula: ");
-					label.setBounds(10, 40, 55, 14);
-					panelBusqueda.add(label);
-				}
-				{
-					JFormattedTextField formattedTextField = new JFormattedTextField((AbstractFormatter) null);
-					formattedTextField.setColumns(10);
-					formattedTextField.setBounds(76, 37, 165, 20);
-					panelBusqueda.add(formattedTextField);
-				}
-				{
-					JButton button = new JButton("<html><font color = black>Buscar</font></html>");
-					button.setBackground(new Color(100, 149, 237));
-					button.setBounds(251, 36, 102, 23);
-					panelBusqueda.add(button);
-				}
-			}
-			{
-				JPanel panelInfo = new JPanel();
-				panelInfo.setLayout(null);
-				panelInfo.setBorder(new TitledBorder(new LineBorder(new Color(100, 149, 237)), "Informaci\u00F3n del cliente", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-				panelInfo.setBackground(SystemColor.control);
-				panelInfo.setBounds(10, 116, 495, 185);
-				P2.add(panelInfo);
-				{
-					JLabel label = new JLabel("C\u00E9dula:");
-					label.setBounds(10, 35, 46, 14);
-					panelInfo.add(label);
-				}
-				{
-					JFormattedTextField formattedTextField = new JFormattedTextField((AbstractFormatter) null);
-					formattedTextField.setEditable(false);
-					formattedTextField.setColumns(10);
-					formattedTextField.setBounds(76, 32, 165, 20);
-					panelInfo.add(formattedTextField);
-				}
-				{
-					JLabel label = new JLabel("Tel\u00E9fono:");
-					label.setBounds(251, 35, 63, 14);
-					panelInfo.add(label);
-				}
-				{
-					textField_1 = new JTextField();
-					textField_1.setEditable(false);
-					textField_1.setColumns(10);
-					textField_1.setBounds(320, 32, 165, 20);
-					panelInfo.add(textField_1);
-				}
-				{
-					JLabel label = new JLabel("Nombre: ");
-					label.setBounds(10, 84, 63, 14);
-					panelInfo.add(label);
-				}
-				{
-					JLabel label = new JLabel("Direcci\u00F3n: ");
-					label.setBounds(10, 133, 63, 14);
-					panelInfo.add(label);
-				}
-				{
-					textField_2 = new JTextField();
-					textField_2.setEditable(false);
-					textField_2.setColumns(10);
-					textField_2.setBounds(76, 130, 409, 20);
-					panelInfo.add(textField_2);
-				}
-				{
-					textField_3 = new JTextField();
-					textField_3.setEditable(false);
-					textField_3.setColumns(10);
-					textField_3.setBounds(76, 81, 409, 20);
-					panelInfo.add(textField_3);
-				}
-			}
 		}
 		setLocationRelativeTo(null);
 		{
@@ -298,5 +378,49 @@ public class CrearProyecto extends JDialog {
 				buttonPane.add(cancelButton);
 			}
 		}
+	}
+	//Tabla para cargar contratos de cliente
+   /*  private void loadTable2(String id) {
+		// TODO Auto-generated method stub
+    	 model.setRowCount(0);
+ 		fila = new Object[model.getColumnCount()];
+ 		for (Contrato contrato : Empresa.getInstance().buscarClientePorCedula(id).getMiContrato()) {
+ 			
+ 			fila[0] = contrato.getCodigoProyecto();
+ 			fila[1] = contrato.getFechaInicio();
+ 			fila[2] =  contrato.getFechaTermino();
+ 			
+ 			model.addRow(fila);
+		
+	}
+     }*/
+
+	//Esta es la tabla para ir presentando los empleados que se eligen en el equipo, no se como se hace
+	private void loadTable1() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void loadTable() {
+		// TODO Auto-generated method stub
+		model.setRowCount(0);
+		fila = new Object[model.getColumnCount()];
+		for (Empleado empleado : Empresa.getInstance().getMisEmpleados()) {
+			
+			fila[0] = empleado.getIdentificador();
+			fila[1] = empleado.getNombre();
+			fila[2] = empleado.getApellidos();
+			fila[3] = empleado.getSalario();
+			fila[4] = empleado.getEvaluacionAnual();
+			if (empleado.isOcupado()){
+			    fila[5] = "Ocupado";
+			}
+			else{
+				fila[5] = "Disponible";
+			}
+			
+			model.addRow(fila);
+		
+	}
 	}
 }
