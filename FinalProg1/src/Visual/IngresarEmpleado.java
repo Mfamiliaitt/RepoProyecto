@@ -20,6 +20,9 @@ import java.awt.event.ActionEvent;
 import javax.swing.UIManager;
 import java.awt.Color;
 import javax.swing.border.EtchedBorder;
+import javax.swing.ButtonGroup;
+import javax.swing.SpinnerNumberModel;
+import javax.swing.JCheckBox;
 
 
 public class IngresarEmpleado extends JDialog {
@@ -31,15 +34,20 @@ public class IngresarEmpleado extends JDialog {
 	private JTextField txtDireccion;
 	private JPanel PCargoDelEmpleado;
 	private JPanel panelDiseniador;
-	private JPanel panelVacio;
+	private JPanel pVacio;
 	private JPanel panelProgramador;
 	private JPanel panelPlanificador;
 	private JPanel panelJefedeproyecto;
 	private JRadioButton rdnFemenino;
 	private JRadioButton rdnMaculino;
 	private JSpinner spnEdad;
-	private JComboBox cbxCargo;
 	private JButton btnCargar;
+	private final ButtonGroup buttonGroup = new ButtonGroup();
+	private final ButtonGroup buttonGroup_1 = new ButtonGroup();
+	private JRadioButton rdbDiseniador;
+	private JRadioButton rdbProgramador;
+	private JRadioButton rdbJefeDeProyecto;
+	private JRadioButton rdbPlanificador;
 
 	/**
 	 * Launch the application.
@@ -65,17 +73,38 @@ public class IngresarEmpleado extends JDialog {
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
 		{
-		    panelVacio = new JPanel();
-		    panelVacio.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
-			panelVacio.setBounds(30, 327, 365, 90);
-			contentPanel.add(panelVacio);
-			panelVacio.setVisible(true);
+			panelJefedeproyecto = new JPanel();
+			panelJefedeproyecto.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Jefe de Proyecto", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+			panelJefedeproyecto.setBounds(30, 327, 668, 90);
+			contentPanel.add(panelJefedeproyecto);
+			panelJefedeproyecto.setLayout(null);
 			
+			JCheckBox chckbxProjectManager = new JCheckBox("Certificacion en project manager");
+			chckbxProjectManager.setBounds(16, 38, 247, 23);
+			panelJefedeproyecto.add(chckbxProjectManager);
+			panelJefedeproyecto.setVisible(false);
+			
+		}
+		{
+		    panelPlanificador = new JPanel();
+			panelPlanificador.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Planificador", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+			panelPlanificador.setBounds(30, 327, 668, 90);
+			contentPanel.add(panelPlanificador);
+			panelPlanificador.setLayout(null);
+			
+			JLabel lblFrecuenciaDePlanificacion = new JLabel("Frecuencia de planificacion");
+			lblFrecuenciaDePlanificacion.setBounds(10, 32, 144, 30);
+			panelPlanificador.add(lblFrecuenciaDePlanificacion);
+			
+			JSpinner spinner = new JSpinner();
+			spinner.setBounds(164, 37, 29, 20);
+			panelPlanificador.add(spinner);
+			panelPlanificador.setVisible(true);
 		}
 		{
 			panelProgramador = new JPanel();
 			panelProgramador.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Programador", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-			panelProgramador.setBounds(30, 327, 365, 90);
+			panelProgramador.setBounds(30, 327, 668, 90);
 			contentPanel.add(panelProgramador);
 			panelProgramador.setLayout(null);
 			panelProgramador.setVisible(false);
@@ -85,30 +114,16 @@ public class IngresarEmpleado extends JDialog {
 				panelProgramador.add(lblNewLabel_9);
 			}
 			{
-				JComboBox comboBox = new JComboBox();
-				comboBox.setBounds(81, 35, 127, 20);
-				panelProgramador.add(comboBox);
+				JComboBox CmbLenguaje = new JComboBox();
+				CmbLenguaje.setModel(new DefaultComboBoxModel(new String[] {"C", "C++", "C#", "Fortran", "Java", "Python", "Swift", "Assembler "}));
+				CmbLenguaje.setBounds(81, 35, 127, 20);
+				panelProgramador.add(CmbLenguaje);
 			}
-		}
-		{
-		    panelPlanificador = new JPanel();
-			panelPlanificador.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Planificador", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-			panelPlanificador.setBounds(30, 327, 365, 90);
-			contentPanel.add(panelPlanificador);
-			panelPlanificador.setVisible(true);
-		}
-		{
-			panelJefedeproyecto = new JPanel();
-			panelJefedeproyecto.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Jefe de Proyecto", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-			panelJefedeproyecto.setBounds(30, 327, 365, 90);
-			contentPanel.add(panelJefedeproyecto);
-			panelJefedeproyecto.setVisible(false);
-			
 		}
 		
 		panelDiseniador = new JPanel();
 		panelDiseniador.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Dise\u00F1ador", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-		panelDiseniador.setBounds(30, 327, 365, 90);
+		panelDiseniador.setBounds(30, 327, 668, 90);
 		contentPanel.add(panelDiseniador);
 		panelDiseniador.setLayout(null);
 		panelDiseniador.setVisible(false);
@@ -119,15 +134,16 @@ public class IngresarEmpleado extends JDialog {
 			panelDiseniador.add(lblNewLabel_8);
 		}
 		{
-			JComboBox comboBox = new JComboBox();
-			comboBox.setBounds(112, 26, 164, 20);
-			panelDiseniador.add(comboBox);
+			JComboBox cmbTipoDisenio = new JComboBox();
+			cmbTipoDisenio.setModel(new DefaultComboBoxModel(new String[] {"Web", "Desktop", "Android", "iOS"}));
+			cmbTipoDisenio.setBounds(112, 26, 164, 20);
+			panelDiseniador.add(cmbTipoDisenio);
 		}
 		
-		JLabel lblNewLabel = new JLabel("La imagen del empleado");
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(30, 39, 178, 178);
-		contentPanel.add(lblNewLabel);
+		JLabel lblImagen = new JLabel("La imagen del empleado");
+		lblImagen.setHorizontalAlignment(SwingConstants.CENTER);
+		lblImagen.setBounds(30, 39, 178, 178);
+		contentPanel.add(lblImagen);
 		
 	    btnCargar = new JButton("Cargar");
 		btnCargar.setBounds(77, 228, 89, 23);
@@ -190,21 +206,24 @@ public class IngresarEmpleado extends JDialog {
 			PDatos.add(txtDireccion);
 			
 			rdnFemenino = new JRadioButton("Femenino");
+			buttonGroup_1.add(rdnFemenino);
 			rdnFemenino.setBounds(71, 163, 77, 23);
 			PDatos.add(rdnFemenino);
 			
 			rdnMaculino = new JRadioButton("Masculino");
+			buttonGroup_1.add(rdnMaculino);
 			rdnMaculino.setBounds(161, 163, 77, 23);
 			PDatos.add(rdnMaculino);
 			
 			spnEdad = new JSpinner();
+			spnEdad.setModel(new SpinnerNumberModel(new Integer(18), new Integer(18), null, new Integer(1)));
 			spnEdad.setBounds(71, 203, 62, 20);
 			PDatos.add(spnEdad);
 		}
 		{
 			PCargoDelEmpleado = new JPanel();
 			PCargoDelEmpleado.setBorder(new TitledBorder(null, "Cargo del empleado", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-			PCargoDelEmpleado.setBounds(30, 262, 365, 54);
+			PCargoDelEmpleado.setBounds(30, 262, 668, 54);
 			contentPanel.add(PCargoDelEmpleado);
 			PCargoDelEmpleado.setLayout(null);
 			{
@@ -212,68 +231,83 @@ public class IngresarEmpleado extends JDialog {
 				lblNewLabel_7.setBounds(10, 26, 46, 14);
 				PCargoDelEmpleado.add(lblNewLabel_7);
 			}
-			{
-				cbxCargo = new JComboBox();
-				cbxCargo.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						String cargo=cbxCargo.getSelectedItem().toString();
-						if(cargo=="Jefe de proyecto"){
-							//Si selecciono al jefe de proyecto
-							
-							panelJefedeproyecto.setVisible(true);
-							
-							panelDiseniador.setVisible(false);
-							panelPlanificador.setVisible(false);
-							panelProgramador.setVisible(false);
-							panelVacio.setVisible(false);
-							
-						}
-						else if(cargo=="Diseñador"){
-							//Si selecciono al diseñador
-                            panelDiseniador.setVisible(true);
-                            
-                            panelJefedeproyecto.setVisible(false);
-							panelPlanificador.setVisible(false);
-							panelProgramador.setVisible(false);
-							panelVacio.setVisible(false);
-						}
-						else if(cargo=="Planificador"){
-							//Si selecciona al planificador 
-							panelPlanificador.setVisible(true); 
-							
-							panelDiseniador.setVisible(false);    
-	                        panelJefedeproyecto.setVisible(false);
-							panelProgramador.setVisible(false);
-					        panelVacio.setVisible(false);	
-						}
-						else if(cargo=="Programador"){
-							//Si selecciona al programador
-                            panelProgramador.setVisible(true);
-                            
-                            panelPlanificador.setVisible(false); 
-							panelDiseniador.setVisible(false);    
-	                        panelJefedeproyecto.setVisible(false);
-					        panelVacio.setVisible(false);
-						}
-						else{
-							panelVacio.setVisible(true);
-							
-                            panelProgramador.setVisible(false);
-                            panelPlanificador.setVisible(false); 
-							panelDiseniador.setVisible(false);    
-	                        panelJefedeproyecto.setVisible(false);	
-						}
-						
-						
+			
+			rdbJefeDeProyecto = new JRadioButton("Jefe de proyecto");
+			rdbJefeDeProyecto.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					if(rdbJefeDeProyecto.isSelected()){
+						pVacio.setVisible(false);
+						panelJefedeproyecto.setVisible(true);
+						panelPlanificador.setVisible(false);
+						panelProgramador.setVisible(false);
+						panelDiseniador.setVisible(false);
 						
 					}
-				});
-				cbxCargo.setModel(new DefaultComboBoxModel(new String[] {"<Seleccione>", "Jefe de proyecto", "Dise\u00F1ador", "Planificador", "Programador"}));
-				cbxCargo.setBounds(112, 23, 167, 20);
-				PCargoDelEmpleado.add(cbxCargo);
-			}
+				}
+			});
+			buttonGroup.add(rdbJefeDeProyecto);
+			rdbJefeDeProyecto.setBounds(92, 22, 121, 23);
+			PCargoDelEmpleado.add(rdbJefeDeProyecto);
+			
+			rdbPlanificador = new JRadioButton("Planificador");
+			rdbPlanificador.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					if(rdbPlanificador.isSelected()){
+						pVacio.setVisible(false);
+						panelJefedeproyecto.setVisible(false);
+						panelPlanificador.setVisible(true);
+						panelProgramador.setVisible(false);
+						panelDiseniador.setVisible(false);
+						
+					}
+				}
+			});
+			buttonGroup.add(rdbPlanificador);
+			rdbPlanificador.setBounds(226, 22, 109, 23);
+			PCargoDelEmpleado.add(rdbPlanificador);
+			
+			rdbProgramador = new JRadioButton("Programador");
+			rdbProgramador.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					if(rdbProgramador.isSelected()){
+						pVacio.setVisible(false);
+						panelJefedeproyecto.setVisible(false);
+						panelPlanificador.setVisible(false);
+						panelProgramador.setVisible(true);
+						panelDiseniador.setVisible(false);
+						
+					}
+				}
+			});
+			buttonGroup.add(rdbProgramador);
+			rdbProgramador.setBounds(352, 22, 109, 23);
+			PCargoDelEmpleado.add(rdbProgramador);
+			
+			rdbDiseniador = new JRadioButton("Dise\u00F1ador");
+			rdbDiseniador.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					if(rdbDiseniador.isSelected()){
+						pVacio.setVisible(false);
+						panelJefedeproyecto.setVisible(false);
+						panelPlanificador.setVisible(false);
+						panelProgramador.setVisible(false);
+						panelDiseniador.setVisible(true);
+						
+					}
+				}
+			});
+			buttonGroup.add(rdbDiseniador);
+			rdbDiseniador.setBounds(475, 22, 109, 23);
+			PCargoDelEmpleado.add(rdbDiseniador);
 		}
 		setLocationRelativeTo(null);
+		{
+		    pVacio = new JPanel();
+		    getContentPane().add(pVacio, BorderLayout.NORTH);
+		    pVacio.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+			pVacio.setVisible(true);
+			
+		}
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
@@ -286,6 +320,11 @@ public class IngresarEmpleado extends JDialog {
 			}
 			{
 				JButton cancelButton = new JButton("Cancel");
+				cancelButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						dispose();
+					}
+				});
 				cancelButton.setActionCommand("Cancel");
 				buttonPane.add(cancelButton);
 			}
