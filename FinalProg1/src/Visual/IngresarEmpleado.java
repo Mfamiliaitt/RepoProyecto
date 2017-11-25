@@ -22,6 +22,7 @@ import java.awt.Color;
 import javax.swing.border.EtchedBorder;
 import javax.swing.ButtonGroup;
 import javax.swing.SpinnerNumberModel;
+import javax.swing.JCheckBox;
 
 
 public class IngresarEmpleado extends JDialog {
@@ -72,12 +73,33 @@ public class IngresarEmpleado extends JDialog {
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
 		{
-		    pVacio = new JPanel();
-		    pVacio.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-			pVacio.setBounds(30, 327, 668, 90);
-			contentPanel.add(pVacio);
-			pVacio.setVisible(true);
+			panelJefedeproyecto = new JPanel();
+			panelJefedeproyecto.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Jefe de Proyecto", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+			panelJefedeproyecto.setBounds(30, 327, 668, 90);
+			contentPanel.add(panelJefedeproyecto);
+			panelJefedeproyecto.setLayout(null);
 			
+			JCheckBox chckbxProjectManager = new JCheckBox("Certificacion en project manager");
+			chckbxProjectManager.setBounds(16, 38, 247, 23);
+			panelJefedeproyecto.add(chckbxProjectManager);
+			panelJefedeproyecto.setVisible(false);
+			
+		}
+		{
+		    panelPlanificador = new JPanel();
+			panelPlanificador.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Planificador", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+			panelPlanificador.setBounds(30, 327, 668, 90);
+			contentPanel.add(panelPlanificador);
+			panelPlanificador.setLayout(null);
+			
+			JLabel lblFrecuenciaDePlanificacion = new JLabel("Frecuencia de planificacion");
+			lblFrecuenciaDePlanificacion.setBounds(10, 32, 144, 30);
+			panelPlanificador.add(lblFrecuenciaDePlanificacion);
+			
+			JSpinner spinner = new JSpinner();
+			spinner.setBounds(164, 37, 29, 20);
+			panelPlanificador.add(spinner);
+			panelPlanificador.setVisible(true);
 		}
 		{
 			panelProgramador = new JPanel();
@@ -92,25 +114,11 @@ public class IngresarEmpleado extends JDialog {
 				panelProgramador.add(lblNewLabel_9);
 			}
 			{
-				JComboBox comboBox = new JComboBox();
-				comboBox.setBounds(81, 35, 127, 20);
-				panelProgramador.add(comboBox);
+				JComboBox CmbLenguaje = new JComboBox();
+				CmbLenguaje.setModel(new DefaultComboBoxModel(new String[] {"C", "C++", "C#", "Fortran", "Java", "Python", "Swift", "Assembler "}));
+				CmbLenguaje.setBounds(81, 35, 127, 20);
+				panelProgramador.add(CmbLenguaje);
 			}
-		}
-		{
-		    panelPlanificador = new JPanel();
-			panelPlanificador.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Planificador", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-			panelPlanificador.setBounds(30, 327, 668, 90);
-			contentPanel.add(panelPlanificador);
-			panelPlanificador.setVisible(true);
-		}
-		{
-			panelJefedeproyecto = new JPanel();
-			panelJefedeproyecto.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Jefe de Proyecto", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-			panelJefedeproyecto.setBounds(30, 327, 668, 90);
-			contentPanel.add(panelJefedeproyecto);
-			panelJefedeproyecto.setVisible(false);
-			
 		}
 		
 		panelDiseniador = new JPanel();
@@ -126,9 +134,10 @@ public class IngresarEmpleado extends JDialog {
 			panelDiseniador.add(lblNewLabel_8);
 		}
 		{
-			JComboBox comboBox = new JComboBox();
-			comboBox.setBounds(112, 26, 164, 20);
-			panelDiseniador.add(comboBox);
+			JComboBox cmbTipoDisenio = new JComboBox();
+			cmbTipoDisenio.setModel(new DefaultComboBoxModel(new String[] {"Web", "Desktop", "Android", "iOS"}));
+			cmbTipoDisenio.setBounds(112, 26, 164, 20);
+			panelDiseniador.add(cmbTipoDisenio);
 		}
 		
 		JLabel lblImagen = new JLabel("La imagen del empleado");
@@ -237,7 +246,7 @@ public class IngresarEmpleado extends JDialog {
 				}
 			});
 			buttonGroup.add(rdbJefeDeProyecto);
-			rdbJefeDeProyecto.setBounds(92, 22, 109, 23);
+			rdbJefeDeProyecto.setBounds(92, 22, 121, 23);
 			PCargoDelEmpleado.add(rdbJefeDeProyecto);
 			
 			rdbPlanificador = new JRadioButton("Planificador");
@@ -292,6 +301,13 @@ public class IngresarEmpleado extends JDialog {
 			PCargoDelEmpleado.add(rdbDiseniador);
 		}
 		setLocationRelativeTo(null);
+		{
+		    pVacio = new JPanel();
+		    getContentPane().add(pVacio, BorderLayout.NORTH);
+		    pVacio.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+			pVacio.setVisible(true);
+			
+		}
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
