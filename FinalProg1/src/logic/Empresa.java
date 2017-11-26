@@ -5,6 +5,7 @@ public class Empresa {
 private ArrayList<Empleado> misEmpleados;
  private ArrayList<Contrato> misContratos;
  private ArrayList<Cliente> misClientes;
+ private ArrayList<Proyecto> misProyectos;
  private static Empresa laEmpresa;
  private Empresa() {
 		super();
@@ -90,5 +91,11 @@ public void terminarProyecto(String id){
 	
 }
 /*Termina un proyecto y le asigna al equipo de ese proyecto el estado en el que quedo el proyecto*/
+public ArrayList<Proyecto> getMisProyectos() {
+	return misProyectos;
+}
+public void setMisProyectos(ArrayList<Proyecto> misProyectos) {
+	this.misProyectos = misProyectos;
+}
 
 }

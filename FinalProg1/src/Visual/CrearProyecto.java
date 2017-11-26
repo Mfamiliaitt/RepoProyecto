@@ -15,13 +15,8 @@ import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 
 import logic.Contrato;
-import logic.Diseniador;
 import logic.Empleado;
 import logic.Empresa;
-import logic.JefeProyecto;
-import logic.Planificador;
-import logic.Programador;
-import logic.Proyecto;
 
 import javax.swing.border.EtchedBorder;
 import javax.swing.UIManager;
@@ -38,7 +33,6 @@ import java.util.Date;
 import java.util.Calendar;
 import javax.swing.JTabbedPane;
 import javax.swing.JLayeredPane;
-import javax.swing.JOptionPane;
 import javax.swing.border.BevelBorder;
 import javax.swing.JDesktopPane;
 import javax.swing.JScrollPane;
@@ -64,7 +58,6 @@ public class CrearProyecto extends JDialog {
 	private static DefaultTableModel model1;
 	private JTable table;
 	private JTable table_1;
-	private Proyecto pAux=new Proyecto();
 		
 
 	/**
@@ -158,11 +151,8 @@ public class CrearProyecto extends JDialog {
 				
 				
 		   Empleado aux = Empresa.getInstance().getMisEmpleados().get(table.getSelectedRow());	
-		  
-		   if(aux instanceof JefeProyecto){if(!pAux.agregarJefeProyecto(aux)){JOptionPane.showInternalMessageDialog(null, "Error"); }}
-		   if(aux instanceof Diseniador ){if(!pAux.agregarDiseniador(aux)){JOptionPane.showInternalMessageDialog(null, "Error");}}
-		   if(aux instanceof Planificador){if(!pAux.agregarPlanificador(aux)){JOptionPane.showInternalMessageDialog(null, "Error");}}
-		   if(aux instanceof Programador){if(!pAux.agregarProgramador(aux)){JOptionPane.showInternalMessageDialog(null, "Error");}}
+		   
+		   
 			}
 		});
 		btnAgregar.setBounds(328, 94, 54, 29);
@@ -177,30 +167,23 @@ public class CrearProyecto extends JDialog {
 		panelEmpleado.add(panel);
 		panel.setLayout(new BorderLayout(0, 0));
 		JScrollPane scrollPane = new JScrollPane();
-		{
-			table = new JTable();
-			table.addMouseListener(new MouseAdapter() {
-				@Override
-				public void mouseClicked(java.awt.event.MouseEvent e) {
-				}
-			});
-			table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-			String[] columnNames = {"Cedula","Nombre","Apellido","Salario","Estado"};
-			model=new DefaultTableModel();
-			model.setColumnIdentifiers(columnNames);
-			table.setModel(model);
-			scrollPane.setViewportView(table);
-			panel.add(scrollPane, BorderLayout.CENTER);
-			
-		}loadTable();
-	
+		table = new JTable();
+		table.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(java.awt.event.MouseEvent e) {
+			}
+		});
+		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		table.setModel(model);
+		scrollPane.setViewportView(table);
+		panel.add(scrollPane, BorderLayout.CENTER);
 		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(401, 58, 293, 159);
-		panelEmpleado.add(panel_1);
-		panel_1.setLayout(new BorderLayout(0, 0));
-		JScrollPane scrollPane1 = new JScrollPane();
-		{
+			
+			JPanel panel_1 = new JPanel();
+			panel_1.setBounds(401, 58, 293, 159);
+			panelEmpleado.add(panel_1);
+			panel_1.setLayout(new BorderLayout(0, 0));
+			JScrollPane scrollPane1 = new JScrollPane();
 			table_1 = new JTable();
 			table_1.addMouseListener(new MouseAdapter() {
 			/*	@Override
@@ -208,20 +191,16 @@ public class CrearProyecto extends JDialog {
 				}*/
 			});
 			table_1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-			String[] columnNames = {"Cedula","Nombre","Apellido","Salario","Estado"};
-			model1=new DefaultTableModel();
-			model1.setColumnIdentifiers(columnNames);
 			table_1.setModel(model1);
 			scrollPane1.setViewportView(table_1);
 			panel_1.add(scrollPane1, BorderLayout.CENTER);
-		}
-
-		{
-			JLabel label = new JLabel("Imagen del proyecto");
-			label.setHorizontalAlignment(SwingConstants.CENTER);
-			label.setBounds(23, 11, 219, 167);
-			P1.add(label);
-		}
+			
+					{
+						JLabel label = new JLabel("Imagen del proyecto");
+						label.setHorizontalAlignment(SwingConstants.CENTER);
+						label.setBounds(23, 11, 219, 167);
+						P1.add(label);
+					}
 		P2 = new JPanel();
 		P2.setBounds(0, 0, 724, 428);
 		contentPanel.add(P2);
@@ -321,6 +300,17 @@ public class CrearProyecto extends JDialog {
 			lblNewLabel_1.setBounds(458, 26, 217, 104);
 			P2.add(lblNewLabel_1);
 		}
+		{
+			String[] columnNames = {"Cedula","Nombre","Apellido","Salario","Estado"};
+			model=new DefaultTableModel();
+			model.setColumnIdentifiers(columnNames);
+			
+		}loadTable();
+		{
+			String[] columnNames = {"Cedula","Nombre","Apellido","Salario","Estado"};
+			model1=new DefaultTableModel();
+			model1.setColumnIdentifiers(columnNames);
+		}
 	
 		
 		setLocationRelativeTo(null);
@@ -389,7 +379,7 @@ public class CrearProyecto extends JDialog {
      }*/
 
 	private void loadTable1() {
-		
+		// TODO Auto-generated method stub
 		
 		
 	}
@@ -412,8 +402,7 @@ public class CrearProyecto extends JDialog {
 				}
 				
 				model.addRow(fila);
-			System.out.println("lol");
-		
+			
 		}
 		
 	}	
