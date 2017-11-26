@@ -61,9 +61,9 @@ public class CrearProyecto extends JDialog {
 	private JPanel P2;
 	private JTextField txtApellido;
 	private static Object[] fila;
-	private static DefaultTableModel model;
+	private static DefaultTableModel model=new DefaultTableModel();
 	private static Object[] fila1;
-	private static DefaultTableModel model1;
+	private static DefaultTableModel model1=new DefaultTableModel();
 	private JTable table;
 	private JTable table_1;
 	private Proyecto pAux=new Proyecto();
@@ -506,13 +506,13 @@ public class CrearProyecto extends JDialog {
 		}
 		{
 			String[] columnNames = {"Cedula","Nombre","Apellido","Salario","Estado"};
-			model=new DefaultTableModel();
+			//model=new DefaultTableModel();
 			model.setColumnIdentifiers(columnNames);
 			
 		}loadTable();
 		{
 			String[] columnNames = {"Cedula","Nombre","Apellido","Salario","Estado"};
-			model1=new DefaultTableModel();
+			//model1=new DefaultTableModel();
 			model1.setColumnIdentifiers(columnNames);
 		}
 	
