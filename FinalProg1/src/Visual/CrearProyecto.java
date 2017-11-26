@@ -65,6 +65,14 @@ public class CrearProyecto extends JDialog {
 	private JTable table;
 	private JTable table_1;
 	private Proyecto pAux=new Proyecto();
+	private JTextField txtNom;
+	private JTextField txtCedula;
+	private JTextField textField_3;
+	private JTextField txtProNom;
+	private JTextField txtFechaEntre;
+	private JTextField txtEntrega;
+	private JTextField txtFechReali;
+	private JPanel P3;
 		
 
 	/**
@@ -178,35 +186,28 @@ public class CrearProyecto extends JDialog {
 		btnEliminar.setBounds(328, 136, 54, 29);
 		panelEmpleado.add(btnEliminar);
 		
-		JPanel panel = new JPanel();
-		panel.setBounds(10, 58, 293, 159);
-		panelEmpleado.add(panel);
-		panel.setLayout(new BorderLayout(0, 0));
-		JScrollPane scrollPane = new JScrollPane();
-		{
-			table = new JTable();
-			table.addMouseListener(new MouseAdapter() {
-				@Override
-				public void mouseClicked(java.awt.event.MouseEvent e) {
-				}
-			});
-			table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-			String[] columnNames = {"Cedula","Nombre","Apellido","Salario","Estado"};
-			model=new DefaultTableModel();
-			model.setColumnIdentifiers(columnNames);
-			table.setModel(model);
-			scrollPane.setViewportView(table);
-			panel.add(scrollPane, BorderLayout.CENTER);
-			
-		}loadTable();
-	
+		JPanel panel_2 = new JPanel();
+		panel_2.setBounds(10, 58, 293, 159);
+		panelEmpleado.add(panel_2);
+		panel_2.setLayout(new BorderLayout(0, 0));
+		JScrollPane scrollPane_1 = new JScrollPane();
+		table = new JTable();
+		table.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(java.awt.event.MouseEvent e) {
+			}
+		});
+		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		table.setModel(model);
+		scrollPane_1.setViewportView(table);
+		panel_2.add(scrollPane_1, BorderLayout.CENTER);
 		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(401, 58, 293, 159);
-		panelEmpleado.add(panel_1);
-		panel_1.setLayout(new BorderLayout(0, 0));
-		JScrollPane scrollPane1 = new JScrollPane();
-		{
+			
+			JPanel panel_1_1 = new JPanel();
+			panel_1_1.setBounds(401, 58, 293, 159);
+			panelEmpleado.add(panel_1_1);
+			panel_1_1.setLayout(new BorderLayout(0, 0));
+			JScrollPane scrollPane1 = new JScrollPane();
 			table_1 = new JTable();
 			table_1.addMouseListener(new MouseAdapter() {
 			/*	@Override
@@ -214,20 +215,16 @@ public class CrearProyecto extends JDialog {
 				}*/
 			});
 			table_1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-			String[] columnNames = {"Cedula","Nombre","Apellido","Salario","Estado"};
-			model1=new DefaultTableModel();
-			model1.setColumnIdentifiers(columnNames);
 			table_1.setModel(model1);
 			scrollPane1.setViewportView(table_1);
-			panel_1.add(scrollPane1, BorderLayout.CENTER);
-		}
-
-		{
-			JLabel label = new JLabel("Imagen del proyecto");
-			label.setHorizontalAlignment(SwingConstants.CENTER);
-			label.setBounds(23, 11, 219, 167);
-			P1.add(label);
-		}
+			panel_1_1.add(scrollPane1, BorderLayout.CENTER);
+			
+					{
+						JLabel label = new JLabel("Imagen del proyecto");
+						label.setHorizontalAlignment(SwingConstants.CENTER);
+						label.setBounds(23, 11, 219, 167);
+						P1.add(label);
+					}
 		P2 = new JPanel();
 		P2.setBounds(0, 0, 724, 428);
 		contentPanel.add(P2);
@@ -327,6 +324,138 @@ public class CrearProyecto extends JDialog {
 			lblNewLabel_1.setBounds(458, 26, 217, 104);
 			P2.add(lblNewLabel_1);
 		}
+		{
+			P3 = new JPanel();
+			P3.setBounds(0, 0, 724, 428);
+			contentPanel.add(P3);
+			P3.setLayout(null);
+			{
+				JPanel panel = new JPanel();
+				panel.setLayout(null);
+				panel.setBorder(new TitledBorder(new LineBorder(new Color(100, 149, 237)), "Informaci\u00F3n del Cliente:", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+				panel.setBackground(SystemColor.control);
+				panel.setBounds(10, 11, 704, 108);
+				P3.add(panel);
+				{
+					JLabel label = new JLabel("Nombre:");
+					label.setBounds(10, 70, 57, 14);
+					panel.add(label);
+				}
+				{
+					txtNom = new JTextField();
+					txtNom.setEditable(false);
+					txtNom.setColumns(10);
+					txtNom.setBounds(77, 67, 408, 21);
+					panel.add(txtNom);
+				}
+				{
+					JLabel label = new JLabel("C\u00E9dula:");
+					label.setBounds(10, 29, 57, 14);
+					panel.add(label);
+				}
+				{
+					txtCedula = new JTextField();
+					txtCedula.setEditable(false);
+					txtCedula.setColumns(10);
+					txtCedula.setBounds(77, 24, 117, 21);
+					panel.add(txtCedula);
+				}
+				{
+					JLabel label = new JLabel("Tel\u00E9fono:");
+					label.setBounds(204, 29, 57, 14);
+					panel.add(label);
+				}
+				{
+					textField_3 = new JTextField();
+					textField_3.setEditable(false);
+					textField_3.setColumns(10);
+					textField_3.setBounds(268, 24, 217, 21);
+					panel.add(textField_3);
+				}
+			}
+			{
+				JPanel panel = new JPanel();
+				panel.setLayout(null);
+				panel.setBorder(new TitledBorder(new LineBorder(new Color(100, 149, 237)), "Informaci\u00F3n Del Proyecto:", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+				panel.setBackground(SystemColor.control);
+				panel.setBounds(10, 130, 704, 287);
+				P3.add(panel);
+				{
+					JLabel label = new JLabel("Nombre:");
+					label.setBounds(10, 18, 55, 14);
+					panel.add(label);
+				}
+				{
+					txtProNom = new JTextField();
+					txtProNom.setEditable(false);
+					txtProNom.setColumns(10);
+					txtProNom.setBounds(140, 15, 476, 20);
+					panel.add(txtProNom);
+				}
+				{
+					JLabel label = new JLabel("Fecha de entrega:");
+					label.setBounds(328, 50, 110, 14);
+					panel.add(label);
+				}
+				{
+					txtFechaEntre = new JTextField();
+					txtFechaEntre.setText((String) null);
+					txtFechaEntre.setEditable(false);
+					txtFechaEntre.setColumns(10);
+					txtFechaEntre.setBounds(438, 47, 178, 20);
+					panel.add(txtFechaEntre);
+				}
+				{
+					JLabel label = new JLabel("Total a pagar:");
+					label.setBounds(10, 81, 85, 14);
+					panel.add(label);
+				}
+				{
+					txtEntrega = new JTextField();
+					txtEntrega.setEditable(false);
+					txtEntrega.setColumns(10);
+					txtEntrega.setBounds(140, 78, 178, 20);
+					panel.add(txtEntrega);
+				}
+				{
+					JLabel label = new JLabel("Fecha de Realizaci\u00F3n:");
+					label.setBounds(10, 53, 131, 14);
+					panel.add(label);
+				}
+				{
+					txtFechReali = new JTextField();
+					txtFechReali.setText((String) null);
+					txtFechReali.setEditable(false);
+					txtFechReali.setColumns(10);
+					txtFechReali.setBounds(140, 50, 178, 20);
+					panel.add(txtFechReali);
+				}
+				{
+					JPanel panel_1 = new JPanel();
+					panel_1.setLayout(null);
+					panel_1.setBorder(new TitledBorder(new LineBorder(new Color(100, 149, 237)), "Equipo de Trabajo", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+					panel_1.setBackground(SystemColor.control);
+					panel_1.setBounds(10, 106, 684, 170);
+					panel.add(panel_1);
+					{
+						JScrollPane scrollPane = new JScrollPane();
+						scrollPane.setBounds(10, 22, 664, 137);
+						panel_1.add(scrollPane);
+					}
+				}
+			}
+		}
+		{
+			String[] columnNames = {"Cedula","Nombre","Apellido","Salario","Estado"};
+			model=new DefaultTableModel();
+			model.setColumnIdentifiers(columnNames);
+			
+		}loadTable();
+		{
+			String[] columnNames = {"Cedula","Nombre","Apellido","Salario","Estado"};
+			model1=new DefaultTableModel();
+			model1.setColumnIdentifiers(columnNames);
+		}
 	
 		
 		setLocationRelativeTo(null);
@@ -345,8 +474,12 @@ public class CrearProyecto extends JDialog {
 					public void actionPerformed(ActionEvent e) {
 						if(P1.isVisible()){
 							P1.setVisible(false);
-							P2.setVisible(true);
-							
+							P2.setVisible(true);							
+						}
+						else if(P2.isVisible()){
+							P1.setVisible(false);
+							P2.setVisible(false);
+							P3.setVisible(true);
 						}
 					}
 				});
