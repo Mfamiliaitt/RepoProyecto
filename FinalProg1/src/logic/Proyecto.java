@@ -141,7 +141,7 @@ public int cantidadDePlanificadores(){
 int countAux=0;
 	
 	for (Empleado empleado : elEquipo) {
-		if(empleado instanceof JefeProyecto){
+		if(empleado instanceof Planificador){
 			countAux++;
 		}	
 	}	
@@ -183,7 +183,16 @@ public float sumatoriaDeSueldosBases(){
 	
 	return auxValue;
 } 
-
+public int contadorDeEmpleados(){
+int counter=0;
+ 
+for (Empleado empleado : elEquipo) {
+	counter++;
+}
+	
+	
+return counter;	
+}
 
 }
 

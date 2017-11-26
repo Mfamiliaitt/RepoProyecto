@@ -290,7 +290,7 @@ public class CrearProyecto extends JDialog {
 		btnAgregar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				
+			if(pAux.contadorDeEmpleados()<5){	
 		   Empleado aux = Empresa.getInstance().getMisEmpleados().get(table.getSelectedRow());	
 		  
 		   if(aux instanceof JefeProyecto){if(!pAux.agregarJefeProyecto(aux)){
@@ -302,7 +302,7 @@ public class CrearProyecto extends JDialog {
 		   if(aux instanceof Programador){if(!pAux.agregarProgramador(aux)){
 			   JOptionPane.showMessageDialog(null, "Error");}}
 		   loadTable1();
-			}
+			}else{JOptionPane.showMessageDialog(null, "no se puede agregar mas de 5 empleados al equipo");}}
 			
 		});
 		btnAgregar.setBounds(328, 94, 54, 29);
