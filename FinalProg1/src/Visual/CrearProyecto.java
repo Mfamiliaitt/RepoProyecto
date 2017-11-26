@@ -50,13 +50,12 @@ public class CrearProyecto extends JDialog {
 	private JTextField txtNombre;
 	private JPanel P1;
 	private JPanel P2;
-	private JTable table;
-	private JTable table_1;
+	private JTextField txtApellido;
 	private static Object[] fila;
 	private static DefaultTableModel model;
-	private JTextField txtApellido;
-	private JTable table_2;
-	
+	private static Object[] fila1;
+	private static DefaultTableModel model1;
+		
 
 	/**
 	 * Launch the application.
@@ -81,6 +80,7 @@ public class CrearProyecto extends JDialog {
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
+		
 		P1 = new JPanel();
 		P1.setBounds(0, 0, 724, 428);
 		contentPanel.add(P1);
@@ -149,26 +149,7 @@ public class CrearProyecto extends JDialog {
 		JButton btnEliminar = new JButton("X");
 		btnEliminar.setBounds(328, 136, 54, 29);
 		panelEmpleado.add(btnEliminar);
-		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(20, 58, 298, 159);
-		panelEmpleado.add(panel_1);
-		panel_1.setLayout(new BorderLayout(0, 0));
-		JScrollPane scrollPane_1 = new JScrollPane();
-		panel_1.add(scrollPane_1, BorderLayout.CENTER);
-		table = new JTable();
-		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		table.setModel(model);
-		scrollPane_1.setViewportView(table);
-		JPanel panel = new JPanel();
-		panel.setBounds(392, 58, 298, 159);
-		panelEmpleado.add(panel);
-		panel.setLayout(new BorderLayout(0, 0));
-		JScrollPane scrollPane_2 = new JScrollPane();
-		panel.add(scrollPane_2, BorderLayout.CENTER);
-		table_1 = new JTable();
-		table_1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		table_1.setModel(model);
-		scrollPane_2.setViewportView(table_1);
+
 		{
 			JLabel label = new JLabel("Imagen del proyecto");
 			label.setHorizontalAlignment(SwingConstants.CENTER);
@@ -274,56 +255,8 @@ public class CrearProyecto extends JDialog {
 			lblNewLabel_1.setBounds(458, 26, 217, 104);
 			P2.add(lblNewLabel_1);
 		}
-		{
-			JPanel panelproyectoscliente = new JPanel();
-			panelproyectoscliente.setBorder(new TitledBorder(null, "Proyectos del cliente", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-			panelproyectoscliente.setBounds(407, 153, 307, 239);
-			P2.add(panelproyectoscliente);
-			panelproyectoscliente.setLayout(new BorderLayout(0, 0));
-			{
-				JScrollPane scrollPane = new JScrollPane();
-				panelproyectoscliente.add(scrollPane, BorderLayout.CENTER);
-				{
-					table_2 = new JTable();
-					table_2.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-					String[] columnNames = {"Código","Fecha inicio","Fecha final"};
-					model = new DefaultTableModel();
-					model.setColumnIdentifiers(columnNames);
-					table_2.setModel(model);
-					//loadTable2(formattedtxtCedulaAbajo.getText().toString());
-					scrollPane.setViewportView(table_2);
-				}
-			}
-		}
-		{
-			{
-				{
-					{
-						{
-							String[] columnNames = {"Cédula","Nombre","Apellido","Salario","Estado"};
-							model = new DefaultTableModel();
-							model.setColumnIdentifiers(columnNames);
-							loadTable();
-						}
-					}
-				}
-				{
-					{
-						{
-							table_1 = new JTable();
-							String[] columnNames = {"Cédula","Nombre","Apellido","Salario","Estado"};
-							model = new DefaultTableModel();
-							model.setColumnIdentifiers(columnNames);
-							loadTable1();
-						}
-					}
-				}
-			}
-		}
-		{
-			
-			;
-		}
+	
+		
 		setLocationRelativeTo(null);
 		{
 			JSpinner spnFechaEntrega = new JSpinner();
@@ -389,32 +322,32 @@ public class CrearProyecto extends JDialog {
 	}
      }*/
 
-	//Esta es la tabla para ir presentando los empleados que se eligen en el equipo, no se como se hace
 	private void loadTable1() {
 		// TODO Auto-generated method stub
+		
 		
 	}
 
 	private void loadTable() {
 		// TODO Auto-generated method stub
-		model.setRowCount(0);
-		fila = new Object[model.getColumnCount()];
-		for (Empleado empleado : Empresa.getInstance().getMisEmpleados()) {
+			model.setRowCount(0);
+			fila = new Object[model.getColumnCount()];
+			for (Empleado empleado : Empresa.getInstance().getMisEmpleados()) {
+				
+				fila[0] = empleado.getIdentificador();
+				fila[1] = empleado.getNombre();
+				fila[2] = empleado.getApellidos();
+				fila[3] = empleado.getSalario();
+				if (empleado.isOcupado()){
+				    fila[4] = "Ocupado";
+				}
+				else{
+					fila[4] = "Disponible";
+				}
+				
+				model.addRow(fila);
 			
-			fila[0] = empleado.getIdentificador();
-			fila[1] = empleado.getNombre();
-			fila[2] = empleado.getApellidos();
-			fila[3] = empleado.getSalario();
-			fila[4] = empleado.getEvaluacionAnual();
-			if (empleado.isOcupado()){
-			    fila[5] = "Ocupado";
-			}
-			else{
-				fila[5] = "Disponible";
-			}
-			
-			model.addRow(fila);
+		}
 		
-	}
-	}
+	}	
 }
