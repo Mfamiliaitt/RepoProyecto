@@ -309,6 +309,13 @@ public class CrearProyecto extends JDialog {
 		panelEmpleado.add(btnAgregar);
 		
 		JButton btnEliminar = new JButton("X");
+		btnEliminar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Empleado aux = Empresa.getInstance().getMisEmpleados().get(table_1.getSelectedRow());
+				pAux.getElEquipo().remove(aux);
+				loadTable1();
+			}
+		});
 		btnEliminar.setBounds(328, 136, 54, 29);
 		panelEmpleado.add(btnEliminar);
 		
