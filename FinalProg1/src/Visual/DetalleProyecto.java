@@ -34,9 +34,9 @@ import javax.swing.ListSelectionModel;
 public class DetalleProyecto extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
+	private JTextField txtNombre;
+	private JTextField txtTipo;
+	private JTextField txtEntrega;
 	private JTable table;
 	private static Object[] fila;
 	private static DefaultTableModel model;
@@ -89,11 +89,11 @@ public class DetalleProyecto extends JDialog {
 					panel_1.add(label);
 				}
 				{
-					textField = new JTextField();
-					textField.setEditable(false);
-					textField.setColumns(10);
-					textField.setBounds(135, 16, 398, 21);
-					panel_1.add(textField);
+					txtNombre = new JTextField();
+					txtNombre.setEditable(false);
+					txtNombre.setColumns(10);
+					txtNombre.setBounds(135, 16, 398, 21);
+					panel_1.add(txtNombre);
 				}
 				{
 					JLabel label = new JLabel("Fecha de Entrega:");
@@ -101,19 +101,19 @@ public class DetalleProyecto extends JDialog {
 					panel_1.add(label);
 				}
 				{
-					textField_1 = new JTextField();
-					textField_1.setEditable(false);
-					textField_1.setColumns(10);
-					textField_1.setBounds(135, 46, 131, 20);
-					panel_1.add(textField_1);
+					txtTipo = new JTextField();
+					txtTipo.setEditable(false);
+					txtTipo.setColumns(10);
+					txtTipo.setBounds(135, 46, 131, 20);
+					panel_1.add(txtTipo);
 				}
 				{
-					textField_2 = new JTextField();
-					textField_2.setText((String) null);
-					textField_2.setEditable(false);
-					textField_2.setColumns(10);
-					textField_2.setBounds(374, 45, 159, 20);
-					panel_1.add(textField_2);
+					txtEntrega = new JTextField();
+					txtEntrega.setText((String) null);
+					txtEntrega.setEditable(false);
+					txtEntrega.setColumns(10);
+					txtEntrega.setBounds(374, 45, 159, 20);
+					panel_1.add(txtEntrega);
 				}
 			}
 			{
