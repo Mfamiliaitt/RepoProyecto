@@ -110,7 +110,7 @@ public class IngresarEmpleado extends JDialog {
 			panelPlanificador.setBounds(30, 327, 668, 90);
 			contentPanel.add(panelPlanificador);
 			panelPlanificador.setLayout(null);
-			
+			panelPlanificador.setVisible(false);
 			JLabel lblFrecuenciaDePlanificacion = new JLabel("Frecuencia de planificacion");
 			lblFrecuenciaDePlanificacion.setBounds(10, 32, 144, 30);
 			panelPlanificador.add(lblFrecuenciaDePlanificacion);
@@ -386,6 +386,7 @@ public class IngresarEmpleado extends JDialog {
 				Empleado aux=new Programador(identificador, nombre, apellidos, direccion, sexo, edad, salario, "", "Bueno", CmbLenguaje.getSelectedItem().toString());		
 	Empresa.getInstance().addEmpleado(aux);
 	}
+					JOptionPane.showMessageDialog(null, "Empleado registrado satisfactoriamente");
 					clean();
 					}
 				}
