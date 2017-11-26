@@ -418,8 +418,7 @@ public class CrearProyecto extends JDialog {
 		// TODO Auto-generated method stub
 			model.setRowCount(0);
 			fila = new Object[model.getColumnCount()];
-			for (Empleado empleado : Empresa.getInstance().getMisEmpleados()) {
-				
+			for (Empleado empleado : Empresa.getInstance().getMisEmpleados()) {				
 				fila[0] = empleado.getIdentificador();
 				fila[1] = empleado.getNombre();
 				fila[2] = empleado.getApellidos();

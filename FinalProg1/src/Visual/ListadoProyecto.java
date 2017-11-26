@@ -48,7 +48,7 @@ public class ListadoProyecto extends JDialog {
 	 * Create the dialog.
 	 */
 	public ListadoProyecto() {
-		setTitle("Listado de Contratos");
+		setTitle("Listado de Proyectos\r\n");
 		setBounds(100, 100, 740, 500);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -84,7 +84,7 @@ public class ListadoProyecto extends JDialog {
 		}
 		{
 			JPanel panel = new JPanel();
-			panel.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Contratos registrados", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+			panel.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Proyectos", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 			panel.setBounds(29, 27, 665, 379);
 			contentPanel.add(panel);
 			panel.setLayout(new BorderLayout(0, 0));

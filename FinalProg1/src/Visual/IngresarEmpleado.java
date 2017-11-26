@@ -97,11 +97,11 @@ public class IngresarEmpleado extends JDialog {
 			panelJefedeproyecto.setBounds(30, 327, 668, 90);
 			contentPanel.add(panelJefedeproyecto);
 			panelJefedeproyecto.setLayout(null);
-			
+			panelJefedeproyecto.setVisible(true);
 			chckbxProjectManager = new JCheckBox("Certificacion en project manager");
 			chckbxProjectManager.setBounds(16, 38, 247, 23);
 			panelJefedeproyecto.add(chckbxProjectManager);
-			panelJefedeproyecto.setVisible(false);
+			
 			
 		}
 		{
@@ -119,7 +119,7 @@ public class IngresarEmpleado extends JDialog {
 			spnFrecuencia.setModel(new SpinnerNumberModel(new Integer(1), new Integer(1), null, new Integer(1)));
 			spnFrecuencia.setBounds(164, 37, 29, 20);
 			panelPlanificador.add(spnFrecuencia);
-			panelPlanificador.setVisible(true);
+			panelPlanificador.setVisible(false);
 		}
 		{
 			panelProgramador = new JPanel();
