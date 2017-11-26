@@ -412,7 +412,8 @@ public class CrearProyecto extends JDialog {
 				}
 				
 				model.addRow(fila);
-			
+			System.out.println("lol");
+		
 		}
 		
 	}	
