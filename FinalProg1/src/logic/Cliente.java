@@ -8,12 +8,16 @@ import java.util.Date;
 public class Cliente {
 	private String id;
 	private String nombre;
+	private String apellido;
+	private String telefono;
 	private String direccion;
 	private ArrayList<Contrato> miContrato = new ArrayList<>();
-	public Cliente(String id, String nombre, String direccion) {
+	public Cliente(String id, String nombre, String apellido, String telefono, String direccion) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
+		this.apellido = apellido;
+		this.telefono = telefono;
 		this.direccion = direccion;
 	}
 	public String getId() {
@@ -45,6 +49,18 @@ public void agregarContrato(String codigoProyecto, String idCliente, double cost
 	Contrato c = new Contrato(codigoProyecto, idCliente, costoProyecto, fechaInicio, fechaTermino, firmado);
 	miContrato.add(c);
 	Empresa.getInstance().addContrato(c);
+}
+public String getApellido() {
+	return apellido;
+}
+public void setApellido(String apellido) {
+	this.apellido = apellido;
+}
+public String getTelefono() {
+	return telefono;
+}
+public void setTelefono(String telefono) {
+	this.telefono = telefono;
 }
 
 
