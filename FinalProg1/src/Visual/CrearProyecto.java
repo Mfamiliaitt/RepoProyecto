@@ -474,7 +474,8 @@ public class CrearProyecto extends JDialog {
 					public void actionPerformed(ActionEvent e) {
 						if(P1.isVisible()){
 							P1.setVisible(false);
-							P2.setVisible(true);							
+							P2.setVisible(true);
+							P3.setVisible(false);
 						}
 						else if(P2.isVisible()){
 							P1.setVisible(false);
@@ -490,6 +491,11 @@ public class CrearProyecto extends JDialog {
 							if(P2.isVisible()){
 								P1.setVisible(true);
 								P2.setVisible(false);
+							}
+							else if(P3.isVisible()){
+								P1.setVisible(false);
+								P2.setVisible(true);
+								P3.setVisible(false);
 							}
 						}
 					});
