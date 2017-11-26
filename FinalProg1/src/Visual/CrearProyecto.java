@@ -22,6 +22,7 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.UIManager;
 import java.awt.Color;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextArea;
 import javax.swing.JComboBox;
@@ -55,6 +56,8 @@ public class CrearProyecto extends JDialog {
 	private static DefaultTableModel model;
 	private static Object[] fila1;
 	private static DefaultTableModel model1;
+	private JTable table;
+	private JTable table_1;
 		
 
 	/**
@@ -143,12 +146,65 @@ public class CrearProyecto extends JDialog {
 		}
 		
 		JButton btnAgregar = new JButton(">");
+		btnAgregar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				
+		   Empleado aux = Empresa.getInstance().getMisEmpleados().get(table.getSelectedRow());	
+		   
+		   
+			}
+		});
 		btnAgregar.setBounds(328, 94, 54, 29);
 		panelEmpleado.add(btnAgregar);
 		
 		JButton btnEliminar = new JButton("X");
 		btnEliminar.setBounds(328, 136, 54, 29);
 		panelEmpleado.add(btnEliminar);
+		
+		JPanel panel = new JPanel();
+		panel.setBounds(10, 58, 293, 159);
+		panelEmpleado.add(panel);
+		panel.setLayout(new BorderLayout(0, 0));
+		JScrollPane scrollPane = new JScrollPane();
+		{
+			table = new JTable();
+			table.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(java.awt.event.MouseEvent e) {
+				}
+			});
+			table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+			String[] columnNames = {"Cedula","Nombre","Apellido","Salario","Estado"};
+			model=new DefaultTableModel();
+			model.setColumnIdentifiers(columnNames);
+			table.setModel(model);
+			scrollPane.setViewportView(table);
+			panel.add(scrollPane, BorderLayout.CENTER);
+			
+		}loadTable();
+	
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBounds(401, 58, 293, 159);
+		panelEmpleado.add(panel_1);
+		panel_1.setLayout(new BorderLayout(0, 0));
+		JScrollPane scrollPane1 = new JScrollPane();
+		{
+			table_1 = new JTable();
+			table_1.addMouseListener(new MouseAdapter() {
+			/*	@Override
+				public void mouseClicked(java.awt.event.MouseEvent e) {
+				}*/
+			});
+			table_1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+			String[] columnNames = {"Cedula","Nombre","Apellido","Salario","Estado"};
+			model1=new DefaultTableModel();
+			model1.setColumnIdentifiers(columnNames);
+			table_1.setModel(model1);
+			scrollPane1.setViewportView(table_1);
+			panel_1.add(scrollPane1, BorderLayout.CENTER);
+		}
 
 		{
 			JLabel label = new JLabel("Imagen del proyecto");
