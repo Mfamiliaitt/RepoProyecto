@@ -15,8 +15,13 @@ import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 
 import logic.Contrato;
+import logic.Diseniador;
 import logic.Empleado;
 import logic.Empresa;
+import logic.JefeProyecto;
+import logic.Planificador;
+import logic.Programador;
+import logic.Proyecto;
 
 import javax.swing.border.EtchedBorder;
 import javax.swing.UIManager;
@@ -33,6 +38,7 @@ import java.util.Date;
 import java.util.Calendar;
 import javax.swing.JTabbedPane;
 import javax.swing.JLayeredPane;
+import javax.swing.JOptionPane;
 import javax.swing.border.BevelBorder;
 import javax.swing.JDesktopPane;
 import javax.swing.JScrollPane;
@@ -58,6 +64,7 @@ public class CrearProyecto extends JDialog {
 	private static DefaultTableModel model1;
 	private JTable table;
 	private JTable table_1;
+	private Proyecto pAux=new Proyecto();
 		
 
 	/**
@@ -151,8 +158,11 @@ public class CrearProyecto extends JDialog {
 				
 				
 		   Empleado aux = Empresa.getInstance().getMisEmpleados().get(table.getSelectedRow());	
-		   
-		   
+		  
+		   if(aux instanceof JefeProyecto){if(!pAux.agregarJefeProyecto(aux)){JOptionPane.showInternalMessageDialog(null, "Error"); }}
+		   if(aux instanceof Diseniador ){if(!pAux.agregarDiseniador(aux)){JOptionPane.showInternalMessageDialog(null, "Error");}}
+		   if(aux instanceof Planificador){if(!pAux.agregarPlanificador(aux)){JOptionPane.showInternalMessageDialog(null, "Error");}}
+		   if(aux instanceof Programador){if(!pAux.agregarProgramador(aux)){JOptionPane.showInternalMessageDialog(null, "Error");}}
 			}
 		});
 		btnAgregar.setBounds(328, 94, 54, 29);
@@ -379,7 +389,7 @@ public class CrearProyecto extends JDialog {
      }*/
 
 	private void loadTable1() {
-		// TODO Auto-generated method stub
+		
 		
 		
 	}

@@ -9,7 +9,7 @@ public class Proyecto {
 	private Boolean activo; //Proyecto activo o pasivo
 	private String estado; //prorrogado,atrazado 
 	private boolean terminado=false;
-	private ArrayList<Empleado> elEquipo;
+	private ArrayList<Empleado> elEquipo=new ArrayList<>();
 	private String descripcionDeProyecto;
 	public Proyecto(String tipo, String codigoProyecto, Boolean activo, String estado, ArrayList<Empleado> elEquipo,String descripcionDeProyecto ) {
 		super();
@@ -17,9 +17,10 @@ public class Proyecto {
 		this.codigoProyecto = codigoProyecto;
 		this.activo = activo;
 		this.estado = estado;
-		this.elEquipo = new ArrayList<>();
+		
 		this.descripcionDeProyecto=descripcionDeProyecto;
 	}
+	public Proyecto(){}
 	public String getTipo() {
 		return tipo;
 	}
@@ -52,14 +53,13 @@ public class Proyecto {
 	}
 	
 
-	public boolean agregarJefeProyecto(String identificador, String nombre, String apellidos, String direccion, String sexo, int edad,
-			double salario, String nombreProyecto, String evaluacionAnual, int conteo_Trabajadores,boolean certificadoEnProjectManaguer){		
+	public boolean agregarJefeProyecto(Empleado a){		
 		boolean respuesta=false;
 		
 		if(cantidadDeJefeDeProyecto()<1){
-		Empleado JefeAux=new JefeProyecto(identificador, nombre, apellidos, direccion, sexo, edad, salario, "", evaluacionAnual, conteo_Trabajadores, certificadoEnProjectManaguer);
+		//Empleado JefeAux=new JefeProyecto(identificador, nombre, apellidos, direccion, sexo, edad, salario, "", evaluacionAnual, conteo_Trabajadores, certificadoEnProjectManaguer);
 	
-		elEquipo.add(JefeAux);
+		elEquipo.add(a);
 		
 		respuesta=true;
 		
@@ -70,12 +70,11 @@ public class Proyecto {
 		return respuesta;
 	}
 	
-	public boolean agregarProgramador(String identificador, String nombre, String apellidos, String direccion, String sexo, int edad,
-			double salario, String nombreProyecto, String evaluacionAnual, String lenguaje){
+	public boolean agregarProgramador(Empleado a){
 		boolean respuesta=false;
 		if(cantidadDeProgramadores()<2){
-		Empleado programadorAux=new Programador(identificador, nombre, apellidos, direccion, sexo, edad, salario, "", evaluacionAnual, lenguaje);
-	 elEquipo.add(programadorAux);
+	//	Empleado programadorAux=new Programador(identificador, nombre, apellidos, direccion, sexo, edad, salario, "", evaluacionAnual, lenguaje);
+	 elEquipo.add(a);
 	
 	 respuesta=true;
 	}else if(cantidadDeProgramadores()>=2){
@@ -85,13 +84,12 @@ public class Proyecto {
 	return respuesta; 
 	}
 	
-	public boolean agregarPlanificador(String identificador, String nombre, String apellidos, String direccion, String sexo, int edad,
-			double salario, String nombreProyecto, String evaluacionAnual, int cantDias){
+	public boolean agregarPlanificador(Empleado a){
 		boolean respuesta=false;
 		
 		if(cantidadDePlanificadores()<1){
-		Empleado planificadorAux=new Planificador(identificador, nombre, apellidos, direccion, sexo, edad, salario, "", evaluacionAnual, cantDias);
-		elEquipo.add(planificadorAux);
+		
+		elEquipo.add(a);
 		
 		respuesta=true;}
 		else if(cantidadDePlanificadores()>=1){
@@ -101,12 +99,15 @@ public class Proyecto {
 		return respuesta;
 	}
 	
-	public void agregarDiseniador(String identificador, String nombre, String apellidos, String direccion, String sexo, int edad,
-			double salario, String nombreProyecto, String evaluacionAnual, String tipoDisenio){
-		
-		Empleado diseniadorAux=new Diseniador(identificador, nombre, apellidos, direccion, sexo, edad, salario, "", evaluacionAnual, tipoDisenio);
-	    elEquipo.add(diseniadorAux);
-	    
+	public boolean agregarDiseniador(Empleado a){
+		boolean respuesta=false;
+		if(cantidadDeDiseniadores()<1){
+	    elEquipo.add(a);
+	    respuesta=true;
+	    }else if(cantidadDeDiseniadores()>=1){
+	    respuesta=false;	
+	    }
+	   return respuesta; 
 	}
 	
 	public int cantidadDeDiseniadores(){
