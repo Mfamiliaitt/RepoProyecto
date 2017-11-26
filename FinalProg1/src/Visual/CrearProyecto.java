@@ -13,7 +13,9 @@ import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.text.MaskFormatter;
 
+import logic.Cliente;
 import logic.Contrato;
 import logic.Diseniador;
 import logic.Empleado;
@@ -67,12 +69,15 @@ public class CrearProyecto extends JDialog {
 	private Proyecto pAux=new Proyecto();
 	private JTextField txtNom;
 	private JTextField txtCedula;
-	private JTextField textField_3;
+	private JTextField txttell;
 	private JTextField txtProNom;
 	private JTextField txtFechaEntre;
 	private JTextField txtEntrega;
 	private JTextField txtFechReali;
 	private JPanel P3;
+	private JFormattedTextField txtCedulabuscar;
+	private JFormattedTextField txtCedulacliente;
+	private JFormattedTextField txtTelefonoclient;
 		
 
 	/**
@@ -98,6 +103,127 @@ public class CrearProyecto extends JDialog {
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
+		{
+			P3 = new JPanel();
+			P3.setBounds(0, 0, 724, 428);
+			contentPanel.add(P3);
+			P3.setLayout(null);
+			{
+				JPanel panel = new JPanel();
+				panel.setLayout(null);
+				panel.setBorder(new TitledBorder(new LineBorder(new Color(100, 149, 237)), "Informaci\u00F3n del Cliente:", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+				panel.setBackground(SystemColor.control);
+				panel.setBounds(10, 11, 704, 108);
+				P3.add(panel);
+				{
+					JLabel label = new JLabel("Nombre:");
+					label.setBounds(10, 70, 57, 14);
+					panel.add(label);
+				}
+				{
+					txtNom = new JTextField();
+					txtNom.setEditable(false);
+					txtNom.setColumns(10);
+					txtNom.setBounds(77, 67, 408, 21);
+					panel.add(txtNom);
+				}
+				{
+					JLabel label = new JLabel("C\u00E9dula:");
+					label.setBounds(10, 29, 57, 14);
+					panel.add(label);
+				}
+				{
+					txtCedula = new JTextField();
+					txtCedula.setEditable(false);
+					txtCedula.setColumns(10);
+					txtCedula.setBounds(77, 24, 117, 21);
+					panel.add(txtCedula);
+				}
+				{
+					JLabel label = new JLabel("Tel\u00E9fono:");
+					label.setBounds(204, 29, 57, 14);
+					panel.add(label);
+				}
+				{
+					txttell = new JTextField();
+					txttell.setEditable(false);
+					txttell.setColumns(10);
+					txttell.setBounds(268, 24, 217, 21);
+					panel.add(txttell);
+				}
+			}
+			{
+				JPanel panel = new JPanel();
+				panel.setLayout(null);
+				panel.setBorder(new TitledBorder(new LineBorder(new Color(100, 149, 237)), "Informaci\u00F3n Del Proyecto:", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+				panel.setBackground(SystemColor.control);
+				panel.setBounds(10, 130, 704, 287);
+				P3.add(panel);
+				{
+					JLabel label = new JLabel("Nombre:");
+					label.setBounds(10, 18, 55, 14);
+					panel.add(label);
+				}
+				{
+					txtProNom = new JTextField();
+					txtProNom.setEditable(false);
+					txtProNom.setColumns(10);
+					txtProNom.setBounds(140, 15, 476, 20);
+					panel.add(txtProNom);
+				}
+				{
+					JLabel label = new JLabel("Fecha de entrega:");
+					label.setBounds(328, 50, 110, 14);
+					panel.add(label);
+				}
+				{
+					txtFechaEntre = new JTextField();
+					txtFechaEntre.setText((String) null);
+					txtFechaEntre.setEditable(false);
+					txtFechaEntre.setColumns(10);
+					txtFechaEntre.setBounds(438, 47, 178, 20);
+					panel.add(txtFechaEntre);
+				}
+				{
+					JLabel label = new JLabel("Total a pagar:");
+					label.setBounds(10, 81, 85, 14);
+					panel.add(label);
+				}
+				{
+					txtEntrega = new JTextField();
+					txtEntrega.setEditable(false);
+					txtEntrega.setColumns(10);
+					txtEntrega.setBounds(140, 78, 178, 20);
+					panel.add(txtEntrega);
+				}
+				{
+					JLabel label = new JLabel("Fecha de Realizaci\u00F3n:");
+					label.setBounds(10, 53, 131, 14);
+					panel.add(label);
+				}
+				{
+					txtFechReali = new JTextField();
+					txtFechReali.setText((String) null);
+					txtFechReali.setEditable(false);
+					txtFechReali.setColumns(10);
+					txtFechReali.setBounds(140, 50, 178, 20);
+					panel.add(txtFechReali);
+				}
+				{
+					JPanel panel_1 = new JPanel();
+					panel_1.setLayout(null);
+					panel_1.setBorder(new TitledBorder(new LineBorder(new Color(100, 149, 237)), "Equipo de Trabajo", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+					panel_1.setBackground(SystemColor.control);
+					panel_1.setBounds(10, 106, 684, 170);
+					panel.add(panel_1);
+					{
+						JScrollPane scrollPane = new JScrollPane();
+						scrollPane.setBounds(10, 22, 664, 137);
+						panel_1.add(scrollPane);
+					}
+				}
+			}
+		}
 		
 		P1 = new JPanel();
 		P1.setBounds(0, 0, 724, 428);
@@ -243,13 +369,57 @@ public class CrearProyecto extends JDialog {
 				panelBusqueda.add(label);
 			}
 			{
-				JFormattedTextField formattedTextField = new JFormattedTextField((AbstractFormatter) null);
-				formattedTextField.setColumns(10);
-				formattedTextField.setBounds(76, 37, 165, 20);
-				panelBusqueda.add(formattedTextField);
+				txtCedulabuscar = new JFormattedTextField();
+				try {
+					MaskFormatter ced = new MaskFormatter("###-#######-#");
+					ced.setPlaceholderCharacter('_');
+					txtCedulabuscar  = new JFormattedTextField(ced);
+				} catch (Exception e) {}
+				txtCedulabuscar.setColumns(10);
+				txtCedulabuscar.setBounds(76, 37, 165, 20);
+				panelBusqueda.add(txtCedulabuscar);
 			}
 			{
 				JButton button = new JButton("<html><font color = black>Buscar</font></html>");
+				button.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+					String buscarcedula=txtCedulabuscar.getText();
+					
+					Cliente c=Empresa.getInstance().buscarClientePorCedula(buscarcedula);
+					
+					if (c!=null){
+						txtCedulacliente.setText((" ")+c.getId());
+						txtNombre.setText((" ")+c.getNombre());
+						txtApellido.setText((" ")+c.getApellido());
+						txtDireccion.setText((" ")+c.getDireccion());
+						txtTelefonoclient.setText((" ")+c.getTelefono());
+						
+						txtCedulacliente.setEnabled(false);
+						txtNombre.setEnabled(false);
+						txtApellido.setEnabled(false);
+						txtDireccion.setEnabled(false);
+						txtTelefonoclient.setEnabled(false);
+						
+					}
+					else{
+						JOptionPane.showMessageDialog(null, "No se ha encontrado el cliente ", "Información", JOptionPane.INFORMATION_MESSAGE);
+						txtCedulacliente.setText(" ");
+						txtNombre.setText(" ");
+						txtApellido.setText(" ");
+						txtDireccion.setText(" ");
+						txtTelefonoclient.setText(" ");
+						
+						txtCedulacliente.setEnabled(true);
+						txtNombre.setEnabled(true);
+						txtApellido.setEnabled(true);
+						txtDireccion.setEnabled(true);
+						txtTelefonoclient.setEnabled(true);
+						
+					}
+					
+					
+					}
+				});
 				button.setBackground(new Color(100, 149, 237));
 				button.setBounds(251, 36, 102, 23);
 				panelBusqueda.add(button);
@@ -309,13 +479,23 @@ public class CrearProyecto extends JDialog {
 				panelInfo.add(txtApellido);
 			}
 			
-			JFormattedTextField formattedtxtTelefono = new JFormattedTextField();
-			formattedtxtTelefono.setBounds(76, 193, 140, 20);
-			panelInfo.add(formattedtxtTelefono);
+			txtTelefonoclient = new JFormattedTextField();
+			try {
+				MaskFormatter ced = new MaskFormatter("###-###-####");
+				ced.setPlaceholderCharacter('_');
+				txtTelefonoclient = new JFormattedTextField(ced);
+			} catch (Exception e) {}
+			txtTelefonoclient.setBounds(76, 193, 140, 20);
+			panelInfo.add(txtTelefonoclient);
 			{
-				JFormattedTextField formattedTextField = new JFormattedTextField();
-				formattedTextField.setBounds(76, 32, 140, 20);
-				panelInfo.add(formattedTextField);
+				txtCedulacliente = new JFormattedTextField();
+				try {
+					MaskFormatter ced = new MaskFormatter("###-#######-#");
+					ced.setPlaceholderCharacter('_');
+					txtCedulacliente = new JFormattedTextField(ced);
+				} catch (Exception e) {}
+				txtCedulacliente.setBounds(76, 32, 140, 20);
+				panelInfo.add(txtCedulacliente);
 			}
 		}
 		{
@@ -323,127 +503,6 @@ public class CrearProyecto extends JDialog {
 			lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 			lblNewLabel_1.setBounds(458, 26, 217, 104);
 			P2.add(lblNewLabel_1);
-		}
-		{
-			P3 = new JPanel();
-			P3.setBounds(0, 0, 724, 428);
-			contentPanel.add(P3);
-			P3.setLayout(null);
-			{
-				JPanel panel = new JPanel();
-				panel.setLayout(null);
-				panel.setBorder(new TitledBorder(new LineBorder(new Color(100, 149, 237)), "Informaci\u00F3n del Cliente:", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-				panel.setBackground(SystemColor.control);
-				panel.setBounds(10, 11, 704, 108);
-				P3.add(panel);
-				{
-					JLabel label = new JLabel("Nombre:");
-					label.setBounds(10, 70, 57, 14);
-					panel.add(label);
-				}
-				{
-					txtNom = new JTextField();
-					txtNom.setEditable(false);
-					txtNom.setColumns(10);
-					txtNom.setBounds(77, 67, 408, 21);
-					panel.add(txtNom);
-				}
-				{
-					JLabel label = new JLabel("C\u00E9dula:");
-					label.setBounds(10, 29, 57, 14);
-					panel.add(label);
-				}
-				{
-					txtCedula = new JTextField();
-					txtCedula.setEditable(false);
-					txtCedula.setColumns(10);
-					txtCedula.setBounds(77, 24, 117, 21);
-					panel.add(txtCedula);
-				}
-				{
-					JLabel label = new JLabel("Tel\u00E9fono:");
-					label.setBounds(204, 29, 57, 14);
-					panel.add(label);
-				}
-				{
-					textField_3 = new JTextField();
-					textField_3.setEditable(false);
-					textField_3.setColumns(10);
-					textField_3.setBounds(268, 24, 217, 21);
-					panel.add(textField_3);
-				}
-			}
-			{
-				JPanel panel = new JPanel();
-				panel.setLayout(null);
-				panel.setBorder(new TitledBorder(new LineBorder(new Color(100, 149, 237)), "Informaci\u00F3n Del Proyecto:", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-				panel.setBackground(SystemColor.control);
-				panel.setBounds(10, 130, 704, 287);
-				P3.add(panel);
-				{
-					JLabel label = new JLabel("Nombre:");
-					label.setBounds(10, 18, 55, 14);
-					panel.add(label);
-				}
-				{
-					txtProNom = new JTextField();
-					txtProNom.setEditable(false);
-					txtProNom.setColumns(10);
-					txtProNom.setBounds(140, 15, 476, 20);
-					panel.add(txtProNom);
-				}
-				{
-					JLabel label = new JLabel("Fecha de entrega:");
-					label.setBounds(328, 50, 110, 14);
-					panel.add(label);
-				}
-				{
-					txtFechaEntre = new JTextField();
-					txtFechaEntre.setText((String) null);
-					txtFechaEntre.setEditable(false);
-					txtFechaEntre.setColumns(10);
-					txtFechaEntre.setBounds(438, 47, 178, 20);
-					panel.add(txtFechaEntre);
-				}
-				{
-					JLabel label = new JLabel("Total a pagar:");
-					label.setBounds(10, 81, 85, 14);
-					panel.add(label);
-				}
-				{
-					txtEntrega = new JTextField();
-					txtEntrega.setEditable(false);
-					txtEntrega.setColumns(10);
-					txtEntrega.setBounds(140, 78, 178, 20);
-					panel.add(txtEntrega);
-				}
-				{
-					JLabel label = new JLabel("Fecha de Realizaci\u00F3n:");
-					label.setBounds(10, 53, 131, 14);
-					panel.add(label);
-				}
-				{
-					txtFechReali = new JTextField();
-					txtFechReali.setText((String) null);
-					txtFechReali.setEditable(false);
-					txtFechReali.setColumns(10);
-					txtFechReali.setBounds(140, 50, 178, 20);
-					panel.add(txtFechReali);
-				}
-				{
-					JPanel panel_1 = new JPanel();
-					panel_1.setLayout(null);
-					panel_1.setBorder(new TitledBorder(new LineBorder(new Color(100, 149, 237)), "Equipo de Trabajo", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-					panel_1.setBackground(SystemColor.control);
-					panel_1.setBounds(10, 106, 684, 170);
-					panel.add(panel_1);
-					{
-						JScrollPane scrollPane = new JScrollPane();
-						scrollPane.setBounds(10, 22, 664, 137);
-						panel_1.add(scrollPane);
-					}
-				}
-			}
 		}
 		{
 			String[] columnNames = {"Cedula","Nombre","Apellido","Salario","Estado"};
