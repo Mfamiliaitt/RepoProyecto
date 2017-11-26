@@ -72,6 +72,13 @@ public class Principal extends JFrame {
 		});
 		
 		JMenuItem mntmListaDeContratos = new JMenuItem("Listado de Contratos");
+		mntmListaDeContratos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ListadoContrato c = new ListadoContrato();
+				c.setVisible(true);
+				c.setLocationRelativeTo(null);
+			}
+		});
 		mnVer.add(mntmListaDeContratos);
 		mnVer.add(mntmListadoDeEmpleados);
 		
