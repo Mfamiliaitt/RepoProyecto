@@ -132,6 +132,30 @@ public void evaluaciondelempleado(){
 	
 	
 }
+public boolean isempleadoregistrado(String cedula){
+	boolean answer=false;
+	Empleado e=buscarEmpleadoPorCedula(cedula);
+	
+		if (e!=null){
+			answer=true;
+		}
+		else{
+			answer=false;
+		}
+		return answer;
+	}
 
+public boolean isclienteregistrado(String cedula){
+	boolean answer=false;
+	Cliente c=buscarClientePorCedula(cedula);
+	
+		if (c!=null){
+			answer=true;
+		}
+		else{
+			answer=false;
+		}
+		return answer;
+	}
 
 }
