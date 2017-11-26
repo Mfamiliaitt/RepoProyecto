@@ -12,6 +12,7 @@ private ArrayList<Empleado> misEmpleados;
 		this.misEmpleados = new ArrayList<>();
 		this.misContratos = new ArrayList<>();
 		this.misClientes = new ArrayList<>();
+		this.misProyectos=new ArrayList<>();
 	}
  public static Empresa getInstance(){
 		if(laEmpresa==null){
@@ -97,5 +98,40 @@ public ArrayList<Proyecto> getMisProyectos() {
 public void setMisProyectos(ArrayList<Proyecto> misProyectos) {
 	this.misProyectos = misProyectos;
 }
+
+public void evaluaciondelempleado(){
+	int prorrogado=0;
+	int atiempo=0;
+	int atrasado=0;
+	
+	for ( Empleado empleado : misEmpleados) {
+		for (  String estado: empleado.getMisEstados()){
+			if(estado=="Prorrogado"){
+				prorrogado++;
+			}
+			else if(estado=="A Tiempo"){
+				atiempo++;
+			}
+			else{
+				atrasado++;
+			}
+		}
+		
+		int suma=prorrogado+atrasado+atiempo;
+		if (atiempo>=(0.70*suma)){
+			empleado.setEvaluacionAnual("Muy bueno");
+		}
+		else if(prorrogado>=(0.50*suma) && prorrogado<(0.70*suma)){
+			empleado.setEvaluacionAnual("Bueno");
+		}
+		else{
+			empleado.setEvaluacionAnual("Malo");
+		}
+				
+	}
+	
+	
+}
+
 
 }
