@@ -45,7 +45,7 @@ import java.awt.SystemColor;
 public class CrearProyecto extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
-	private JTextField textField;
+	private JTextField txtCodigo;
 	private JTextField txtDireccion;
 	private JTextField txtNombre;
 	private JPanel P1;
@@ -81,6 +81,100 @@ public class CrearProyecto extends JDialog {
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
+		P1 = new JPanel();
+		P1.setBounds(0, 0, 724, 428);
+		contentPanel.add(P1);
+		P1.setLayout(null);
+		{
+			JPanel panelProyecto = new JPanel();
+			panelProyecto.setBounds(252, 0, 462, 187);
+			P1.add(panelProyecto);
+			panelProyecto.setLayout(null);
+			panelProyecto.setBorder(new TitledBorder(null, "Datos del proyecto", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+			{
+				JLabel label = new JLabel("C\u00F3digo:");
+				label.setBounds(32, 38, 46, 14);
+				panelProyecto.add(label);
+			}
+			{
+				JLabel lblTipoDeProyecto = new JLabel("Tipo de proyecto:");
+				lblTipoDeProyecto.setBounds(192, 38, 150, 14);
+				panelProyecto.add(lblTipoDeProyecto);
+			}
+			{
+				txtCodigo = new JTextField();
+				txtCodigo.setEnabled(false);
+				txtCodigo.setColumns(10);
+				txtCodigo.setBounds(32, 53, 136, 20);
+				panelProyecto.add(txtCodigo);
+			}
+			{
+				JLabel label = new JLabel("Descripcion");
+				label.setBounds(32, 92, 151, 14);
+				panelProyecto.add(label);
+			}
+			{
+				JTextArea txtDescripcion = new JTextArea();
+				txtDescripcion.setBounds(32, 106, 416, 55);
+				panelProyecto.add(txtDescripcion);
+			}
+			{
+				JComboBox cmbTipoDeProyecto = new JComboBox();
+				cmbTipoDeProyecto.setModel(new DefaultComboBoxModel(new String[] {"<Seleccione>", "Aplicacion Web", "Video Juegos", "Aplicacion Movil", "Corporativo", "Desktop"}));
+				cmbTipoDeProyecto.setBounds(191, 53, 151, 20);
+				panelProyecto.add(cmbTipoDeProyecto);
+			}
+		}
+		JPanel panelEmpleado = new JPanel();
+		panelEmpleado.setBounds(10, 189, 704, 228);
+		P1.add(panelEmpleado);
+		panelEmpleado.setBorder(new TitledBorder(null, "Datos del equipo", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		panelEmpleado.setLayout(null);
+		{
+			JLabel lblCargo = new JLabel("Cargo: ");
+			lblCargo.setBounds(10, 33, 46, 14);
+			panelEmpleado.add(lblCargo);
+		}
+		{
+			JComboBox cbxCargoEmpl = new JComboBox();
+			cbxCargoEmpl.setModel(new DefaultComboBoxModel(new String[] {"<Seleccione>", "Jefe de proyecto", "Planificador", "Dise\u00F1ador", "Programador"}));
+			cbxCargoEmpl.setBounds(66, 30, 121, 20);
+			panelEmpleado.add(cbxCargoEmpl);
+		}
+		
+		JButton btnAgregar = new JButton(">");
+		btnAgregar.setBounds(328, 94, 54, 29);
+		panelEmpleado.add(btnAgregar);
+		
+		JButton btnEliminar = new JButton("X");
+		btnEliminar.setBounds(328, 136, 54, 29);
+		panelEmpleado.add(btnEliminar);
+		JPanel panel_1 = new JPanel();
+		panel_1.setBounds(20, 58, 298, 159);
+		panelEmpleado.add(panel_1);
+		panel_1.setLayout(new BorderLayout(0, 0));
+		JScrollPane scrollPane_1 = new JScrollPane();
+		panel_1.add(scrollPane_1, BorderLayout.CENTER);
+		table = new JTable();
+		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		table.setModel(model);
+		scrollPane_1.setViewportView(table);
+		JPanel panel = new JPanel();
+		panel.setBounds(392, 58, 298, 159);
+		panelEmpleado.add(panel);
+		panel.setLayout(new BorderLayout(0, 0));
+		JScrollPane scrollPane_2 = new JScrollPane();
+		panel.add(scrollPane_2, BorderLayout.CENTER);
+		table_1 = new JTable();
+		table_1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		table_1.setModel(model);
+		scrollPane_2.setViewportView(table_1);
+		{
+			JLabel label = new JLabel("Imagen del proyecto");
+			label.setHorizontalAlignment(SwingConstants.CENTER);
+			label.setBounds(23, 11, 219, 167);
+			P1.add(label);
+		}
 		P2 = new JPanel();
 		P2.setBounds(0, 0, 724, 428);
 		contentPanel.add(P2);
@@ -202,133 +296,28 @@ public class CrearProyecto extends JDialog {
 			}
 		}
 		{
-			P1 = new JPanel();
-			P1.setBounds(0, 0, 724, 428);
-			contentPanel.add(P1);
-			P1.setLayout(null);
 			{
-				JPanel panelProyecto = new JPanel();
-				panelProyecto.setBounds(364, 0, 350, 187);
-				P1.add(panelProyecto);
-				panelProyecto.setLayout(null);
-				panelProyecto.setBorder(new TitledBorder(null, "Datos del proyecto", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 				{
-					JLabel label = new JLabel("C\u00F3digo:");
-					label.setBounds(171, 22, 46, 14);
-					panelProyecto.add(label);
-				}
-				{
-					JLabel lblTipoDeProyecto = new JLabel("Tipo de proyecto:");
-					lblTipoDeProyecto.setBounds(172, 121, 150, 14);
-					panelProyecto.add(lblTipoDeProyecto);
-				}
-				{
-					textField = new JTextField();
-					textField.setEnabled(false);
-					textField.setColumns(10);
-					textField.setBounds(171, 35, 136, 20);
-					panelProyecto.add(textField);
-				}
-				{
-					JLabel label = new JLabel("Descripcion");
-					label.setBounds(10, 22, 151, 14);
-					panelProyecto.add(label);
-				}
-				{
-					JTextArea textArea = new JTextArea();
-					textArea.setBounds(10, 35, 151, 128);
-					panelProyecto.add(textArea);
-				}
-				{
-					JLabel label = new JLabel("Fecha de Entrega");
-					label.setBounds(171, 76, 151, 14);
-					panelProyecto.add(label);
-				}
-				{
-					JComboBox comboBox = new JComboBox();
-					comboBox.setModel(new DefaultComboBoxModel(new String[] {"<Seleccione>", "Aplicacion Web", "Video Juegos", "Aplicacion Movil", "Corporativo", "Desktop"}));
-					comboBox.setBounds(171, 135, 151, 20);
-					panelProyecto.add(comboBox);
-				}
-				{
-					JSpinner spinner = new JSpinner();
-					spinner.setModel(new SpinnerDateModel(new Date(1511582400000L), null, null, Calendar.DAY_OF_YEAR));
-					spinner.setBounds(171, 90, 151, 20);
-					panelProyecto.add(spinner);
-				}
-			}
-			{
-				JPanel panelEmpleado = new JPanel();
-				panelEmpleado.setBounds(10, 189, 704, 228);
-				P1.add(panelEmpleado);
-				panelEmpleado.setBorder(new TitledBorder(null, "Datos del equipo", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-				panelEmpleado.setLayout(null);
-				{
-					JLabel lblCargo = new JLabel("Cargo: ");
-					lblCargo.setBounds(10, 33, 46, 14);
-					panelEmpleado.add(lblCargo);
-				}
-				{
-					JComboBox cbxCargoEmpl = new JComboBox();
-					cbxCargoEmpl.setModel(new DefaultComboBoxModel(new String[] {"<Seleccione>", "Jefe de proyecto", "Planificador", "Dise\u00F1ador", "Programador"}));
-					cbxCargoEmpl.setBounds(66, 30, 121, 20);
-					panelEmpleado.add(cbxCargoEmpl);
-				}
-				
-				JButton btnAgregar = new JButton(">");
-				btnAgregar.setBounds(328, 94, 54, 29);
-				panelEmpleado.add(btnAgregar);
-				
-				JButton btnEliminar = new JButton("X");
-				btnEliminar.setBounds(328, 136, 54, 29);
-				panelEmpleado.add(btnEliminar);
-				{
-					JPanel panel = new JPanel();
-					panel.setBounds(20, 58, 298, 159);
-					panelEmpleado.add(panel);
-					panel.setLayout(new BorderLayout(0, 0));
 					{
-						JScrollPane scrollPane = new JScrollPane();
-						panel.add(scrollPane, BorderLayout.CENTER);
 						{
-							table = new JTable();
-							table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 							String[] columnNames = {"Cédula","Nombre","Apellido","Salario","Estado"};
 							model = new DefaultTableModel();
 							model.setColumnIdentifiers(columnNames);
-							table.setModel(model);
 							loadTable();
-							scrollPane.setViewportView(table);
 						}
 					}
 				}
 				{
-					JPanel panel = new JPanel();
-					panel.setBounds(392, 58, 298, 159);
-					panelEmpleado.add(panel);
-					panel.setLayout(new BorderLayout(0, 0));
 					{
-						JScrollPane scrollPane = new JScrollPane();
-						panel.add(scrollPane, BorderLayout.CENTER);
 						{
 							table_1 = new JTable();
-							table_1 = new JTable();
-							table_1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 							String[] columnNames = {"Cédula","Nombre","Apellido","Salario","Estado"};
 							model = new DefaultTableModel();
 							model.setColumnIdentifiers(columnNames);
-							table_1.setModel(model);
 							loadTable1();
-							scrollPane.setViewportView(table_1);
 						}
 					}
 				}
-			}
-			{
-				JLabel label = new JLabel("Imagen del proyecto");
-				label.setHorizontalAlignment(SwingConstants.CENTER);
-				label.setBounds(23, 11, 253, 154);
-				P1.add(label);
 			}
 		}
 		{
@@ -336,6 +325,11 @@ public class CrearProyecto extends JDialog {
 			;
 		}
 		setLocationRelativeTo(null);
+		{
+			JSpinner spnFechaEntrega = new JSpinner();
+			getContentPane().add(spnFechaEntrega, BorderLayout.NORTH);
+			spnFechaEntrega.setModel(new SpinnerDateModel(new Date(1511582400000L), null, null, Calendar.DAY_OF_YEAR));
+		}
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
