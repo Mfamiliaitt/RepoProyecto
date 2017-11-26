@@ -154,14 +154,19 @@ public class CrearProyecto extends JDialog {
 		
 		JButton btnAgregar = new JButton(">");
 		btnAgregar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {			
+			public void actionPerformed(ActionEvent e) {
+				
 				
 		   Empleado aux = Empresa.getInstance().getMisEmpleados().get(table.getSelectedRow());	
-		   
-		   if(aux instanceof JefeProyecto){if(!pAux.agregarJefeProyecto(aux)){JOptionPane.showInternalMessageDialog(null, "Error"); }}
-		   if(aux instanceof Diseniador ){if(!pAux.agregarDiseniador(aux)){JOptionPane.showInternalMessageDialog(null, "Error");}}
-		   if(aux instanceof Planificador){if(!pAux.agregarPlanificador(aux)){JOptionPane.showInternalMessageDialog(null, "Error");}}
-		   if(aux instanceof Programador){if(!pAux.agregarProgramador(aux)){JOptionPane.showInternalMessageDialog(null, "Error");}}
+		  
+		   if(aux instanceof JefeProyecto){if(!pAux.agregarJefeProyecto(aux)){
+			   JOptionPane.showMessageDialog(null, "Error"); }}
+		   if(aux instanceof Diseniador ){if(!pAux.agregarDiseniador(aux)){
+			   JOptionPane.showMessageDialog(null, "Error");}}
+		   if(aux instanceof Planificador){if(!pAux.agregarPlanificador(aux)){
+			   JOptionPane.showMessageDialog(null, "Error");}}
+		   if(aux instanceof Programador){if(!pAux.agregarProgramador(aux)){
+			   JOptionPane.showMessageDialog(null, "Error");}}
 		   loadTable1();
 			}
 			
