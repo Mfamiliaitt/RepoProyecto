@@ -109,6 +109,132 @@ public class CrearProyecto extends JDialog {
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
+		P2 = new JPanel();
+		P2.setBounds(0, 0, 724, 440);
+		contentPanel.add(P2);
+		P2.setLayout(null);
+		P2.setVisible(false);
+		JPanel panelBusqueda = new JPanel();
+		panelBusqueda.setLayout(null);
+		panelBusqueda.setBorder(new TitledBorder(new LineBorder(new Color(100, 149, 237)), "Busqueda de cliente", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		panelBusqueda.setBackground(SystemColor.control);
+		panelBusqueda.setBounds(10, 26, 387, 104);
+		P2.add(panelBusqueda);
+		{
+			JLabel label = new JLabel("C\u00E9dula: ");
+			label.setBounds(10, 40, 55, 14);
+			panelBusqueda.add(label);
+		}
+		txtCedulabuscar  = new JFormattedTextField();
+		txtCedulabuscar.setColumns(10);
+		txtCedulabuscar.setBounds(76, 37, 165, 20);
+		panelBusqueda.add(txtCedulabuscar);
+		{
+			JButton button = new JButton("<html><font color = black>Buscar</font></html>");
+			button.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+				String buscarcedula=txtCedulabuscar.getText();
+				
+				Cliente c=Empresa.getInstance().buscarClientePorCedula(buscarcedula);
+				
+				if (c!=null){
+					txtCedulacliente.setText((" ")+c.getId());
+					txtNombre.setText((" ")+c.getNombre());
+					txtApellido.setText((" ")+c.getApellido());
+					txtDireccion.setText((" ")+c.getDireccion());
+					txtTelefonoclient.setText((" ")+c.getTelefono());
+					
+					txtCedulacliente.setEnabled(false);
+					txtNombre.setEnabled(false);
+					txtApellido.setEnabled(false);
+					txtDireccion.setEnabled(false);
+					txtTelefonoclient.setEnabled(false);
+					
+				}
+				else{
+					JOptionPane.showMessageDialog(null, "No se ha encontrado el cliente ", "Información", JOptionPane.INFORMATION_MESSAGE);
+					txtCedulacliente.setText(" ");
+					txtNombre.setText(" ");
+					txtApellido.setText(" ");
+					txtDireccion.setText(" ");
+					txtTelefonoclient.setText(" ");
+					
+					txtCedulacliente.setEnabled(true);
+					txtNombre.setEnabled(true);
+					txtApellido.setEnabled(true);
+					txtDireccion.setEnabled(true);
+					txtTelefonoclient.setEnabled(true);
+					
+				}
+				
+				
+				}
+			});
+			button.setBackground(new Color(100, 149, 237));
+			button.setBounds(251, 36, 102, 23);
+			panelBusqueda.add(button);
+		}
+		JPanel panelInfo = new JPanel();
+		panelInfo.setLayout(null);
+		panelInfo.setBorder(new TitledBorder(new LineBorder(new Color(100, 149, 237)), "Informaci\u00F3n del cliente", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		panelInfo.setBackground(SystemColor.control);
+		panelInfo.setBounds(10, 153, 387, 239);
+		P2.add(panelInfo);
+		{
+			JLabel label = new JLabel("C\u00E9dula:");
+			label.setBounds(10, 35, 46, 14);
+			panelInfo.add(label);
+		}
+		{
+			JLabel label = new JLabel("Tel\u00E9fono:");
+			label.setBounds(10, 196, 63, 14);
+			panelInfo.add(label);
+		}
+		{
+			JLabel label = new JLabel("Nombre: ");
+			label.setBounds(10, 84, 63, 14);
+			panelInfo.add(label);
+		}
+		{
+			JLabel label = new JLabel("Direcci\u00F3n: ");
+			label.setBounds(10, 157, 63, 14);
+			panelInfo.add(label);
+		}
+		{
+			txtDireccion = new JTextField();
+			txtDireccion.setColumns(10);
+			txtDireccion.setBounds(76, 154, 292, 20);
+			panelInfo.add(txtDireccion);
+		}
+		{
+			txtNombre = new JTextField();
+			txtNombre.setColumns(10);
+			txtNombre.setBounds(76, 81, 292, 20);
+			panelInfo.add(txtNombre);
+		}
+		{
+			JLabel lblNewLabel = new JLabel("Apellido:");
+			lblNewLabel.setBounds(10, 121, 46, 14);
+			panelInfo.add(lblNewLabel);
+		}
+		{
+			txtApellido = new JTextField();
+			txtApellido.setColumns(10);
+			txtApellido.setBounds(76, 118, 292, 20);
+			panelInfo.add(txtApellido);
+		}
+		txtTelefonoclient = new JFormattedTextField();
+		txtTelefonoclient.setBounds(76, 193, 140, 20);
+		panelInfo.add(txtTelefonoclient);
+		txtCedulacliente = new JFormattedTextField();
+		txtCedulacliente.setBounds(76, 32, 140, 20);
+		panelInfo.add(txtCedulacliente);
+		{
+			JLabel lblNewLabel_1 = new JLabel("Imagen que se quiera poner");
+			lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+			lblNewLabel_1.setBounds(458, 26, 217, 104);
+			P2.add(lblNewLabel_1);
+		}
 		{
 			P3 = new JPanel();
 			P3.setBounds(0, 0, 724, 428);
@@ -366,135 +492,6 @@ public class CrearProyecto extends JDialog {
 								label.setBounds(23, 11, 219, 167);
 								P1.add(label);
 							}
-		P2 = new JPanel();
-		P2.setBounds(0, 0, 724, 440);
-		contentPanel.add(P2);
-		P2.setLayout(null);
-		P2.setVisible(false);
-		JPanel panelBusqueda = new JPanel();
-		panelBusqueda.setLayout(null);
-		panelBusqueda.setBorder(new TitledBorder(new LineBorder(new Color(100, 149, 237)), "Busqueda de cliente", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-		panelBusqueda.setBackground(SystemColor.control);
-		panelBusqueda.setBounds(10, 26, 387, 104);
-		P2.add(panelBusqueda);
-		{
-			JLabel label = new JLabel("C\u00E9dula: ");
-			label.setBounds(10, 40, 55, 14);
-			panelBusqueda.add(label);
-		}
-		txtCedulabuscar  = new JFormattedTextField();
-		txtCedulabuscar.setColumns(10);
-		txtCedulabuscar.setBounds(76, 37, 165, 20);
-		panelBusqueda.add(txtCedulabuscar);
-		{
-			JButton button = new JButton("<html><font color = black>Buscar</font></html>");
-			button.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-				String buscarcedula=txtCedulabuscar.getText();
-				
-				Cliente c=Empresa.getInstance().buscarClientePorCedula(buscarcedula);
-				
-				if (c!=null){
-					txtCedulacliente.setText((" ")+c.getId());
-					txtNombre.setText((" ")+c.getNombre());
-					txtApellido.setText((" ")+c.getApellido());
-					txtDireccion.setText((" ")+c.getDireccion());
-					txtTelefonoclient.setText((" ")+c.getTelefono());
-					
-					txtCedulacliente.setEnabled(false);
-					txtNombre.setEnabled(false);
-					txtApellido.setEnabled(false);
-					txtDireccion.setEnabled(false);
-					txtTelefonoclient.setEnabled(false);
-					
-				}
-				else{
-					JOptionPane.showMessageDialog(null, "No se ha encontrado el cliente ", "Información", JOptionPane.INFORMATION_MESSAGE);
-					txtCedulacliente.setText(" ");
-					txtNombre.setText(" ");
-					txtApellido.setText(" ");
-					txtDireccion.setText(" ");
-					txtTelefonoclient.setText(" ");
-					
-					txtCedulacliente.setEnabled(true);
-					txtNombre.setEnabled(true);
-					txtApellido.setEnabled(true);
-					txtDireccion.setEnabled(true);
-					txtTelefonoclient.setEnabled(true);
-					
-				}
-				
-				
-				}
-			});
-			button.setBackground(new Color(100, 149, 237));
-			button.setBounds(251, 36, 102, 23);
-			panelBusqueda.add(button);
-		}
-		JPanel panelInfo = new JPanel();
-		panelInfo.setLayout(null);
-		panelInfo.setBorder(new TitledBorder(new LineBorder(new Color(100, 149, 237)), "Informaci\u00F3n del cliente", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-		panelInfo.setBackground(SystemColor.control);
-		panelInfo.setBounds(10, 153, 387, 239);
-		P2.add(panelInfo);
-		{
-			JLabel label = new JLabel("C\u00E9dula:");
-			label.setBounds(10, 35, 46, 14);
-			panelInfo.add(label);
-		}
-		{
-			JLabel label = new JLabel("Tel\u00E9fono:");
-			label.setBounds(10, 196, 63, 14);
-			panelInfo.add(label);
-		}
-		{
-			JLabel label = new JLabel("Nombre: ");
-			label.setBounds(10, 84, 63, 14);
-			panelInfo.add(label);
-		}
-		{
-			JLabel label = new JLabel("Direcci\u00F3n: ");
-			label.setBounds(10, 157, 63, 14);
-			panelInfo.add(label);
-		}
-		{
-			txtDireccion = new JTextField();
-			txtDireccion.setEditable(false);
-			txtDireccion.setColumns(10);
-			txtDireccion.setBounds(76, 154, 292, 20);
-			panelInfo.add(txtDireccion);
-		}
-		{
-			txtNombre = new JTextField();
-			txtNombre.setEditable(false);
-			txtNombre.setColumns(10);
-			txtNombre.setBounds(76, 81, 292, 20);
-			panelInfo.add(txtNombre);
-		}
-		{
-			JLabel lblNewLabel = new JLabel("Apellido:");
-			lblNewLabel.setBounds(10, 121, 46, 14);
-			panelInfo.add(lblNewLabel);
-		}
-		{
-			txtApellido = new JTextField();
-			txtApellido.setEditable(false);
-			txtApellido.setColumns(10);
-			txtApellido.setBounds(76, 118, 292, 20);
-			panelInfo.add(txtApellido);
-		}
-		txtTelefonoclient = new JFormattedTextField();
-		txtTelefonoclient.setBounds(76, 193, 140, 20);
-		panelInfo.add(txtTelefonoclient);
-		txtCedulacliente = new JFormattedTextField();
-		txtCedulacliente.setBounds(76, 32, 140, 20);
-		panelInfo.add(txtCedulacliente);
-		{
-			JLabel lblNewLabel_1 = new JLabel("Imagen que se quiera poner");
-			lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-			lblNewLabel_1.setBounds(458, 26, 217, 104);
-			P2.add(lblNewLabel_1);
-		}
 		{
 			{
 				txtCedulabuscar = new JFormattedTextField();
