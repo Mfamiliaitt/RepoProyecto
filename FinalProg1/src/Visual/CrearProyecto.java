@@ -50,6 +50,7 @@ import javax.swing.JFormattedTextField;
 import javax.swing.JFormattedTextField.AbstractFormatter;
 
 import java.awt.SystemColor;
+import java.awt.Font;
 
 public class CrearProyecto extends JDialog {
 
@@ -75,10 +76,12 @@ public class CrearProyecto extends JDialog {
 	private JTextField txtEntrega;
 	private JTextField txtFechReali;
 	private JPanel P3;
-	private JFormattedTextField txtCedulabuscar;
-	private JFormattedTextField txtCedulacliente;
+	
+	
 	private JFormattedTextField txtTelefonoclient;
 	private JButton btnAtras;
+	private JFormattedTextField txtCedulacliente;
+	private JFormattedTextField txtCedulabuscar;
 		
 
 	/**
@@ -125,10 +128,6 @@ public class CrearProyecto extends JDialog {
 			label.setBounds(10, 40, 55, 14);
 			panelBusqueda.add(label);
 		}
-		txtCedulabuscar  = new JFormattedTextField();
-		txtCedulabuscar.setColumns(10);
-		txtCedulabuscar.setBounds(76, 37, 165, 20);
-		panelBusqueda.add(txtCedulabuscar);
 		{
 			JButton button = new JButton("<html><font color = black>Buscar</font></html>");
 			button.addActionListener(new ActionListener() {
@@ -173,6 +172,16 @@ public class CrearProyecto extends JDialog {
 			button.setBackground(new Color(100, 149, 237));
 			button.setBounds(251, 36, 102, 23);
 			panelBusqueda.add(button);
+		}
+		{
+			txtCedulabuscar = new JFormattedTextField();
+			try {
+				MaskFormatter ced = new MaskFormatter("###-#######-#");
+				ced.setPlaceholderCharacter('_');
+				txtCedulabuscar = new JFormattedTextField(ced);
+			} catch (Exception e) {}
+			txtCedulabuscar.setBounds(75, 37, 166, 20);
+			panelBusqueda.add(txtCedulabuscar);
 		}
 		JPanel panelInfo = new JPanel();
 		panelInfo.setLayout(null);
@@ -226,8 +235,14 @@ public class CrearProyecto extends JDialog {
 		txtTelefonoclient = new JFormattedTextField();
 		txtTelefonoclient.setBounds(76, 193, 140, 20);
 		panelInfo.add(txtTelefonoclient);
+		
 		txtCedulacliente = new JFormattedTextField();
-		txtCedulacliente.setBounds(76, 32, 140, 20);
+		try {
+			MaskFormatter ced = new MaskFormatter("###-#######-#");
+			ced.setPlaceholderCharacter('_');
+			txtCedulacliente = new JFormattedTextField(ced);
+		} catch (Exception e) {}
+		txtCedulacliente.setBounds(76, 32, 128, 20);
 		panelInfo.add(txtCedulacliente);
 		{
 			JLabel lblNewLabel_1 = new JLabel("Imagen que se quiera poner");
@@ -381,6 +396,9 @@ public class CrearProyecto extends JDialog {
 					}
 					{
 						txtCodigo = new JTextField();
+						txtCodigo.setOpaque(false);
+						txtCodigo.setBackground(Color.LIGHT_GRAY);
+						txtCodigo.setFont(new Font("Tahoma", Font.BOLD, 13));
 						txtCodigo.setEnabled(false);
 						txtCodigo.setColumns(10);
 						txtCodigo.setBounds(32, 53, 136, 20);
@@ -398,6 +416,25 @@ public class CrearProyecto extends JDialog {
 					}
 					{
 						JComboBox cmbTipoDeProyecto = new JComboBox();
+						cmbTipoDeProyecto.addActionListener(new ActionListener() {
+							public void actionPerformed(ActionEvent e) {
+								if(cmbTipoDeProyecto.getSelectedIndex()!=0){
+									if(cmbTipoDeProyecto.getSelectedItem().toString().equalsIgnoreCase("Aplicacion Web")){
+										txtCodigo.setText("AW-"+Empresa.getInstance().getMisProyectos().size());
+									}else if(cmbTipoDeProyecto.getSelectedItem().toString().equalsIgnoreCase("Video Juegos")){
+										txtCodigo.setText("VJ-"+Empresa.getInstance().getMisProyectos().size());
+									}else if(cmbTipoDeProyecto.getSelectedItem().toString().equalsIgnoreCase("Aplicacion Movil")){
+										txtCodigo.setText("AM-"+Empresa.getInstance().getMisProyectos().size());
+									}else if(cmbTipoDeProyecto.getSelectedItem().toString().equalsIgnoreCase("Corporativo")){
+										txtCodigo.setText("CO-"+Empresa.getInstance().getMisProyectos().size());
+									}else if(cmbTipoDeProyecto.getSelectedItem().toString().equalsIgnoreCase("Desktop")){
+										txtCodigo.setText("DT-"+Empresa.getInstance().getMisProyectos().size());
+									}
+										
+								}
+								
+							}
+						});
 						cmbTipoDeProyecto.setModel(new DefaultComboBoxModel(new String[] {"<Seleccione>", "Aplicacion Web", "Video Juegos", "Aplicacion Movil", "Corporativo", "Desktop"}));
 						cmbTipoDeProyecto.setBounds(191, 53, 151, 20);
 						panelProyecto.add(cmbTipoDeProyecto);
@@ -546,13 +583,27 @@ public class CrearProyecto extends JDialog {
 							P3.setVisible(false);
 							P2.setVisible(true);
 						}
-						else if(P2.isVisible()){
+						else if(P2.isVisible() && faltaAlgo()){
+							JOptionPane.showMessageDialog(null, "Debe introducir un cliente");
+						}else if(Empresa.getInstance().isclienteregistrado(txtCedulacliente.getText())){
+							JOptionPane.showMessageDialog(null, "El cliente con cedula "+Empresa.getInstance().buscarClientePorCedula(txtCedulacliente.getText()).getId()+" ya existe, por favor buscarlo.");
+						}else{
 							btnAtras.setEnabled(true);
 							P1.setVisible(false);
 							P2.setVisible(false);
 							P3.setVisible(true);
 						}
+				
 					
+					}
+
+					private boolean faltaAlgo() {
+						boolean falta=false;
+						if(txtCedulacliente.getText().isEmpty() || txtApellido.getText().isEmpty() || txtDireccion.getText().isEmpty() || txtNombre.getText().isEmpty() ){
+							falta=true;
+						}						
+						return falta;
+						
 					}
 				});
 				{
