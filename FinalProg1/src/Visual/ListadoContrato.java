@@ -94,7 +94,7 @@ public class ListadoContrato extends JDialog {
 					
 					table = new JTable();
 					table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-					String[] columnNames = {"Codigo","Cédula","Tipo de Proyecto"};
+					String[] columnNames = {"Codigo","Cédula","Tipo de Proyecto","Estado"};
 					model = new DefaultTableModel();
 					model.setColumnIdentifiers(columnNames);
 					table.setModel(model);
@@ -114,6 +114,7 @@ public class ListadoContrato extends JDialog {
 			fila[0] = losContratos.getCodigoProyecto();
 			fila[1] = losContratos.getIdCliente();
 			fila[2] = losContratos.getMiProyecto().getTipo();
+			fila[3] = losContratos.getMiProyecto().getEstado();
 			
 			model.addRow(fila);
 	}
