@@ -86,6 +86,7 @@ public class CrearProyecto extends JDialog {
 	private JFormattedTextField txtCedulacliente;
 	private JFormattedTextField txtTelefonoclient;
 	private JComboBox cbxCargoEmpl;
+	private JComboBox cmbTipoDeProyecto;
 		
 
 	/**
@@ -156,7 +157,7 @@ public class CrearProyecto extends JDialog {
 						panelProyecto.add(txtDescripcion);
 					}
 					{
-						JComboBox cmbTipoDeProyecto = new JComboBox();
+						cmbTipoDeProyecto = new JComboBox();
 						cmbTipoDeProyecto.addActionListener(new ActionListener() {
 							public void actionPerformed(ActionEvent e) {
 								if(cmbTipoDeProyecto.getSelectedIndex()!=0){
