@@ -56,7 +56,7 @@ public class ListadoContrato extends JDialog {
 		setLocationRelativeTo(null);
 		{
 			JPanel buttonPane = new JPanel();
-			buttonPane.setBounds(29, 417, 665, 33);
+			buttonPane.setBounds(0, 428, 724, 33);
 			contentPanel.add(buttonPane);
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			{
