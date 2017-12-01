@@ -15,6 +15,8 @@ import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.MaskFormatter;
 
+import com.sun.org.apache.xerces.internal.impl.dtd.models.CMBinOp;
+
 import logic.Cliente;
 import logic.Contrato;
 import logic.Diseniador;
@@ -83,6 +85,7 @@ public class CrearProyecto extends JDialog {
 	private JButton btnAtras;
 	private JFormattedTextField txtCedulacliente;
 	private JFormattedTextField txtTelefonoclient;
+	private JComboBox cbxCargoEmpl;
 		
 
 	/**
@@ -108,6 +111,181 @@ public class CrearProyecto extends JDialog {
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
+		
+		P1 = new JPanel();
+		P1.setBounds(0, 0, 724, 440);
+		contentPanel.add(P1);
+		P1.setLayout(null);
+		
+		P1.setVisible(true);
+		
+				{
+					JPanel panelProyecto = new JPanel();
+					panelProyecto.setBounds(252, 0, 462, 187);
+					P1.add(panelProyecto);
+					panelProyecto.setLayout(null);
+					panelProyecto.setBorder(new TitledBorder(null, "Datos del proyecto", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+					{
+						JLabel label = new JLabel("C\u00F3digo:");
+						label.setBounds(32, 38, 46, 14);
+						panelProyecto.add(label);
+					}
+					{
+						JLabel lblTipoDeProyecto = new JLabel("Tipo de proyecto:");
+						lblTipoDeProyecto.setBounds(192, 38, 150, 14);
+						panelProyecto.add(lblTipoDeProyecto);
+					}
+					{
+						txtCodigo = new JTextField();
+						txtCodigo.setOpaque(false);
+						txtCodigo.setBackground(Color.LIGHT_GRAY);
+						txtCodigo.setFont(new Font("Tahoma", Font.BOLD, 13));
+						txtCodigo.setEnabled(false);
+						txtCodigo.setColumns(10);
+						txtCodigo.setBounds(32, 53, 136, 20);
+						panelProyecto.add(txtCodigo);
+					}
+					{
+						JLabel label = new JLabel("Descripcion");
+						label.setBounds(32, 92, 151, 14);
+						panelProyecto.add(label);
+					}
+					{
+						JTextArea txtDescripcion = new JTextArea();
+						txtDescripcion.setBounds(32, 106, 416, 55);
+						panelProyecto.add(txtDescripcion);
+					}
+					{
+						JComboBox cmbTipoDeProyecto = new JComboBox();
+						cmbTipoDeProyecto.addActionListener(new ActionListener() {
+							public void actionPerformed(ActionEvent e) {
+								if(cmbTipoDeProyecto.getSelectedIndex()!=0){
+									if(cmbTipoDeProyecto.getSelectedItem().toString().equalsIgnoreCase("Aplicacion Web")){
+										txtCodigo.setText("AW-"+Empresa.getInstance().getMisProyectos().size());
+									}else if(cmbTipoDeProyecto.getSelectedItem().toString().equalsIgnoreCase("Video Juegos")){
+										txtCodigo.setText("VJ-"+Empresa.getInstance().getMisProyectos().size());
+									}else if(cmbTipoDeProyecto.getSelectedItem().toString().equalsIgnoreCase("Aplicacion Movil")){
+										txtCodigo.setText("AM-"+Empresa.getInstance().getMisProyectos().size());
+									}else if(cmbTipoDeProyecto.getSelectedItem().toString().equalsIgnoreCase("Corporativo")){
+										txtCodigo.setText("CO-"+Empresa.getInstance().getMisProyectos().size());
+									}else if(cmbTipoDeProyecto.getSelectedItem().toString().equalsIgnoreCase("Desktop")){
+										txtCodigo.setText("DT-"+Empresa.getInstance().getMisProyectos().size());
+									}
+										
+								}
+								
+							}
+						});
+						cmbTipoDeProyecto.setModel(new DefaultComboBoxModel(new String[] {"<Seleccione>", "Aplicacion Web", "Video Juegos", "Aplicacion Movil", "Corporativo", "Desktop"}));
+						cmbTipoDeProyecto.setBounds(191, 53, 151, 20);
+						panelProyecto.add(cmbTipoDeProyecto);
+					}
+				}
+				JPanel panelEmpleado = new JPanel();
+				panelEmpleado.setBounds(10, 189, 704, 251);
+				P1.add(panelEmpleado);
+				panelEmpleado.setBorder(new TitledBorder(null, "Datos del equipo", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+				panelEmpleado.setLayout(null);
+				{
+					JLabel lblCargo = new JLabel("Cargo: ");
+					lblCargo.setBounds(10, 33, 46, 14);
+					panelEmpleado.add(lblCargo);
+				}
+				{
+					cbxCargoEmpl = new JComboBox();
+					cbxCargoEmpl.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent e) {
+							loadTable();
+						}
+					});
+					cbxCargoEmpl.setModel(new DefaultComboBoxModel(new String[] {"<Seleccione>", "Jefe de proyecto", "Planificador", "Dise\u00F1ador", "Programador"}));
+					cbxCargoEmpl.setBounds(66, 30, 121, 20);
+					panelEmpleado.add(cbxCargoEmpl);
+				}
+				
+				JButton btnAgregar = new JButton(">");
+				btnAgregar.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						try {
+							if(pAux.contadorDeEmpleados()<5){	
+								   Empleado aux =Empresa.getInstance().buscarEmpleadoPorCedula(table.getValueAt(table.getSelectedRow(),0).toString());
+								   if(aux instanceof JefeProyecto){if(!pAux.agregarJefeProyecto(aux)){
+									   JOptionPane.showMessageDialog(null, "Error"); }}
+								   if(aux instanceof Diseniador ){if(!pAux.agregarDiseniador(aux)){
+									   JOptionPane.showMessageDialog(null, "Error");}}
+								   if(aux instanceof Planificador){if(!pAux.agregarPlanificador(aux)){
+									   JOptionPane.showMessageDialog(null, "Error");}}
+								   if(aux instanceof Programador){if(!pAux.agregarProgramador(aux)){
+									   JOptionPane.showMessageDialog(null, "Error");}}
+								   loadTable1();
+									}else{JOptionPane.showMessageDialog(null, "no se puede agregar mas de 5 empleados al equipo");}
+							
+						} catch (Exception e2) {
+							// TODO: handle exception
+						}
+					}
+					
+				});
+				btnAgregar.setBounds(328, 94, 54, 29);
+				panelEmpleado.add(btnAgregar);
+				
+				JButton btnEliminar = new JButton("X");
+				btnEliminar.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+					try {
+						
+						//Empleado aux = Empresa.getInstance().getMisEmpleados().get(table_1.getSelectedRow());
+						pAux.getElEquipo().remove(table_1.getSelectedRow());
+						pAux.getElEquipo().trimToSize();
+						loadTable1();
+						
+					} catch (Exception e2) {
+						
+					}	
+					}
+				});
+				btnEliminar.setBounds(328, 136, 54, 29);
+				panelEmpleado.add(btnEliminar);
+				
+				JPanel panel_2 = new JPanel();
+				panel_2.setBounds(10, 58, 293, 159);
+				panelEmpleado.add(panel_2);
+				panel_2.setLayout(new BorderLayout(0, 0));
+				JScrollPane scrollPane_1 = new JScrollPane();
+				table = new JTable();
+				table.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(java.awt.event.MouseEvent e) {
+					}
+				});
+				table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+				table.setModel(model);
+				scrollPane_1.setViewportView(table);
+				panel_2.add(scrollPane_1, BorderLayout.CENTER);
+				
+					
+					JPanel panel_1_1 = new JPanel();
+					panel_1_1.setBounds(401, 58, 293, 159);
+					panelEmpleado.add(panel_1_1);
+					panel_1_1.setLayout(new BorderLayout(0, 0));
+					JScrollPane scrollPane1 = new JScrollPane();
+					table_1 = new JTable();
+					table_1.addMouseListener(new MouseAdapter() {
+					/*	@Override
+						public void mouseClicked(java.awt.event.MouseEvent e) {
+						}*/
+					});
+					table_1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+					table_1.setModel(model1);
+					scrollPane1.setViewportView(table_1);
+					panel_1_1.add(scrollPane1, BorderLayout.CENTER);
+					
+							{
+								JLabel label = new JLabel("Imagen del proyecto");
+								label.setHorizontalAlignment(SwingConstants.CENTER);
+								label.setBounds(23, 11, 219, 167);
+								P1.add(label);
+							}
 		P2 = new JPanel();
 		P2.setBounds(0, 0, 724, 440);
 		contentPanel.add(P2);
@@ -222,173 +400,7 @@ public class CrearProyecto extends JDialog {
 							lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 							lblNewLabel_1.setBounds(458, 26, 217, 104);
 							P2.add(lblNewLabel_1);
-						}
-		
-		P1 = new JPanel();
-		P1.setBounds(0, 0, 724, 440);
-		contentPanel.add(P1);
-		P1.setLayout(null);
-		
-		P1.setVisible(true);
-		
-				{
-					JPanel panelProyecto = new JPanel();
-					panelProyecto.setBounds(252, 0, 462, 187);
-					P1.add(panelProyecto);
-					panelProyecto.setLayout(null);
-					panelProyecto.setBorder(new TitledBorder(null, "Datos del proyecto", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-					{
-						JLabel label = new JLabel("C\u00F3digo:");
-						label.setBounds(32, 38, 46, 14);
-						panelProyecto.add(label);
-					}
-					{
-						JLabel lblTipoDeProyecto = new JLabel("Tipo de proyecto:");
-						lblTipoDeProyecto.setBounds(192, 38, 150, 14);
-						panelProyecto.add(lblTipoDeProyecto);
-					}
-					{
-						txtCodigo = new JTextField();
-						txtCodigo.setOpaque(false);
-						txtCodigo.setBackground(Color.LIGHT_GRAY);
-						txtCodigo.setFont(new Font("Tahoma", Font.BOLD, 13));
-						txtCodigo.setEnabled(false);
-						txtCodigo.setColumns(10);
-						txtCodigo.setBounds(32, 53, 136, 20);
-						panelProyecto.add(txtCodigo);
-					}
-					{
-						JLabel label = new JLabel("Descripcion");
-						label.setBounds(32, 92, 151, 14);
-						panelProyecto.add(label);
-					}
-					{
-						JTextArea txtDescripcion = new JTextArea();
-						txtDescripcion.setBounds(32, 106, 416, 55);
-						panelProyecto.add(txtDescripcion);
-					}
-					{
-						JComboBox cmbTipoDeProyecto = new JComboBox();
-						cmbTipoDeProyecto.addActionListener(new ActionListener() {
-							public void actionPerformed(ActionEvent e) {
-								if(cmbTipoDeProyecto.getSelectedIndex()!=0){
-									if(cmbTipoDeProyecto.getSelectedItem().toString().equalsIgnoreCase("Aplicacion Web")){
-										txtCodigo.setText("AW-"+Empresa.getInstance().getMisProyectos().size());
-									}else if(cmbTipoDeProyecto.getSelectedItem().toString().equalsIgnoreCase("Video Juegos")){
-										txtCodigo.setText("VJ-"+Empresa.getInstance().getMisProyectos().size());
-									}else if(cmbTipoDeProyecto.getSelectedItem().toString().equalsIgnoreCase("Aplicacion Movil")){
-										txtCodigo.setText("AM-"+Empresa.getInstance().getMisProyectos().size());
-									}else if(cmbTipoDeProyecto.getSelectedItem().toString().equalsIgnoreCase("Corporativo")){
-										txtCodigo.setText("CO-"+Empresa.getInstance().getMisProyectos().size());
-									}else if(cmbTipoDeProyecto.getSelectedItem().toString().equalsIgnoreCase("Desktop")){
-										txtCodigo.setText("DT-"+Empresa.getInstance().getMisProyectos().size());
-									}
-										
-								}
-								
-							}
-						});
-						cmbTipoDeProyecto.setModel(new DefaultComboBoxModel(new String[] {"<Seleccione>", "Aplicacion Web", "Video Juegos", "Aplicacion Movil", "Corporativo", "Desktop"}));
-						cmbTipoDeProyecto.setBounds(191, 53, 151, 20);
-						panelProyecto.add(cmbTipoDeProyecto);
-					}
-				}
-				JPanel panelEmpleado = new JPanel();
-				panelEmpleado.setBounds(10, 189, 704, 251);
-				P1.add(panelEmpleado);
-				panelEmpleado.setBorder(new TitledBorder(null, "Datos del equipo", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-				panelEmpleado.setLayout(null);
-				{
-					JLabel lblCargo = new JLabel("Cargo: ");
-					lblCargo.setBounds(10, 33, 46, 14);
-					panelEmpleado.add(lblCargo);
-				}
-				{
-					JComboBox cbxCargoEmpl = new JComboBox();
-					cbxCargoEmpl.setModel(new DefaultComboBoxModel(new String[] {"<Seleccione>", "Jefe de proyecto", "Planificador", "Dise\u00F1ador", "Programador"}));
-					cbxCargoEmpl.setBounds(66, 30, 121, 20);
-					panelEmpleado.add(cbxCargoEmpl);
-				}
-				
-				JButton btnAgregar = new JButton(">");
-				btnAgregar.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						
-					if(pAux.contadorDeEmpleados()<5){	
-				   Empleado aux = Empresa.getInstance().getMisEmpleados().get(table.getSelectedRow());	
-				  
-				   if(aux instanceof JefeProyecto){if(!pAux.agregarJefeProyecto(aux)){
-					   JOptionPane.showMessageDialog(null, "Error"); }}
-				   if(aux instanceof Diseniador ){if(!pAux.agregarDiseniador(aux)){
-					   JOptionPane.showMessageDialog(null, "Error");}}
-				   if(aux instanceof Planificador){if(!pAux.agregarPlanificador(aux)){
-					   JOptionPane.showMessageDialog(null, "Error");}}
-				   if(aux instanceof Programador){if(!pAux.agregarProgramador(aux)){
-					   JOptionPane.showMessageDialog(null, "Error");}}
-				   loadTable1();
-					}else{JOptionPane.showMessageDialog(null, "no se puede agregar mas de 5 empleados al equipo");}}
-					
-				});
-				btnAgregar.setBounds(328, 94, 54, 29);
-				panelEmpleado.add(btnAgregar);
-				
-				JButton btnEliminar = new JButton("X");
-				btnEliminar.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-					try {
-						
-						//Empleado aux = Empresa.getInstance().getMisEmpleados().get(table_1.getSelectedRow());
-						pAux.getElEquipo().remove(table_1.getSelectedRow());
-						pAux.getElEquipo().trimToSize();
-						loadTable1();
-						
-					} catch (Exception e2) {
-						
-					}	
-					}
-				});
-				btnEliminar.setBounds(328, 136, 54, 29);
-				panelEmpleado.add(btnEliminar);
-				
-				JPanel panel_2 = new JPanel();
-				panel_2.setBounds(10, 58, 293, 159);
-				panelEmpleado.add(panel_2);
-				panel_2.setLayout(new BorderLayout(0, 0));
-				JScrollPane scrollPane_1 = new JScrollPane();
-				table = new JTable();
-				table.addMouseListener(new MouseAdapter() {
-					@Override
-					public void mouseClicked(java.awt.event.MouseEvent e) {
-					}
-				});
-				table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-				table.setModel(model);
-				scrollPane_1.setViewportView(table);
-				panel_2.add(scrollPane_1, BorderLayout.CENTER);
-				
-					
-					JPanel panel_1_1 = new JPanel();
-					panel_1_1.setBounds(401, 58, 293, 159);
-					panelEmpleado.add(panel_1_1);
-					panel_1_1.setLayout(new BorderLayout(0, 0));
-					JScrollPane scrollPane1 = new JScrollPane();
-					table_1 = new JTable();
-					table_1.addMouseListener(new MouseAdapter() {
-					/*	@Override
-						public void mouseClicked(java.awt.event.MouseEvent e) {
-						}*/
-					});
-					table_1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-					table_1.setModel(model1);
-					scrollPane1.setViewportView(table_1);
-					panel_1_1.add(scrollPane1, BorderLayout.CENTER);
-					
-							{
-								JLabel label = new JLabel("Imagen del proyecto");
-								label.setHorizontalAlignment(SwingConstants.CENTER);
-								label.setBounds(23, 11, 219, 167);
-								P1.add(label);
-							}{}	
+						}{}	
 		{
 			P3 = new JPanel();
 			P3.setBounds(0, 0, 724, 428);
@@ -646,10 +658,86 @@ public class CrearProyecto extends JDialog {
 
 	private void loadTable() {
 		// TODO Auto-generated method stub
+		
 			model.setRowCount(0);
 			fila = new Object[model.getColumnCount()];
 			for (Empleado empleado : Empresa.getInstance().getMisEmpleados()) {				
-				fila[0] = empleado.getIdentificador();
+				if(cbxCargoEmpl.getSelectedItem().toString().equalsIgnoreCase("<Seleccione>")){}
+				else if(cbxCargoEmpl.getSelectedItem().toString().equalsIgnoreCase("Jefe de proyecto")){
+				 if (empleado instanceof JefeProyecto) {
+						
+						fila[0] = empleado.getIdentificador();
+						fila[1] = empleado.getNombre();
+						fila[2] = empleado.getApellidos();
+						fila[3] = empleado.getSalario();
+						if (empleado.isOcupado()){
+						    fila[4] = "Ocupado";
+						}
+						else{
+							fila[4] = "Disponible";
+						}
+						
+						model.addRow(fila);
+						
+					}
+				}
+				else if(cbxCargoEmpl.getSelectedItem().toString().equalsIgnoreCase("Planificador")){
+					 if (empleado instanceof Planificador) {
+							
+							fila[0] = empleado.getIdentificador();
+							fila[1] = empleado.getNombre();
+							fila[2] = empleado.getApellidos();
+							fila[3] = empleado.getSalario();
+							if (empleado.isOcupado()){
+							    fila[4] = "Ocupado";
+							}
+							else{
+								fila[4] = "Disponible";
+							}
+							
+							model.addRow(fila);
+							
+						}
+				}
+				else if(cbxCargoEmpl.getSelectedItem().toString().equalsIgnoreCase("Dise\u00F1ador")){
+					 if (empleado instanceof Diseniador) {
+							
+							fila[0] = empleado.getIdentificador();
+							fila[1] = empleado.getNombre();
+							fila[2] = empleado.getApellidos();
+							fila[3] = empleado.getSalario();
+							if (empleado.isOcupado()){
+							    fila[4] = "Ocupado";
+							}
+							else{
+								fila[4] = "Disponible";
+							}
+							
+							model.addRow(fila);
+							
+						}
+				}
+				else if(cbxCargoEmpl.getSelectedItem().toString().equalsIgnoreCase("Programador")){
+					 if (empleado instanceof Programador) {
+							
+							fila[0] = empleado.getIdentificador();
+							fila[1] = empleado.getNombre();
+							fila[2] = empleado.getApellidos();
+							fila[3] = empleado.getSalario();
+							if (empleado.isOcupado()){
+							    fila[4] = "Ocupado";
+							}
+							else{
+								fila[4] = "Disponible";
+							}
+							
+							model.addRow(fila);
+							
+						}
+				}
+				
+				
+				/*fila[0] = empleado.getIdentificador();
 				fila[1] = empleado.getNombre();
 				fila[2] = empleado.getApellidos();
 				fila[3] = empleado.getSalario();
@@ -660,7 +748,7 @@ public class CrearProyecto extends JDialog {
 					fila[4] = "Disponible";
 				}
 				
-				model.addRow(fila);
+				model.addRow(fila);*/
 			
 		
 		}
