@@ -136,7 +136,7 @@ public class Principal extends JFrame {
 		menuBar.add(mnNewMenu_1);
 		
 		JMenuItem mntmNewMenuItem_2 = new JMenuItem("Crear proyecto");
-		mntmNewMenuItem_2.setIcon(new ImageIcon(Principal.class.getResource("/Imagenes/agregar-evento-boton-de-calendario-con-signo-mas.png")));
+		mntmNewMenuItem_2.setIcon(new ImageIcon(Principal.class.getResource("/Imagenes/escribir-documento.png")));
 		mntmNewMenuItem_2.setBackground(Color.WHITE);
 		mntmNewMenuItem_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
