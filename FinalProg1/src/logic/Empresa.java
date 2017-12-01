@@ -126,11 +126,8 @@ public void evaluaciondelempleado(){
 		}
 		else{
 			empleado.setEvaluacionAnual("Malo");
-		}
-				
-	}
-	
-	
+		}				
+	}	
 }
 public boolean isempleadoregistrado(String cedula){
 	boolean answer=false;

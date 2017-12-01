@@ -36,6 +36,8 @@ import javax.swing.ButtonGroup;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.JCheckBox;
 import javax.swing.JFormattedTextField;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 
 public class IngresarEmpleado extends JDialog {
@@ -67,6 +69,8 @@ public class IngresarEmpleado extends JDialog {
 	private JCheckBox chckbxProjectManager;
 	private JSpinner spnFrecuencia;
 	private JFormattedTextField txtId;
+	private JFormattedTextField txtId_1;
+	private JButton okButton;
 
 	/**
 	 * Launch the application.
@@ -250,10 +254,21 @@ public class IngresarEmpleado extends JDialog {
 			try {
 				MaskFormatter ced = new MaskFormatter("###-#######-#");
 				ced.setPlaceholderCharacter('_');
-				txtId = new JFormattedTextField(ced);
+				txtId_1 = new JFormattedTextField(ced);
+				txtId_1.addKeyListener(new KeyAdapter() {
+					@Override
+					public void keyReleased(KeyEvent e) {
+						if(Empresa.getInstance().isempleadoregistrado(txtId_1.getText())){
+							okButton.setEnabled(false);
+							JOptionPane.showMessageDialog(null, "Este empleado ya existe");
+						}else{okButton.setEnabled(true);}
+						
+					}
+					
+				});
 			} catch (Exception e) {}
-			txtId.setBounds(106, 20, 147, 20);
-			PDatos.add(txtId);
+			txtId_1.setBounds(106, 20, 147, 20);
+			PDatos.add(txtId_1);
 		}
 		{
 		    pVacio = new JPanel();
@@ -350,14 +365,14 @@ public class IngresarEmpleado extends JDialog {
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
-				JButton okButton = new JButton("OK");
+				okButton = new JButton("OK");
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						if(faltaAlgo()){
 							JOptionPane.showMessageDialog(null, "Faltan campos por rellenar");
 						}
 						else{
-						String identificador=txtId.getText();
+						String identificador=txtId_1.getText();
 						String nombre=txtNombre.getText();
 						String direccion=txtDireccion.getText();
 						String apellidos=txtApellidos.getText();
@@ -366,26 +381,23 @@ public class IngresarEmpleado extends JDialog {
 						if(rdnFemenino.isSelected()){ sexo="Femenino";}
 						int edad=(int) spnEdad.getValue();
 					    Double salario=Double.parseDouble(txtSalario.getText());
-					if(rdbJefeDeProyecto.isSelected()){
-						
-	Empleado aux = new JefeProyecto(identificador, nombre, apellidos, direccion, sexo, edad, salario, "","Bueno", 0, chckbxProjectManager.isSelected());
-						
-  Empresa.getInstance().addEmpleado(aux);
+					if(rdbJefeDeProyecto.isSelected()){						
+						Empleado aux = new JefeProyecto(identificador, nombre, apellidos, direccion, sexo, edad, salario, "","Bueno", 0, chckbxProjectManager.isSelected());						
+						Empresa.getInstance().addEmpleado(aux);
 	                
 					}
 					else if(rdbDiseniador.isSelected()){
-	Empleado aux= new Diseniador(identificador, nombre, apellidos, direccion, sexo, edad, salario, "", "Bueno", cmbTipoDisenio.getSelectedItem().toString());				
-    
-	Empresa.getInstance().addEmpleado(aux);	
+						Empleado aux= new Diseniador(identificador, nombre, apellidos, direccion, sexo, edad, salario, "", "Bueno", cmbTipoDisenio.getSelectedItem().toString());				
+						Empresa.getInstance().addEmpleado(aux);	
 					}
 					else if(rdbPlanificador.isSelected()){
-	Empleado aux=new Planificador(identificador, nombre, apellidos, direccion, sexo, edad, salario, "", "Bueno", (int) spnFrecuencia.getValue());					
-	Empresa.getInstance().addEmpleado(aux);	
+						Empleado aux=new Planificador(identificador, nombre, apellidos, direccion, sexo, edad, salario, "", "Bueno", (int) spnFrecuencia.getValue());					
+						Empresa.getInstance().addEmpleado(aux);	
 					}
 					else if(rdbProgramador.isSelected()){
-				Empleado aux=new Programador(identificador, nombre, apellidos, direccion, sexo, edad, salario, "", "Bueno", CmbLenguaje.getSelectedItem().toString());		
-	Empresa.getInstance().addEmpleado(aux);
-	}
+						Empleado aux=new Programador(identificador, nombre, apellidos, direccion, sexo, edad, salario, "", "Bueno", CmbLenguaje.getSelectedItem().toString());		
+						Empresa.getInstance().addEmpleado(aux);
+					}
 					JOptionPane.showMessageDialog(null, "Empleado registrado satisfactoriamente");
 					clean();
 					}
@@ -394,7 +406,7 @@ public class IngresarEmpleado extends JDialog {
 					private void clean() {
 					txtApellidos.setText("");
 					txtDireccion.setText("");
-					txtId.setText("");
+					txtId_1.setText("");
 					txtNombre.setText("");
 					txtSalario.setText("");
 					
@@ -402,7 +414,7 @@ public class IngresarEmpleado extends JDialog {
 
 					private boolean faltaAlgo() {
 						boolean falta=false;
-						if(txtId.getText().isEmpty() || txtApellidos.getText().isEmpty() || txtDireccion.getText().isEmpty() || txtNombre.getText().isEmpty() || txtSalario.getText().isEmpty()){
+						if(txtId_1.getText().isEmpty() || txtApellidos.getText().isEmpty() || txtDireccion.getText().isEmpty() || txtNombre.getText().isEmpty() || txtSalario.getText().isEmpty()){
 							falta=true;
 						}						
 						return falta;
