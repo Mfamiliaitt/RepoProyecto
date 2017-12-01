@@ -608,6 +608,7 @@ public class CrearProyecto extends JDialog {
 					btnRegistrar.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
 							/*Guardar los datos*/
+						//	txtNombre.
 						}
 					});
 					buttonPane.add(btnRegistrar);
@@ -619,7 +620,7 @@ public class CrearProyecto extends JDialog {
 				getRootPane().setDefaultButton(okButton);
 			}
 			{
-				JButton cancelButton = new JButton("Cancel");
+				JButton cancelButton = new JButton("Cancelar");
 				cancelButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						dispose();
