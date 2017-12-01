@@ -9,8 +9,12 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
+import logic.Diseniador;
 import logic.Empleado;
 import logic.Empresa;
+import logic.JefeProyecto;
+import logic.Planificador;
+import logic.Programador;
 
 import javax.swing.BoxLayout;
 import javax.swing.JScrollPane;
@@ -94,7 +98,7 @@ public class ListadoEmpleados extends JDialog {
 					
 					table = new JTable();
 					table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-					String[] columnNames = {"Cédula","Nombre","Apellido","Dirección", "Sexo", "Edad","Salario","Evaluación","Estado"};
+					String[] columnNames = {"Cédula","Nombre","Apellido","Dirección", "Sexo", "Cargo","Salario","Evaluación","Estado"};
 					model = new DefaultTableModel();
 					model.setColumnIdentifiers(columnNames);
 					table.setModel(model);
@@ -116,7 +120,15 @@ public class ListadoEmpleados extends JDialog {
 			fila[2] = empleado.getApellidos();
 			fila[3] = empleado.getDireccion();
 			fila[4] = empleado.getSexo();
-			fila[5] = empleado.getEdad();
+			if(empleado instanceof JefeProyecto){
+				fila[5] = "Jefe de proyecto";	
+			}else if(empleado instanceof Planificador){
+				fila[5] = "Planficador";	
+			}else if(empleado instanceof Programador){
+				fila[5] = "Programador";
+			}else if(empleado instanceof Diseniador){
+				fila[5] = "Diseñador";	
+			}
 			fila[6] = empleado.getSalario();
 			fila[7] = empleado.getEvaluacionAnual();
 			if (empleado.isOcupado()){
