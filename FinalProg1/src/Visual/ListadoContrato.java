@@ -22,6 +22,10 @@ import java.awt.event.ActionEvent;
 import javax.swing.border.TitledBorder;
 import javax.swing.UIManager;
 import java.awt.Color;
+import java.awt.Toolkit;
+import java.awt.Font;
+import java.awt.SystemColor;
+import javax.swing.ImageIcon;
 
 public class ListadoContrato extends JDialog {
 
@@ -47,42 +51,52 @@ public class ListadoContrato extends JDialog {
 	 * Create the dialog.
 	 */
 	public ListadoContrato() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(ListadoContrato.class.getResource("/Imagenes/moneyArtboard 1@0.5x.png")));
 		setTitle("Listado de Contratos");
 		setBounds(100, 100, 740, 500);
 		getContentPane().setLayout(new BorderLayout());
+		contentPanel.setBackground(Color.WHITE);
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
 		setLocationRelativeTo(null);
 		{
 			JPanel buttonPane = new JPanel();
+			buttonPane.setBackground(new Color(153, 204, 255));
 			buttonPane.setBounds(0, 428, 724, 33);
 			contentPanel.add(buttonPane);
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			{
-				JButton okButton = new JButton("OK");
-				okButton.addActionListener(new ActionListener() {
+				JButton btnOk = new JButton("OK");
+				btnOk.setIcon(new ImageIcon(ListadoContrato.class.getResource("/Imagenes/signo-de-comprobado.png")));
+				btnOk.setBackground(SystemColor.control);
+				btnOk.setFont(new Font("Tahoma", Font.BOLD, 12));
+				btnOk.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						dispose();
 					}
 				});
-				okButton.setActionCommand("OK");
-				buttonPane.add(okButton);
-				getRootPane().setDefaultButton(okButton);
+				btnOk.setActionCommand("OK");
+				buttonPane.add(btnOk);
+				getRootPane().setDefaultButton(btnOk);
 			}
 			{
-				JButton cancelButton = new JButton("Cancel");
-				cancelButton.addActionListener(new ActionListener() {
+				JButton btnCancelar = new JButton("Cancelar");
+				btnCancelar.setIcon(new ImageIcon(ListadoContrato.class.getResource("/Imagenes/boton-de-cerrar.png")));
+				btnCancelar.setBackground(SystemColor.control);
+				btnCancelar.setFont(new Font("Tahoma", Font.BOLD, 12));
+				btnCancelar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						dispose();
 					}
 				});
-				cancelButton.setActionCommand("Cancel");
-				buttonPane.add(cancelButton);
+				btnCancelar.setActionCommand("Cancel");
+				buttonPane.add(btnCancelar);
 			}
 		}
 		{
 			JPanel panel = new JPanel();
+			panel.setBackground(Color.WHITE);
 			panel.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Contratos registrados", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 			panel.setBounds(29, 27, 665, 379);
 			contentPanel.add(panel);
