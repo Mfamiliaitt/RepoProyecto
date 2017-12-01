@@ -87,6 +87,7 @@ public class CrearProyecto extends JDialog {
 	private JFormattedTextField txtTelefonoclient;
 	private JComboBox cbxCargoEmpl;
 	private JComboBox cmbTipoDeProyecto;
+	private JButton btnRegistrar;
 		
 
 	/**
@@ -553,9 +554,7 @@ public class CrearProyecto extends JDialog {
 			{
 				JButton okButton = new JButton("Siguiente");
 				okButton.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-							
-							
+					public void actionPerformed(ActionEvent e) {							
 							if(P1.isVisible()){
 							btnAtras.setEnabled(true);
 							P1.setVisible(false);
@@ -572,10 +571,11 @@ public class CrearProyecto extends JDialog {
 							P2.setVisible(false);
 							P3.setVisible(true);
 						}
-				
-					
+							if(P3.isVisible()){
+								btnRegistrar.setEnabled(true);
+								/*Manuel, escribe el codigo aqui para registrar*/
+							}
 					}
-
 					private boolean faltaAlgo() {
 						boolean falta=false;
 						if(txtCedulacliente.getText().isEmpty() || txtApellido.getText().isEmpty() || txtDireccion.getText().isEmpty() || txtNombre.getText().isEmpty() ){
@@ -587,11 +587,11 @@ public class CrearProyecto extends JDialog {
 				});
 				{
 					btnAtras = new JButton("Atras");
-					if(P1.isVisible()){
-						btnAtras.setEnabled(false);
-					}
 					btnAtras.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
+							if(P1.isVisible()){
+								btnAtras.setEnabled(false);
+							}
 							if(P2.isVisible()){
 								P1.setVisible(true);
 								P2.setVisible(false);
@@ -602,8 +602,11 @@ public class CrearProyecto extends JDialog {
 								P3.setVisible(false);
 							}
 						}
-					});
+					});					
+					btnRegistrar = new JButton("Registrar");
+					buttonPane.add(btnRegistrar);
 					buttonPane.add(btnAtras);
+					btnRegistrar.setEnabled(false);
 				}
 				okButton.setActionCommand("OK");
 				buttonPane.add(okButton);
@@ -665,8 +668,7 @@ public class CrearProyecto extends JDialog {
 			for (Empleado empleado : Empresa.getInstance().getMisEmpleados()) {				
 				if(cbxCargoEmpl.getSelectedItem().toString().equalsIgnoreCase("<Seleccione>")){}
 				else if(cbxCargoEmpl.getSelectedItem().toString().equalsIgnoreCase("Jefe de proyecto")){
-				 if (empleado instanceof JefeProyecto) {
-						
+				 if (empleado instanceof JefeProyecto) {						
 						fila[0] = empleado.getIdentificador();
 						fila[1] = empleado.getNombre();
 						fila[2] = empleado.getApellidos();
