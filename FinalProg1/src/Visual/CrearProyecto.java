@@ -554,14 +554,16 @@ public class CrearProyecto extends JDialog {
 			{
 				JButton okButton = new JButton("Siguiente");
 				okButton.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {							
-							if(P1.isVisible()){
+					public void actionPerformed(ActionEvent e) {
+						if(P1.isVisible() && pAux.contadorDeEmpleados()!=5){
+							JOptionPane.showMessageDialog(null, "La cantidad de empleados por proyecto debe ser 5");
+						}else{
 							btnAtras.setEnabled(true);
 							P1.setVisible(false);
 							P3.setVisible(false);
 							P2.setVisible(true);
 						}
-						else if(P2.isVisible() && faltaAlgo()){
+						if(P2.isVisible() && faltaAlgo()){
 							JOptionPane.showMessageDialog(null, "Debe introducir un cliente");
 						}else if(Empresa.getInstance().isclienteregistrado(txtCedulacliente.getText())){
 							JOptionPane.showMessageDialog(null, "El cliente con cedula "+Empresa.getInstance().buscarClientePorCedula(txtCedulacliente.getText()).getId()+" ya existe, por favor buscarlo.");
@@ -572,8 +574,7 @@ public class CrearProyecto extends JDialog {
 							P3.setVisible(true);
 						}
 							if(P3.isVisible()){
-								btnRegistrar.setEnabled(true);
-								/*Manuel, escribe el codigo aqui para registrar*/
+								btnRegistrar.setEnabled(true);								
 							}
 					}
 					private boolean faltaAlgo() {
@@ -604,6 +605,11 @@ public class CrearProyecto extends JDialog {
 						}
 					});					
 					btnRegistrar = new JButton("Registrar");
+					btnRegistrar.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent e) {
+							/*Guardar los datos*/
+						}
+					});
 					buttonPane.add(btnRegistrar);
 					buttonPane.add(btnAtras);
 					btnRegistrar.setEnabled(false);
