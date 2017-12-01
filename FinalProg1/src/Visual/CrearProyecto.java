@@ -104,11 +104,6 @@ public class CrearProyecto extends JDialog {
 		setTitle("Project wizard");
 		setBounds(100, 100, 740, 500);
 		getContentPane().setLayout(new BorderLayout());
-		{
-			JSpinner spnFechaEntrega = new JSpinner();
-			getContentPane().add(spnFechaEntrega, BorderLayout.NORTH);
-			spnFechaEntrega.setModel(new SpinnerDateModel(new Date(1511582400000L), null, null, Calendar.DAY_OF_YEAR));
-		}
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
@@ -482,9 +477,16 @@ public class CrearProyecto extends JDialog {
 				JButton btnEliminar = new JButton("X");
 				btnEliminar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						Empleado aux = Empresa.getInstance().getMisEmpleados().get(table_1.getSelectedRow());
-						pAux.getElEquipo().remove(aux);
+					try {
+						
+						//Empleado aux = Empresa.getInstance().getMisEmpleados().get(table_1.getSelectedRow());
+						pAux.getElEquipo().remove(table_1.getSelectedRow());
+						pAux.getElEquipo().trimToSize();
 						loadTable1();
+						
+					} catch (Exception e2) {
+						
+					}	
 					}
 				});
 				btnEliminar.setBounds(328, 136, 54, 29);
