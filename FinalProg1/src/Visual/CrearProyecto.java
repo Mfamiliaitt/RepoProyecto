@@ -72,15 +72,14 @@ public class CrearProyecto extends JDialog {
 	private JTable table;
 	private JTable table_1;
 	private Proyecto pAux=new Proyecto();
-	private JTextField txtNom;
-	private JTextField txtCedula;
-	private JTextField txttell;
-	private JTextField txtProNom;
-	private JTextField txtFechaEntre;
-	private JTextField txtEntrega;
-	private JTextField txtFechReali;
+	private JTextField txtNombreCmostrado;
+	private JTextField txtCedulaMostrada;
+	private JTextField txtTelMostrado;
+	private JTextField txtNombreProMostrado;
+	private JTextField txtFechaEntregaMostrada;
+	private JTextField txtPrecioMostrado;
+	private JTextField txtFechRealizacionMostrada;
 	private JPanel P3;
-	
 
 	private JButton btnAtras;
 	private JFormattedTextField txtCedulacliente;
@@ -88,6 +87,10 @@ public class CrearProyecto extends JDialog {
 	private JComboBox cbxCargoEmpl;
 	private JComboBox cmbTipoDeProyecto;
 	private JButton btnRegistrar;
+	private JLabel label_1;
+	private JTextArea txtDescripcion;
+	private JSpinner spnFechaTermino;
+
 		
 
 	/**
@@ -148,13 +151,13 @@ public class CrearProyecto extends JDialog {
 						panelProyecto.add(txtCodigo);
 					}
 					{
-						JLabel label = new JLabel("Descripcion");
-						label.setBounds(32, 92, 151, 14);
-						panelProyecto.add(label);
+						label_1 = new JLabel("Descripcion");
+						label_1.setBounds(32, 92, 151, 14);
+						panelProyecto.add(label_1);
 					}
 					{
-						JTextArea txtDescripcion = new JTextArea();
-						txtDescripcion.setBounds(32, 106, 416, 55);
+						txtDescripcion = new JTextArea();
+						txtDescripcion.setBounds(32, 106, 136, 20);
 						panelProyecto.add(txtDescripcion);
 					}
 					{
@@ -182,6 +185,16 @@ public class CrearProyecto extends JDialog {
 						cmbTipoDeProyecto.setBounds(191, 53, 151, 20);
 						panelProyecto.add(cmbTipoDeProyecto);
 					}
+					{
+						JLabel lblFechaDe = new JLabel("Fecha de termino");
+						lblFechaDe.setBounds(192, 92, 150, 14);
+						panelProyecto.add(lblFechaDe);
+					}
+					
+					spnFechaTermino = new JSpinner();
+					spnFechaTermino.setModel(new SpinnerDateModel(new Date(1512100800000L), null, null, Calendar.DAY_OF_YEAR));
+					spnFechaTermino.setBounds(189, 108, 153, 20);
+					panelProyecto.add(spnFechaTermino);
 				}
 				JPanel panelEmpleado = new JPanel();
 				panelEmpleado.setBounds(10, 189, 704, 251);
@@ -293,116 +306,121 @@ public class CrearProyecto extends JDialog {
 		contentPanel.add(P2);
 		P2.setLayout(null);
 		P2.setVisible(false);
-			JPanel panelInfo = new JPanel();
-			panelInfo.setLayout(null);
-			panelInfo.setBorder(new TitledBorder(new LineBorder(new Color(100, 149, 237)), "Informaci\u00F3n del cliente", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-			panelInfo.setBackground(SystemColor.control);
-			panelInfo.setBounds(10, 26, 387, 239);
-			P2.add(panelInfo);
-			{
-				JLabel label = new JLabel("C\u00E9dula:");
-				label.setBounds(10, 35, 46, 14);
-				panelInfo.add(label);
+		JPanel panelInfo = new JPanel();
+		panelInfo.setLayout(null);
+		panelInfo.setBorder(new TitledBorder(new LineBorder(new Color(100, 149, 237)), "Informaci\u00F3n del cliente", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		panelInfo.setBackground(SystemColor.control);
+		panelInfo.setBounds(10, 26, 387, 239);
+		P2.add(panelInfo);
+		{
+			JLabel label = new JLabel("C\u00E9dula:");
+			label.setBounds(10, 35, 46, 14);
+			panelInfo.add(label);
+		}
+		{
+			JLabel label = new JLabel("Tel\u00E9fono:");
+			label.setBounds(10, 196, 63, 14);
+			panelInfo.add(label);
+		}
+		{
+			JLabel label = new JLabel("Nombre: ");
+			label.setBounds(10, 84, 63, 14);
+			panelInfo.add(label);
+		}
+		{
+			JLabel label = new JLabel("Direcci\u00F3n: ");
+			label.setBounds(10, 157, 63, 14);
+			panelInfo.add(label);
+		}
+		{
+			txtDireccion = new JTextField();
+			txtDireccion.setColumns(10);
+			txtDireccion.setBounds(76, 154, 292, 20);
+			panelInfo.add(txtDireccion);
+		}
+		{
+			txtNombre = new JTextField();
+			txtNombre.setColumns(10);
+			txtNombre.setBounds(76, 81, 292, 20);
+			panelInfo.add(txtNombre);
+		}
+		{
+			JLabel lblNewLabel = new JLabel("Apellido:");
+			lblNewLabel.setBounds(10, 121, 46, 14);
+			panelInfo.add(lblNewLabel);
+		}
+		{
+			txtApellido = new JTextField();
+			txtApellido.setColumns(10);
+			txtApellido.setBounds(76, 118, 292, 20);
+			panelInfo.add(txtApellido);
+		}
+		
+		try {
+			MaskFormatter ced = new MaskFormatter("###-#######-#");
+			ced.setPlaceholderCharacter('_');
+			txtCedulacliente = new JFormattedTextField(ced);	
+		} catch (Exception e) {}
+		
+		txtCedulacliente.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {									
+				Cliente c=Empresa.getInstance().buscarClientePorCedula(txtCedulacliente.getText());
+				
+				if (c!=null){
+		txtCedulacliente.setText((" ")+c.getId());
+		txtNombre.setText((" ")+c.getNombre());
+		txtApellido.setText((" ")+c.getApellido());
+		txtDireccion.setText((" ")+c.getDireccion());
+		txtTelefonoclient.setText((" ")+c.getTelefono());
+		
+		txtCedulacliente.setEnabled(false);
+		txtNombre.setEnabled(false);
+		txtApellido.setEnabled(false);
+		txtDireccion.setEnabled(false);
+		txtTelefonoclient.setEnabled(false);
+		
+				}
+				else{
+				
+		txtCedulacliente.setText(" ");
+		txtNombre.setText(" ");
+		txtApellido.setText(" ");
+		txtDireccion.setText(" ");
+		txtTelefonoclient.setText(" ");
+		
+		txtCedulacliente.setEnabled(true);
+		txtNombre.setEnabled(true);
+		txtApellido.setEnabled(true);
+		txtDireccion.setEnabled(true);
+		txtTelefonoclient.setEnabled(true);
+		
+				}
+				
 			}
-			{
-				JLabel label = new JLabel("Tel\u00E9fono:");
-				label.setBounds(10, 196, 63, 14);
-				panelInfo.add(label);
-			}
-			{
-				JLabel label = new JLabel("Nombre: ");
-				label.setBounds(10, 84, 63, 14);
-				panelInfo.add(label);
-			}
-			{
-				JLabel label = new JLabel("Direcci\u00F3n: ");
-				label.setBounds(10, 157, 63, 14);
-				panelInfo.add(label);
-			}
-			{
-				txtDireccion = new JTextField();
-				txtDireccion.setColumns(10);
-				txtDireccion.setBounds(76, 154, 292, 20);
-				panelInfo.add(txtDireccion);
-			}
-			{
-				txtNombre = new JTextField();
-				txtNombre.setColumns(10);
-				txtNombre.setBounds(76, 81, 292, 20);
-				panelInfo.add(txtNombre);
-			}
-			{
-				JLabel lblNewLabel = new JLabel("Apellido:");
-				lblNewLabel.setBounds(10, 121, 46, 14);
-				panelInfo.add(lblNewLabel);
-			}
-			{
-				txtApellido = new JTextField();
-				txtApellido.setColumns(10);
-				txtApellido.setBounds(76, 118, 292, 20);
-				panelInfo.add(txtApellido);
-			}
-			
-			try {
-				MaskFormatter ced = new MaskFormatter("###-#######-#");
-				ced.setPlaceholderCharacter('_');
-				txtCedulacliente = new JFormattedTextField(ced);				
-				txtCedulacliente.addKeyListener(new KeyAdapter() {
-					@Override
-					public void keyReleased(KeyEvent e) {									
-						Cliente c=Empresa.getInstance().buscarClientePorCedula(txtCedulacliente.getText());
-						
-						if (c!=null){
-							txtCedulacliente.setText((" ")+c.getId());
-							txtNombre.setText((" ")+c.getNombre());
-							txtApellido.setText((" ")+c.getApellido());
-							txtDireccion.setText((" ")+c.getDireccion());
-							txtTelefonoclient.setText((" ")+c.getTelefono());
-							
-							txtCedulacliente.setEnabled(false);
-							txtNombre.setEnabled(false);
-							txtApellido.setEnabled(false);
-							txtDireccion.setEnabled(false);
-							txtTelefonoclient.setEnabled(false);
-							
-						}
-						else{
-						
-							txtCedulacliente.setText(" ");
-							txtNombre.setText(" ");
-							txtApellido.setText(" ");
-							txtDireccion.setText(" ");
-							txtTelefonoclient.setText(" ");
-							
-							txtCedulacliente.setEnabled(true);
-							txtNombre.setEnabled(true);
-							txtApellido.setEnabled(true);
-							txtDireccion.setEnabled(true);
-							txtTelefonoclient.setEnabled(true);
-							
-						}
-						
-					}
-				});
-			} catch (Exception e) {}
-			txtCedulacliente.setBounds(76, 32, 128, 20);
-			panelInfo.add(txtCedulacliente);		
-						
+		});
+		txtCedulacliente.setBounds(76, 32, 128, 20);
+		panelInfo.add(txtCedulacliente);		
+		
+		try {
+			MaskFormatter tel = new MaskFormatter("###-###-####");
+			tel.setPlaceholderCharacter('_');
+			txtTelefonoclient = new JFormattedTextField(tel);
+		} catch (Exception e) {}
+		
+		txtTelefonoclient.setBounds(76, 193, 128, 20);
+		panelInfo.add(txtTelefonoclient);
+		{
+			JLabel lblNewLabel_1 = new JLabel("Imagen que se quiera poner");
+			lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+			lblNewLabel_1.setBounds(458, 26, 217, 104);
+			P2.add(lblNewLabel_1);
+		}
+		
+	
+		
 
-						try {
-							MaskFormatter tel = new MaskFormatter("###-###-####");
-							tel.setPlaceholderCharacter('_');
-							txtTelefonoclient = new JFormattedTextField(tel);
-						} catch (Exception e) {}
-						
-						txtTelefonoclient.setBounds(76, 193, 128, 20);
-						panelInfo.add(txtTelefonoclient);
-						{
-							JLabel lblNewLabel_1 = new JLabel("Imagen que se quiera poner");
-							lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-							lblNewLabel_1.setBounds(458, 26, 217, 104);
-							P2.add(lblNewLabel_1);
-						}{}	
+	
 		{
 			P3 = new JPanel();
 			P3.setBounds(0, 0, 724, 428);
@@ -422,11 +440,11 @@ public class CrearProyecto extends JDialog {
 					panel.add(label);
 				}
 				{
-					txtNom = new JTextField();
-					txtNom.setEditable(false);
-					txtNom.setColumns(10);
-					txtNom.setBounds(77, 67, 408, 21);
-					panel.add(txtNom);
+					txtNombreCmostrado = new JTextField();
+					txtNombreCmostrado.setEditable(false);
+					txtNombreCmostrado.setColumns(10);
+					txtNombreCmostrado.setBounds(77, 67, 408, 21);
+					panel.add(txtNombreCmostrado);
 				}
 				{
 					JLabel label = new JLabel("C\u00E9dula:");
@@ -434,11 +452,11 @@ public class CrearProyecto extends JDialog {
 					panel.add(label);
 				}
 				{
-					txtCedula = new JTextField();
-					txtCedula.setEditable(false);
-					txtCedula.setColumns(10);
-					txtCedula.setBounds(77, 24, 117, 21);
-					panel.add(txtCedula);
+					txtCedulaMostrada = new JTextField();
+					txtCedulaMostrada.setEditable(false);
+					txtCedulaMostrada.setColumns(10);
+					txtCedulaMostrada.setBounds(77, 24, 117, 21);
+					panel.add(txtCedulaMostrada);
 				}
 				{
 					JLabel label = new JLabel("Tel\u00E9fono:");
@@ -446,11 +464,11 @@ public class CrearProyecto extends JDialog {
 					panel.add(label);
 				}
 				{
-					txttell = new JTextField();
-					txttell.setEditable(false);
-					txttell.setColumns(10);
-					txttell.setBounds(268, 24, 217, 21);
-					panel.add(txttell);
+					txtTelMostrado = new JTextField();
+					txtTelMostrado.setEditable(false);
+					txtTelMostrado.setColumns(10);
+					txtTelMostrado.setBounds(268, 24, 217, 21);
+					panel.add(txtTelMostrado);
 				}
 			}
 			{
@@ -466,11 +484,11 @@ public class CrearProyecto extends JDialog {
 					panel.add(label);
 				}
 				{
-					txtProNom = new JTextField();
-					txtProNom.setEditable(false);
-					txtProNom.setColumns(10);
-					txtProNom.setBounds(140, 15, 476, 20);
-					panel.add(txtProNom);
+					txtNombreProMostrado = new JTextField();
+					txtNombreProMostrado.setEditable(false);
+					txtNombreProMostrado.setColumns(10);
+					txtNombreProMostrado.setBounds(140, 15, 476, 20);
+					panel.add(txtNombreProMostrado);
 				}
 				{
 					JLabel label = new JLabel("Fecha de entrega:");
@@ -478,12 +496,12 @@ public class CrearProyecto extends JDialog {
 					panel.add(label);
 				}
 				{
-					txtFechaEntre = new JTextField();
-					txtFechaEntre.setText((String) null);
-					txtFechaEntre.setEditable(false);
-					txtFechaEntre.setColumns(10);
-					txtFechaEntre.setBounds(438, 47, 178, 20);
-					panel.add(txtFechaEntre);
+					txtFechaEntregaMostrada = new JTextField();
+					txtFechaEntregaMostrada.setText((String) null);
+					txtFechaEntregaMostrada.setEditable(false);
+					txtFechaEntregaMostrada.setColumns(10);
+					txtFechaEntregaMostrada.setBounds(438, 47, 178, 20);
+					panel.add(txtFechaEntregaMostrada);
 				}
 				{
 					JLabel label = new JLabel("Total a pagar:");
@@ -491,11 +509,11 @@ public class CrearProyecto extends JDialog {
 					panel.add(label);
 				}
 				{
-					txtEntrega = new JTextField();
-					txtEntrega.setEditable(false);
-					txtEntrega.setColumns(10);
-					txtEntrega.setBounds(140, 78, 178, 20);
-					panel.add(txtEntrega);
+					txtPrecioMostrado = new JTextField();
+					txtPrecioMostrado.setEditable(false);
+					txtPrecioMostrado.setColumns(10);
+					txtPrecioMostrado.setBounds(140, 78, 178, 20);
+					panel.add(txtPrecioMostrado);
 				}
 				{
 					JLabel label = new JLabel("Fecha de Realizaci\u00F3n:");
@@ -503,12 +521,12 @@ public class CrearProyecto extends JDialog {
 					panel.add(label);
 				}
 				{
-					txtFechReali = new JTextField();
-					txtFechReali.setText((String) null);
-					txtFechReali.setEditable(false);
-					txtFechReali.setColumns(10);
-					txtFechReali.setBounds(140, 50, 178, 20);
-					panel.add(txtFechReali);
+					txtFechRealizacionMostrada = new JTextField();
+					txtFechRealizacionMostrada.setText((String) null);
+					txtFechRealizacionMostrada.setEditable(false);
+					txtFechRealizacionMostrada.setColumns(10);
+					txtFechRealizacionMostrada.setBounds(140, 50, 178, 20);
+					panel.add(txtFechRealizacionMostrada);
 				}
 			}
 			
@@ -523,6 +541,9 @@ public class CrearProyecto extends JDialog {
 			scrollPane.setBounds(10, 22, 684, 137);
 			panel.add(scrollPane);
 		}
+			
+
+	
 		{
 			{
 			}
@@ -554,28 +575,47 @@ public class CrearProyecto extends JDialog {
 			{
 				JButton okButton = new JButton("Siguiente");
 				okButton.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						if(P1.isVisible() && pAux.contadorDeEmpleados()!=5){
-							JOptionPane.showMessageDialog(null, "La cantidad de empleados por proyecto debe ser 5");
-						}else{
-							btnAtras.setEnabled(true);
-							P1.setVisible(false);
-							P3.setVisible(false);
-							P2.setVisible(true);
+					public void actionPerformed(ActionEvent e) {		
+						int k=0;
+						if(P1.isVisible()){								
+							if(pAux.contadorDeEmpleados()!=5){		
+								JOptionPane.showMessageDialog(null, "La cantidad de empleados por proyecto debe ser 5");
+								}else{
+									k=1;
+									P1.setVisible(false);
+									P3.setVisible(false);
+									P2.setVisible(true);
+									}
+							
 						}
-						if(P2.isVisible() && faltaAlgo()){
-							JOptionPane.showMessageDialog(null, "Debe introducir un cliente");
-						}else if(Empresa.getInstance().isclienteregistrado(txtCedulacliente.getText())){
-							JOptionPane.showMessageDialog(null, "El cliente con cedula "+Empresa.getInstance().buscarClientePorCedula(txtCedulacliente.getText()).getId()+" ya existe, por favor buscarlo.");
-						}else{
-							btnAtras.setEnabled(true);
+						else if(P2.isVisible()){
+							if(faltaAlgo()){
+								JOptionPane.showMessageDialog(null, "Debe introducir un cliente");
+							}else{
+								P1.setVisible(false);
+								P2.setVisible(false);
+								P3.setVisible(true);
+							}
+							
+						} else{
+							btnRegistrar.setEnabled(true);
 							P1.setVisible(false);
 							P2.setVisible(false);
 							P3.setVisible(true);
+							txtCedulaMostrada.setText(txtCedulacliente.getText());
+							txtNombreCmostrado.setText(txtNombre.getText()+" "+txtApellido.getText());
+							txtTelMostrado.setText(txtTelefonoclient.getText());
+							txtNombreProMostrado.setText(txtDescripcion.getText());
+							Date dateHoy = new Date();
+						    Contrato contrato=new Contrato(txtCodigo.getText(), txtCedulaMostrada.getText(), dateHoy, (Date)spnFechaTermino.getValue(), false);
+						    Proyecto proyecto = pAux;
+						    proyecto.setCodigoProyecto(txtCodigo.getText());
+						    proyecto.setDescripcionDeProyecto(txtNombreProMostrado.getText());
+						    contrato.setMiProyecto(proyecto);
+							txtPrecioMostrado.setText(String.valueOf(contrato.costoDeProyectoAtiempo()));
+							
+							
 						}
-							if(P3.isVisible()){
-								btnRegistrar.setEnabled(true);								
-							}
 					}
 					private boolean faltaAlgo() {
 						boolean falta=false;
@@ -608,7 +648,6 @@ public class CrearProyecto extends JDialog {
 					btnRegistrar.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
 							/*Guardar los datos*/
-						//	txtNombre.
 						}
 					});
 					buttonPane.add(btnRegistrar);
@@ -620,7 +659,7 @@ public class CrearProyecto extends JDialog {
 				getRootPane().setDefaultButton(okButton);
 			}
 			{
-				JButton cancelButton = new JButton("Cancelar");
+				JButton cancelButton = new JButton("Cancel");
 				cancelButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						dispose();
@@ -672,8 +711,12 @@ public class CrearProyecto extends JDialog {
 		
 			model.setRowCount(0);
 			fila = new Object[model.getColumnCount()];
+			
 			for (Empleado empleado : Empresa.getInstance().getMisEmpleados()) {				
 				if(cbxCargoEmpl.getSelectedItem().toString().equalsIgnoreCase("<Seleccione>")){}
+				
+				/******Filtrado de los empleados******/
+				
 				else if(cbxCargoEmpl.getSelectedItem().toString().equalsIgnoreCase("Jefe de proyecto")){
 				 if (empleado instanceof JefeProyecto) {						
 						fila[0] = empleado.getIdentificador();

@@ -44,9 +44,9 @@ public class Cliente {
 	public void setMiContrato(ArrayList<Contrato> miContrato) {
 		this.miContrato = miContrato;
 	}
-public void agregarContrato(String codigoProyecto, String idCliente, double costoProyecto, Date fechaInicio, Date fechaTermino,
+public void agregarContrato(String codigoProyecto, String idCliente, Date fechaInicio, Date fechaTermino,
 		Boolean firmado){
-	Contrato c = new Contrato(codigoProyecto, idCliente, costoProyecto, fechaInicio, fechaTermino, firmado);
+	Contrato c = new Contrato(codigoProyecto, idCliente, fechaInicio, fechaTermino, firmado);
 	miContrato.add(c);
 	Empresa.getInstance().addContrato(c);
 }

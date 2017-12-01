@@ -10,12 +10,11 @@ public class Contrato {
 	private Date fechaTermino;	
 	private Boolean firmado=false;
 	private Proyecto miProyecto;
-	public Contrato(String codigoProyecto, String idCliente, double costoProyecto, Date fechaInicio, Date fechaTermino,
+	public Contrato(String codigoProyecto, String idCliente, Date fechaInicio, Date fechaTermino,
 			Boolean firmado) {
 		super();
 		this.codigoProyecto = codigoProyecto;
-		this.idCliente = idCliente;
-		this.costoProyecto = costoProyecto;
+		this.idCliente = idCliente;		
 		this.fechaInicio = fechaInicio;
 		this.fechaTermino = fechaTermino;
 		this.firmado = firmado;
