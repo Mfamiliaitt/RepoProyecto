@@ -56,6 +56,7 @@ import java.awt.Font;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
+import java.awt.Toolkit;
 
 public class CrearProyecto extends JDialog {
 
@@ -111,7 +112,8 @@ public class CrearProyecto extends JDialog {
 	 * Create the dialog.
 	 */
 	public CrearProyecto() {
-		setTitle("Project wizard");
+		setIconImage(Toolkit.getDefaultToolkit().getImage(CrearProyecto.class.getResource("/Imagenes/moneyArtboard 1@0.5x.png")));
+		setTitle("Crear Proyecto");
 		setBounds(100, 100, 740, 500);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -135,11 +137,13 @@ public class CrearProyecto extends JDialog {
 					panelProyecto.setBorder(new TitledBorder(null, "Datos del proyecto", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 					{
 						JLabel label = new JLabel("C\u00F3digo:");
+						label.setFont(new Font("Century Gothic", Font.BOLD | Font.ITALIC, 11));
 						label.setBounds(32, 38, 46, 14);
 						panelProyecto.add(label);
 					}
 					{
 						JLabel lblTipoDeProyecto = new JLabel("Tipo de proyecto:");
+						lblTipoDeProyecto.setFont(new Font("Century Gothic", Font.BOLD | Font.ITALIC, 11));
 						lblTipoDeProyecto.setBounds(192, 38, 150, 14);
 						panelProyecto.add(lblTipoDeProyecto);
 					}
@@ -155,16 +159,19 @@ public class CrearProyecto extends JDialog {
 					}
 					{
 						label_1 = new JLabel("Descripcion");
+						label_1.setFont(new Font("Century Gothic", Font.BOLD | Font.ITALIC, 11));
 						label_1.setBounds(32, 92, 151, 14);
 						panelProyecto.add(label_1);
 					}
 					{
 						txtDescripcion = new JTextArea();
+						txtDescripcion.setBorder(new LineBorder(new Color(0, 0, 0)));
 						txtDescripcion.setBounds(32, 106, 136, 20);
 						panelProyecto.add(txtDescripcion);
 					}
 					{
 						cmbTipoDeProyecto = new JComboBox();
+						cmbTipoDeProyecto.setBackground(new Color(153, 204, 255));
 						cmbTipoDeProyecto.addActionListener(new ActionListener() {
 							public void actionPerformed(ActionEvent e) {
 								if(cmbTipoDeProyecto.getSelectedIndex()!=0){
@@ -190,6 +197,7 @@ public class CrearProyecto extends JDialog {
 					}
 					{
 						JLabel lblFechaDe = new JLabel("Fecha de termino");
+						lblFechaDe.setFont(new Font("Century Gothic", Font.BOLD | Font.ITALIC, 11));
 						lblFechaDe.setBounds(192, 92, 150, 14);
 						panelProyecto.add(lblFechaDe);
 					}
@@ -207,11 +215,13 @@ public class CrearProyecto extends JDialog {
 				panelEmpleado.setLayout(null);
 				{
 					JLabel lblCargo = new JLabel("Cargo: ");
+					lblCargo.setFont(new Font("Century Gothic", Font.BOLD | Font.ITALIC, 11));
 					lblCargo.setBounds(10, 33, 46, 14);
 					panelEmpleado.add(lblCargo);
 				}
 				{
 					cbxCargoEmpl = new JComboBox();
+					cbxCargoEmpl.setBackground(new Color(153, 204, 255));
 					cbxCargoEmpl.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
 							loadTable();
@@ -269,6 +279,7 @@ public class CrearProyecto extends JDialog {
 				panelEmpleado.add(btnEliminar);
 				
 				JPanel panel_2 = new JPanel();
+				panel_2.setBackground(Color.WHITE);
 				panel_2.setBounds(10, 58, 293, 159);
 				panelEmpleado.add(panel_2);
 				panel_2.setLayout(new BorderLayout(0, 0));
@@ -286,6 +297,7 @@ public class CrearProyecto extends JDialog {
 				
 					
 					JPanel panel_1_1 = new JPanel();
+					panel_1_1.setBackground(Color.WHITE);
 					panel_1_1.setBounds(401, 58, 293, 159);
 					panelEmpleado.add(panel_1_1);
 					panel_1_1.setLayout(new BorderLayout(0, 0));
@@ -302,7 +314,8 @@ public class CrearProyecto extends JDialog {
 					panel_1_1.add(scrollPane1, BorderLayout.CENTER);
 					
 							{
-								JLabel label = new JLabel("Imagen del proyecto");
+								JLabel label = new JLabel("");
+								label.setIcon(new ImageIcon(CrearProyecto.class.getResource("/Imagenes/compartiendo (2).png")));
 								label.setHorizontalAlignment(SwingConstants.CENTER);
 								label.setBounds(23, 11, 219, 167);
 								P1.add(label);
@@ -429,6 +442,7 @@ public class CrearProyecto extends JDialog {
 	
 		{
 			P3 = new JPanel();
+			P3.setBackground(Color.WHITE);
 			P3.setBounds(0, 0, 724, 428);
 			contentPanel.add(P3);
 			P3.setLayout(null);
@@ -442,6 +456,7 @@ public class CrearProyecto extends JDialog {
 				P3.add(panel);
 				{
 					JLabel label = new JLabel("Nombre:");
+					label.setFont(new Font("Century Gothic", Font.BOLD | Font.ITALIC, 11));
 					label.setBounds(10, 70, 57, 14);
 					panel.add(label);
 				}
@@ -454,6 +469,7 @@ public class CrearProyecto extends JDialog {
 				}
 				{
 					JLabel label = new JLabel("C\u00E9dula:");
+					label.setFont(new Font("Century Gothic", Font.BOLD | Font.ITALIC, 11));
 					label.setBounds(10, 29, 57, 14);
 					panel.add(label);
 				}
@@ -466,6 +482,7 @@ public class CrearProyecto extends JDialog {
 				}
 				{
 					JLabel label = new JLabel("Tel\u00E9fono:");
+					label.setFont(new Font("Century Gothic", Font.BOLD | Font.ITALIC, 11));
 					label.setBounds(204, 29, 57, 14);
 					panel.add(label);
 				}
@@ -486,6 +503,7 @@ public class CrearProyecto extends JDialog {
 				P3.add(panel);
 				{
 					JLabel label = new JLabel("Nombre:");
+					label.setFont(new Font("Century Gothic", Font.BOLD | Font.ITALIC, 11));
 					label.setBounds(10, 18, 55, 14);
 					panel.add(label);
 				}
@@ -498,6 +516,7 @@ public class CrearProyecto extends JDialog {
 				}
 				{
 					JLabel label = new JLabel("Fecha de entrega:");
+					label.setFont(new Font("Century Gothic", Font.BOLD | Font.ITALIC, 11));
 					label.setBounds(328, 50, 110, 14);
 					panel.add(label);
 				}
@@ -511,6 +530,7 @@ public class CrearProyecto extends JDialog {
 				}
 				{
 					JLabel label = new JLabel("Total a pagar:");
+					label.setFont(new Font("Century Gothic", Font.BOLD | Font.ITALIC, 11));
 					label.setBounds(10, 81, 85, 14);
 					panel.add(label);
 				}
@@ -523,6 +543,7 @@ public class CrearProyecto extends JDialog {
 				}
 				{
 					JLabel label = new JLabel("Fecha de Realizaci\u00F3n:");
+					label.setFont(new Font("Century Gothic", Font.BOLD | Font.ITALIC, 11));
 					label.setBounds(10, 53, 131, 14);
 					panel.add(label);
 				}
@@ -581,6 +602,8 @@ public class CrearProyecto extends JDialog {
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				JButton okButton = new JButton("Siguiente");
+				okButton.setBackground(SystemColor.control);
+				okButton.setFont(new Font("Tahoma", Font.BOLD, 12));
 				okButton.setIcon(new ImageIcon(CrearProyecto.class.getResource("/Imagenes/flecha-de-siguiente.png")));
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {		
@@ -631,6 +654,8 @@ public class CrearProyecto extends JDialog {
 				});
 				{
 					btnAtras = new JButton("Atras");
+					btnAtras.setBackground(SystemColor.control);
+					btnAtras.setFont(new Font("Tahoma", Font.BOLD, 12));
 					btnAtras.setIcon(new ImageIcon(CrearProyecto.class.getResource("/Imagenes/flecha-blanca-hacia-la-izquierda-.png")));
 					btnAtras.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
@@ -651,6 +676,8 @@ public class CrearProyecto extends JDialog {
 						}
 					});					
 					btnRegistrar = new JButton("Registrar");
+					btnRegistrar.setBackground(SystemColor.control);
+					btnRegistrar.setFont(new Font("Tahoma", Font.BOLD, 12));
 					btnRegistrar.setIcon(new ImageIcon(CrearProyecto.class.getResource("/Imagenes/signo-de-comprobado.png")));
 					btnRegistrar.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
@@ -667,6 +694,8 @@ public class CrearProyecto extends JDialog {
 			}
 			{
 				JButton cancelButton = new JButton("Cancel");
+				cancelButton.setBackground(SystemColor.control);
+				cancelButton.setFont(new Font("Tahoma", Font.BOLD, 12));
 				cancelButton.setIcon(new ImageIcon(CrearProyecto.class.getResource("/Imagenes/boton-de-cerrar.png")));
 				cancelButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
