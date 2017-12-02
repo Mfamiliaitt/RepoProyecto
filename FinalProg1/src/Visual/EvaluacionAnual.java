@@ -53,7 +53,7 @@ public class EvaluacionAnual extends JDialog {
 	public EvaluacionAnual() {
 		Empresa.getInstance().evaluaciondelempleado();
 		setIconImage(Toolkit.getDefaultToolkit().getImage(EvaluacionAnual.class.getResource("/Imagenes/moneyArtboard 1@0.5x.png")));
-		setTitle("Listado de empleados");
+		setTitle("Evaluacion Anual");
 		setBounds(100, 100, 557, 358);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBackground(Color.WHITE);
@@ -75,7 +75,7 @@ public class EvaluacionAnual extends JDialog {
 					
 					table = new JTable();
 					table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-					String[] columnNames = {"Cédula","Nombre","Apellido","Dirección", "Sexo", "Cargo","Salario","Evaluación","Estado"};
+					String[] columnNames = {"Cédula","Nombre","Apellido","Cargo","Evaluación"};
 					model = new DefaultTableModel();
 					model.setColumnIdentifiers(columnNames);
 					table.setModel(model);
