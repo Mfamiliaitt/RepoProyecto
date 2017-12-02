@@ -598,10 +598,7 @@ public class CrearProyecto extends JDialog {
 							}
 							
 						} else{
-							btnRegistrar.setEnabled(true);
-							P1.setVisible(false);
-							P2.setVisible(false);
-							P3.setVisible(true);
+							
 							txtCedulaMostrada.setText(txtCedulacliente.getText());
 							txtNombreCmostrado.setText(txtNombre.getText()+" "+txtApellido.getText());
 							txtTelMostrado.setText(txtTelefonoclient.getText());
@@ -613,7 +610,10 @@ public class CrearProyecto extends JDialog {
 						    proyecto.setDescripcionDeProyecto(txtNombreProMostrado.getText());
 						    contrato.setMiProyecto(proyecto);
 							txtPrecioMostrado.setText(Double.toString(contrato.costoDeProyectoAtiempo()));
-							
+							btnRegistrar.setEnabled(true);
+							P1.setVisible(false);
+							P2.setVisible(false);
+							P3.setVisible(true);
 							
 						}
 					}
