@@ -176,7 +176,7 @@ public class Principal extends JFrame {
 			}
 		});
 		mntmNewMenuItem_7.setBackground(Color.WHITE);
-		mntmNewMenuItem_7.setIcon(new ImageIcon(Principal.class.getResource("/Imagenes/calendario-dia-veintitres-.png")));
+		mntmNewMenuItem_7.setIcon(new ImageIcon(Principal.class.getResource("/Imagenes/boton-de-una-estrella (1).png")));
 		mnNewMenu.add(mntmNewMenuItem_7);
 		
 		JMenu mnNewMenu_1 = new JMenu("Proyectos");
