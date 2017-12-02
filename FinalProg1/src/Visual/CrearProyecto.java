@@ -118,7 +118,8 @@ public class CrearProyecto extends JDialog {
 		contentPanel.setLayout(null);
 		
 		P1 = new JPanel();
-		P1.setBounds(0, 0, 724, 440);
+		P1.setBackground(Color.WHITE);
+		P1.setBounds(0, 0, 724, 428);
 		contentPanel.add(P1);
 		P1.setLayout(null);
 		
@@ -126,6 +127,7 @@ public class CrearProyecto extends JDialog {
 		
 				{
 					JPanel panelProyecto = new JPanel();
+					panelProyecto.setBackground(Color.WHITE);
 					panelProyecto.setBounds(252, 0, 462, 187);
 					P1.add(panelProyecto);
 					panelProyecto.setLayout(null);
@@ -197,6 +199,7 @@ public class CrearProyecto extends JDialog {
 					panelProyecto.add(spnFechaTermino);
 				}
 				JPanel panelEmpleado = new JPanel();
+				panelEmpleado.setBackground(Color.WHITE);
 				panelEmpleado.setBounds(10, 189, 704, 251);
 				P1.add(panelEmpleado);
 				panelEmpleado.setBorder(new TitledBorder(null, "Datos del equipo", TitledBorder.LEADING, TitledBorder.TOP, null, null));
@@ -309,7 +312,7 @@ public class CrearProyecto extends JDialog {
 		JPanel panelInfo = new JPanel();
 		panelInfo.setLayout(null);
 		panelInfo.setBorder(new TitledBorder(new LineBorder(new Color(100, 149, 237)), "Informaci\u00F3n del cliente", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-		panelInfo.setBackground(SystemColor.control);
+		panelInfo.setBackground(Color.WHITE);
 		panelInfo.setBounds(10, 26, 387, 239);
 		P2.add(panelInfo);
 		{
@@ -431,7 +434,7 @@ public class CrearProyecto extends JDialog {
 				JPanel panel = new JPanel();
 				panel.setLayout(null);
 				panel.setBorder(new TitledBorder(new LineBorder(new Color(100, 149, 237)), "Informaci\u00F3n del Cliente:", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-				panel.setBackground(SystemColor.control);
+				panel.setBackground(Color.WHITE);
 				panel.setBounds(10, 11, 704, 108);
 				P3.add(panel);
 				{
@@ -475,7 +478,7 @@ public class CrearProyecto extends JDialog {
 				JPanel panel = new JPanel();
 				panel.setLayout(null);
 				panel.setBorder(new TitledBorder(new LineBorder(new Color(100, 149, 237)), "Informaci\u00F3n Del Proyecto:", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-				panel.setBackground(SystemColor.control);
+				panel.setBackground(Color.WHITE);
 				panel.setBounds(10, 130, 704, 108);
 				P3.add(panel);
 				{
@@ -533,7 +536,7 @@ public class CrearProyecto extends JDialog {
 			JPanel panel = new JPanel();
 			panel.setLayout(null);
 			panel.setBorder(new TitledBorder(new LineBorder(new Color(100, 149, 237)), "Equipo de Trabajo", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-			panel.setBackground(SystemColor.menu);
+			panel.setBackground(Color.WHITE);
 			panel.setBounds(10, 235, 704, 170);
 			P3.add(panel);
 			
@@ -570,6 +573,7 @@ public class CrearProyecto extends JDialog {
 		setLocationRelativeTo(null);
 		{
 			JPanel buttonPane = new JPanel();
+			buttonPane.setBackground(new Color(153, 204, 255));
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
