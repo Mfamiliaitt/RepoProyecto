@@ -24,6 +24,8 @@ import javax.swing.ImageIcon;
 import java.awt.Font;
 import java.awt.SystemColor;
 import java.awt.Toolkit;
+import javax.swing.JLabel;
+import javax.swing.JFormattedTextField;
 
 public class ListadoClientes extends JDialog {
 
@@ -31,6 +33,7 @@ public class ListadoClientes extends JDialog {
 	private JTable table;
 	private static Object[] fila;
 	private static DefaultTableModel model;
+	private JButton btnBuscarCliente;
 
 	/**
 	 * Launch the application.
@@ -96,7 +99,7 @@ public class ListadoClientes extends JDialog {
 			JPanel panel = new JPanel();
 			panel.setBackground(Color.WHITE);
 			panel.setBorder(new TitledBorder(null, "Clientes registrados ", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-			panel.setBounds(29, 27, 665, 379);
+			panel.setBounds(29, 68, 665, 338);
 			contentPanel.add(panel);
 			panel.setLayout(new BorderLayout(0, 0));
 			{
@@ -117,6 +120,30 @@ public class ListadoClientes extends JDialog {
 				}
 			}
 		}
+		{
+			JPanel panel = new JPanel();
+			panel.setBackground(new Color(153, 204, 255));
+			panel.setBounds(29, 11, 665, 46);
+			contentPanel.add(panel);
+			panel.setLayout(null);
+			{
+				JLabel lblNewLabel = new JLabel("Buscar cliente:");
+				lblNewLabel.setFont(new Font("Century Gothic", Font.BOLD | Font.ITALIC, 11));
+				lblNewLabel.setBounds(10, 14, 95, 14);
+				panel.add(lblNewLabel);
+			}
+			
+			JFormattedTextField formattedTextField = new JFormattedTextField();
+			formattedTextField.setBounds(108, 8, 135, 20);
+			panel.add(formattedTextField);
+			
+			btnBuscarCliente = new JButton("Buscar");
+			btnBuscarCliente.setBackground(SystemColor.control);
+			btnBuscarCliente.setFont(new Font("Tahoma", Font.BOLD, 12));
+			btnBuscarCliente.setIcon(new ImageIcon(ListadoClientes.class.getResource("/Imagenes/magnifier.png")));
+			btnBuscarCliente.setBounds(254, 7, 114, 23);
+			panel.add(btnBuscarCliente);
+		}
 	}
 
 	private void loadTable() {
@@ -132,5 +159,4 @@ public class ListadoClientes extends JDialog {
 			model.addRow(fila);
 	}
 	}
-
 }

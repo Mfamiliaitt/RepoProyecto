@@ -29,6 +29,8 @@ import java.awt.Font;
 import java.awt.SystemColor;
 import javax.swing.ImageIcon;
 import java.awt.Toolkit;
+import javax.swing.JLabel;
+import javax.swing.JFormattedTextField;
 
 public class ListadoEmpleados extends JDialog {
 
@@ -102,7 +104,7 @@ public class ListadoEmpleados extends JDialog {
 			JPanel panel = new JPanel();
 			panel.setBackground(Color.WHITE);
 			panel.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Empleados registrados", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-			panel.setBounds(29, 27, 665, 379);
+			panel.setBounds(29, 68, 665, 338);
 			contentPanel.add(panel);
 			panel.setLayout(new BorderLayout(0, 0));
 			{
@@ -119,6 +121,31 @@ public class ListadoEmpleados extends JDialog {
 					loadTable();
 					scrollPane.setViewportView(table);
 				}
+			}
+		}
+		{
+			JPanel panel = new JPanel();
+			panel.setBackground(new Color(153, 204, 255));
+			panel.setBounds(29, 11, 665, 46);
+			contentPanel.add(panel);
+			panel.setLayout(null);
+			{
+				JLabel lblNewLabel = new JLabel("Buscar empleado:");
+				lblNewLabel.setFont(new Font("Century Gothic", Font.BOLD | Font.ITALIC, 11));
+				lblNewLabel.setBounds(23, 11, 102, 14);
+				panel.add(lblNewLabel);
+			}
+			{
+				JFormattedTextField formattedTextField = new JFormattedTextField();
+				formattedTextField.setBounds(135, 9, 115, 20);
+				panel.add(formattedTextField);
+			}
+			{
+				JButton btnNewButton = new JButton("Buscar");
+				btnNewButton.setIcon(new ImageIcon(ListadoEmpleados.class.getResource("/Imagenes/magnifier.png")));
+				btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 12));
+				btnNewButton.setBounds(264, 8, 115, 23);
+				panel.add(btnNewButton);
 			}
 		}
 	}
