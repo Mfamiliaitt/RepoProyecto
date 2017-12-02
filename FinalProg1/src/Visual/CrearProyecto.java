@@ -55,6 +55,7 @@ import java.awt.SystemColor;
 import java.awt.Font;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import javax.swing.ImageIcon;
 
 public class CrearProyecto extends JDialog {
 
@@ -221,7 +222,8 @@ public class CrearProyecto extends JDialog {
 					panelEmpleado.add(cbxCargoEmpl);
 				}
 				
-				JButton btnAgregar = new JButton(">");
+				JButton btnAgregar = new JButton("");
+				btnAgregar.setIcon(new ImageIcon(CrearProyecto.class.getResource("/Imagenes/flecha-de-siguiente.png")));
 				btnAgregar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						try {
@@ -247,7 +249,8 @@ public class CrearProyecto extends JDialog {
 				btnAgregar.setBounds(328, 94, 54, 29);
 				panelEmpleado.add(btnAgregar);
 				
-				JButton btnEliminar = new JButton("X");
+				JButton btnEliminar = new JButton("");
+				btnEliminar.setIcon(new ImageIcon(CrearProyecto.class.getResource("/Imagenes/boton-de-cerrar.png")));
 				btnEliminar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 					try {
@@ -578,6 +581,7 @@ public class CrearProyecto extends JDialog {
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				JButton okButton = new JButton("Siguiente");
+				okButton.setIcon(new ImageIcon(CrearProyecto.class.getResource("/Imagenes/flecha-de-siguiente.png")));
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {		
 						int k=0;
@@ -627,6 +631,7 @@ public class CrearProyecto extends JDialog {
 				});
 				{
 					btnAtras = new JButton("Atras");
+					btnAtras.setIcon(new ImageIcon(CrearProyecto.class.getResource("/Imagenes/flecha-blanca-hacia-la-izquierda-.png")));
 					btnAtras.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
 							if(P1.isVisible()){
@@ -646,6 +651,7 @@ public class CrearProyecto extends JDialog {
 						}
 					});					
 					btnRegistrar = new JButton("Registrar");
+					btnRegistrar.setIcon(new ImageIcon(CrearProyecto.class.getResource("/Imagenes/signo-de-comprobado.png")));
 					btnRegistrar.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
 							/*Guardar los datos*/
@@ -661,6 +667,7 @@ public class CrearProyecto extends JDialog {
 			}
 			{
 				JButton cancelButton = new JButton("Cancel");
+				cancelButton.setIcon(new ImageIcon(CrearProyecto.class.getResource("/Imagenes/boton-de-cerrar.png")));
 				cancelButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						dispose();
