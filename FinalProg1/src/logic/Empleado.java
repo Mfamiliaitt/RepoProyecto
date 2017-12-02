@@ -1,8 +1,13 @@
 package logic;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public abstract class Empleado {
+public abstract class Empleado implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6737972801718319184L;
 	protected String identificador;
 	protected String nombre;
 	protected String apellidos;

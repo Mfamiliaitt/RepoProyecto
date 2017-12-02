@@ -164,13 +164,14 @@ public boolean isclienteregistrado(String cedula){
 		}
 		return answer;
 	}
-/*Ficherooooooo*/public void guardarEmpleados() throws IOException {
+/*Ficherooooooo*/
+public void guardarEmpleados() throws IOException {
 	 FileOutputStream cu = new FileOutputStream("misEmpleados.dat");
 	 ObjectOutputStream cos= new ObjectOutputStream(cu);
 	 cos.writeInt(misEmpleados.size());
 	 
-	 for (Empleado cuenta : misEmpleados) {
-		 cos.writeObject(cuenta);
+	 for (Empleado empleado : misEmpleados) {
+		 cos.writeObject(empleado);
 		
 	}
 	 cu.close();
