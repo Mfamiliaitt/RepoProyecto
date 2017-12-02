@@ -233,6 +233,7 @@ public class CrearProyecto extends JDialog {
 				}
 				
 				JButton btnAgregar = new JButton("");
+				btnAgregar.setBackground(SystemColor.control);
 				btnAgregar.setIcon(new ImageIcon(CrearProyecto.class.getResource("/Imagenes/flecha-de-siguiente.png")));
 				btnAgregar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
@@ -260,6 +261,7 @@ public class CrearProyecto extends JDialog {
 				panelEmpleado.add(btnAgregar);
 				
 				JButton btnEliminar = new JButton("");
+				btnEliminar.setBackground(SystemColor.control);
 				btnEliminar.setIcon(new ImageIcon(CrearProyecto.class.getResource("/Imagenes/boton-de-cerrar.png")));
 				btnEliminar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
@@ -315,12 +317,13 @@ public class CrearProyecto extends JDialog {
 					
 							{
 								JLabel label = new JLabel("");
-								label.setIcon(new ImageIcon(CrearProyecto.class.getResource("/Imagenes/compartiendo (2).png")));
+								label.setIcon(new ImageIcon(CrearProyecto.class.getResource("/Imagenes/compartiendo (3).png")));
 								label.setHorizontalAlignment(SwingConstants.CENTER);
 								label.setBounds(23, 11, 219, 167);
 								P1.add(label);
 							}
 		P2 = new JPanel();
+		P2.setBackground(Color.WHITE);
 		P2.setBounds(0, 0, 724, 440);
 		contentPanel.add(P2);
 		P2.setLayout(null);
