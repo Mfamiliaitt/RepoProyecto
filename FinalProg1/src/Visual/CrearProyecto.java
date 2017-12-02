@@ -57,6 +57,8 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 import java.awt.Toolkit;
+import javax.swing.JCheckBox;
+import javax.swing.border.MatteBorder;
 
 public class CrearProyecto extends JDialog {
 
@@ -81,7 +83,7 @@ public class CrearProyecto extends JDialog {
 	private JTextField txtFechaEntregaMostrada;
 	private JTextField txtPrecioMostrado;
 	private JTextField txtFechRealizacionMostrada;
-	private JPanel P3;
+	private JPanel P3=new JPanel();
 
 	private JButton btnAtras;
 	private JFormattedTextField txtCedulacliente;
@@ -92,6 +94,9 @@ public class CrearProyecto extends JDialog {
 	private JLabel label_1;
 	private JTextArea txtDescripcion;
 	private JSpinner spnFechaTermino;
+	private JPanel panelTerminos;
+	private JCheckBox chckbxAcepto;
+	private JButton btnFinalizarContrato;
 
 		
 
@@ -119,6 +124,229 @@ public class CrearProyecto extends JDialog {
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
+		
+	
+		
+		{
+			panelTerminos = new JPanel();
+			panelTerminos.setBorder(new MatteBorder(2, 2, 2, 2, (Color) new Color(153, 204, 255)));
+			panelTerminos.setVisible(false);
+			
+			panelTerminos.setBackground(Color.WHITE);
+			panelTerminos.setBounds(0, 0, 724, 428);
+			P3.add(panelTerminos);
+			panelTerminos.setLayout(null);
+			
+			chckbxAcepto = new JCheckBox("Acepto los t\u00E9rminos y condiciones");
+			chckbxAcepto.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					
+					if(chckbxAcepto.isSelected()){
+						btnFinalizarContrato.setEnabled(true);
+						
+					}
+					else {
+						
+						btnFinalizarContrato.setEnabled(false);
+					}
+					
+					
+				}
+			});
+			chckbxAcepto.setBackground(Color.WHITE);
+			chckbxAcepto.setFont(new Font("Century Gothic", Font.BOLD | Font.ITALIC, 11));
+			chckbxAcepto.setBounds(59, 339, 223, 23);
+			panelTerminos.add(chckbxAcepto);
+			{
+				btnFinalizarContrato = new JButton("Finalizar");
+				btnFinalizarContrato.setEnabled(false);
+				btnFinalizarContrato.setFont(new Font("Tahoma", Font.BOLD, 12));
+				btnFinalizarContrato.setBackground(SystemColor.control);
+				btnFinalizarContrato.setIcon(new ImageIcon(CrearProyecto.class.getResource("/Imagenes/accept-file-or-checklist.png")));
+				btnFinalizarContrato.setBounds(59, 369, 128, 23);
+				panelTerminos.add(btnFinalizarContrato);
+			}
+			{
+				JLabel lblNewLabel_5 = new JLabel("T\u00E9rminos y condiciones");
+				lblNewLabel_5.setFont(new Font("Century Gothic", Font.BOLD | Font.ITALIC, 16));
+				lblNewLabel_5.setHorizontalAlignment(SwingConstants.CENTER);
+				lblNewLabel_5.setBounds(249, 11, 223, 23);
+				panelTerminos.add(lblNewLabel_5);
+			}
+			{
+				JTextArea txtrElPresenteContrato = new JTextArea();
+				txtrElPresenteContrato.setLineWrap(true);
+				txtrElPresenteContrato.setWrapStyleWord(true);
+				txtrElPresenteContrato.setFont(new Font("Century Gothic", Font.PLAIN, 13));
+				txtrElPresenteContrato.setText("El presente Contrato regula la utilizaci\u00F3n, por parte de Ud., de los servicios de SoftMasters (los \u201CServicios\u201D), a trav\u00E9s de los cuales Ud. podr\u00E1 comprar, obtener, utilizar bajo licencia, alquilar apps (las \u201CApps\u201D) y otros servicios dentro de las apps (el \u201CContenido\u201D). Nuestro Servicio es: Creaci\u00F3n de software . Nuestros Servicios est\u00E1n disponibles para que los utilice en su Pa\u00EDs de Residencia. Para utilizar nuestros Servicios, Ud. necesitar\u00E1 hardware compatible, software (se recomienda y, en ocasiones, se exige la \u00FAltima versi\u00F3n) .El rendimiento de nuestros Servicios puede verse afectado por estos factores.\r\n\r\n-Derecho de cancelaci\u00F3n: Si elige cancelar su proyecto, puede hacerlo antes de aceptar el proyecto, de lo contrario si cancela el proyecto luego de que este ha sido aceptado, se le cobrara el costo total del proyecto.\r\n\r\nPara cancelar su pedido, deber\u00E1 informarnos de su decisi\u00F3n. \r\n\r\n-Derecho a pr\u00F3rroga: Luego de haber aceptado el proyecto, si el equipo de empleados exige alg\u00FAn cambio que requiera de prorrogar el proyecto este debe obtener la aceptaci\u00F3n de usted y por ende, de aceptar la pr\u00F3rroga, no se le cargara ning\u00FAn monto.\r\n\r\n-Derecho a terminar proyecto: Usted tiene derecho a terminar un proyecto antes de la fecha de t\u00E9rmino elegida, el costo de este seguir\u00E1 permaneciendo igual. \r\n\r\n-En caso de estado de proyecto tard\u00EDo: Si el equipo no finaliza el proyecto para la fecha determinada, se le restar\u00E1 un porcentaje al costo total del proyecto por cada d\u00EDa de tardanza.\r\n\r\nSi no tiene ning\u00FAn inconveniente con nuestros T\u00E9rminos y condiciones, Acepte.");
+				txtrElPresenteContrato.setBorder(new LineBorder(new Color(0, 0, 0)));
+				txtrElPresenteContrato.setBounds(59, 49, 601, 283);
+				
+				JScrollPane lines= new JScrollPane(txtrElPresenteContrato);
+				lines.setSize(534, 287);
+				lines.setLocation(95, 45);
+				panelTerminos.add(lines);
+				
+			}
+			{
+				JButton btnCancelarcontraro = new JButton("Cancelar");
+				btnCancelarcontraro.setBackground(SystemColor.control);
+				btnCancelarcontraro.setFont(new Font("Tahoma", Font.BOLD, 12));
+				btnCancelarcontraro.setIcon(new ImageIcon(CrearProyecto.class.getResource("/Imagenes/boton-de-cerrar.png")));
+				btnCancelarcontraro.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						panelTerminos.setVisible(false);
+						btnAtras.setEnabled(true);
+					}
+				});
+				btnCancelarcontraro.setBounds(193, 369, 128, 23);
+				panelTerminos.add(btnCancelarcontraro);
+			}
+		}
+	
+		{
+			
+			P3.setBackground(Color.WHITE);
+			P3.setBounds(0, 0, 724, 428);
+			contentPanel.add(P3);
+			P3.setLayout(null);
+			P3.setVisible(false);
+			
+			{
+				JPanel panel = new JPanel();
+				panel.setLayout(null);
+				panel.setBorder(new TitledBorder(new LineBorder(new Color(100, 149, 237)), "Informaci\u00F3n del Cliente:", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+				panel.setBackground(Color.WHITE);
+				panel.setBounds(10, 11, 704, 108);
+				P3.add(panel);
+				{
+					JLabel label = new JLabel("Nombre:");
+					label.setFont(new Font("Century Gothic", Font.BOLD | Font.ITALIC, 11));
+					label.setBounds(10, 70, 57, 14);
+					panel.add(label);
+				}
+				{
+					txtNombreCmostrado = new JTextField();
+					txtNombreCmostrado.setEditable(false);
+					txtNombreCmostrado.setColumns(10);
+					txtNombreCmostrado.setBounds(77, 67, 408, 21);
+					panel.add(txtNombreCmostrado);
+				}
+				{
+					JLabel label = new JLabel("C\u00E9dula:");
+					label.setFont(new Font("Century Gothic", Font.BOLD | Font.ITALIC, 11));
+					label.setBounds(10, 29, 57, 14);
+					panel.add(label);
+				}
+				{
+					txtCedulaMostrada = new JTextField();
+					txtCedulaMostrada.setEditable(false);
+					txtCedulaMostrada.setColumns(10);
+					txtCedulaMostrada.setBounds(77, 24, 117, 21);
+					panel.add(txtCedulaMostrada);
+				}
+				{
+					JLabel label = new JLabel("Tel\u00E9fono:");
+					label.setFont(new Font("Century Gothic", Font.BOLD | Font.ITALIC, 11));
+					label.setBounds(204, 29, 57, 14);
+					panel.add(label);
+				}
+				{
+					txtTelMostrado = new JTextField();
+					txtTelMostrado.setEditable(false);
+					txtTelMostrado.setColumns(10);
+					txtTelMostrado.setBounds(268, 24, 217, 21);
+					panel.add(txtTelMostrado);
+				}
+				{
+					JLabel lblNewLabel_2 = new JLabel("");
+					lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
+					lblNewLabel_2.setIcon(new ImageIcon(CrearProyecto.class.getResource("/Imagenes/avatar-grande (1).png")));
+					lblNewLabel_2.setBounds(544, 29, 90, 55);
+					panel.add(lblNewLabel_2);
+				}
+			}
+			{
+				JPanel panel = new JPanel();
+				panel.setLayout(null);
+				panel.setBorder(new TitledBorder(new LineBorder(new Color(100, 149, 237)), "Informaci\u00F3n Del Proyecto:", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+				panel.setBackground(Color.WHITE);
+				panel.setBounds(10, 130, 704, 108);
+				P3.add(panel);
+				{
+					JLabel label = new JLabel("Nombre:");
+					label.setFont(new Font("Century Gothic", Font.BOLD | Font.ITALIC, 11));
+					label.setBounds(10, 25, 55, 14);
+					panel.add(label);
+				}
+				{
+					txtNombreProMostrado = new JTextField();
+					txtNombreProMostrado.setEditable(false);
+					txtNombreProMostrado.setColumns(10);
+					txtNombreProMostrado.setBounds(140, 19, 476, 20);
+					panel.add(txtNombreProMostrado);
+				}
+				{
+					JLabel label = new JLabel("Fecha de entrega:");
+					label.setFont(new Font("Century Gothic", Font.BOLD | Font.ITALIC, 11));
+					label.setBounds(328, 50, 110, 14);
+					panel.add(label);
+				}
+				{
+					txtFechaEntregaMostrada = new JTextField();
+					txtFechaEntregaMostrada.setText((String) null);
+					txtFechaEntregaMostrada.setEditable(false);
+					txtFechaEntregaMostrada.setColumns(10);
+					txtFechaEntregaMostrada.setBounds(438, 47, 178, 20);
+					panel.add(txtFechaEntregaMostrada);
+				}
+				{
+					JLabel label = new JLabel("Total a pagar:");
+					label.setFont(new Font("Century Gothic", Font.BOLD | Font.ITALIC, 11));
+					label.setBounds(10, 81, 85, 14);
+					panel.add(label);
+				}
+				{
+					txtPrecioMostrado = new JTextField();
+					txtPrecioMostrado.setEditable(false);
+					txtPrecioMostrado.setColumns(10);
+					txtPrecioMostrado.setBounds(140, 78, 178, 20);
+					panel.add(txtPrecioMostrado);
+				}
+				{
+					JLabel label = new JLabel("Fecha de Realizaci\u00F3n:");
+					label.setFont(new Font("Century Gothic", Font.BOLD | Font.ITALIC, 11));
+					label.setBounds(10, 53, 131, 14);
+					panel.add(label);
+				}
+				{
+					txtFechRealizacionMostrada = new JTextField();
+					txtFechRealizacionMostrada.setText((String) null);
+					txtFechRealizacionMostrada.setEditable(false);
+					txtFechRealizacionMostrada.setColumns(10);
+					txtFechRealizacionMostrada.setBounds(140, 50, 178, 20);
+					panel.add(txtFechRealizacionMostrada);
+				}
+			}
+			
+			JPanel panel = new JPanel();
+			panel.setLayout(null);
+			panel.setBorder(new TitledBorder(new LineBorder(new Color(100, 149, 237)), "Equipo de Trabajo", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+			panel.setBackground(Color.WHITE);
+			panel.setBounds(10, 246, 704, 171);
+			P3.add(panel);
+			
+			JScrollPane scrollPane = new JScrollPane();
+			scrollPane.setBounds(10, 22, 438, 138);
+			panel.add(scrollPane);
+			{
+				JLabel lblNewLabel_3 = new JLabel("");
+				lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
+				lblNewLabel_3.setIcon(new ImageIcon(CrearProyecto.class.getResource("/Imagenes/solicitud-de-amistad (2).png")));
+				lblNewLabel_3.setBounds(491, 48, 142, 97);
+				panel.add(lblNewLabel_3);
+			}
+		}
 		P2 = new JPanel();
 		P2.setBackground(Color.WHITE);
 		P2.setBounds(0, 0, 724, 440);
@@ -240,139 +468,6 @@ public class CrearProyecto extends JDialog {
 			lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 			lblNewLabel_1.setBounds(26, 31, 217, 173);
 			P2.add(lblNewLabel_1);
-		}
-		
-	
-		
-
-	
-		{
-			P3 = new JPanel();
-			P3.setBackground(Color.WHITE);
-			P3.setBounds(0, 0, 724, 428);
-			contentPanel.add(P3);
-			P3.setLayout(null);
-			P3.setVisible(false);
-			{
-				JPanel panel = new JPanel();
-				panel.setLayout(null);
-				panel.setBorder(new TitledBorder(new LineBorder(new Color(100, 149, 237)), "Informaci\u00F3n del Cliente:", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-				panel.setBackground(Color.WHITE);
-				panel.setBounds(10, 11, 704, 108);
-				P3.add(panel);
-				{
-					JLabel label = new JLabel("Nombre:");
-					label.setFont(new Font("Century Gothic", Font.BOLD | Font.ITALIC, 11));
-					label.setBounds(10, 70, 57, 14);
-					panel.add(label);
-				}
-				{
-					txtNombreCmostrado = new JTextField();
-					txtNombreCmostrado.setEditable(false);
-					txtNombreCmostrado.setColumns(10);
-					txtNombreCmostrado.setBounds(77, 67, 408, 21);
-					panel.add(txtNombreCmostrado);
-				}
-				{
-					JLabel label = new JLabel("C\u00E9dula:");
-					label.setFont(new Font("Century Gothic", Font.BOLD | Font.ITALIC, 11));
-					label.setBounds(10, 29, 57, 14);
-					panel.add(label);
-				}
-				{
-					txtCedulaMostrada = new JTextField();
-					txtCedulaMostrada.setEditable(false);
-					txtCedulaMostrada.setColumns(10);
-					txtCedulaMostrada.setBounds(77, 24, 117, 21);
-					panel.add(txtCedulaMostrada);
-				}
-				{
-					JLabel label = new JLabel("Tel\u00E9fono:");
-					label.setFont(new Font("Century Gothic", Font.BOLD | Font.ITALIC, 11));
-					label.setBounds(204, 29, 57, 14);
-					panel.add(label);
-				}
-				{
-					txtTelMostrado = new JTextField();
-					txtTelMostrado.setEditable(false);
-					txtTelMostrado.setColumns(10);
-					txtTelMostrado.setBounds(268, 24, 217, 21);
-					panel.add(txtTelMostrado);
-				}
-			}
-			{
-				JPanel panel = new JPanel();
-				panel.setLayout(null);
-				panel.setBorder(new TitledBorder(new LineBorder(new Color(100, 149, 237)), "Informaci\u00F3n Del Proyecto:", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-				panel.setBackground(Color.WHITE);
-				panel.setBounds(10, 130, 704, 108);
-				P3.add(panel);
-				{
-					JLabel label = new JLabel("Nombre:");
-					label.setFont(new Font("Century Gothic", Font.BOLD | Font.ITALIC, 11));
-					label.setBounds(10, 18, 55, 14);
-					panel.add(label);
-				}
-				{
-					txtNombreProMostrado = new JTextField();
-					txtNombreProMostrado.setEditable(false);
-					txtNombreProMostrado.setColumns(10);
-					txtNombreProMostrado.setBounds(140, 15, 476, 20);
-					panel.add(txtNombreProMostrado);
-				}
-				{
-					JLabel label = new JLabel("Fecha de entrega:");
-					label.setFont(new Font("Century Gothic", Font.BOLD | Font.ITALIC, 11));
-					label.setBounds(328, 50, 110, 14);
-					panel.add(label);
-				}
-				{
-					txtFechaEntregaMostrada = new JTextField();
-					txtFechaEntregaMostrada.setText((String) null);
-					txtFechaEntregaMostrada.setEditable(false);
-					txtFechaEntregaMostrada.setColumns(10);
-					txtFechaEntregaMostrada.setBounds(438, 47, 178, 20);
-					panel.add(txtFechaEntregaMostrada);
-				}
-				{
-					JLabel label = new JLabel("Total a pagar:");
-					label.setFont(new Font("Century Gothic", Font.BOLD | Font.ITALIC, 11));
-					label.setBounds(10, 81, 85, 14);
-					panel.add(label);
-				}
-				{
-					txtPrecioMostrado = new JTextField();
-					txtPrecioMostrado.setEditable(false);
-					txtPrecioMostrado.setColumns(10);
-					txtPrecioMostrado.setBounds(140, 78, 178, 20);
-					panel.add(txtPrecioMostrado);
-				}
-				{
-					JLabel label = new JLabel("Fecha de Realizaci\u00F3n:");
-					label.setFont(new Font("Century Gothic", Font.BOLD | Font.ITALIC, 11));
-					label.setBounds(10, 53, 131, 14);
-					panel.add(label);
-				}
-				{
-					txtFechRealizacionMostrada = new JTextField();
-					txtFechRealizacionMostrada.setText((String) null);
-					txtFechRealizacionMostrada.setEditable(false);
-					txtFechRealizacionMostrada.setColumns(10);
-					txtFechRealizacionMostrada.setBounds(140, 50, 178, 20);
-					panel.add(txtFechRealizacionMostrada);
-				}
-			}
-			
-			JPanel panel = new JPanel();
-			panel.setLayout(null);
-			panel.setBorder(new TitledBorder(new LineBorder(new Color(100, 149, 237)), "Equipo de Trabajo", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-			panel.setBackground(Color.WHITE);
-			panel.setBounds(10, 235, 704, 170);
-			P3.add(panel);
-			
-			JScrollPane scrollPane = new JScrollPane();
-			scrollPane.setBounds(10, 22, 684, 137);
-			panel.add(scrollPane);
 		}
 		
 		P1 = new JPanel();
@@ -678,9 +773,11 @@ public class CrearProyecto extends JDialog {
 								P3.setVisible(false);
 							}
 							else if(P3.isVisible()){
+								btnAtras.setEnabled(true);
 								P1.setVisible(false);
 								P2.setVisible(true);
 								P3.setVisible(false);
+								
 							}
 						}
 					});					
@@ -690,7 +787,11 @@ public class CrearProyecto extends JDialog {
 					btnRegistrar.setIcon(new ImageIcon(CrearProyecto.class.getResource("/Imagenes/signo-de-comprobado.png")));
 					btnRegistrar.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
+							
 							/*Guardar los datos*/
+							panelTerminos.setVisible(true);
+							btnAtras.setEnabled(false);
+							
 						}
 					});
 					buttonPane.add(btnRegistrar);
