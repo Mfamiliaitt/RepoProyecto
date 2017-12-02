@@ -32,6 +32,7 @@ import java.awt.Toolkit;
 import javax.swing.JLabel;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.SwingConstants;
 
 public class EvaluacionAnual extends JDialog {
 
@@ -53,8 +54,8 @@ public class EvaluacionAnual extends JDialog {
 	public EvaluacionAnual() {
 		Empresa.getInstance().evaluaciondelempleado();
 		setIconImage(Toolkit.getDefaultToolkit().getImage(EvaluacionAnual.class.getResource("/Imagenes/moneyArtboard 1@0.5x.png")));
-		setTitle("Evaluacion Anual");
-		setBounds(100, 100, 557, 358);
+		setTitle("Evaluaci\u00F3n Anual");
+		setBounds(100, 100, 589, 487);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBackground(Color.WHITE);
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -65,7 +66,7 @@ public class EvaluacionAnual extends JDialog {
 			JPanel panel = new JPanel();
 			panel.setBackground(Color.WHITE);
 			panel.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Empleados registrados", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-			panel.setBounds(10, 76, 389, 232);
+			panel.setBounds(10, 151, 324, 255);
 			contentPanel.add(panel);
 			panel.setLayout(new BorderLayout(0, 0));
 			{
@@ -85,19 +86,61 @@ public class EvaluacionAnual extends JDialog {
 			}
 		} 
 		
-		JLabel lblEstado = new JLabel("Estado");
-		lblEstado.setBounds(409, 78, 46, 14);
+		JLabel lblEstado = new JLabel("Evaluaci\u00F3n:");
+		lblEstado.setFont(new Font("Century Gothic", Font.BOLD | Font.ITALIC, 11));
+		lblEstado.setBounds(344, 161, 79, 14);
 		contentPanel.add(lblEstado);
 		
 		cbmEstado = new JComboBox();
+		cbmEstado.setBackground(new Color(153, 204, 255));
 		cbmEstado.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				loadTable();
 			}
 		});
 		cbmEstado.setModel(new DefaultComboBoxModel(new String[] {"<Seleccione>", "Muy bueno", "Bueno", "Malo"}));
-		cbmEstado.setBounds(409, 95, 107, 20);
+		cbmEstado.setBounds(433, 155, 107, 20);
 		contentPanel.add(cbmEstado);
+		{
+			JPanel panel = new JPanel();
+			panel.setBackground(new Color(153, 204, 255));
+			panel.setBounds(0, 415, 573, 33);
+			contentPanel.add(panel);
+			panel.setLayout(null);
+			{
+				JButton btnSalir = new JButton("Salir");
+				btnSalir.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						dispose();
+					}
+				});
+				btnSalir.setFont(new Font("Tahoma", Font.BOLD, 12));
+				btnSalir.setIcon(new ImageIcon(EvaluacionAnual.class.getResource("/Imagenes/boton-de-cerrar.png")));
+				btnSalir.setBounds(474, 5, 89, 23);
+				panel.add(btnSalir);
+			}
+		}
+		{
+			JLabel lblNewLabel = new JLabel("");
+			lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+			lblNewLabel.setIcon(new ImageIcon(EvaluacionAnual.class.getResource("/Imagenes/boton-de-una-estrella (3).png")));
+			lblNewLabel.setBounds(196, 11, 181, 139);
+			contentPanel.add(lblNewLabel);
+		}
+		{
+			JLabel lblNewLabel_1 = new JLabel("");
+			lblNewLabel_1.setIcon(new ImageIcon(EvaluacionAnual.class.getResource("/Imagenes/boton-de-una-estrella (2).png")));
+			lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+			lblNewLabel_1.setBounds(164, 93, 65, 47);
+			contentPanel.add(lblNewLabel_1);
+		}
+		{
+			JLabel lblNewLabel_2 = new JLabel("");
+			lblNewLabel_2.setIcon(new ImageIcon(EvaluacionAnual.class.getResource("/Imagenes/boton-de-una-estrella (2).png")));
+			lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
+			lblNewLabel_2.setBounds(346, 93, 58, 47);
+			contentPanel.add(lblNewLabel_2);
+		}
 	}
 
 	private void loadTable() {
