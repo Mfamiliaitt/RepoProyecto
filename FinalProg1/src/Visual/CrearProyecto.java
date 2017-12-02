@@ -592,30 +592,25 @@ public class CrearProyecto extends JDialog {
 							if(faltaAlgo()){
 								JOptionPane.showMessageDialog(null, "Debe introducir un cliente");
 							}else{
+								
+								txtCedulaMostrada.setText(txtCedulacliente.getText());
+								txtNombreCmostrado.setText(txtNombre.getText()+" "+txtApellido.getText());
+								txtTelMostrado.setText(txtTelefonoclient.getText());
+								txtNombreProMostrado.setText(txtDescripcion.getText());
+								Date dateHoy = new Date();
+							    Contrato contrato=new Contrato(txtCodigo.getText(), txtCedulaMostrada.getText(), dateHoy, (Date)spnFechaTermino.getValue(), false);
+							    Proyecto proyecto = pAux;
+							    proyecto.setCodigoProyecto(txtCodigo.getText());
+							    proyecto.setDescripcionDeProyecto(txtNombreProMostrado.getText());
+							    contrato.setMiProyecto(proyecto);
+								txtPrecioMostrado.setText(Double.toString(contrato.costoDeProyectoAtiempo()));
+								btnRegistrar.setEnabled(true);
 								P1.setVisible(false);
 								P2.setVisible(false);
 								P3.setVisible(true);
 							}
 							
-						} else{
-							
-							txtCedulaMostrada.setText(txtCedulacliente.getText());
-							txtNombreCmostrado.setText(txtNombre.getText()+" "+txtApellido.getText());
-							txtTelMostrado.setText(txtTelefonoclient.getText());
-							txtNombreProMostrado.setText(txtDescripcion.getText());
-							Date dateHoy = new Date();
-						    Contrato contrato=new Contrato(txtCodigo.getText(), txtCedulaMostrada.getText(), dateHoy, (Date)spnFechaTermino.getValue(), false);
-						    Proyecto proyecto = pAux;
-						    proyecto.setCodigoProyecto(txtCodigo.getText());
-						    proyecto.setDescripcionDeProyecto(txtNombreProMostrado.getText());
-						    contrato.setMiProyecto(proyecto);
-							txtPrecioMostrado.setText(Double.toString(contrato.costoDeProyectoAtiempo()));
-							btnRegistrar.setEnabled(true);
-							P1.setVisible(false);
-							P2.setVisible(false);
-							P3.setVisible(true);
-							
-						}
+						} 
 					}
 					private boolean faltaAlgo() {
 						boolean falta=false;
