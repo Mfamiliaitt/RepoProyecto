@@ -83,7 +83,7 @@ public class EvaluacionAnual extends JDialog {
 					scrollPane.setViewportView(table);
 				}
 			}
-		}
+		} 
 		
 		JLabel lblEstado = new JLabel("Estado");
 		lblEstado.setBounds(409, 78, 46, 14);
