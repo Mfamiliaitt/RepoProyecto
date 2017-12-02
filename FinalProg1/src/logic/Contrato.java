@@ -83,9 +83,10 @@ public class Contrato {
 	
 	
 	public int cantidadDeDias(){
-	
-	 int cant=(int)((fechaTermino.getTime())-(fechaInicio.getTime())/86400000);
-		
+	System.out.println(fechaInicio.getTime());
+    System.out.println(fechaTermino.getTime());  	
+	 int cant=(int)(((fechaTermino.getTime())-(fechaInicio.getTime()))/86400000);
+		System.out.println(cant);
 		return cant;
 	} 
       
@@ -98,6 +99,7 @@ public class Contrato {
 	}
 	
 	public double costoDeProyectoAtiempo(){
+		
 		
 		costoProyecto=(cantidadDeDias()*8)*(miProyecto.sumatoriaDeSueldosBases())+((cantidadDeDias()*8)*(miProyecto.sumatoriaDeSueldosBases())*0.15);
 		
