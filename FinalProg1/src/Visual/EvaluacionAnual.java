@@ -79,7 +79,7 @@ public class EvaluacionAnual extends JDialog {
 					model = new DefaultTableModel();
 					model.setColumnIdentifiers(columnNames);
 					table.setModel(model);
-					loadTable();
+				
 					scrollPane.setViewportView(table);
 				}
 			}
@@ -105,23 +105,9 @@ public class EvaluacionAnual extends JDialog {
 		model.setRowCount(0);
 		fila = new Object[model.getColumnCount()];
 		for (Empleado empleado : Empresa.getInstance().getMisEmpleados()) {			
-			fila[0] = empleado.getIdentificador();
-			fila[1] = empleado.getNombre();
-			fila[2] = empleado.getApellidos();
-			if(empleado instanceof JefeProyecto){
-				fila[3] = "Jefe de proyecto";	
-			}else if(empleado instanceof Planificador){
-				fila[3] = "Planficador";	
-			}else if(empleado instanceof Programador){
-				fila[3] = "Programador";
-			}else if(empleado instanceof Diseniador){
-				fila[3] = "Diseñador";	
-			}
-			fila[4] = empleado.getEvaluacionAnual();
-			model.addRow(fila);
 			//Filtrado de estado de empleados
 			if(cbmEstado.getSelectedItem().toString().equalsIgnoreCase("Muy bueno")){
-				 if (empleado instanceof JefeProyecto) {						
+				if(empleado.getEvaluacionAnual().equalsIgnoreCase("Muy bueno")){				
 						fila[0] = empleado.getIdentificador();
 						fila[1] = empleado.getNombre();
 						fila[2] = empleado.getApellidos();
@@ -133,17 +119,14 @@ public class EvaluacionAnual extends JDialog {
 							fila[3] = "Programador";
 						}else if(empleado instanceof Diseniador){
 							fila[3] = "Diseñador";	
-						}
-						if(empleado.getEvaluacionAnual().equalsIgnoreCase("Muy bueno")){
+						}				
 							fila[4]=empleado.getEvaluacionAnual();
+							model.addRow(fila);	
 						}
-						
-						model.addRow(fila);
-						
-					}
+										
 				}
 				else if(cbmEstado.getSelectedItem().toString().equalsIgnoreCase("Bueno")){
-					 if (empleado instanceof JefeProyecto) {						
+					if(empleado.getEvaluacionAnual().equalsIgnoreCase("Bueno")){			
 							fila[0] = empleado.getIdentificador();
 							fila[1] = empleado.getNombre();
 							fila[2] = empleado.getApellidos();
@@ -156,16 +139,16 @@ public class EvaluacionAnual extends JDialog {
 							}else if(empleado instanceof Diseniador){
 								fila[3] = "Diseñador";	
 							}
-							if(empleado.getEvaluacionAnual().equalsIgnoreCase("Bueno")){
+							
 								fila[4]=empleado.getEvaluacionAnual();
+								model.addRow(fila);								
 							}
 							
-							model.addRow(fila);
-							
-						}
+						
+						
 				}		
 				else if(cbmEstado.getSelectedItem().toString().equalsIgnoreCase("Malo")){
-					 if (empleado instanceof JefeProyecto) {						
+					if(empleado.getEvaluacionAnual().equalsIgnoreCase("Malo")){		
 							fila[0] = empleado.getIdentificador();
 							fila[1] = empleado.getNombre();
 							fila[2] = empleado.getApellidos();
@@ -177,14 +160,14 @@ public class EvaluacionAnual extends JDialog {
 								fila[3] = "Programador";
 							}else if(empleado instanceof Diseniador){
 								fila[3] = "Diseñador";	
-							}
-							if(empleado.getEvaluacionAnual().equalsIgnoreCase("Malo")){
+							}						
 								fila[4]=empleado.getEvaluacionAnual();
+								model.addRow(fila);
+								
 							}
 							
-							model.addRow(fila);
 							
-						}
+					
 				}
 				
 				
