@@ -169,30 +169,32 @@ public boolean isclienteregistrado(String cedula){
 public void guardarEmpleados() throws IOException {
 	 FileOutputStream cu = new FileOutputStream("misEmpleados.dat");
 	 ObjectOutputStream cos= new ObjectOutputStream(cu);
-	 cos.writeInt(misEmpleados.size());
-	 
+	 cos.writeInt(misEmpleados.size());	 
 	 for (Empleado empleado : misEmpleados) {
-		 cos.writeObject(empleado);
-		
+		 cos.writeObject(empleado);		
 	}
 	 cu.close();
 }
 public void cargarArchivos() throws IOException, Exception{
 	 FileInputStream cl=new FileInputStream("misEmpleados.dat");
-	 ObjectInputStream cli=new ObjectInputStream(cl);
-	
-	 
-	 int count1=cli.readInt();
-	 
-	 
+	 ObjectInputStream cli=new ObjectInputStream(cl);	 
+	 int count1=cli.readInt();	 
 	 for(int i=0;i<count1;i++){
-		 misEmpleados.add((Empleado) cli.readObject());
-		 
-	 }
-	 
-	 
+		 misEmpleados.add((Empleado) cli.readObject());		 
+	 }	 
 	cl.close();
-	
 }
-
+public double dameGanancia(){
+	double aux1=0;
+	double aux2=0;
+	double t=0;
+	for (Contrato losContratos : misContratos) {
+		aux1=aux1+losContratos.getCostoProyecto();
+	}
+	for (Empleado losempleados : misEmpleados) {
+		aux2=aux2+losempleados.getSalario();
+	}
+	t=aux1-aux2;
+	return t;	
+}
 }
