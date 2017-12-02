@@ -105,6 +105,9 @@ public void evaluaciondelempleado(){
 	int atrasado=0;
 	
 	for ( Empleado empleado : misEmpleados) {
+		prorrogado=0;
+		atiempo=0;
+		atrasado=0;
 		for (  String estado: empleado.getMisEstados()){
 			if(estado=="Prorrogado"){
 				prorrogado++;

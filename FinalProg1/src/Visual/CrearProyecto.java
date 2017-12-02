@@ -192,7 +192,7 @@ public class CrearProyecto extends JDialog {
 					}
 					
 					spnFechaTermino = new JSpinner();
-					spnFechaTermino.setModel(new SpinnerDateModel(new Date(1512100800000L), null, null, Calendar.DAY_OF_YEAR));
+					spnFechaTermino.setModel(new SpinnerDateModel(new Date(),null,null, Calendar.MILLISECOND));
 					spnFechaTermino.setBounds(189, 108, 153, 20);
 					panelProyecto.add(spnFechaTermino);
 				}
@@ -612,7 +612,7 @@ public class CrearProyecto extends JDialog {
 						    proyecto.setCodigoProyecto(txtCodigo.getText());
 						    proyecto.setDescripcionDeProyecto(txtNombreProMostrado.getText());
 						    contrato.setMiProyecto(proyecto);
-							txtPrecioMostrado.setText(String.valueOf(contrato.costoDeProyectoAtiempo()));
+							txtPrecioMostrado.setText(Double.toString(contrato.costoDeProyectoAtiempo()));
 							
 							
 						}
@@ -634,8 +634,10 @@ public class CrearProyecto extends JDialog {
 								btnAtras.setEnabled(false);
 							}
 							if(P2.isVisible()){
+								btnAtras.setEnabled(true);
 								P1.setVisible(true);
 								P2.setVisible(false);
+								P3.setVisible(false);
 							}
 							else if(P3.isVisible()){
 								P1.setVisible(false);
