@@ -14,7 +14,13 @@ import java.awt.Component;
 import javax.swing.JMenuItem;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.EtchedBorder;
+
+import logic.Empresa;
+
+
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 import java.awt.Font;
@@ -33,12 +39,37 @@ public class Principal extends JFrame {
 			public void run() {
 				try {
 					Principal frame = new Principal();
+					 frame.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+					 try {Empresa.getInstance().cargarArchivos();
+						
+					} catch (Exception e) {
+						// TODO: handle exception
+					}
+				try {
+					
+					frame.addWindowListener(new WindowAdapter() {
+        				@Override
+        				public void windowClosing(java.awt.event.WindowEvent we){
+        					try {
+        						    Empresa.getInstance().guardarEmpleados();
+        					     
+        					} catch (IOException e) {
+        						// TODO Auto-generated catch block
+        						
+        					}
+        					System.exit(0);
+        				}
+        					
+        				
+        			});
 					frame.setVisible(true);
 				} catch (Exception e) {
-					e.printStackTrace();
+					
 				}
+			} catch (Exception e) {
+				
 			}
-		});
+			}});
 	}
 
 	/**
@@ -76,7 +107,7 @@ public class Principal extends JFrame {
 		mntmListadoDeEmpleados.setBackground(Color.WHITE);
 		mntmListadoDeEmpleados.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				EvaluacionAnual c = new EvaluacionAnual();
+				ListadoEmpleados c = new ListadoEmpleados();
 				c.setVisible(true);
 				c.setLocationRelativeTo(null);
 			}

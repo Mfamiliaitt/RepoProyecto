@@ -1,6 +1,13 @@
 package logic;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+
+
 public class Empresa {
 private ArrayList<Empleado> misEmpleados;
  private ArrayList<Contrato> misContratos;
@@ -157,5 +164,34 @@ public boolean isclienteregistrado(String cedula){
 		}
 		return answer;
 	}
+/*Ficherooooooo*/public void guardarEmpleados() throws IOException {
+	 FileOutputStream cu = new FileOutputStream("misEmpleados.dat");
+	 ObjectOutputStream cos= new ObjectOutputStream(cu);
+	 cos.writeInt(misEmpleados.size());
+	 
+	 for (Empleado cuenta : misEmpleados) {
+		 cos.writeObject(cuenta);
+		
+	}
+	 cu.close();
+}
+
+public void cargarArchivos() throws IOException, Exception{
+	 FileInputStream cl=new FileInputStream("misEmpleados.dat");
+	 ObjectInputStream cli=new ObjectInputStream(cl);
+	
+	 
+	 int count1=cli.readInt();
+	 
+	 
+	 for(int i=0;i<count1;i++){
+		 misEmpleados.add((Empleado) cli.readObject());
+		 
+	 }
+	 
+	 
+	cl.close();
+	
+}
 
 }
