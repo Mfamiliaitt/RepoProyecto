@@ -106,6 +106,7 @@ public void setMisProyectos(ArrayList<Proyecto> misProyectos) {
 	this.misProyectos = misProyectos;
 }
 
+
 public void evaluaciondelempleado(){
 	int prorrogado=0;
 	int atiempo=0;
@@ -163,6 +164,7 @@ public boolean isclienteregistrado(String cedula){
 		}
 		return answer;
 	}
+
 /*Ficherooooooo*/
 public void guardarEmpleados() throws IOException {
 	 FileOutputStream cu = new FileOutputStream("misEmpleados.dat");
@@ -175,7 +177,6 @@ public void guardarEmpleados() throws IOException {
 	}
 	 cu.close();
 }
-
 public void cargarArchivos() throws IOException, Exception{
 	 FileInputStream cl=new FileInputStream("misEmpleados.dat");
 	 ObjectInputStream cli=new ObjectInputStream(cl);

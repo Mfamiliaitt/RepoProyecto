@@ -113,7 +113,9 @@ public abstract class Empleado implements Serializable{
 		this.misEstados = misEstados;
 	}
     
-    
+	public void agregarEstadoEmpleado(String c){
+		misEstados.add(c);
+	}
     
     
     
