@@ -541,7 +541,16 @@ public class CrearProyecto extends JDialog {
 			
 			JScrollPane scrollPane = new JScrollPane();
 			scrollPane.setBounds(10, 22, 438, 138);
-			panel.add(scrollPane);
+			table_1 = new JTable();
+			table_1.addMouseListener(new MouseAdapter() {
+			/*	@Override
+				public void mouseClicked(java.awt.event.MouseEvent e) {
+				}*/
+			});
+			table_1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+			table_1.setModel(model1);
+			scrollPane.setViewportView(table_1);
+	/**/		panel.add(scrollPane,BorderLayout.CENTER);
 			{
 				JLabel lblNewLabel_3 = new JLabel("");
 				lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
@@ -733,6 +742,8 @@ public class CrearProyecto extends JDialog {
 								txtNombreCmostrado.setText(txtNombre.getText()+" "+txtApellido.getText());
 								txtTelMostrado.setText(txtTelefonoclient.getText());
 								txtNombreProMostrado.setText(txtDescripcion.getText());
+								txtFechaEntregaMostrada.setText(spnFechaTermino.getValue().toString());
+								txtFechRealizacionMostrada.setText(new Date().toString());
 								Date dateHoy = new Date();
 							    Contrato contrato=new Contrato(txtCodigo.getText(), txtCedulaMostrada.getText(), dateHoy, (Date)spnFechaTermino.getValue(), false);
 							    Proyecto proyecto = pAux;
