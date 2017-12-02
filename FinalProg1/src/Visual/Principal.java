@@ -26,6 +26,9 @@ import javax.swing.ImageIcon;
 import java.awt.Font;
 import java.awt.Color;
 import java.awt.Toolkit;
+import javax.swing.border.MatteBorder;
+import java.awt.SystemColor;
+import javax.swing.border.LineBorder;
 
 public class Principal extends JFrame {
 
@@ -86,11 +89,13 @@ public class Principal extends JFrame {
 		setJMenuBar(menuBar);
 		
 		JMenu mnVer = new JMenu("Ver");
+		mnVer.setBorder(null);
 		mnVer.setFont(new Font("Century Gothic", Font.BOLD | Font.ITALIC, 12));
 		mnVer.setIcon(new ImageIcon(Principal.class.getResource("/Imagenes/periodico-doblado (1).png")));
 		menuBar.add(mnVer);
 		
 		JMenuItem mntmListadoDeClientes = new JMenuItem("Listado de Clientes");
+		mntmListadoDeClientes.setBorder(null);
 		mntmListadoDeClientes.setIcon(new ImageIcon(Principal.class.getResource("/Imagenes/solicitud-de-amistad.png")));
 		mntmListadoDeClientes.setBackground(Color.WHITE);
 		mntmListadoDeClientes.addActionListener(new ActionListener() {
@@ -103,6 +108,7 @@ public class Principal extends JFrame {
 		mnVer.add(mntmListadoDeClientes);
 		
 		JMenuItem mntmListadoDeEmpleados = new JMenuItem("Listado de Empleados");
+		mntmListadoDeEmpleados.setBorder(null);
 		mntmListadoDeEmpleados.setIcon(new ImageIcon(Principal.class.getResource("/Imagenes/avatar-grande.png")));
 		mntmListadoDeEmpleados.setBackground(Color.WHITE);
 		mntmListadoDeEmpleados.addActionListener(new ActionListener() {
@@ -114,6 +120,7 @@ public class Principal extends JFrame {
 		});
 		
 		JMenuItem mntmListaDeContratos = new JMenuItem("Listado de Contratos");
+		mntmListaDeContratos.setBorder(null);
 		mntmListaDeContratos.setIcon(new ImageIcon(Principal.class.getResource("/Imagenes/accept-file-or-checklist.png")));
 		mntmListaDeContratos.setBackground(Color.WHITE);
 		mntmListaDeContratos.addActionListener(new ActionListener() {
@@ -125,6 +132,7 @@ public class Principal extends JFrame {
 		});
 		
 		JMenuItem mntmListadoDeProyectos = new JMenuItem("Listado de Proyectos");
+		mntmListadoDeProyectos.setBorder(null);
 		mntmListadoDeProyectos.setIcon(new ImageIcon(Principal.class.getResource("/Imagenes/compartiendo.png")));
 		mntmListadoDeProyectos.setBackground(Color.WHITE);
 		mntmListadoDeProyectos.addActionListener(new ActionListener() {
@@ -139,10 +147,12 @@ public class Principal extends JFrame {
 		mnVer.add(mntmListadoDeEmpleados);
 		
 		JMenu mnNewMenu = new JMenu("Empleados");
+		mnNewMenu.setBorder(null);
 		mnNewMenu.setFont(new Font("Century Gothic", Font.BOLD | Font.ITALIC, 12));
 		mnNewMenu.setIcon(new ImageIcon(Principal.class.getResource("/Imagenes/avatar-grande (1).png")));
 		menuBar.add(mnNewMenu);		
 		JMenuItem mntmNewMenuItem = new JMenuItem("Registrar");
+		mntmNewMenuItem.setBorder(null);
 		mntmNewMenuItem.setIcon(new ImageIcon(Principal.class.getResource("/Imagenes/agregar-usuario.png")));
 		mntmNewMenuItem.setBackground(Color.WHITE);
 		mntmNewMenuItem.addActionListener(new ActionListener() {
@@ -157,6 +167,7 @@ public class Principal extends JFrame {
 		mnNewMenu.add(mntmNewMenuItem);
 		
 		JMenuItem mntmNewMenuItem_7 = new JMenuItem("Evaluaci\u00F3n anual");
+		mntmNewMenuItem_7.setBorder(null);
 		mntmNewMenuItem_7.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				EvaluacionAnual lol = new EvaluacionAnual();
@@ -169,11 +180,13 @@ public class Principal extends JFrame {
 		mnNewMenu.add(mntmNewMenuItem_7);
 		
 		JMenu mnNewMenu_1 = new JMenu("Proyectos");
+		mnNewMenu_1.setBorder(null);
 		mnNewMenu_1.setFont(new Font("Century Gothic", Font.BOLD | Font.ITALIC, 12));
 		mnNewMenu_1.setIcon(new ImageIcon(Principal.class.getResource("/Imagenes/compartiendo (1).png")));
 		menuBar.add(mnNewMenu_1);
 		
 		JMenuItem mntmNewMenuItem_2 = new JMenuItem("Crear proyecto");
+		mntmNewMenuItem_2.setBorder(null);
 		mntmNewMenuItem_2.setIcon(new ImageIcon(Principal.class.getResource("/Imagenes/escribir-documento.png")));
 		mntmNewMenuItem_2.setBackground(Color.WHITE);
 		mntmNewMenuItem_2.addActionListener(new ActionListener() {
