@@ -125,8 +125,7 @@ public void evaluaciondelempleado(){
 			else{
 				atrasado++;
 			}
-		}
-		
+		}		
 		int suma=prorrogado+atrasado+atiempo;
 		if (atiempo>=(0.70*suma)){
 			empleado.setEvaluacionAnual("Muy bueno");
