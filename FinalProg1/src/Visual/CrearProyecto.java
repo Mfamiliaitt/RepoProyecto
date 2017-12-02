@@ -336,21 +336,25 @@ public class CrearProyecto extends JDialog {
 		P2.add(panelInfo);
 		{
 			JLabel label = new JLabel("C\u00E9dula:");
+			label.setFont(new Font("Century Gothic", Font.BOLD | Font.ITALIC, 11));
 			label.setBounds(10, 35, 46, 14);
 			panelInfo.add(label);
 		}
 		{
 			JLabel label = new JLabel("Tel\u00E9fono:");
+			label.setFont(new Font("Century Gothic", Font.BOLD | Font.ITALIC, 11));
 			label.setBounds(10, 196, 63, 14);
 			panelInfo.add(label);
 		}
 		{
 			JLabel label = new JLabel("Nombre: ");
+			label.setFont(new Font("Century Gothic", Font.BOLD | Font.ITALIC, 11));
 			label.setBounds(10, 84, 63, 14);
 			panelInfo.add(label);
 		}
 		{
 			JLabel label = new JLabel("Direcci\u00F3n: ");
+			label.setFont(new Font("Century Gothic", Font.BOLD | Font.ITALIC, 11));
 			label.setBounds(10, 157, 63, 14);
 			panelInfo.add(label);
 		}
@@ -368,6 +372,7 @@ public class CrearProyecto extends JDialog {
 		}
 		{
 			JLabel lblNewLabel = new JLabel("Apellido:");
+			lblNewLabel.setFont(new Font("Century Gothic", Font.BOLD | Font.ITALIC, 11));
 			lblNewLabel.setBounds(10, 121, 46, 14);
 			panelInfo.add(lblNewLabel);
 		}
@@ -433,7 +438,8 @@ public class CrearProyecto extends JDialog {
 		txtTelefonoclient.setBounds(76, 193, 128, 20);
 		panelInfo.add(txtTelefonoclient);
 		{
-			JLabel lblNewLabel_1 = new JLabel("Imagen que se quiera poner");
+			JLabel lblNewLabel_1 = new JLabel("");
+			lblNewLabel_1.setIcon(new ImageIcon(CrearProyecto.class.getResource("/Imagenes/avatar-grande (3).png")));
 			lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 			lblNewLabel_1.setBounds(458, 26, 217, 104);
 			P2.add(lblNewLabel_1);
