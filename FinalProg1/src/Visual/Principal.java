@@ -76,7 +76,7 @@ public class Principal extends JFrame {
 		mntmListadoDeEmpleados.setBackground(Color.WHITE);
 		mntmListadoDeEmpleados.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ListadoEmpleados c = new ListadoEmpleados();
+				EvaluacionAnual c = new EvaluacionAnual();
 				c.setVisible(true);
 				c.setLocationRelativeTo(null);
 			}
@@ -126,6 +126,13 @@ public class Principal extends JFrame {
 		mnNewMenu.add(mntmNewMenuItem);
 		
 		JMenuItem mntmNewMenuItem_7 = new JMenuItem("Evaluaci\u00F3n anual");
+		mntmNewMenuItem_7.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				EvaluacionAnual lol = new EvaluacionAnual();
+				lol.setVisible(true);
+				lol.setLocationRelativeTo(null);
+			}
+		});
 		mntmNewMenuItem_7.setBackground(Color.WHITE);
 		mntmNewMenuItem_7.setIcon(new ImageIcon(Principal.class.getResource("/Imagenes/calendario-dia-veintitres-.png")));
 		mnNewMenu.add(mntmNewMenuItem_7);
