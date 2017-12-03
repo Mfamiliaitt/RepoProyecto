@@ -942,7 +942,7 @@ public class CrearProyecto extends JDialog {
 							else{
 								fila[4] = "Disponible";
 							}
-							
+							 
 							model.addRow(fila);
 							
 						}
