@@ -10,8 +10,12 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
 import logic.Cliente;
+import logic.Diseniador;
 import logic.Empleado;
 import logic.Empresa;
+import logic.JefeProyecto;
+import logic.Planificador;
+import logic.Programador;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -34,6 +38,7 @@ public class ListadoClientes extends JDialog {
 	private static Object[] fila;
 	private static DefaultTableModel model;
 	private JButton btnBuscarCliente;
+	private JFormattedTextField txtbusc;
 
 	/**
 	 * Launch the application.
@@ -127,21 +132,25 @@ public class ListadoClientes extends JDialog {
 			contentPanel.add(panel);
 			panel.setLayout(null);
 			{
-				JLabel lblNewLabel = new JLabel("Buscar cliente:");
+				JLabel lblNewLabel = new JLabel("Buscar por cedula:");
 				lblNewLabel.setFont(new Font("Century Gothic", Font.BOLD | Font.ITALIC, 11));
-				lblNewLabel.setBounds(10, 14, 95, 14);
+				lblNewLabel.setBounds(10, 14, 140, 14);
 				panel.add(lblNewLabel);
 			}
 			
-			JFormattedTextField formattedTextField = new JFormattedTextField();
-			formattedTextField.setBounds(108, 8, 135, 20);
-			panel.add(formattedTextField);
+			txtbusc = new JFormattedTextField();
+			txtbusc.setBounds(124, 12, 135, 20);
+			panel.add(txtbusc);
 			
 			btnBuscarCliente = new JButton("Buscar");
+			btnBuscarCliente.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+				}
+			});
 			btnBuscarCliente.setBackground(SystemColor.control);
 			btnBuscarCliente.setFont(new Font("Tahoma", Font.BOLD, 12));
 			btnBuscarCliente.setIcon(new ImageIcon(ListadoClientes.class.getResource("/Imagenes/magnifier.png")));
-			btnBuscarCliente.setBounds(254, 7, 114, 23);
+			btnBuscarCliente.setBounds(269, 10, 114, 23);
 			panel.add(btnBuscarCliente);
 		}
 	}
@@ -158,5 +167,17 @@ public class ListadoClientes extends JDialog {
 			
 			model.addRow(fila);
 	}
+	}
+	private void loadTable2(){
+		model.setRowCount(0);
+		fila = new Object[model.getColumnCount()];
+		for (Cliente cliente : Empresa.getInstance().getMisClientes()) {
+			if(txtbusc.getText().equalsIgnoreCase(cliente.getId())){		
+				fila[0] = cliente.getId();
+				fila[1] = cliente.getNombre();
+				fila[2] = cliente.getDireccion();				
+				model.addRow(fila);	
+				}			
+				}
 	}
 }

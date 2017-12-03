@@ -8,6 +8,7 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.text.MaskFormatter;
 
 import logic.Diseniador;
 import logic.Empleado;
@@ -38,6 +39,8 @@ public class ListadoEmpleados extends JDialog {
 	private JTable table;
 	private static Object[] fila;
 	private static DefaultTableModel model;
+	private JButton btnbuscarempl;
+	private JFormattedTextField txtbuscar;
 	
 
 	/**
@@ -130,22 +133,33 @@ public class ListadoEmpleados extends JDialog {
 			contentPanel.add(panel);
 			panel.setLayout(null);
 			{
-				JLabel lblNewLabel = new JLabel("Buscar empleado:");
+				JLabel lblNewLabel = new JLabel("Buscar por cedula:");
 				lblNewLabel.setFont(new Font("Century Gothic", Font.BOLD | Font.ITALIC, 11));
-				lblNewLabel.setBounds(23, 11, 102, 14);
+				lblNewLabel.setBounds(23, 11, 159, 14);
 				panel.add(lblNewLabel);
 			}
 			{
-				JFormattedTextField formattedTextField = new JFormattedTextField();
-				formattedTextField.setBounds(135, 9, 115, 20);
-				panel.add(formattedTextField);
+				try {
+					MaskFormatter t = new MaskFormatter("###-#######-#");
+					t.setPlaceholderCharacter('_');
+					txtbuscar = new JFormattedTextField(t);
+				} catch (Exception e) {}
+				txtbuscar.setBounds(136, 9, 159, 20);
+				
+				panel.add(txtbuscar);
 			}
 			{
-				JButton btnNewButton = new JButton("Buscar");
-				btnNewButton.setIcon(new ImageIcon(ListadoEmpleados.class.getResource("/Imagenes/magnifier.png")));
-				btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 12));
-				btnNewButton.setBounds(264, 8, 115, 23);
-				panel.add(btnNewButton);
+				btnbuscarempl = new JButton("Buscar");
+				btnbuscarempl.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						loadTable2();
+						
+					}
+				});
+				btnbuscarempl.setIcon(new ImageIcon(ListadoEmpleados.class.getResource("/Imagenes/magnifier.png")));
+				btnbuscarempl.setFont(new Font("Tahoma", Font.BOLD, 12));
+				btnbuscarempl.setBounds(315, 7, 115, 23);
+				panel.add(btnbuscarempl);
 			}
 		}
 	}
@@ -155,7 +169,6 @@ public class ListadoEmpleados extends JDialog {
 		model.setRowCount(0);
 		fila = new Object[model.getColumnCount()];
 		for (Empleado empleado : Empresa.getInstance().getMisEmpleados()) {
-			
 			fila[0] = empleado.getIdentificador();
 			fila[1] = empleado.getNombre();
 			fila[2] = empleado.getApellidos();
@@ -180,7 +193,40 @@ public class ListadoEmpleados extends JDialog {
 			}
 			
 			model.addRow(fila);
-		
+				}
+	
 	}
+	private void loadTable2(){
+		model.setRowCount(0);
+		fila = new Object[model.getColumnCount()];
+		for (Empleado empleado : Empresa.getInstance().getMisEmpleados()) {
+			if(txtbuscar.getText().equalsIgnoreCase(empleado.getIdentificador())){									
+				fila[0] = empleado.getIdentificador();
+				fila[1] = empleado.getNombre();
+				fila[2] = empleado.getApellidos();
+				fila[3] = empleado.getDireccion();
+				fila[4] = empleado.getSexo();
+				if(empleado instanceof JefeProyecto){
+					fila[5] = "Jefe de proyecto";	
+				}else if(empleado instanceof Planificador){
+					fila[5] = "Planficador";	
+				}else if(empleado instanceof Programador){
+					fila[5] = "Programador";
+				}else if(empleado instanceof Diseniador){
+					fila[5] = "Diseñador";	
+				}
+				fila[6] = empleado.getSalario();
+				fila[7] = empleado.getEvaluacionAnual();
+				if (empleado.isOcupado()){
+				    fila[8] = "Ocupado";
+				}
+				else{
+					fila[8] = "Disponible";
+				}
+				model.addRow(fila);		
+				}
+			
+				}
+
 	}
 }
