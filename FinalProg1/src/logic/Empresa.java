@@ -47,8 +47,8 @@ public void setMisClientes(ArrayList<Cliente> misClientes) {
 }
 
 
-public void agregarClientes(String id, String nombre, String apellido, String telefono, String direccion){
-	Cliente c = new Cliente(id, nombre, apellido, telefono, direccion);
+public void agregarClientes(Cliente c){
+
 	misClientes.add(c);
 }
 public void addContrato(Contrato c){

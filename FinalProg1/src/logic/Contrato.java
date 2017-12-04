@@ -83,11 +83,9 @@ public class Contrato {
 	
 	
 	public float cantidadDeDias(){
-	System.out.println(fechaInicio.getTime());
-    System.out.println(fechaTermino.getTime());
-    System.out.println((((fechaTermino.getTime())-(fechaInicio.getTime()))/86400000));
+	
 	 float cant=((float)((fechaTermino.getTime())-(fechaInicio.getTime()))/86400000);
-		System.out.println(cant);
+	
 		return cant;
 	} 
       

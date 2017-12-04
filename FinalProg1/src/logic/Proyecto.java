@@ -193,6 +193,14 @@ for (Empleado empleado : elEquipo) {
 	
 return counter;	
 }
-
+public Empleado buscarEmpleadoPorCedula(String cedula){
+	Empleado c=null;
+	for (Empleado losEmpleados : elEquipo) {
+		if(losEmpleados.getIdentificador().equalsIgnoreCase(cedula)){
+			c=losEmpleados;
+		}		
+	}
+	return c;
+}
 }
 

@@ -159,6 +159,24 @@ public class CrearProyecto extends JDialog {
 			panelTerminos.add(chckbxAcepto);
 			{
 				btnFinalizarContrato = new JButton("Finalizar");
+				btnFinalizarContrato.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						 
+						Contrato contratoAux= new Contrato(txtCodigo.getText(), txtCedulacliente.getText(),new Date() ,(Date) spnFechaTermino.getValue(), true);
+						for (Empleado empleado : pAux.getElEquipo()) {
+							Empresa.getInstance().buscarEmpleadoPorCedula(empleado.getIdentificador()).setOcupado(true);
+						}
+						Proyecto NuevoProyecto =new Proyecto(cmbTipoDeProyecto.getSelectedItem().toString(), txtCodigo.getText(), true, "A tiempo", pAux.getElEquipo(), txtDescripcion.getText());
+						contratoAux.setMiProyecto(NuevoProyecto);
+						contratoAux.setCostoProyecto(Double.parseDouble(txtPrecioMostrado.getText()));
+						
+						Cliente nuevoCliente = new Cliente(txtCedulacliente.getText(), txtNombreCmostrado.getText(), txtApellido.getText(), txtTelefonoclient.getText(), txtDireccion.getText());
+						Empresa.getInstance().addContrato(contratoAux);
+						Empresa.getInstance().agregarClientes(nuevoCliente);
+						
+						
+					}
+				});
 				btnFinalizarContrato.setEnabled(false);
 				btnFinalizarContrato.setFont(new Font("Tahoma", Font.BOLD, 12));
 				btnFinalizarContrato.setBackground(SystemColor.control);
@@ -333,6 +351,7 @@ public class CrearProyecto extends JDialog {
 								   if(aux instanceof Programador){if(!pAux.agregarProgramador(aux)){
 									   JOptionPane.showMessageDialog(null, "Error");}}
 								   loadTable1();
+								   loadTable();
 									}else{JOptionPane.showMessageDialog(null, "no se puede agregar mas de 5 empleados al equipo");}
 							
 						} catch (Exception e2) {
@@ -871,7 +890,9 @@ public class CrearProyecto extends JDialog {
 			model.setRowCount(0);
 			fila = new Object[model.getColumnCount()];
 			
-			for (Empleado empleado : Empresa.getInstance().getMisEmpleados()) {				
+			for (Empleado empleado : Empresa.getInstance().getMisEmpleados()) {	
+				if(pAux.buscarEmpleadoPorCedula(empleado.getIdentificador())==null){
+				
 				if(cbxCargoEmpl.getSelectedItem().toString().equalsIgnoreCase("<Seleccione>")){}
 				
 				/******Filtrado de los empleados******/
@@ -963,7 +984,7 @@ public class CrearProyecto extends JDialog {
 				model.addRow(fila);*/
 			
 		
-		}
+		}}
 		
 	}	
 }
