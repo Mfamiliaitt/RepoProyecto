@@ -45,7 +45,9 @@ public ArrayList<Cliente> getMisClientes() {
 public void setMisClientes(ArrayList<Cliente> misClientes) {
 	this.misClientes = misClientes;
 }
-
+public void addProyecto(Proyecto c){
+	misProyectos.add(c);
+}
 
 public void agregarClientes(Cliente c){
 
