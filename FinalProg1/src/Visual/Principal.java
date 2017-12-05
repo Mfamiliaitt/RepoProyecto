@@ -15,8 +15,9 @@ import javax.swing.JMenuItem;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.EtchedBorder;
 
+import logic.Contrato;
 import logic.Empresa;
-
+import logic.Proyecto;
 
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
@@ -27,12 +28,24 @@ import java.awt.Font;
 import java.awt.Color;
 import java.awt.Toolkit;
 import javax.swing.border.MatteBorder;
+import javax.swing.table.DefaultTableModel;
+
 import java.awt.SystemColor;
 import javax.swing.border.LineBorder;
+import javax.swing.JLabel;
+import javax.swing.BoxLayout;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
+import java.awt.Button;
+import javax.swing.JButton;
 
 public class Principal extends JFrame {
 
 	private JPanel contentPane;
+	private static Object[] fila;
+	private static DefaultTableModel model;
+	private JTable tableProyectosPendientes;
 
 	/**
 	 * Launch the application.
@@ -208,23 +221,72 @@ public class Principal extends JFrame {
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(153, 204, 255));
 		panel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
-		panel.setBounds(34, 155, 640, 360);
+		panel.setBounds(112, 144, 559, 368);
 		contentPane.add(panel);
+		panel.setLayout(null);
+		
+		JPanel panel_3 = new JPanel();
+		panel_3.setBounds(10, 61, 539, 296);
+		panel.add(panel_3);
+		panel_3.setLayout(new BorderLayout(0, 0));
+		
+		JScrollPane scrollPane = new JScrollPane();
+		panel_3.add(scrollPane, BorderLayout.CENTER);
+		
+		tableProyectosPendientes = new JTable();
+		tableProyectosPendientes .setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		String[] columnNames = {"Código","Cliente","Tipo","Fecha de entrega","Estado"};
+		model = new DefaultTableModel();
+		model.setColumnIdentifiers(columnNames);
+		tableProyectosPendientes .setModel(model);
+		loadTable();
+		scrollPane.setViewportView(tableProyectosPendientes);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon(Principal.class.getResource("/Imagenes/cooltext268589831814093.png")));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setBounds(83, 11, 416, 41);
+		panel.add(lblNewLabel);
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(153, 204, 255));
 		panel_1.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
-		panel_1.setBounds(34, 34, 1290, 99);
+		panel_1.setBounds(35, 23, 1290, 96);
 		contentPane.add(panel_1);
+		panel_1.setLayout(null);
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setBackground(new Color(153, 204, 255));
 		panel_2.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
-		panel_2.setBounds(684, 155, 640, 360);
+		panel_2.setBounds(704, 144, 559, 368);
 		contentPane.add(panel_2);
+		panel_2.setLayout(null);
+		
+		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_1.setIcon(new ImageIcon(Principal.class.getResource("/Imagenes/cooltext268590561336802.png")));
+		lblNewLabel_1.setBounds(46, 11, 459, 49);
+		panel_2.add(lblNewLabel_1);
 		setLocationRelativeTo(null);
 		
 		
+		
+	}
+
+	private void loadTable() {
+		// TODO Auto-generated method stub
+		model.setRowCount(0);
+		fila = new Object[model.getColumnCount()];
+		for (Contrato losContratos : Empresa.getInstance().getMisContratos()) {
+			
+			fila[0] = losContratos.getCodigoProyecto();
+			fila[1] = Empresa.getInstance().buscarClientePorCedula(losContratos.getIdCliente()).getNombre();
+			fila[2] = losContratos.getMiProyecto().getTipo();
+			fila[3] = losContratos.getFechaTermino();
+			fila[4] = losContratos.getMiProyecto().getEstado();
+			
+			model.addRow(fila);
+	}
 		
 	}
 }
