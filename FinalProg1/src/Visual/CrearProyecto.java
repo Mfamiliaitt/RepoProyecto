@@ -98,6 +98,7 @@ public class CrearProyecto extends JDialog {
 	private JCheckBox chckbxAcepto;
 	private JButton btnFinalizarContrato;
 	private boolean Nocrear=false;
+	private JButton okButton;
 
 		
 
@@ -743,7 +744,7 @@ public class CrearProyecto extends JDialog {
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
-				JButton okButton = new JButton("Siguiente");
+				okButton = new JButton("Siguiente");
 				okButton.setBackground(SystemColor.control);
 				okButton.setFont(new Font("Tahoma", Font.BOLD, 12));
 				okButton.setIcon(new ImageIcon(CrearProyecto.class.getResource("/Imagenes/flecha-de-siguiente.png")));
