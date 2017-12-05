@@ -39,6 +39,7 @@ import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import java.awt.Button;
 import javax.swing.JButton;
+import org.edisoncor.gui.varios.ClockFace;
 
 public class Principal extends JFrame {
 
@@ -251,7 +252,7 @@ public class Principal extends JFrame {
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(153, 204, 255));
 		panel_1.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
-		panel_1.setBounds(35, 23, 1290, 96);
+		panel_1.setBounds(35, 23, 1093, 96);
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
 		
@@ -267,6 +268,10 @@ public class Principal extends JFrame {
 		lblNewLabel_1.setIcon(new ImageIcon(Principal.class.getResource("/Imagenes/cooltext268590561336802.png")));
 		lblNewLabel_1.setBounds(46, 11, 459, 49);
 		panel_2.add(lblNewLabel_1);
+		
+		ClockFace clockFace = new ClockFace();
+		clockFace.setBounds(1169, 11, 133, 122);
+		contentPane.add(clockFace);
 		setLocationRelativeTo(null);
 		
 		
