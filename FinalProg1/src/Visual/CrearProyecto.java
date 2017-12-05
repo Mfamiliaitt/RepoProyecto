@@ -769,8 +769,7 @@ public class CrearProyecto extends JDialog {
 						else if(P2.isVisible()){
 							if(faltaAlgo()){
 								JOptionPane.showMessageDialog(null, "Debe introducir un cliente");
-							}else{
-								
+							}else{								
 								txtCedulaMostrada.setText(txtCedulacliente.getText());
 								txtNombreCmostrado.setText(txtNombre.getText()+" "+txtApellido.getText());
 								txtTelMostrado.setText(txtTelefonoclient.getText());
@@ -788,10 +787,8 @@ public class CrearProyecto extends JDialog {
 								P1.setVisible(false);
 								P2.setVisible(false);
 								P3.setVisible(true);
-								okButton.setEnabled(false);
-								
-							}
-							
+								okButton.setEnabled(false);								
+							}							
 						} 
 					}
 					private boolean faltaAlgo() {

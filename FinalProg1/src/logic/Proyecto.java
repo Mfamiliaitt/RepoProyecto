@@ -90,7 +90,6 @@ public class Proyecto {
 		if(cantidadDePlanificadores()<1){
 		
 		elEquipo.add(a);
-		System.out.println("lol");
 		respuesta=true;}
 		else if(cantidadDePlanificadores()>=1){
 		respuesta=false;	
