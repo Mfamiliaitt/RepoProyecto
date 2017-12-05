@@ -268,10 +268,6 @@ public class Principal extends JFrame {
 		lblNewLabel_1.setIcon(new ImageIcon(Principal.class.getResource("/Imagenes/cooltext268590561336802.png")));
 		lblNewLabel_1.setBounds(46, 11, 459, 49);
 		panel_2.add(lblNewLabel_1);
-		
-		ClockFace clockFace = new ClockFace();
-		clockFace.setBounds(1169, 11, 133, 122);
-		contentPane.add(clockFace);
 		setLocationRelativeTo(null);
 		
 		
