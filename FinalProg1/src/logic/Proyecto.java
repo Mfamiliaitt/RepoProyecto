@@ -78,7 +78,7 @@ public class Proyecto {
 	
 	 respuesta=true;
 	}else if(cantidadDeProgramadores()>=2){
-		respuesta=false;
+		respuesta=false; 
 	}
 		
 	return respuesta; 
