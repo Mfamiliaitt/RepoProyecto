@@ -97,6 +97,7 @@ public class CrearProyecto extends JDialog {
 	private JPanel panelTerminos;
 	private JCheckBox chckbxAcepto;
 	private JButton btnFinalizarContrato;
+	private boolean Nocrear=false;
 
 		
 
@@ -172,11 +173,13 @@ public class CrearProyecto extends JDialog {
 						
 						Cliente nuevoCliente = new Cliente(txtCedulacliente.getText(), txtNombreCmostrado.getText(), txtApellido.getText(), txtTelefonoclient.getText(), txtDireccion.getText());
 						Empresa.getInstance().addContrato(contratoAux);
-						Empresa.getInstance().agregarClientes(nuevoCliente);
+						if(!Nocrear){Empresa.getInstance().agregarClientes(nuevoCliente);}
+						
 						Empresa.getInstance().addProyecto(NuevoProyecto);
 						JOptionPane.showMessageDialog(null, "Contrato creado exitosamente");
 						pAux.getElEquipo().clear();
 						loadTable1();
+						Nocrear=false;
 						dispose();
 					}
 				});
@@ -649,22 +652,26 @@ public class CrearProyecto extends JDialog {
 		} catch (Exception e) {}
 		
 		txtCedulacliente.addKeyListener(new KeyAdapter() {
+			
+
 			@Override
 			public void keyReleased(KeyEvent e) {									
 				Cliente c=Empresa.getInstance().buscarClientePorCedula(txtCedulacliente.getText());
 				
+				
 				if (c!=null){
-		txtCedulacliente.setText((" ")+c.getId());
-		txtNombre.setText((" ")+c.getNombre());
-		txtApellido.setText((" ")+c.getApellido());
-		txtDireccion.setText((" ")+c.getDireccion());
-		txtTelefonoclient.setText((" ")+c.getTelefono());
+		txtCedulacliente.setText(c.getId());
+		txtNombre.setText(c.getNombre());
+		txtApellido.setText(c.getApellido());
+		txtDireccion.setText(c.getDireccion());
+		txtTelefonoclient.setText(c.getTelefono());
 		
 		txtCedulacliente.setEnabled(false);
 		txtNombre.setEnabled(false);
 		txtApellido.setEnabled(false);
 		txtDireccion.setEnabled(false);
 		txtTelefonoclient.setEnabled(false);
+		Nocrear=true;
 		
 				}
 				else{
@@ -747,7 +754,10 @@ public class CrearProyecto extends JDialog {
 						if(P1.isVisible()){								
 							if(pAux.contadorDeEmpleados()!=5){		
 								JOptionPane.showMessageDialog(null, "La cantidad de empleados por proyecto debe ser 5");
-								}else{
+								}else if(txtCodigo.getText().isEmpty() || txtDescripcion.getText().isEmpty()){
+									JOptionPane.showMessageDialog(null, "Faltan campos por rellenar");	
+								}
+								else{
 									k=1;
 									P1.setVisible(false);
 									P3.setVisible(false);
@@ -777,13 +787,15 @@ public class CrearProyecto extends JDialog {
 								P1.setVisible(false);
 								P2.setVisible(false);
 								P3.setVisible(true);
+								okButton.setEnabled(false);
+								
 							}
 							
 						} 
 					}
 					private boolean faltaAlgo() {
 						boolean falta=false;
-						if(txtCedulacliente.getText().isEmpty() || txtApellido.getText().isEmpty() || txtDireccion.getText().isEmpty() || txtNombre.getText().isEmpty() ){
+						if(txtCedulacliente.getText().isEmpty() || txtApellido.getText().isEmpty() || txtDireccion.getText().isEmpty() || txtNombre.getText().isEmpty() || txtTelefonoclient.getText().isEmpty() ){
 							falta=true;
 						}						
 						return falta;
@@ -801,13 +813,16 @@ public class CrearProyecto extends JDialog {
 								btnAtras.setEnabled(false);
 							}
 							if(P2.isVisible()){
-								btnAtras.setEnabled(true);
+								btnAtras.setEnabled(false);
 								P1.setVisible(true);
 								P2.setVisible(false);
 								P3.setVisible(false);
+								btnRegistrar.setEnabled(false);
 							}
 							else if(P3.isVisible()){
 								btnAtras.setEnabled(true);
+								okButton.setEnabled(true);
+								btnRegistrar.setEnabled(false);
 								P1.setVisible(false);
 								P2.setVisible(true);
 								P3.setVisible(false);
