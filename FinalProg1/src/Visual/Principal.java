@@ -279,13 +279,16 @@ public class Principal extends JFrame {
 		fila = new Object[model.getColumnCount()];
 		for (Contrato losContratos : Empresa.getInstance().getMisContratos()) {
 			
+			if(losContratos.getMiProyecto().getEstado().equalsIgnoreCase("A tiempo")){
+			
 			fila[0] = losContratos.getCodigoProyecto();
 			fila[1] = Empresa.getInstance().buscarClientePorCedula(losContratos.getIdCliente()).getNombre();
 			fila[2] = losContratos.getMiProyecto().getTipo();
 			fila[3] = losContratos.getFechaTermino();
 			fila[4] = losContratos.getMiProyecto().getEstado();
-			
+			}
 			model.addRow(fila);
+			
 	}
 		
 	}
