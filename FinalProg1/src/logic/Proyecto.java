@@ -1,9 +1,14 @@
 package logic;
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Proyecto {
+public class Proyecto implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1605090248129560152L;
 	private String tipo;
 	private String codigoProyecto;
 	private Boolean activo; //Proyecto activo o pasivo

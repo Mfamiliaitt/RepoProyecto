@@ -1,11 +1,16 @@
 package logic;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
 
 
-public class Cliente {
+public class Cliente implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7871524758566677061L;
 	private String id;
 	private String nombre;
 	private String apellido;

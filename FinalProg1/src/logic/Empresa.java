@@ -171,20 +171,54 @@ public boolean isclienteregistrado(String cedula){
 public void guardarEmpleados() throws IOException {
 	 FileOutputStream cu = new FileOutputStream("misEmpleados.dat");
 	 ObjectOutputStream cos= new ObjectOutputStream(cu);
+	 FileOutputStream cont = new FileOutputStream("misContratos.dat");
+	 ObjectOutputStream contrato= new ObjectOutputStream(cont);
+	 FileOutputStream client = new FileOutputStream("misClientes.dat");
+	 ObjectOutputStream clienteCount= new ObjectOutputStream(client);
 	 cos.writeInt(misEmpleados.size());	 
 	 for (Empleado empleado : misEmpleados) {
 		 cos.writeObject(empleado);		
 	}
 	 cu.close();
+	 contrato.writeInt(misContratos.size());	 
+	 for (Contrato contrat : misContratos) {
+		 contrato.writeObject(contrat);		
+	}
+	 cont.close();
+	 
+	 clienteCount.writeInt(misClientes.size());
+	 for(Cliente cliente: misClientes){
+		 clienteCount.writeObject(cliente);
+		 
+	 }
+	 client.close();
+	 
 }
 public void cargarArchivos() throws IOException, Exception{
 	 FileInputStream cl=new FileInputStream("misEmpleados.dat");
 	 ObjectInputStream cli=new ObjectInputStream(cl);	 
+	 FileInputStream cos=new FileInputStream("misContratos.dat");
+	 ObjectInputStream cont=new ObjectInputStream(cos);	
+	 FileInputStream lectorCli=new FileInputStream("misClientes.dat");
+	 ObjectInputStream contCli=new ObjectInputStream(lectorCli);	 
 	 int count1=cli.readInt();	 
 	 for(int i=0;i<count1;i++){
 		 misEmpleados.add((Empleado) cli.readObject());		 
 	 }	 
 	cl.close();
+	
+	int count2=cont.readInt();	 
+	 for(int i=0;i<count2;i++){
+		 misContratos.add((Contrato) cont.readObject());		 
+	 }	 
+	cos.close();
+	
+	int count3=contCli.readInt();	 
+	 for(int i=0;i<count3;i++){
+		 misClientes.add((Cliente) contCli.readObject());		 
+	 }	 
+	lectorCli.close();
+	
 }
 public double dameGanancia(){
 	double aux1=0;

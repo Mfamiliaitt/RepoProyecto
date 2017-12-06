@@ -113,7 +113,7 @@ public class ListadoContrato extends JDialog {
 							
 						}
 					});
-					btnProrrogar.setEnabled(false);
+					btnProrrogar.setEnabled(true);
 					buttonPane.add(btnProrrogar);
 				}
 				{
@@ -129,7 +129,14 @@ public class ListadoContrato extends JDialog {
 							  if (dialogResult==JOptionPane.YES_OPTION){
 								  
 								  Empresa.getInstance().getMisContratos().get(table.getSelectedRow()).getMiProyecto().setEstado("Terminado");
+
 								  
+								  for (Empleado empleado : Empresa.getInstance().getMisContratos().get(0).getMiProyecto().getElEquipo() )
+								  { System.out.println(table.getSelectedRow());
+									  
+									  Empresa.getInstance().buscarEmpleadoPorCedula(empleado.getIdentificador()).setOcupado(false);
+									  Empresa.getInstance().buscarEmpleadoPorCedula(empleado.getIdentificador()).agregarEstadoEmpleado( Empresa.getInstance().getMisContratos().get(table.getSelectedRow()).getMiProyecto().getEstado());
+								}
 							  }
 							  else{
 								  remove(dialogButton);
@@ -138,7 +145,7 @@ public class ListadoContrato extends JDialog {
 							
 						}
 					});
-					btnTerminar.setEnabled(false);
+					btnTerminar.setEnabled(true);
 					buttonPane.add(btnTerminar);
 				}
 				btnOk.setActionCommand("OK");
@@ -171,15 +178,21 @@ public class ListadoContrato extends JDialog {
 				scrollPane.addMouseListener(new MouseAdapter() {
 					@Override
 					public void mouseClicked(MouseEvent e) {
-						
+						if(table.getSelectedRow()!= -1){
 						
 						btnTerminar.setEnabled(true);
-						btnProrrogar.setEnabled(true);
+						btnProrrogar.setEnabled(true);}else{
+							
+							btnTerminar.setEnabled(false);
+							btnProrrogar.setEnabled(false);
+						}
 						
 						
 						
 					}
 				});
+			
+				
 				panelTabla.add(scrollPane, BorderLayout.CENTER);
 				{
 					
