@@ -10,6 +10,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
+import org.jfree.data.time.Millisecond;
+
 import logic.Cliente;
 import logic.Contrato;
 import logic.Empleado;
@@ -98,13 +100,19 @@ public class ListadoContrato extends JDialog {
 							
 							//Aqui el panel prorroga se hace visible 
 							panelPrórroga.setVisible(true);
-							
 							try {
-								spnFechadeentrega.setValue(Empresa.getInstance().getMisContratos().get(table.getSelectedRow()).getFechaTermino());
+								spnFechadeentrega.setModel(new SpinnerDateModel(Empresa.getInstance().getMisContratos().get(table.getSelectedRow()).getFechaTermino(), null, null, Calendar.MILLISECOND));
+								
 							} catch (Exception e2) {
 								// TODO: handle exception
 							}
 							
+						/*	try {
+								spnFechadeentrega.setValue(Empresa.getInstance().getMisContratos().get(table.getSelectedRow()).getFechaTermino());
+							} catch (Exception e2) {
+								// TODO: handle exception
+							}
+							*/
 					
 							
 							
@@ -224,7 +232,10 @@ public class ListadoContrato extends JDialog {
 		
 		spnFechadeentrega = new JSpinner();
 		spnFechadeentrega.setEnabled(false);
-		spnFechadeentrega.setModel(new SpinnerDateModel(new Date(1512187200000L), null, null, Calendar.DAY_OF_YEAR));
+		if(table.getSelectedRow()!=-1){
+		spnFechadeentrega.setModel(new SpinnerDateModel(Empresa.getInstance().getMisContratos().get(table.getSelectedRow()).getFechaTermino(), null, null, Calendar.MILLISECOND));}else{
+			spnFechadeentrega.setModel(new SpinnerDateModel(new Date(), null, null, Calendar.MILLISECOND));
+		}
 		spnFechadeentrega.setBounds(181, 22, 117, 20);
 		panelPrórroga.add(spnFechadeentrega);
 		
@@ -233,8 +244,9 @@ public class ListadoContrato extends JDialog {
 		panelPrórroga.add(lblNewLabel_1);
 		Date date=new Date();
 		spnProrroga = new JSpinner();
+		spnProrroga.setModel(new SpinnerDateModel(new Date(), null, null, Calendar.MILLISECOND));
 		try {
-			spnProrroga.setModel(new SpinnerDateModel(date, new Date(1512187200000L), Empresa.getInstance().getMisContratos().get(table.getSelectedRow()).getFechaTermino(), Calendar.MILLISECOND));
+		//	spnProrroga.setModel(new SpinnerDateModel(null, new Date(), null, );
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
@@ -243,6 +255,15 @@ public class ListadoContrato extends JDialog {
 		panelPrórroga.add(spnProrroga);
 		
 		btnRealizarProrroga = new JButton("Realizar");
+		btnRealizarProrroga.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Empresa.getInstance().getMisContratos().get(table.getSelectedRow()).setFechaTermino((Date)spnProrroga.getValue());
+				spnFechadeentrega.setValue(Empresa.getInstance().getMisContratos().get(table.getSelectedRow()).getFechaTermino());
+				JOptionPane.showMessageDialog(null, "Prorroga realizada exitosamente");
+				panelPrórroga.setVisible(false);
+
+			}
+		});
 		btnRealizarProrroga.setBounds(564, 21, 89, 23);
 		panelPrórroga.add(btnRealizarProrroga);
 	}
