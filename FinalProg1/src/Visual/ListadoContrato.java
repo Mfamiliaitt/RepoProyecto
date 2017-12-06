@@ -137,10 +137,10 @@ public class ListadoContrato extends JDialog {
 							  if (dialogResult==JOptionPane.YES_OPTION){
 								  
 								  Empresa.getInstance().getMisContratos().get(table.getSelectedRow()).getMiProyecto().setEstado("Terminado");
-								  loadTable();
+								  
 
 								  
-								  for (Empleado empleado : Empresa.getInstance().getMisContratos().get(0).getMiProyecto().getElEquipo() )
+								  for (Empleado empleado : Empresa.getInstance().getMisContratos().get(table.getSelectedRow()).getMiProyecto().getElEquipo() )
 								  { System.out.println(table.getSelectedRow());
 									  
 									  Empresa.getInstance().buscarEmpleadoPorCedula(empleado.getIdentificador()).setOcupado(false);
@@ -150,7 +150,7 @@ public class ListadoContrato extends JDialog {
 							  else{
 								  remove(dialogButton);
 							  }
-							
+							  loadTable();
 							
 						}
 					});
