@@ -199,4 +199,18 @@ public double dameGanancia(){
 	t=aux1-aux2;
 	return t;	
 }
+public int cantidadDeProyectosPorTipo(String tipo){
+	int cantidad=0;
+	 
+	for (Contrato contrato : misContratos) {
+		for (Proyecto proyecto : misProyectos) {
+			if (proyecto.getTipo().equalsIgnoreCase(tipo)){
+				cantidad++;
+			}	
+		}
+		
+	}
+	return cantidad;
+	
+}
 }
