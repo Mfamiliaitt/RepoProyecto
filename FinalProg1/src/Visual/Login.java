@@ -48,28 +48,28 @@ public class Login extends JDialog {
 		contentPanel.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(Login.class.getResource("/Imagenes/avatar-grande (3).png")));
+		lblNewLabel.setIcon(new ImageIcon(Login.class.getResource("/Imagenes/2191544-128.png")));
 		lblNewLabel.setBounds(68, 43, 135, 137);
 		contentPanel.add(lblNewLabel);
 		
 		txtUsuario = new JTextField();
-		txtUsuario.setBounds(97, 202, 109, 20);
+		txtUsuario.setBounds(109, 203, 109, 20);
 		contentPanel.add(txtUsuario);
 		txtUsuario.setColumns(10);
 		
 		JLabel lblUsuario = new JLabel("Usuario");
 		lblUsuario.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblUsuario.setBounds(43, 204, 93, 14);
+		lblUsuario.setBounds(40, 209, 59, 14);
 		contentPanel.add(lblUsuario);
 		
 		JLabel lblClave = new JLabel("Clave");
 		lblClave.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblClave.setBounds(43, 235, 93, 14);
+		lblClave.setBounds(40, 240, 59, 14);
 		contentPanel.add(lblClave);
 		
 		txtClave = new JTextField();
 		txtClave.setColumns(10);
-		txtClave.setBounds(97, 233, 109, 20);
+		txtClave.setBounds(109, 234, 109, 20);
 		contentPanel.add(txtClave);
 		
 		JButton btnIngresar = new JButton("Ingresar");
