@@ -153,13 +153,14 @@ public class ListadoEmpleados extends JDialog {
 				btnbuscarempl = new JButton("Buscar");
 				btnbuscarempl.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						for (Empleado empleado : Empresa.getInstance().getMisEmpleados()) {
-							if(txtbuscar.getText().equalsIgnoreCase(empleado.getIdentificador())){
-								loadTable2();		
+						Empleado emple=Empresa.getInstance().buscarEmpleadoPorCedula(txtbuscar.getText());
+						if (emple!=null){
+								loadTable2(txtbuscar.getText());		
 							}else{
 								JOptionPane.showMessageDialog(null, "El empleado no existe");
+								txtbuscar.setText("");
+								loadTable();	
 							}
-						}
 						
 						
 					}
@@ -204,28 +205,28 @@ public class ListadoEmpleados extends JDialog {
 				}
 	
 	}
-	private void loadTable2(){
+	private void loadTable2(String cedula){
 		model.setRowCount(0);
 		fila = new Object[model.getColumnCount()];
-		for (Empleado empleado : Empresa.getInstance().getMisEmpleados()) {
-			if(txtbuscar.getText().equalsIgnoreCase(empleado.getIdentificador())){									
-				fila[0] = empleado.getIdentificador();
-				fila[1] = empleado.getNombre();
-				fila[2] = empleado.getApellidos();
-				fila[3] = empleado.getDireccion();
-				fila[4] = empleado.getSexo();
-				if(empleado instanceof JefeProyecto){
+		
+		Empleado emple=Empresa.getInstance().buscarEmpleadoPorCedula(cedula);									
+				fila[0] = emple.getIdentificador();
+				fila[1] = emple.getNombre();
+				fila[2] = emple.getApellidos();
+				fila[3] = emple.getDireccion();
+				fila[4] = emple.getSexo();
+				if(emple instanceof JefeProyecto){
 					fila[5] = "Jefe de proyecto";	
-				}else if(empleado instanceof Planificador){
+				}else if(emple instanceof Planificador){
 					fila[5] = "Planficador";	
-				}else if(empleado instanceof Programador){
+				}else if(emple instanceof Programador){
 					fila[5] = "Programador";
-				}else if(empleado instanceof Diseniador){
+				}else if(emple instanceof Diseniador){
 					fila[5] = "Diseñador";	
 				}
-				fila[6] = empleado.getSalario();
-				fila[7] = empleado.getEvaluacionAnual();
-				if (empleado.isOcupado()){
+				fila[6] = emple.getSalario();
+				fila[7] = emple.getEvaluacionAnual();
+				if (emple.isOcupado()){
 				    fila[8] = "Ocupado";
 				}
 				else{
@@ -234,7 +235,4 @@ public class ListadoEmpleados extends JDialog {
 				model.addRow(fila);		
 				}
 			
-				}
-
-	}
 }

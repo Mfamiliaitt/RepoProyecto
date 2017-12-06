@@ -187,12 +187,11 @@ public class ListadoClientes extends JDialog {
 	private void loadTable2(String id){
 		model.setRowCount(0);
 		fila = new Object[model.getColumnCount()];
-		Cliente c=Empresa.getInstance().buscarClientePorCedula(id);
-			if(txtbusc.getText().equalsIgnoreCase(c.getId())){		
+		Cliente c=Empresa.getInstance().buscarClientePorCedula(id);	
 				fila[0] = c.getId();
 				fila[1] = c.getNombre();
 				fila[2] = c.getDireccion();				
 				model.addRow(fila);	
-				}			
+						
 	}
 }
