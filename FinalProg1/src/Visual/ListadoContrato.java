@@ -163,19 +163,6 @@ public class ListadoContrato extends JDialog {
 				buttonPane.add(btnOk);
 				getRootPane().setDefaultButton(btnOk);
 			}
-			{
-				JButton btnCancelar = new JButton("Cancelar");
-				btnCancelar.setIcon(new ImageIcon(ListadoContrato.class.getResource("/Imagenes/boton-de-cerrar.png")));
-				btnCancelar.setBackground(SystemColor.control);
-				btnCancelar.setFont(new Font("Tahoma", Font.BOLD, 12));
-				btnCancelar.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						dispose();
-					}
-				});
-				btnCancelar.setActionCommand("Cancel");
-				buttonPane.add(btnCancelar);
-			}
 		}
 		{
 			JPanel panelTabla = new JPanel();

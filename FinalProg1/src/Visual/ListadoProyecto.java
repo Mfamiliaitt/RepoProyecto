@@ -79,18 +79,6 @@ public class ListadoProyecto extends JDialog {
 				buttonPane.add(okButton);
 				getRootPane().setDefaultButton(okButton);
 			}
-			{
-				JButton cancelButton = new JButton("Cancelar");
-				cancelButton.setIcon(new ImageIcon(ListadoProyecto.class.getResource("/Imagenes/boton-de-cerrar.png")));
-				cancelButton.setFont(new Font("Tahoma", Font.BOLD, 12));
-				cancelButton.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						dispose();
-					}
-				});
-				cancelButton.setActionCommand("Cancel");
-				buttonPane.add(cancelButton);
-			}
 		}
 		{
 			JPanel panel = new JPanel();
