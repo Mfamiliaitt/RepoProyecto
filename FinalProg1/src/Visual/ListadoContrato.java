@@ -121,7 +121,7 @@ public class ListadoContrato extends JDialog {
 							
 						}
 					});
-					btnProrrogar.setEnabled(true);
+					btnProrrogar.setEnabled(false);
 					buttonPane.add(btnProrrogar);
 				}
 				{
@@ -154,7 +154,7 @@ public class ListadoContrato extends JDialog {
 							
 						}
 					});
-					btnTerminar.setEnabled(true);
+					btnTerminar.setEnabled(false);
 					buttonPane.add(btnTerminar);
 				}
 				btnOk.setActionCommand("OK");
@@ -190,7 +190,9 @@ public class ListadoContrato extends JDialog {
 						if(table.getSelectedRow()!= -1){
 						
 						btnTerminar.setEnabled(true);
-						btnProrrogar.setEnabled(true);}else{
+						btnProrrogar.setEnabled(true);
+						}
+						else{
 							
 							btnTerminar.setEnabled(false);
 							btnProrrogar.setEnabled(false);
