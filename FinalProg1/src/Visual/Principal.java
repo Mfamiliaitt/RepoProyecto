@@ -47,6 +47,7 @@ public class Principal extends JFrame {
 	private static Object[] fila;
 	private static DefaultTableModel model;
 	private JTable tableProyectosPendientes;
+	private static Principal principal;
 
 	/**
 	 * Launch the application.
@@ -55,13 +56,14 @@ public class Principal extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Principal frame = new Principal();
+					Principal frame = Principal.getInstance();
 					 frame.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 					 try {Empresa.getInstance().cargarArchivos();
 						
 					} catch (Exception e) {
 						// TODO: handle exception
 					}
+					 
 				try {
 					
 					frame.addWindowListener(new WindowAdapter() {
@@ -92,7 +94,8 @@ public class Principal extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Principal() {
+	private Principal() {
+		loadTable();
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Principal.class.getResource("/Imagenes/moneyArtboard 1@0.5x.png")));
 		setTitle("SoftMasters");
 		setResizable(false);
@@ -240,8 +243,9 @@ public class Principal extends JFrame {
 		model = new DefaultTableModel();
 		model.setColumnIdentifiers(columnNames);
 		tableProyectosPendientes .setModel(model);
-		loadTable();
+		
 		scrollPane.setViewportView(tableProyectosPendientes);
+		
 		
 		JLabel lblNewLabel = new JLabel("PROYECTOS PENDIENTES");
 		lblNewLabel.setForeground(new Color(0, 102, 153));
@@ -292,8 +296,13 @@ public class Principal extends JFrame {
 		
 		
 	}
-
-	private void loadTable() {
+	public static Principal getInstance(){
+		if(principal==null){
+			principal=new Principal();
+		}
+		return principal;
+	}
+	public void loadTable() {
 		// TODO Auto-generated method stub
 		model.setRowCount(0);
 		fila = new Object[model.getColumnCount()];
@@ -306,8 +315,9 @@ public class Principal extends JFrame {
 			fila[2] = losContratos.getMiProyecto().getTipo();
 			fila[3] = losContratos.getFechaTermino();
 			fila[4] = losContratos.getMiProyecto().getEstado();
-			}
 			model.addRow(fila);
+			}
+			
 			
 	}
 		

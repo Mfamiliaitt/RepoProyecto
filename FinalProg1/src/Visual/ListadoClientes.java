@@ -82,6 +82,7 @@ public class ListadoClientes extends JDialog {
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						dispose();
+						
 					}
 				});
 				okButton.setActionCommand("OK");

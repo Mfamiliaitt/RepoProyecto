@@ -77,26 +77,13 @@ public class ListadoEmpleados extends JDialog {
 			contentPanel.add(buttonPane);
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			{
-				JButton okButton = new JButton("OK");
-				okButton.setIcon(new ImageIcon(ListadoEmpleados.class.getResource("/Imagenes/signo-de-comprobado.png")));
-				okButton.setBackground(SystemColor.control);
-				okButton.setFont(new Font("Tahoma", Font.BOLD, 12));
-				okButton.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						dispose();
-					}
-				});
-				okButton.setActionCommand("OK");
-				buttonPane.add(okButton);
-				getRootPane().setDefaultButton(okButton);
-			}
-			{
 				JButton cancelButton = new JButton("Cancel");
 				cancelButton.setIcon(new ImageIcon(ListadoEmpleados.class.getResource("/Imagenes/boton-de-cerrar.png")));
 				cancelButton.setBackground(SystemColor.control);
 				cancelButton.setFont(new Font("Tahoma", Font.BOLD, 12));
 				cancelButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
+						Principal.getInstance().loadTable();
 						dispose();
 					}
 				});
