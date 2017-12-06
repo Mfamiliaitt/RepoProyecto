@@ -42,14 +42,14 @@ public class Login extends JDialog {
 		setTitle("Login");
 		setBounds(100, 100, 292, 369);
 		getContentPane().setLayout(new BorderLayout());
-		contentPanel.setBackground(new Color(102, 204, 255));
+		contentPanel.setBackground(new Color(153, 204, 255));
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(Login.class.getResource("/Imagenes/avatar-grande (3).png")));
-		lblNewLabel.setBounds(71, 11, 135, 137);
+		lblNewLabel.setBounds(68, 43, 135, 137);
 		contentPanel.add(lblNewLabel);
 		
 		txtUsuario = new JTextField();
@@ -73,8 +73,9 @@ public class Login extends JDialog {
 		contentPanel.add(txtClave);
 		
 		JButton btnIngresar = new JButton("Ingresar");
+		btnIngresar.setIcon(new ImageIcon(Login.class.getResource("/Imagenes/flecha-de-siguiente.png")));
 		btnIngresar.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnIngresar.setBounds(97, 260, 89, 23);
+		btnIngresar.setBounds(78, 271, 114, 23);
 		contentPanel.add(btnIngresar);
 	}
 }
