@@ -243,8 +243,10 @@ public class Principal extends JFrame {
 		loadTable();
 		scrollPane.setViewportView(tableProyectosPendientes);
 		
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(Principal.class.getResource("/Imagenes/cooltext268589831814093.png")));
+		JLabel lblNewLabel = new JLabel("PROYECTOS PENDIENTES");
+		lblNewLabel.setForeground(new Color(0, 102, 153));
+		lblNewLabel.setFont(new Font("Century Gothic", Font.BOLD, 30));
+		lblNewLabel.setIcon(null);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setBounds(83, 11, 416, 41);
 		panel.add(lblNewLabel);
@@ -263,11 +265,12 @@ public class Principal extends JFrame {
 		contentPane.add(panel_2);
 		panel_2.setLayout(null);
 		
-		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1.setIcon(new ImageIcon(Principal.class.getResource("/Imagenes/cooltext268590561336802.png")));
-		lblNewLabel_1.setBounds(46, 11, 459, 49);
-		panel_2.add(lblNewLabel_1);
+		JLabel lblGrficoPorcentual = new JLabel("GR\u00C1FICO PORCENTUAL");
+		lblGrficoPorcentual.setHorizontalAlignment(SwingConstants.CENTER);
+		lblGrficoPorcentual.setForeground(new Color(0, 102, 153));
+		lblGrficoPorcentual.setFont(new Font("Century Gothic", Font.BOLD, 30));
+		lblGrficoPorcentual.setBounds(80, 11, 416, 41);
+		panel_2.add(lblGrficoPorcentual);
 		setLocationRelativeTo(null);
 		
 		
