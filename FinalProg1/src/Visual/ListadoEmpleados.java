@@ -31,6 +31,7 @@ import java.awt.SystemColor;
 import javax.swing.ImageIcon;
 import java.awt.Toolkit;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JFormattedTextField;
 
 public class ListadoEmpleados extends JDialog {
@@ -152,7 +153,14 @@ public class ListadoEmpleados extends JDialog {
 				btnbuscarempl = new JButton("Buscar");
 				btnbuscarempl.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						loadTable2();
+						for (Empleado empleado : Empresa.getInstance().getMisEmpleados()) {
+							if(txtbuscar.getText().equalsIgnoreCase(empleado.getIdentificador())){
+								loadTable2();		
+							}else{
+								JOptionPane.showMessageDialog(null, "El empleado no existe");
+							}
+						}
+						
 						
 					}
 				});

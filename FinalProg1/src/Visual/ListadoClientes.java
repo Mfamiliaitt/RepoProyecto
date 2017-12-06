@@ -29,6 +29,7 @@ import java.awt.Font;
 import java.awt.SystemColor;
 import java.awt.Toolkit;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JFormattedTextField;
 
 public class ListadoClientes extends JDialog {
@@ -145,6 +146,13 @@ public class ListadoClientes extends JDialog {
 			btnBuscarCliente = new JButton("Buscar");
 			btnBuscarCliente.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
+					for (Cliente cliente : Empresa.getInstance().getMisClientes()) {
+						if(txtbusc.getText().equalsIgnoreCase(cliente.getId())){
+							loadTable2();		
+						}else{
+							JOptionPane.showMessageDialog(null, "El cliente no existe");
+						}
+					}
 				}
 			});
 			btnBuscarCliente.setBackground(SystemColor.control);
