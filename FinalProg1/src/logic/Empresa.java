@@ -175,6 +175,8 @@ public void guardarEmpleados() throws IOException {
 	 ObjectOutputStream contrato= new ObjectOutputStream(cont);
 	 FileOutputStream client = new FileOutputStream("misClientes.dat");
 	 ObjectOutputStream clienteCount= new ObjectOutputStream(client);
+	 FileOutputStream Project = new FileOutputStream("misProyectos.dat");
+	 ObjectOutputStream Pro= new ObjectOutputStream(Project);
 	 cos.writeInt(misEmpleados.size());	 
 	 for (Empleado empleado : misEmpleados) {
 		 cos.writeObject(empleado);		
@@ -193,6 +195,13 @@ public void guardarEmpleados() throws IOException {
 	 }
 	 client.close();
 	 
+	Pro.writeInt(misProyectos.size());
+	 for(Proyecto proyecto: misProyectos){
+		 Pro.writeObject(proyecto);
+		 
+	 }
+	 Project.close();
+	 
 }
 public void cargarArchivos() throws IOException, Exception{
 	 FileInputStream cl=new FileInputStream("misEmpleados.dat");
@@ -200,7 +209,10 @@ public void cargarArchivos() throws IOException, Exception{
 	 FileInputStream cos=new FileInputStream("misContratos.dat");
 	 ObjectInputStream cont=new ObjectInputStream(cos);	
 	 FileInputStream lectorCli=new FileInputStream("misClientes.dat");
-	 ObjectInputStream contCli=new ObjectInputStream(lectorCli);	 
+	 ObjectInputStream contCli=new ObjectInputStream(lectorCli);
+	 FileInputStream lectorPro=new FileInputStream("misProyectos.dat");
+	 ObjectInputStream contPro=new ObjectInputStream(lectorPro);
+	 
 	 int count1=cli.readInt();	 
 	 for(int i=0;i<count1;i++){
 		 misEmpleados.add((Empleado) cli.readObject());		 
@@ -218,6 +230,12 @@ public void cargarArchivos() throws IOException, Exception{
 		 misClientes.add((Cliente) contCli.readObject());		 
 	 }	 
 	lectorCli.close();
+	
+	int count4=contPro.readInt();	 
+	 for(int i=0;i<count4;i++){
+		 misProyectos.add((Proyecto) contPro.readObject());		 
+	 }	 
+	lectorPro.close();
 	
 }
 public double dameGanancia(){
