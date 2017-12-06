@@ -222,12 +222,12 @@ public class Principal extends JFrame {
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(153, 204, 255));
 		panel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
-		panel.setBounds(112, 144, 559, 368);
+		panel.setBounds(172, 23, 559, 326);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
 		JPanel panel_3 = new JPanel();
-		panel_3.setBounds(10, 61, 539, 296);
+		panel_3.setBounds(43, 68, 477, 231);
 		panel.add(panel_3);
 		panel_3.setLayout(new BorderLayout(0, 0));
 		
@@ -254,14 +254,18 @@ public class Principal extends JFrame {
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(153, 204, 255));
 		panel_1.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
-		panel_1.setBounds(35, 23, 1093, 96);
+		panel_1.setBounds(10, 23, 145, 663);
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
+		
+		ClockFace clockFace = new ClockFace();
+		clockFace.setBounds(10, 26, 125, 133);
+		panel_1.add(clockFace);
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setBackground(new Color(153, 204, 255));
 		panel_2.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
-		panel_2.setBounds(704, 144, 559, 368);
+		panel_2.setBounds(761, 23, 559, 326);
 		contentPane.add(panel_2);
 		panel_2.setLayout(null);
 		
@@ -271,6 +275,18 @@ public class Principal extends JFrame {
 		lblGrficoPorcentual.setFont(new Font("Century Gothic", Font.BOLD, 30));
 		lblGrficoPorcentual.setBounds(80, 11, 416, 41);
 		panel_2.add(lblGrficoPorcentual);
+		
+		JPanel panel_4 = new JPanel();
+		panel_4.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		panel_4.setBackground(new Color(153, 204, 255));
+		panel_4.setBounds(172, 360, 559, 326);
+		contentPane.add(panel_4);
+		
+		JPanel panel_5 = new JPanel();
+		panel_5.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		panel_5.setBackground(new Color(153, 204, 255));
+		panel_5.setBounds(761, 360, 559, 326);
+		contentPane.add(panel_5);
 		setLocationRelativeTo(null);
 		
 		
