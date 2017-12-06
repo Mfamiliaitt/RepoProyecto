@@ -31,6 +31,8 @@ import java.awt.SystemColor;
 import javax.swing.ImageIcon;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.text.SimpleDateFormat;
+
 import javax.swing.JLabel;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerDateModel;
@@ -210,7 +212,7 @@ public class ListadoContrato extends JDialog {
 					
 					table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 					model = new DefaultTableModel();
-					String[] columnNames = {"Código","Solicitante","Tipo de Proyecto","Estado"};
+					String[] columnNames = {"Código","Solicitante","Tipo de Proyecto","Estado", "Fecha de creacion", "Fecha de vencimiento"};
 					model.setColumnIdentifiers(columnNames);
 					table.setModel(model);
 					loadTable();
@@ -274,12 +276,16 @@ public class ListadoContrato extends JDialog {
 		// TODO Auto-generated method stub
 		model.setRowCount(0);
 		fila = new Object[model.getColumnCount()];
+		SimpleDateFormat fecha = new SimpleDateFormat("dd/MM/yyyy");
+		SimpleDateFormat fecha2 = new SimpleDateFormat("dd/MM/yyyy");
 		for (Contrato losContratos : Empresa.getInstance().getMisContratos()) {
 			
 			fila[0] = losContratos.getCodigoProyecto();
 			fila[1] = Empresa.getInstance().buscarClientePorCedula(losContratos.getIdCliente()).getNombre();
 			fila[2] = losContratos.getMiProyecto().getTipo();
 			fila[3] = losContratos.getMiProyecto().getEstado();
+			fila[4] = fecha.format(losContratos.getFechaInicio());
+			fila[5] = fecha2.format(losContratos.getFechaTermino());
 			
 			model.addRow(fila);
 	}
