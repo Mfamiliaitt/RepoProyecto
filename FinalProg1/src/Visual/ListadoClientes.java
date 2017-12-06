@@ -154,14 +154,13 @@ public class ListadoClientes extends JDialog {
 					Cliente c=Empresa.getInstance().buscarClientePorCedula(txtbusc.getText());
 					
 					if(c!=null){
-						if(txtbusc.getText().equalsIgnoreCase(c.getId())){
 							loadTable2(txtbusc.getText());		
-						}else{
+						}
+					else{
 							JOptionPane.showMessageDialog(null, "El cliente no existe");
 							txtbusc.setText("");
 							loadTable();	
 						}
-					}
 				}
 			});
 			btnBuscarCliente.setBackground(SystemColor.control);
