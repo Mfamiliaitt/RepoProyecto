@@ -14,7 +14,7 @@ public class Proyecto implements Serializable{
 	private Boolean activo; //Proyecto activo o pasivo
 	private String estado; //prorrogado,atrazado 
 	private boolean terminado=false;
-	private ArrayList<Empleado> elEquipo=new ArrayList<>();
+	private ArrayList<Empleado> elEquipo;
 	private String descripcionDeProyecto;
 	public Proyecto(String tipo, String codigoProyecto, Boolean activo, String estado, ArrayList<Empleado> elEquipo,String descripcionDeProyecto ) {
 		super();
@@ -22,10 +22,13 @@ public class Proyecto implements Serializable{
 		this.codigoProyecto = codigoProyecto;
 		this.activo = activo;
 		this.estado = estado;
+		this.elEquipo=elEquipo;
 		
 		this.descripcionDeProyecto=descripcionDeProyecto;
 	}
-	public Proyecto(){}
+	public Proyecto(){
+		this.elEquipo=new ArrayList<>();
+	}
 	public String getTipo() {
 		return tipo;
 	}
