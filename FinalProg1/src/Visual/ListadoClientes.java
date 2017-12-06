@@ -150,11 +150,16 @@ public class ListadoClientes extends JDialog {
 			btnBuscarCliente = new JButton("Buscar");
 			btnBuscarCliente.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					for (Cliente cliente : Empresa.getInstance().getMisClientes()) {
-						if(txtbusc.getText().equalsIgnoreCase(cliente.getId())){
-							loadTable2();		
+					
+					Cliente c=Empresa.getInstance().buscarClientePorCedula(txtbusc.getText());
+					
+					if(c!=null){
+						if(txtbusc.getText().equalsIgnoreCase(c.getId())){
+							loadTable2(txtbusc.getText());		
 						}else{
 							JOptionPane.showMessageDialog(null, "El cliente no existe");
+							txtbusc.setText("");
+							loadTable();	
 						}
 					}
 				}
@@ -180,16 +185,15 @@ public class ListadoClientes extends JDialog {
 			model.addRow(fila);
 	}
 	}
-	private void loadTable2(){
+	private void loadTable2(String id){
 		model.setRowCount(0);
 		fila = new Object[model.getColumnCount()];
-		for (Cliente cliente : Empresa.getInstance().getMisClientes()) {
-			if(txtbusc.getText().equalsIgnoreCase(cliente.getId())){		
-				fila[0] = cliente.getId();
-				fila[1] = cliente.getNombre();
-				fila[2] = cliente.getDireccion();				
+		Cliente c=Empresa.getInstance().buscarClientePorCedula(id);
+			if(txtbusc.getText().equalsIgnoreCase(c.getId())){		
+				fila[0] = c.getId();
+				fila[1] = c.getNombre();
+				fila[2] = c.getDireccion();				
 				model.addRow(fila);	
 				}			
-				}
 	}
 }
