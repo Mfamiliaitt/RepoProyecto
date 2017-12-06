@@ -8,6 +8,7 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.text.MaskFormatter;
 
 import logic.Cliente;
 import logic.Diseniador;
@@ -139,10 +140,13 @@ public class ListadoClientes extends JDialog {
 				panel.add(lblNewLabel);
 			}
 			
-			txtbusc = new JFormattedTextField();
+			try {
+				MaskFormatter t = new MaskFormatter("###-#######-#");
+				t.setPlaceholderCharacter('_');
+				txtbusc = new JFormattedTextField(t);
+			} catch (Exception e) {}
 			txtbusc.setBounds(124, 12, 135, 20);
-			panel.add(txtbusc);
-			
+			panel.add(txtbusc);			
 			btnBuscarCliente = new JButton("Buscar");
 			btnBuscarCliente.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
