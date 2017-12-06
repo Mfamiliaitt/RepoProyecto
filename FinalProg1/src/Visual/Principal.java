@@ -95,7 +95,7 @@ public class Principal extends JFrame {
 	 * Create the frame.
 	 */
 	private Principal() {
-		loadTable();
+		
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Principal.class.getResource("/Imagenes/moneyArtboard 1@0.5x.png")));
 		setTitle("SoftMasters");
 		setResizable(false);
