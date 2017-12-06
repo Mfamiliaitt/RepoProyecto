@@ -178,7 +178,7 @@ public class CrearProyecto extends JDialog {
 							Empresa.getInstance().agregarClientes(nuevoCliente);
 						}
 						Empresa.getInstance().addProyecto(NuevoProyecto);
-					System.out.println(NuevoProyecto.getElEquipo().get(0).getApellidos());	
+						
 						JOptionPane.showMessageDialog(null, "Contrato creado exitosamente");
 						//pAux.getElEquipo().clear();
 						loadTable1();

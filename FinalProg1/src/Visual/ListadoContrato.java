@@ -139,7 +139,7 @@ public class ListadoContrato extends JDialog {
 							  if (dialogResult==JOptionPane.YES_OPTION){
 								  
 								  Empresa.getInstance().getMisContratos().get(table.getSelectedRow()).getMiProyecto().setEstado("Terminado");
-								  System.out.println("lol");
+								 
 
 								  
 								  for (Empleado empleado : Empresa.getInstance().getMisContratos().get(table.getSelectedRow()).getMiProyecto().getElEquipo() )
