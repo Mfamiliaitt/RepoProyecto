@@ -32,6 +32,8 @@ import javax.swing.UIManager;
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextArea;
 import javax.swing.JComboBox;
@@ -774,15 +776,17 @@ public class CrearProyecto extends JDialog {
 								txtNombreCmostrado.setText(txtNombre.getText()+" "+txtApellido.getText());
 								txtTelMostrado.setText(txtTelefonoclient.getText());
 								txtNombreProMostrado.setText(txtDescripcion.getText());
-								txtFechaEntregaMostrada.setText(spnFechaTermino.getValue().toString());
-								txtFechRealizacionMostrada.setText(new Date().toString());
+								SimpleDateFormat fecha1=new SimpleDateFormat("dd/MM/yyyy");
+								SimpleDateFormat fecha2=new SimpleDateFormat("dd/MM/yyyy");
+								txtFechaEntregaMostrada.setText(fecha1.format(spnFechaTermino.getValue()));
+								txtFechRealizacionMostrada.setText(fecha2.format(new Date()));
 								Date dateHoy = new Date();
 							    Contrato contrato=new Contrato(txtCodigo.getText(), txtCedulaMostrada.getText(), dateHoy, (Date)spnFechaTermino.getValue(), false);
 							    Proyecto proyecto = pAux;
 							    proyecto.setCodigoProyecto(txtCodigo.getText());
 							    proyecto.setDescripcionDeProyecto(txtNombreProMostrado.getText());
 							    contrato.setMiProyecto(proyecto);
-								txtPrecioMostrado.setText(Double.toString(contrato.costoDeProyectoAtiempo()));
+								txtPrecioMostrado.setText(Double.toString(Math.round(contrato.costoDeProyectoAtiempo())));
 								btnRegistrar.setEnabled(true);
 								P1.setVisible(false);
 								P2.setVisible(false);
@@ -856,6 +860,7 @@ public class CrearProyecto extends JDialog {
 				cancelButton.setIcon(new ImageIcon(CrearProyecto.class.getResource("/Imagenes/boton-de-cerrar.png")));
 				cancelButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
+						pAux.getElEquipo().clear();
 						dispose();
 					}
 				});
