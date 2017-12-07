@@ -7,18 +7,24 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.text.MaskFormatter;
+
 import java.awt.Color;
 import javax.swing.ImageIcon;
 import java.awt.Font;
 import javax.swing.JLabel;
 import java.awt.Toolkit;
+import java.text.ParseException;
+
 import javax.swing.JTextField;
+import javax.swing.JFormattedTextField;
+import javax.swing.JPasswordField;
 
 public class Login extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
-	private JTextField txtUsuario;
-	private JTextField txtClave;
+	private JFormattedTextField formattedTextFieldUsuario;
+	private JPasswordField passwordField;
 
 	/**
 	 * Launch the application.
@@ -53,11 +59,6 @@ public class Login extends JDialog {
 		lblNewLabel.setBounds(68, 43, 135, 137);
 		contentPanel.add(lblNewLabel);
 		
-		txtUsuario = new JTextField();
-		txtUsuario.setBounds(109, 203, 109, 20);
-		contentPanel.add(txtUsuario);
-		txtUsuario.setColumns(10);
-		
 		JLabel lblUsuario = new JLabel("Usuario");
 		lblUsuario.setFont(new Font("Tahoma", Font.BOLD, 13));
 		lblUsuario.setBounds(40, 209, 59, 14);
@@ -68,15 +69,27 @@ public class Login extends JDialog {
 		lblClave.setBounds(40, 240, 59, 14);
 		contentPanel.add(lblClave);
 		
-		txtClave = new JTextField();
-		txtClave.setColumns(10);
-		txtClave.setBounds(109, 234, 109, 20);
-		contentPanel.add(txtClave);
-		
 		JButton btnIngresar = new JButton("Ingresar");
 		btnIngresar.setIcon(new ImageIcon(Login.class.getResource("/Imagenes/flecha-de-siguiente.png")));
 		btnIngresar.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btnIngresar.setBounds(78, 271, 114, 23);
 		contentPanel.add(btnIngresar);
+		
+		MaskFormatter t;
+		try {
+			t = new MaskFormatter("###-#######-#");
+			t.setPlaceholderCharacter('_');
+			formattedTextFieldUsuario = new JFormattedTextField(t);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		formattedTextFieldUsuario.setBounds(110, 207, 108, 20);
+		contentPanel.add(formattedTextFieldUsuario);
+		
+		passwordField = new JPasswordField();
+		passwordField.setBounds(109, 238, 109, 20);
+		contentPanel.add(passwordField);
 	}
 }
