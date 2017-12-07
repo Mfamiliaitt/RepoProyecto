@@ -322,7 +322,9 @@ public class CrearProyecto extends JDialog {
 			}
 
 			spnFechaTermino = new JSpinner();
-			spnFechaTermino.setModel(new SpinnerDateModel(new Date(), null, null, Calendar.MILLISECOND));
+			Date a=new Date();
+			Date b=new Date();
+			spnFechaTermino.setModel(new SpinnerDateModel(b, a, null, Calendar.MILLISECOND));
 			spnFechaTermino.setBounds(189, 108, 153, 20);
 			panelProyecto.add(spnFechaTermino);
 		}
