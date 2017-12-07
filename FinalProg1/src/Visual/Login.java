@@ -9,40 +9,33 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.text.MaskFormatter;
 
+import logic.Cliente;
+import logic.Empleado;
+import logic.Empresa;
+
 import java.awt.Color;
 import javax.swing.ImageIcon;
 import java.awt.Font;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Toolkit;
 import java.text.ParseException;
 
 import javax.swing.JTextField;
 import javax.swing.JFormattedTextField;
 import javax.swing.JPasswordField;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Login extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 	private JFormattedTextField formattedTextFieldUsuario;
 	private JPasswordField passwordField;
+	private static Login login;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		try {
-			Login dialog = new Login();
-			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			dialog.setVisible(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
-	/**
-	 * Create the dialog.
-	 */
-	public Login() {
+	private Login() {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Login.class.getResource("/Imagenes/moneyArtboard 1@0.5x.png")));
 		setBackground(new Color(102, 204, 255));
 		setTitle("Login");
@@ -70,6 +63,24 @@ public class Login extends JDialog {
 		contentPanel.add(lblClave);
 		
 		JButton btnIngresar = new JButton("Ingresar");
+		btnIngresar.addActionListener(new ActionListener() {
+	
+			public void actionPerformed(ActionEvent e) {
+					Empleado p=Empresa.getInstance().buscarEmpleadoPorCedula(formattedTextFieldUsuario.getText());
+					char arrayC[]  = passwordField.getPassword(); 
+					String pass = new String(arrayC); 
+					if(p!=null && pass.equalsIgnoreCase(p.getPassword())){							
+								Principal principal = Principal.getInstance();
+								principal.setVisible(true);
+								principal.setLocationRelativeTo(null);
+								principal.loadTable();
+						}else{
+							JOptionPane.showMessageDialog(null, "Usuario o clave incorrecta");
+						}
+					
+				}
+			
+		});
 		btnIngresar.setIcon(new ImageIcon(Login.class.getResource("/Imagenes/flecha-de-siguiente.png")));
 		btnIngresar.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btnIngresar.setBounds(78, 271, 114, 23);
@@ -91,5 +102,11 @@ public class Login extends JDialog {
 		passwordField = new JPasswordField();
 		passwordField.setBounds(109, 238, 109, 20);
 		contentPanel.add(passwordField);
+	}
+	public static Login getInstance(){
+		if(login==null){
+			login=new Login();
+		}
+		return login;
 	}
 }

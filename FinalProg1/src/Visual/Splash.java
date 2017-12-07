@@ -12,26 +12,6 @@ import javax.swing.ImageIcon;
 public class Splash extends JFrame {
 
 	private JPanel contentPane;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Splash frame = new Splash();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
 	public Splash() {
 		setUndecorated(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -46,5 +26,13 @@ public class Splash extends JFrame {
 		lblNewLabel.setIcon(new ImageIcon(Splash.class.getResource("/Imagenes/WhatsApp Image 2017-11-30 at 4.19.18 PM.jpeg")));
 		lblNewLabel.setBounds(0,0, 462, 223);
 		contentPane.add(lblNewLabel);
+	}
+	public void delay(int segundos){
+		try {
+			Thread.sleep(segundos*1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
 	}
 }
