@@ -232,7 +232,7 @@ public class Principal extends JFrame {
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(153, 204, 255));
-		panel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		panel.setBorder(null);
 		panel.setBounds(172, 23, 559, 326);
 		contentPane.add(panel);
 		panel.setLayout(null);
@@ -255,9 +255,9 @@ public class Principal extends JFrame {
 		scrollPane.setViewportView(tableProyectosPendientes);
 		
 		
-		JLabel lblNewLabel = new JLabel("PROYECTOS PENDIENTES");
+		JLabel lblNewLabel = new JLabel("Proyectos Pendientes");
 		lblNewLabel.setForeground(Color.BLACK);
-		lblNewLabel.setFont(new Font("Century Gothic", Font.ITALIC, 30));
+		lblNewLabel.setFont(new Font("Century Gothic", Font.BOLD | Font.ITALIC, 30));
 		lblNewLabel.setIcon(null);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setBounds(83, 11, 416, 41);
@@ -265,7 +265,7 @@ public class Principal extends JFrame {
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(153, 204, 255));
-		panel_1.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		panel_1.setBorder(null);
 		panel_1.setBounds(10, 23, 145, 663);
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
@@ -304,7 +304,7 @@ public class Principal extends JFrame {
 		panelgrafica2.setLayout(new GridLayout(1, 0, 0, 0));
 		
 		JPanel panel_5 = new JPanel();
-		panel_5.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		panel_5.setBorder(null);
 		panel_5.setBackground(new Color(153, 204, 255));
 		panel_5.setBounds(761, 360, 559, 326);
 		contentPane.add(panel_5);

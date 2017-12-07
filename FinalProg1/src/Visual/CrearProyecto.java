@@ -183,6 +183,7 @@ public class CrearProyecto extends JDialog {
 						//pAux.getElEquipo().clear();
 						loadTable1();
 						Nocrear = false;
+						Principal.getInstance().loadTable();
 					Principal.getInstance().cargarGrafica();	
 						dispose();
 					}
