@@ -294,7 +294,7 @@ public class Principal extends JFrame {
 		contentPane.add(panel_5);
 		setLocationRelativeTo(null);
 		
-		
+		 
 		
 	}
 	public static Principal getInstance(){
