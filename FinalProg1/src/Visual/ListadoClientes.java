@@ -93,7 +93,12 @@ public class ListadoClientes extends JDialog {
 				btnVerreporte.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						try {
-							Empresa.getInstance().informaciondelcliente(table.getComponentAt(table.getSelectedRow(), 0).toString());
+							if(table.getComponentAt(table.getSelectedRow(), 0)!=null){									
+								Empresa.getInstance().informaciondelcliente(table.getValueAt(table.getSelectedRow(), 0).toString()); 
+							}else{
+								Empresa.getInstance().informaciondelcliente(txtbusc.getText());
+							}
+							
 						} catch (IOException e1) {
 							// TODO Auto-generated catch block
 							e1.printStackTrace();
@@ -126,9 +131,9 @@ public class ListadoClientes extends JDialog {
 						@Override
 						public void mouseClicked(MouseEvent e) {
 							if(table.getSelectedRow()!= -1 ){
-								if(table.getComponentAt(table.getSelectedRow(), 0)!=null){									
+													
 									btnVerreporte.setEnabled(true);
-								}
+								
 							}
 						}
 					});
