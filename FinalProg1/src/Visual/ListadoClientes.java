@@ -75,32 +75,17 @@ public class ListadoClientes extends JDialog {
 			contentPanel.add(buttonPane);
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			{
-				JButton okButton = new JButton("OK");
-				okButton.setBackground(SystemColor.control);
-				okButton.setFont(new Font("Tahoma", Font.BOLD, 12));
-				okButton.setIcon(new ImageIcon(ListadoClientes.class.getResource("/Imagenes/signo-de-comprobado.png")));
-				okButton.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						dispose();
-						
-					}
-				});
-				okButton.setActionCommand("OK");
-				buttonPane.add(okButton);
-				getRootPane().setDefaultButton(okButton);
-			}
-			{
-				JButton btnCancelar = new JButton("Cancelar");
-				btnCancelar.setBackground(SystemColor.control);
-				btnCancelar.setFont(new Font("Tahoma", Font.BOLD, 12));
-				btnCancelar.setIcon(new ImageIcon(ListadoClientes.class.getResource("/Imagenes/boton-de-cerrar.png")));
-				btnCancelar.addActionListener(new ActionListener() {
+				JButton btnSalir = new JButton("Salir");
+				btnSalir.setBackground(SystemColor.control);
+				btnSalir.setFont(new Font("Tahoma", Font.BOLD, 12));
+				btnSalir.setIcon(new ImageIcon(ListadoClientes.class.getResource("/Imagenes/boton-de-cerrar.png")));
+				btnSalir.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						dispose();
 					}
 				});
-				btnCancelar.setActionCommand("Cancel");
-				buttonPane.add(btnCancelar);
+				btnSalir.setActionCommand("Cancel");
+				buttonPane.add(btnSalir);
 			}
 		}
 		{
