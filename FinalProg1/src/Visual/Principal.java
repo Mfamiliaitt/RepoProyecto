@@ -310,7 +310,7 @@ public class Principal extends JFrame {
 		SimpleDateFormat fecha = new SimpleDateFormat("dd/MM/yyyy");
 		SimpleDateFormat fecha2 = new SimpleDateFormat("dd/MM/yyyy");
 		for (Contrato losContratos : Empresa.getInstance().getMisContratos()) {			
-			if(losContratos.getMiProyecto().getEstado().equalsIgnoreCase("A tiempo")){			
+			if(!losContratos.getMiProyecto().getEstado().equalsIgnoreCase("Terminado")){			
 			fila[0] = losContratos.getCodigoProyecto();
 			fila[1] = Empresa.getInstance().buscarClientePorCedula(losContratos.getIdCliente()).getNombre();
 			fila[2] = losContratos.getMiProyecto().getTipo();
