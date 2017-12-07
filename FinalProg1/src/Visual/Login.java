@@ -35,7 +35,7 @@ public class Login extends JDialog {
 	private JPasswordField passwordField;
 	private static Login login;
 
-	private Login() {
+	private Login() { 
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Login.class.getResource("/Imagenes/moneyArtboard 1@0.5x.png")));
 		setBackground(new Color(102, 204, 255));
 		setTitle("Login");
