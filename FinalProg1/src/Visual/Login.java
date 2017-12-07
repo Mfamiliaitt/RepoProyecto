@@ -74,6 +74,7 @@ public class Login extends JDialog {
 								principal.setVisible(true);
 								principal.setLocationRelativeTo(null);
 								principal.loadTable();
+								dispose();
 						}else{
 							JOptionPane.showMessageDialog(null, "Usuario o clave incorrecta");
 						}

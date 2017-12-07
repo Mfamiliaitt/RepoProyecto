@@ -4,7 +4,6 @@ import java.io.IOException;
 import Visual.Login;
 import Visual.Splash;
 public class Main {
-
 	public static void main(String[] args) throws IOException, Exception {
 		// TODO Auto-generated method stub
 		Empresa.getInstance().cargarArchivos();		
@@ -14,6 +13,5 @@ public class Main {
 		Login login = Login.getInstance();
 		login.setVisible(true);
 		frame.dispose();
-		login.dispose();
 	}
 }
