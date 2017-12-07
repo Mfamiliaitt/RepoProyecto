@@ -33,6 +33,8 @@ import java.awt.Toolkit;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JFormattedTextField;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class ListadoClientes extends JDialog {
 
@@ -91,7 +93,7 @@ public class ListadoClientes extends JDialog {
 				btnVerreporte.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						try {
-							Empresa.getInstance().informaciondelcliente(txtbusc.getText());
+							Empresa.getInstance().informaciondelcliente(table.getComponentAt(table.getSelectedRow(), 0).toString());
 						} catch (IOException e1) {
 							// TODO Auto-generated catch block
 							e1.printStackTrace();
@@ -120,6 +122,16 @@ public class ListadoClientes extends JDialog {
 				{
 					
 					table = new JTable();
+					table.addMouseListener(new MouseAdapter() {
+						@Override
+						public void mouseClicked(MouseEvent e) {
+							if(table.getSelectedRow()!= -1 ){
+								if(table.getComponentAt(table.getSelectedRow(), 0)!=null){									
+									btnVerreporte.setEnabled(true);
+								}
+							}
+						}
+					});
 					table.setGridColor(Color.WHITE);
 					table.setBackground(Color.WHITE);
 					table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);

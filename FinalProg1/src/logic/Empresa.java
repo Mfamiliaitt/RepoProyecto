@@ -272,7 +272,10 @@ public void informaciondelcliente(String id) throws IOException{
 	escritor.newLine();
 	escritor.write(direccion);
 	escritor.newLine();
-			    
+	escritor.close();
+	Desktop desktop = Desktop.getDesktop();
+	if(creador.exists()){desktop.open(creador);}
+	
 }	
 public double dameGanancia(){
 	double aux1=0;
