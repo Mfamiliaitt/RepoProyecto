@@ -86,11 +86,11 @@ public class ListadoContrato extends JDialog {
 			contentPanel.add(buttonPane);
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			{
-				JButton btnOk = new JButton("OK");
-				btnOk.setIcon(new ImageIcon(ListadoContrato.class.getResource("/Imagenes/signo-de-comprobado.png")));
-				btnOk.setBackground(SystemColor.control);
-				btnOk.setFont(new Font("Tahoma", Font.BOLD, 12));
-				btnOk.addActionListener(new ActionListener() {
+				JButton btnSalir = new JButton("Salir");
+				btnSalir.setIcon(new ImageIcon(ListadoContrato.class.getResource("/Imagenes/boton-de-cerrar.png")));
+				btnSalir.setBackground(SystemColor.control);
+				btnSalir.setFont(new Font("Tahoma", Font.BOLD, 12));
+				btnSalir.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						dispose();
 					}
@@ -159,9 +159,9 @@ public class ListadoContrato extends JDialog {
 					btnTerminar.setEnabled(false);
 					buttonPane.add(btnTerminar);
 				}
-				btnOk.setActionCommand("OK");
-				buttonPane.add(btnOk);
-				getRootPane().setDefaultButton(btnOk);
+				btnSalir.setActionCommand("OK");
+				buttonPane.add(btnSalir);
+				getRootPane().setDefaultButton(btnSalir);
 			}
 		}
 		{
