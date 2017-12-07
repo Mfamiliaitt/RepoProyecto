@@ -149,8 +149,8 @@ public class ListadoContrato extends JDialog {
 									  Empresa.getInstance().buscarEmpleadoPorCedula(empleado.getIdentificador()).agregarEstadoEmpleado( Empresa.getInstance().getMisContratos().get(table.getSelectedRow()).getMiProyecto().getEstado());
 								}
 							  }
-							  else{
-								  remove(dialogButton);
+							  else {
+								  
 							  }
 							  loadTable();
 							
@@ -176,7 +176,7 @@ public class ListadoContrato extends JDialog {
 				scrollPane.addMouseListener(new MouseAdapter() {
 					@Override
 					public void mouseClicked(MouseEvent e) {
-						if(table.getSelectedRow()!= -1){
+						if(table.getSelectedRow()!= -1 ){
 						
 						btnTerminar.setEnabled(true);
 						btnProrrogar.setEnabled(true);
