@@ -18,6 +18,7 @@ public abstract class Empleado implements Serializable{
     protected String idProyecto;
     protected String evaluacionAnual;
     protected boolean ocupado=false;
+    protected String password;
     protected ArrayList<String> misEstados=new ArrayList<>();
 	public Empleado(String identificador, String nombre, String apellidos, String direccion, String sexo, int edad,
 			double salario, String idProyecto, String evaluacionAnual) {
@@ -115,6 +116,14 @@ public abstract class Empleado implements Serializable{
     
 	public void agregarEstadoEmpleado(String c){
 		misEstados.add(c);
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
     
     
