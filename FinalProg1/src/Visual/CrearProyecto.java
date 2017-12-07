@@ -183,6 +183,7 @@ public class CrearProyecto extends JDialog {
 						//pAux.getElEquipo().clear();
 						loadTable1();
 						Nocrear = false;
+					Principal.getInstance().cargarGrafica();	
 						dispose();
 					}
 				});
@@ -839,7 +840,6 @@ public class CrearProyecto extends JDialog {
 				});
 				{
 					btnAtras = new JButton("Atras");
-					btnAtras.setEnabled(false);
 					btnAtras.setBackground(SystemColor.control);
 					btnAtras.setFont(new Font("Tahoma", Font.BOLD, 12));
 					btnAtras.setIcon(new ImageIcon(
@@ -1030,4 +1030,4 @@ public class CrearProyecto extends JDialog {
 		}
 
 	}
-}
+	}

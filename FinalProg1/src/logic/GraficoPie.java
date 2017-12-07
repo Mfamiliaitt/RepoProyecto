@@ -26,7 +26,7 @@ public class GraficoPie {
 	public GraficoPie(){
 		
 	}
-	    public JPanel init() {
+	    public JPanel init(int a, int b, int c, int d, int e) {
 	        panel = new JPanel();
 	        panel.setLayout(new BorderLayout(0, 0));
 	      // panel.setLayout(GridBagLayout);
@@ -34,13 +34,15 @@ public class GraficoPie {
 	        // Fuente de Datos
 	        DefaultPieDataset data = new DefaultPieDataset();
 	        
-	        data.setValue("C", 40);
-	        data.setValue("Java", 45);
-	        data.setValue("Python", 15);
+	        data.setValue("Aplicacion Web", a);
+	        data.setValue("Video Juegos", b);
+	        data.setValue("Aplicacion Movil", c);
+	        data.setValue("Corporativo", d);
+	        data.setValue("Desktop", e);
 	 
 	        // Creando el Grafico
 	        JFreeChart chart = ChartFactory.createPieChart(
-	         "Ejemplo Rapido de Grafico en un ChartFrame", 
+	         "Porcentaje de Tipos de Proyectos creados", 
 	         data, 
 	         true, 
 	         true, 
