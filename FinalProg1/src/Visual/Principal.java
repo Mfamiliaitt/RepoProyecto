@@ -22,6 +22,7 @@ import logic.Proyecto;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 import java.awt.Font;
@@ -239,7 +240,7 @@ public class Principal extends JFrame {
 		
 		tableProyectosPendientes = new JTable();
 		tableProyectosPendientes .setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		String[] columnNames = {"Código","Cliente","Tipo","Fecha de entrega","Estado"};
+		String[] columnNames = {"Código","Cliente","Tipo","Fecha de creacion","Fecha de termino","Estado"};
 		model = new DefaultTableModel();
 		model.setColumnIdentifiers(columnNames);
 		tableProyectosPendientes .setModel(model);
@@ -248,8 +249,8 @@ public class Principal extends JFrame {
 		
 		
 		JLabel lblNewLabel = new JLabel("PROYECTOS PENDIENTES");
-		lblNewLabel.setForeground(new Color(0, 102, 153));
-		lblNewLabel.setFont(new Font("Century Gothic", Font.BOLD, 30));
+		lblNewLabel.setForeground(Color.BLACK);
+		lblNewLabel.setFont(new Font("Century Gothic", Font.ITALIC, 30));
 		lblNewLabel.setIcon(null);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setBounds(83, 11, 416, 41);
@@ -275,8 +276,8 @@ public class Principal extends JFrame {
 		
 		JLabel lblGrficoPorcentual = new JLabel("GR\u00C1FICO PORCENTUAL");
 		lblGrficoPorcentual.setHorizontalAlignment(SwingConstants.CENTER);
-		lblGrficoPorcentual.setForeground(new Color(0, 102, 153));
-		lblGrficoPorcentual.setFont(new Font("Century Gothic", Font.BOLD, 30));
+		lblGrficoPorcentual.setForeground(Color.BLACK);
+		lblGrficoPorcentual.setFont(new Font("Century Gothic", Font.ITALIC, 30));
 		lblGrficoPorcentual.setBounds(80, 11, 416, 41);
 		panel_2.add(lblGrficoPorcentual);
 		
@@ -306,20 +307,18 @@ public class Principal extends JFrame {
 		// TODO Auto-generated method stub
 		model.setRowCount(0);
 		fila = new Object[model.getColumnCount()];
-		for (Contrato losContratos : Empresa.getInstance().getMisContratos()) {
-			
-			if(losContratos.getMiProyecto().getEstado().equalsIgnoreCase("A tiempo")){
-			
+		SimpleDateFormat fecha = new SimpleDateFormat("dd/MM/yyyy");
+		SimpleDateFormat fecha2 = new SimpleDateFormat("dd/MM/yyyy");
+		for (Contrato losContratos : Empresa.getInstance().getMisContratos()) {			
+			if(losContratos.getMiProyecto().getEstado().equalsIgnoreCase("A tiempo")){			
 			fila[0] = losContratos.getCodigoProyecto();
 			fila[1] = Empresa.getInstance().buscarClientePorCedula(losContratos.getIdCliente()).getNombre();
 			fila[2] = losContratos.getMiProyecto().getTipo();
-			fila[3] = losContratos.getFechaTermino();
-			fila[4] = losContratos.getMiProyecto().getEstado();
+			fila[3] = fecha.format(losContratos.getFechaInicio());
+			fila[4] = fecha2.format(losContratos.getFechaTermino());
+			fila[5] = losContratos.getMiProyecto().getEstado();
 			model.addRow(fila);
-			}
-			
-			
-	}
-		
+			}			
+	}		
 	}
 }
