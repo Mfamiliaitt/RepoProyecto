@@ -17,6 +17,7 @@ import javax.swing.border.EtchedBorder;
 
 import logic.Contrato;
 import logic.Empresa;
+import logic.GraficoBarra;
 import logic.GraficoPie;
 import logic.Proyecto;
 
@@ -53,6 +54,7 @@ public class Principal extends JFrame {
 	private JTable tableProyectosPendientes;
 	private static Principal principal;
 	private JPanel paneldegrafica;
+	private JPanel panelgrafica2;
 	//private GraficoPie nuevo = new GraficoPie();
 
 	/**
@@ -293,6 +295,13 @@ public class Principal extends JFrame {
 		panel_4.setBackground(new Color(153, 204, 255));
 		panel_4.setBounds(172, 360, 559, 326);
 		contentPane.add(panel_4);
+		panel_4.setLayout(new GridLayout(0, 1, 0, 0));
+		
+		panelgrafica2 = new JPanel();
+		panel_4.add(panelgrafica2);
+		GraficoBarra nuevo2 = new GraficoBarra();
+		panelgrafica2.add(nuevo2.init());
+		panelgrafica2.setLayout(new GridLayout(1, 0, 0, 0));
 		
 		JPanel panel_5 = new JPanel();
 		panel_5.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
@@ -332,5 +341,4 @@ public class Principal extends JFrame {
 	public void cargarGrafica(){
 	paneldegrafica.repaint();
 	}
-	
 }
