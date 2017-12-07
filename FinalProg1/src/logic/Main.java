@@ -13,6 +13,7 @@ public class Main {
 		frame.delay(2);
 		Login login = Login.getInstance();
 		login.setVisible(true);
-		frame.dispose();		
+		frame.dispose();
+		login.dispose();
 	}
 }

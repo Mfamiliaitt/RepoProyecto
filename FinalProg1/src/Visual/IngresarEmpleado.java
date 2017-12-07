@@ -444,23 +444,23 @@ public class IngresarEmpleado extends JDialog {
 						int edad=(int) spnEdad.getValue();
 					    Double salario=Double.parseDouble(txtSalario.getText());
 					if(rdbJefeDeProyecto.isSelected()){						
-						Empleado aux = new JefeProyecto(identificador, nombre, apellidos, direccion, sexo, edad, salario, "","Bueno", 0, chckbxProjectManager.isSelected());						
+						Empleado aux = new JefeProyecto(identificador, nombre, apellidos, direccion, sexo, edad, salario, "","Sobresaliente", 0, chckbxProjectManager.isSelected());						
 						aux.setPassword(pass);
 						Empresa.getInstance().addEmpleado(aux);
 	                
 					}
 					else if(rdbDiseniador.isSelected()){
-						Empleado aux= new Diseniador(identificador, nombre, apellidos, direccion, sexo, edad, salario, "", "Bueno", cmbTipoDisenio.getSelectedItem().toString());				
+						Empleado aux= new Diseniador(identificador, nombre, apellidos, direccion, sexo, edad, salario, "", "Sobresaliente", cmbTipoDisenio.getSelectedItem().toString());				
 						aux.setPassword(pass);
 						Empresa.getInstance().addEmpleado(aux);	
 					}
 					else if(rdbPlanificador.isSelected()){
-						Empleado aux=new Planificador(identificador, nombre, apellidos, direccion, sexo, edad, salario, "", "Bueno", (int) spnFrecuencia.getValue());	
+						Empleado aux=new Planificador(identificador, nombre, apellidos, direccion, sexo, edad, salario, "", "Sobresaliente", (int) spnFrecuencia.getValue());	
 						aux.setPassword(pass);
 						Empresa.getInstance().addEmpleado(aux);	
 					}
 					else if(rdbProgramador.isSelected()){
-						Empleado aux=new Programador(identificador, nombre, apellidos, direccion, sexo, edad, salario, "", "Bueno", CmbLenguaje.getSelectedItem().toString());		
+						Empleado aux=new Programador(identificador, nombre, apellidos, direccion, sexo, edad, salario, "", "Sobresaliente", CmbLenguaje.getSelectedItem().toString());		
 						aux.setPassword(pass);
 						Empresa.getInstance().addEmpleado(aux);
 					}

@@ -98,7 +98,7 @@ public class EvaluacionAnual extends JDialog {
 				loadTable();
 			}
 		});
-		cbmEstado.setModel(new DefaultComboBoxModel(new String[] {"<Seleccione>", "Muy bueno", "Bueno", "Malo"}));
+		cbmEstado.setModel(new DefaultComboBoxModel(new String[] {"<Seleccione>", "Sobresaliente", "Suficiente", "Deficiente"}));
 		cbmEstado.setBounds(433, 155, 107, 20);
 		contentPanel.add(cbmEstado);
 		{
