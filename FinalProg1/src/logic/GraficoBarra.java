@@ -33,8 +33,8 @@ public class GraficoBarra {
 	       // getContentPane().add(panel);
 	        // Fuente de Datos
 	        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-	        dataset.setValue(Empresa.getInstance().dameGanancia(), "Perdidas", "Lunes");
-	        dataset.setValue(Empresa.getInstance().dameGanancia(), "Ganancias", "Lunes");
+	        dataset.setValue(Empresa.getInstance().calculoDePerdida(), "Perdidas", "--");
+	        dataset.setValue(Empresa.getInstance().dameGanancia(), "Ganancias", "--");
 	       
 	        // Creando el Grafico
 	        JFreeChart chart = ChartFactory.createBarChart3D

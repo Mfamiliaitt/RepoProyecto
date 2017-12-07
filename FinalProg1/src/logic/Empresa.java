@@ -338,5 +338,21 @@ public void cargarEmpleado() throws IOException, ClassNotFoundException{
 	cl.close();
 	
 }
+public void revision(){
+	for (Contrato contrato : misContratos) {
+		contrato.estadoDeProyecto();
+		
+	}
+	
+	
+}
 
+public Double calculoDePerdida(){
+	Double counter=(double) 0;
+	for (Contrato contrato : misContratos) {
+	counter+=contrato.costoDeProyectoAtrazado();
+	
+	}
+	return counter;
+}
 }

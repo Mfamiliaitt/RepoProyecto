@@ -68,6 +68,7 @@ public class Principal extends JFrame {
 				try {
 					Principal frame = Principal.getInstance();
 					 frame.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+					Empresa.getInstance().revision();
 					
 					 
 				try {
