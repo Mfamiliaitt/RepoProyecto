@@ -941,7 +941,7 @@ public class CrearProyecto extends JDialog {
 		fila = new Object[model.getColumnCount()];
 
 		for (Empleado empleado : Empresa.getInstance().getMisEmpleados()) {
-			if (pAux.buscarEmpleadoPorCedula(empleado.getIdentificador()) == null) {
+			if (pAux.buscarEmpleadoPorCedula(empleado.getIdentificador()) == null && !empleado.isOcupado()) {
 
 				if (cbxCargoEmpl.getSelectedItem().toString().equalsIgnoreCase("<Seleccione>")) {
 				}
