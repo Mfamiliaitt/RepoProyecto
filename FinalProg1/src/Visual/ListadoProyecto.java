@@ -67,8 +67,8 @@ public class ListadoProyecto extends JDialog {
 			contentPanel.add(buttonPane);
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			{
-				JButton okButton = new JButton("OK");
-				okButton.setIcon(new ImageIcon(ListadoProyecto.class.getResource("/Imagenes/signo-de-comprobado.png")));
+				JButton okButton = new JButton("Salir");
+				okButton.setIcon(new ImageIcon(ListadoProyecto.class.getResource("/Imagenes/boton-de-cerrar.png")));
 				okButton.setFont(new Font("Tahoma", Font.BOLD, 12));
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
