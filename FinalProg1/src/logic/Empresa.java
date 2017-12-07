@@ -1,11 +1,17 @@
 package logic;
 
+import java.awt.Desktop;
+import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+
+
 
 
 public class Empresa {
@@ -131,13 +137,13 @@ public void evaluaciondelempleado(){
 		}		
 		int suma=prorrogado+atrasado+atiempo;
 		if (atiempo>=(0.70*suma)){
-			empleado.setEvaluacionAnual("Muy bueno");
+			empleado.setEvaluacionAnual("Sobresaliente");
 		}
 		else if(prorrogado>=(0.50*suma) && prorrogado<(0.70*suma)){
-			empleado.setEvaluacionAnual("Bueno");
+			empleado.setEvaluacionAnual("Suficiente");
 		}
 		else{
-			empleado.setEvaluacionAnual("Malo");
+			empleado.setEvaluacionAnual("Deficiente");
 		}				
 	}	
 }
@@ -238,6 +244,36 @@ public void cargarArchivos() throws IOException, Exception{
 	lectorPro.close();
 	
 }
+public void informaciondelcliente(String id) throws IOException{
+	File creador=new File("Cliente.txt"); 
+	FileWriter doc =	new FileWriter(creador);	
+	BufferedWriter escritor =new BufferedWriter(doc);
+	
+	String strin1 = "            *********************************            ";
+	String string = "                    Información del cliente               ";
+	String nombre = "Nombre: "+buscarClientePorCedula(id).getNombre();
+	String apellido = "Apellido: "+buscarClientePorCedula(id).getApellido();
+	String ced = "Cédula: "+buscarClientePorCedula(id).getId();
+	String telefono = "Telefono: "+buscarClientePorCedula(id).getTelefono();
+	String direccion = "Direccion: "+buscarClientePorCedula(id).getDireccion();
+	String strin2 = "            *******************************              ";
+	
+	escritor.write(strin1);
+	escritor.newLine();
+	escritor.write(string);
+	escritor.newLine();
+	escritor.write(nombre);
+	escritor.newLine();
+	escritor.write(apellido);
+	escritor.newLine();
+	escritor.write(id);
+	escritor.newLine();
+	escritor.write(telefono);
+	escritor.newLine();
+	escritor.write(direccion);
+	escritor.newLine();
+			    
+}	
 public double dameGanancia(){
 	double aux1=0;
 	double aux2=0;
