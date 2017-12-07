@@ -38,6 +38,8 @@ import javax.swing.JCheckBox;
 import javax.swing.JFormattedTextField;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.io.IOException;
+
 import javax.swing.ImageIcon;
 import java.awt.SystemColor;
 import java.awt.Toolkit;
@@ -86,6 +88,7 @@ public class IngresarEmpleado extends JDialog {
 			IngresarEmpleado dialog = new IngresarEmpleado();
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			dialog.setVisible(true);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -428,6 +431,7 @@ public class IngresarEmpleado extends JDialog {
 				btnRegistrar.setIcon(new ImageIcon(IngresarEmpleado.class.getResource("/Imagenes/signo-de-comprobado.png")));
 				btnRegistrar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
+						
 						if(faltaAlgo()){
 							JOptionPane.showMessageDialog(null, "Faltan campos por rellenar");
 						}

@@ -4,6 +4,7 @@ import java.awt.Desktop;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -184,7 +185,7 @@ public void guardarEmpleados() throws IOException {
 	 FileOutputStream Project = new FileOutputStream("misProyectos.dat");
 	 ObjectOutputStream Pro= new ObjectOutputStream(Project);
 	 cos.writeInt(misEmpleados.size());	
-	 System.out.println("guardado");
+	 //System.out.println("guardado");
 	 for (Empleado empleado : misEmpleados) {
 		 cos.writeObject(empleado);		
 	}
@@ -316,4 +317,26 @@ public int cantidadDeProyectosPorTipo(String tipo){
 	return cantidad;
 	
 }
+public void crearEmpleadoInicial() throws IOException {
+	FileOutputStream cu = new FileOutputStream("misEmpleados.dat");
+	 ObjectOutputStream cos= new ObjectOutputStream(cu);
+	 cos.writeInt(misEmpleados.size());	
+		
+		 for (Empleado empleado : misEmpleados) {
+			 cos.writeObject(empleado);		
+		}
+		 cu.close();
+}
+public void cargarEmpleado() throws IOException, ClassNotFoundException{
+	 FileInputStream cl=new FileInputStream("misEmpleados.dat");
+	 ObjectInputStream cli=new ObjectInputStream(cl);
+	
+	 int count1=cli.readInt();	 
+	 for(int i=0;i<count1;i++){
+		 misEmpleados.add((Empleado) cli.readObject());		 
+	 }	 
+	cl.close();
+	
+}
+
 }

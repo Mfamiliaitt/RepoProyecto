@@ -13,7 +13,7 @@ import org.jfree.chart.JFreeChart;
 import org.jfree.data.general.DefaultPieDataset;
 
 public class GraficoPie {
-	
+
 	 JPanel panel;
 	  /*  public Ventana(){
 	        setTitle("Como Hacer Graficos con Java");
@@ -54,6 +54,5 @@ public class GraficoPie {
 	        panel.add(chartPanel);
 	        return panel;
 	    }
-	    
 
 }

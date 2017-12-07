@@ -184,7 +184,8 @@ public class CrearProyecto extends JDialog {
 						loadTable1();
 						Nocrear = false;
 						Principal.getInstance().loadTable();
-					Principal.getInstance().cargarGrafica();	
+					Principal.getInstance().cargarGrafica();
+						
 						dispose();
 					}
 				});

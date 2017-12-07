@@ -14,6 +14,7 @@ import org.jfree.data.category.DefaultCategoryDataset;
 
 public class GraficoBarra {
 	 JPanel panel;
+	 
 	    /*public Ventana2(){
 	        setTitle("Como Hacer Graficos con Java");
 	        setSize(800,600);
@@ -44,6 +45,6 @@ public class GraficoBarra {
 	        panel.add(chartPanel);
 	        return panel;
 	    }
-	 
+	
 
 }
