@@ -256,8 +256,6 @@ public void informaciondelcliente(String id) throws IOException{
 	String ced = "Cédula: "+buscarClientePorCedula(id).getId();
 	String telefono = "Telefono: "+buscarClientePorCedula(id).getTelefono();
 	String direccion = "Direccion: "+buscarClientePorCedula(id).getDireccion();
-	String strin2 = "            *******************************              ";
-	
 	escritor.write(strin1);
 	escritor.newLine();
 	escritor.write(string);
@@ -266,12 +264,25 @@ public void informaciondelcliente(String id) throws IOException{
 	escritor.newLine();
 	escritor.write(apellido);
 	escritor.newLine();
-	escritor.write(id);
+	escritor.write(ced);
 	escritor.newLine();
 	escritor.write(telefono);
 	escritor.newLine();
 	escritor.write(direccion);
 	escritor.newLine();
+	escritor.newLine();
+	escritor.write("INFORMACION DE MIS PROYECTOS");
+	escritor.newLine();
+	escritor.newLine();
+	
+	for (Contrato contrato : misContratos) {
+		if(contrato.getIdCliente().equalsIgnoreCase(id)){
+			escritor.write("Codigo: "+contrato.getMiProyecto().getCodigoProyecto()+" Proyecto: "+contrato.getMiProyecto().getDescripcionDeProyecto()+" Estado Actual: "+contrato.getMiProyecto().getEstado());
+			escritor.newLine();		
+		}
+	
+	}
+	
 	escritor.close();
 	Desktop desktop = Desktop.getDesktop();
 	if(creador.exists()){desktop.open(creador);}
