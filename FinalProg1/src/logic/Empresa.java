@@ -295,11 +295,11 @@ public double dameGanancia(){
 	double aux2=0;
 	double t=0;
 	for (Contrato losContratos : misContratos) {
+	for (Empleado losempleados : losContratos.getMiProyecto().getElEquipo()) {
 		aux1=aux1+losContratos.getCostoProyecto();
-	}
-	for (Empleado losempleados : misEmpleados) {
 		aux2=aux2+losempleados.getSalario();
 	}
+}
 	t=aux1-aux2;
 	return t;	
 }

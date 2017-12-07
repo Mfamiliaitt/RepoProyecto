@@ -55,6 +55,7 @@ public class Principal extends JFrame {
 	private static Principal principal;
 	private JPanel paneldegrafica;
 	private GraficoPie nuevo = new GraficoPie();
+	private GraficoBarra nuevo2 = new GraficoBarra();
 	private JPanel panelgrafica2;
 	//private GraficoPie nuevo = new GraficoPie();
 
@@ -297,7 +298,7 @@ public class Principal extends JFrame {
 		
 		panelgrafica2 = new JPanel();
 		panel_4.add(panelgrafica2);
-		GraficoBarra nuevo2 = new GraficoBarra();
+		//GraficoBarra nuevo2 = new GraficoBarra();
 		panelgrafica2.add(nuevo2.init());
 		panelgrafica2.setLayout(new GridLayout(1, 0, 0, 0));
 		

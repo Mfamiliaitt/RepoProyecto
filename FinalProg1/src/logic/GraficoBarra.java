@@ -23,18 +23,22 @@ public class GraficoBarra {
 	        setVisible(true);
 	        init();
 	    }*/
+		 public GraficoBarra() {
+			
+		}
+			
 	  public JPanel init() {
 	        panel = new JPanel();
 	        panel.setLayout(new BorderLayout(0, 0));
 	       // getContentPane().add(panel);
 	        // Fuente de Datos
 	        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-	        dataset.setValue(8, "Perdidas", "Lunes");
-	        dataset.setValue(7, "Ganancias", "Lunes");
+	        dataset.setValue(Empresa.getInstance().dameGanancia(), "Perdidas", "Lunes");
+	        dataset.setValue(Empresa.getInstance().dameGanancia(), "Ganancias", "Lunes");
 	       
 	        // Creando el Grafico
 	        JFreeChart chart = ChartFactory.createBarChart3D
-	        ("Ganancias y pérdidas","Perdidas", "Ganancias", 
+	        ("Ganancias y pérdidas","Ganancia y perdidas", "Monto", 
 	        dataset, PlotOrientation.VERTICAL, true,true, false);
 	        chart.setBackgroundPaint(Color.gray);
 	        chart.getTitle().setPaint(Color.black); 
