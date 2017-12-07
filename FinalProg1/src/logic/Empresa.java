@@ -183,7 +183,8 @@ public void guardarEmpleados() throws IOException {
 	 ObjectOutputStream clienteCount= new ObjectOutputStream(client);
 	 FileOutputStream Project = new FileOutputStream("misProyectos.dat");
 	 ObjectOutputStream Pro= new ObjectOutputStream(Project);
-	 cos.writeInt(misEmpleados.size());	 
+	 cos.writeInt(misEmpleados.size());	
+	 System.out.println("guardado");
 	 for (Empleado empleado : misEmpleados) {
 		 cos.writeObject(empleado);		
 	}

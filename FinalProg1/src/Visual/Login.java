@@ -71,13 +71,16 @@ public class Login extends JDialog {
 					String pass = new String(arrayC); 
 					if(p!=null && pass.equalsIgnoreCase(p.getPassword())){							
 								Principal principal = Principal.getInstance();
+								principal.main();
 								principal.setVisible(true);
 								principal.setLocationRelativeTo(null);
 								principal.loadTable();
+								
 								dispose();
 						}else{
 							JOptionPane.showMessageDialog(null, "Usuario o clave incorrecta");
 						}
+					
 					
 				}
 			

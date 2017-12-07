@@ -60,17 +60,13 @@ public class Principal extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public void main() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
 					Principal frame = Principal.getInstance();
 					 frame.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-					 try {Empresa.getInstance().cargarArchivos();
-						
-					} catch (Exception e) {
-						// TODO: handle exception
-					}
+					
 					 
 				try {
 					
