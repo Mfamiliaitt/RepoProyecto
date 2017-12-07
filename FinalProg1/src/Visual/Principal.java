@@ -282,6 +282,7 @@ public class Principal extends JFrame {
 		paneldegrafica.setBounds(0, 0, 559, 326);
 		panel_2.add(paneldegrafica);
 		GraficoPie nuevo = new GraficoPie();
+		
 		paneldegrafica.add(nuevo.init());
 		paneldegrafica.setLayout(new GridLayout(1, 0, 0, 0));
 		//paneldegrafica.setLayout();
@@ -335,6 +336,8 @@ public class Principal extends JFrame {
 		
 	}
 	public void cargarGrafica(){
-	paneldegrafica.repaint();
+		
+		
+		
 	}
 }
