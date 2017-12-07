@@ -185,6 +185,7 @@ public class ListadoContrato extends JDialog {
 							
 							btnTerminar.setEnabled(false);
 							btnProrrogar.setEnabled(false);
+						//	System.out.println("Hola bye");
 						}
 						
 						
