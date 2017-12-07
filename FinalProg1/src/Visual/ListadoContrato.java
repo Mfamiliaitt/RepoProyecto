@@ -136,22 +136,16 @@ public class ListadoContrato extends JDialog {
 							  int dialogButton=JOptionPane.YES_NO_OPTION;
 							int dialogResult=  JOptionPane.showConfirmDialog(null, "Deseas terminar el proyecto?", "Warning", dialogButton);
 							  
-							  if (dialogResult==JOptionPane.YES_OPTION){
-								  
+							  if (dialogResult==JOptionPane.YES_OPTION){								  
 								  Empresa.getInstance().getMisContratos().get(table.getSelectedRow()).getMiProyecto().setEstado("Terminado");
-								 
-
 								  
 								  for (Empleado empleado : Empresa.getInstance().getMisContratos().get(table.getSelectedRow()).getMiProyecto().getElEquipo() )
-								  { System.out.println(table.getSelectedRow());
-									  
+								  { 									  
 									  Empresa.getInstance().buscarEmpleadoPorCedula(empleado.getIdentificador()).setOcupado(false);
 									  Empresa.getInstance().buscarEmpleadoPorCedula(empleado.getIdentificador()).agregarEstadoEmpleado( Empresa.getInstance().getMisContratos().get(table.getSelectedRow()).getMiProyecto().getEstado());
 								}
 							  }
-							  else {
-								  
-							  }
+							 
 							  loadTable();
 							
 						}
@@ -176,19 +170,6 @@ public class ListadoContrato extends JDialog {
 				scrollPane.addMouseListener(new MouseAdapter() {
 					@Override
 					public void mouseClicked(MouseEvent e) {
-						if(table.getSelectedRow()!= -1 ){
-						
-						btnTerminar.setEnabled(true);
-						btnProrrogar.setEnabled(true);
-						}
-						else{
-							
-							btnTerminar.setEnabled(false);
-							btnProrrogar.setEnabled(false);
-						//	System.out.println("Hola bye");
-						}
-						
-						
 						
 					}
 				});
@@ -196,6 +177,21 @@ public class ListadoContrato extends JDialog {
 				
 				panelTabla.add(scrollPane, BorderLayout.CENTER);
 				{
+					table.addMouseListener(new MouseAdapter() {
+						@Override
+						public void mouseClicked(MouseEvent e) {
+							if(table.getSelectedRow()!= -1 ){
+								if(Empresa.getInstance().getMisContratos().get(table.getSelectedRow()).getMiProyecto().getEstado().equalsIgnoreCase("Terminado")){
+									btnTerminar.setEnabled(false);
+									btnProrrogar.setEnabled(false);	
+								}else{
+								btnTerminar.setEnabled(true);
+								btnProrrogar.setEnabled(true);
+								}
+							}
+										
+						}
+					});
 					
 					
 					table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
