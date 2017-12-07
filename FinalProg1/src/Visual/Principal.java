@@ -53,7 +53,7 @@ public class Principal extends JFrame {
 	private JTable tableProyectosPendientes;
 	private static Principal principal;
 	private JPanel paneldegrafica;
-	private GraficoPie nuevo = new GraficoPie();
+	//private GraficoPie nuevo = new GraficoPie();
 
 	/**
 	 * Launch the application.
@@ -283,8 +283,8 @@ public class Principal extends JFrame {
 		paneldegrafica.setBackground(new Color(153, 204, 255));
 		paneldegrafica.setBounds(0, 0, 559, 326);
 		panel_2.add(paneldegrafica);
-		//GraficoPie nuevo = new GraficoPie();
-		paneldegrafica.add(nuevo.init(Empresa.getInstance().cantidadDeProyectosPorTipo("Aplicacion Web"), Empresa.getInstance().cantidadDeProyectosPorTipo("Video Juegos"), Empresa.getInstance().cantidadDeProyectosPorTipo("Aplicacion Movil"),Empresa.getInstance().cantidadDeProyectosPorTipo("Corporativo"),Empresa.getInstance().cantidadDeProyectosPorTipo("Desktop")));
+		GraficoPie nuevo = new GraficoPie();
+		paneldegrafica.add(nuevo.init());
 		paneldegrafica.setLayout(new GridLayout(1, 0, 0, 0));
 		//paneldegrafica.setLayout();
 		
@@ -330,9 +330,7 @@ public class Principal extends JFrame {
 		
 	}
 	public void cargarGrafica(){
-	paneldegrafica.remove(0);	
-	paneldegrafica.add(nuevo.init(Empresa.getInstance().cantidadDeProyectosPorTipo("Aplicacion Web"), Empresa.getInstance().cantidadDeProyectosPorTipo("Video Juegos"), Empresa.getInstance().cantidadDeProyectosPorTipo("Aplicacion Movil"),Empresa.getInstance().cantidadDeProyectosPorTipo("Corporativo"),Empresa.getInstance().cantidadDeProyectosPorTipo("Desktop")));
-		
+	paneldegrafica.repaint();
 	}
 	
 }
