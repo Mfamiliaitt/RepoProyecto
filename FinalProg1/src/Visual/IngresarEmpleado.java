@@ -479,9 +479,10 @@ public class IngresarEmpleado extends JDialog {
 					
 					}
 
+					@SuppressWarnings("deprecation")
 					private boolean faltaAlgo() {
 						boolean falta=false;
-						if(txtId_1.getText().isEmpty() || txtApellidos.getText().isEmpty() || txtDireccion.getText().isEmpty() || txtNombre.getText().isEmpty() || txtSalario.getText().isEmpty()){
+						if(txtId_1.getText().isEmpty() || passwordField.getText().isEmpty() || txtApellidos.getText().isEmpty() || txtDireccion.getText().isEmpty() || txtNombre.getText().isEmpty() || txtSalario.getText().isEmpty()){
 							falta=true;
 						}						
 						return falta;
