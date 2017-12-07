@@ -90,7 +90,9 @@ public class Contrato implements Serializable{
 	public float cantidadDeDias(){
 	
 	 float cant=((float)((fechaTermino.getTime())-(fechaInicio.getTime()))/86400000);
-	
+	if(cant<0){
+		cant=0;
+	}
 		return cant;
 	} 
       
