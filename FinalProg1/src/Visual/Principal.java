@@ -54,6 +54,7 @@ public class Principal extends JFrame {
 	private JTable tableProyectosPendientes;
 	private static Principal principal;
 	private JPanel paneldegrafica;
+	private GraficoPie nuevo = new GraficoPie();
 	private JPanel panelgrafica2;
 	//private GraficoPie nuevo = new GraficoPie();
 
@@ -281,7 +282,7 @@ public class Principal extends JFrame {
 		paneldegrafica.setBackground(new Color(153, 204, 255));
 		paneldegrafica.setBounds(0, 0, 559, 326);
 		panel_2.add(paneldegrafica);
-		GraficoPie nuevo = new GraficoPie();
+		//GraficoPie nuevo = new GraficoPie();
 		
 		paneldegrafica.add(nuevo.init());
 		paneldegrafica.setLayout(new GridLayout(1, 0, 0, 0));
@@ -336,8 +337,10 @@ public class Principal extends JFrame {
 		
 	}
 	public void cargarGrafica(){
+		paneldegrafica.removeAll();
+		paneldegrafica.revalidate();
+		paneldegrafica.add(nuevo.init());
 		
-		
-		
+		paneldegrafica.repaint();
 	}
 }
