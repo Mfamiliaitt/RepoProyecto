@@ -34,11 +34,11 @@ public class GraficoPie {
 	        // Fuente de Datos
 	        DefaultPieDataset data = new DefaultPieDataset();
 	        
-	        data.setValue("Aplicacion Web", Empresa.getInstance().cantidadDeProyectosPorTipo("Aplicacion Web"));
-	        data.setValue("Video Juegos",Empresa.getInstance().cantidadDeProyectosPorTipo("Video Juegos"));
-	        data.setValue("Aplicacion Movil", Empresa.getInstance().cantidadDeProyectosPorTipo("Aplicacion Movil"));
-	        data.setValue("Corporativo", Empresa.getInstance().cantidadDeProyectosPorTipo("Corporativo"));
-	        data.setValue("Desktop",Empresa.getInstance().cantidadDeProyectosPorTipo("Desktop"));
+	        data.setValue("Aplicacion Web", Empresa.getInstance().cantidadDeProyectosPorTipo("Aplicacion Web")*100/(Empresa.getInstance().getMisProyectos().size()+1));
+	        data.setValue("Video Juegos",Empresa.getInstance().cantidadDeProyectosPorTipo("Video Juegos")*100/(Empresa.getInstance().getMisProyectos().size()+1));
+	        data.setValue("Aplicacion Movil",Empresa.getInstance().cantidadDeProyectosPorTipo("Aplicacion Movil")*100/(Empresa.getInstance().getMisProyectos().size()+1));
+	        data.setValue("Corporativo", Empresa.getInstance().cantidadDeProyectosPorTipo("Corporativo")*100/(Empresa.getInstance().getMisProyectos().size()+1));
+	        data.setValue("Desktop",Empresa.getInstance().cantidadDeProyectosPorTipo("Desktop")*100/(Empresa.getInstance().getMisProyectos().size()+1));
 	 
 	        // Creando el Grafico
 	        JFreeChart chart = ChartFactory.createPieChart(
