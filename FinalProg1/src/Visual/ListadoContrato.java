@@ -104,7 +104,7 @@ public class ListadoContrato extends JDialog {
 							panelPrórroga.setVisible(true);
 							try {
 								spnFechadeentrega.setModel(new SpinnerDateModel(Empresa.getInstance().getMisContratos().get(table.getSelectedRow()).getFechaTermino(), null, null, Calendar.MILLISECOND));
-								
+								Empresa.getInstance().getMisContratos().get(table.getSelectedRow()).getMiProyecto().setEstado("Prorrogado");
 							} catch (Exception e2) {
 								// TODO: handle exception
 							}
@@ -249,6 +249,9 @@ public class ListadoContrato extends JDialog {
 				Empresa.getInstance().getMisContratos().get(table.getSelectedRow()).setFechaTermino((Date)spnProrroga.getValue());
 				spnFechadeentrega.setValue(Empresa.getInstance().getMisContratos().get(table.getSelectedRow()).getFechaTermino());
 				JOptionPane.showMessageDialog(null, "Prorroga realizada exitosamente");
+				 loadTable();
+				 Principal.getInstance().loadTable();
+				 
 				panelPrórroga.setVisible(false);
 
 			}

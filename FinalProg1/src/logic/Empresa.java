@@ -279,7 +279,7 @@ public void informaciondelcliente(String id) throws IOException{
 	
 	for (Contrato contrato : misContratos) {
 		if(contrato.getIdCliente().equalsIgnoreCase(id)){
-			escritor.write("Codigo: "+contrato.getMiProyecto().getCodigoProyecto()+" Proyecto: "+contrato.getMiProyecto().getDescripcionDeProyecto()+" Estado Actual: "+contrato.getMiProyecto().getEstado());
+			escritor.write("Codigo: "+contrato.getMiProyecto().getCodigoProyecto()+", Proyecto: "+contrato.getMiProyecto().getDescripcionDeProyecto()+", Estado Actual: "+contrato.getMiProyecto().getEstado()+", Precio: "+contrato.getCostoProyecto());
 			escritor.newLine();		
 		}
 	

@@ -154,19 +154,6 @@ public class Principal extends JFrame {
 				c.setLocationRelativeTo(null);
 			}
 		});
-		
-		JMenuItem mntmListadoDeProyectos = new JMenuItem("Listado de Proyectos");
-		mntmListadoDeProyectos.setBorder(null);
-		mntmListadoDeProyectos.setIcon(new ImageIcon(Principal.class.getResource("/Imagenes/compartiendo.png")));
-		mntmListadoDeProyectos.setBackground(Color.WHITE);
-		mntmListadoDeProyectos.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				ListadoProyecto c = new ListadoProyecto();
-				c.setVisible(true);
-				c.setLocationRelativeTo(null);
-			}
-		});
-		mnVer.add(mntmListadoDeProyectos);
 		mnVer.add(mntmListaDeContratos);
 		mnVer.add(mntmListadoDeEmpleados);
 		
