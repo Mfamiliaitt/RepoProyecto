@@ -22,6 +22,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
 import javax.swing.border.TitledBorder;
 import java.awt.Color;
@@ -87,6 +88,16 @@ public class ListadoClientes extends JDialog {
 				});
 				
 				btnVerreporte = new JButton("Ver reporte");
+				btnVerreporte.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						try {
+							Empresa.getInstance().informaciondelcliente(txtbusc.getText());
+						} catch (IOException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+					}
+				});
 				btnVerreporte.setEnabled(false);
 				btnVerreporte.setIcon(new ImageIcon(ListadoClientes.class.getResource("/Imagenes/escribir-documento.png")));
 				btnVerreporte.setFont(new Font("Tahoma", Font.BOLD, 12));
