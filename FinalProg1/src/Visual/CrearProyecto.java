@@ -93,7 +93,7 @@ public class CrearProyecto extends JDialog {
 	private JComboBox cbxCargoEmpl;
 	private JComboBox cmbTipoDeProyecto;
 	private JButton btnRegistrar;
-	private JLabel label_1;
+	private JLabel lblNombre;
 	private JTextArea txtDescripcion;
 	private JSpinner spnFechaTermino;
 	private JPanel panelTerminos;
@@ -277,10 +277,10 @@ public class CrearProyecto extends JDialog {
 				panelProyecto.add(txtCodigo);
 			}
 			{
-				label_1 = new JLabel("Descripcion");
-				label_1.setFont(new Font("Century Gothic", Font.BOLD | Font.ITALIC, 11));
-				label_1.setBounds(32, 92, 151, 14);
-				panelProyecto.add(label_1);
+				lblNombre = new JLabel("Nombre:");
+				lblNombre.setFont(new Font("Century Gothic", Font.BOLD | Font.ITALIC, 11));
+				lblNombre.setBounds(32, 92, 151, 14);
+				panelProyecto.add(lblNombre);
 			}
 			{
 				txtDescripcion = new JTextArea();
