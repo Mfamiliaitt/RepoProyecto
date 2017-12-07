@@ -17,6 +17,7 @@ import javax.swing.border.EtchedBorder;
 
 import logic.Contrato;
 import logic.Empresa;
+import logic.GraficoPie;
 import logic.Proyecto;
 
 import java.awt.event.ActionListener;
@@ -41,6 +42,8 @@ import javax.swing.ListSelectionModel;
 import java.awt.Button;
 import javax.swing.JButton;
 import org.edisoncor.gui.varios.ClockFace;
+import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 
 public class Principal extends JFrame {
 
@@ -49,6 +52,7 @@ public class Principal extends JFrame {
 	private static DefaultTableModel model;
 	private JTable tableProyectosPendientes;
 	private static Principal principal;
+	private JPanel paneldegrafica;
 
 	/**
 	 * Launch the application.
@@ -274,12 +278,13 @@ public class Principal extends JFrame {
 		contentPane.add(panel_2);
 		panel_2.setLayout(null);
 		
-		JLabel lblGrficoPorcentual = new JLabel("GR\u00C1FICO PORCENTUAL");
-		lblGrficoPorcentual.setHorizontalAlignment(SwingConstants.CENTER);
-		lblGrficoPorcentual.setForeground(Color.BLACK);
-		lblGrficoPorcentual.setFont(new Font("Century Gothic", Font.ITALIC, 30));
-		lblGrficoPorcentual.setBounds(80, 11, 416, 41);
-		panel_2.add(lblGrficoPorcentual);
+		paneldegrafica = new JPanel();
+		paneldegrafica.setBounds(0, 0, 559, 326);
+		panel_2.add(paneldegrafica);
+		GraficoPie nuevo = new GraficoPie();
+		paneldegrafica.add(nuevo.init());
+		paneldegrafica.setLayout(new GridLayout(1, 0, 0, 0));
+		//paneldegrafica.setLayout();
 		
 		JPanel panel_4 = new JPanel();
 		panel_4.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
