@@ -42,6 +42,7 @@ import javax.swing.ImageIcon;
 import java.awt.SystemColor;
 import java.awt.Toolkit;
 import java.awt.Font;
+import javax.swing.JPasswordField;
 
 
 public class IngresarEmpleado extends JDialog {
@@ -74,6 +75,8 @@ public class IngresarEmpleado extends JDialog {
 	private JFormattedTextField txtId;
 	private JFormattedTextField txtId_1;
 	private JButton btnRegistrar;
+	private JLabel lblNewLabel;
+	private JPasswordField passwordField;
 
 	/**
 	 * Launch the application.
@@ -105,7 +108,7 @@ public class IngresarEmpleado extends JDialog {
 			panelJefedeproyecto = new JPanel();
 			panelJefedeproyecto.setBackground(SystemColor.textHighlightText);
 			panelJefedeproyecto.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Jefe de Proyecto", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-			panelJefedeproyecto.setBounds(30, 327, 668, 90);
+			panelJefedeproyecto.setBounds(30, 338, 668, 79);
 			contentPanel.add(panelJefedeproyecto);
 			panelJefedeproyecto.setLayout(null);
 			panelJefedeproyecto.setVisible(true);
@@ -121,7 +124,7 @@ public class IngresarEmpleado extends JDialog {
 		    panelPlanificador = new JPanel();
 		    panelPlanificador.setBackground(SystemColor.textHighlightText);
 			panelPlanificador.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Planificador", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-			panelPlanificador.setBounds(30, 327, 668, 90);
+			panelPlanificador.setBounds(30, 338, 668, 79);
 			contentPanel.add(panelPlanificador);
 			panelPlanificador.setLayout(null);
 			panelPlanificador.setVisible(false);
@@ -140,7 +143,7 @@ public class IngresarEmpleado extends JDialog {
 			panelProgramador = new JPanel();
 			panelProgramador.setBackground(SystemColor.textHighlightText);
 			panelProgramador.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Programador", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-			panelProgramador.setBounds(30, 327, 668, 90);
+			panelProgramador.setBounds(30, 338, 668, 79);
 			contentPanel.add(panelProgramador);
 			panelProgramador.setLayout(null);
 			panelProgramador.setVisible(false);
@@ -162,7 +165,7 @@ public class IngresarEmpleado extends JDialog {
 		panelDiseniador = new JPanel();
 		panelDiseniador.setBackground(SystemColor.textHighlightText);
 		panelDiseniador.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Dise\u00F1ador", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-		panelDiseniador.setBounds(30, 327, 668, 90);
+		panelDiseniador.setBounds(30, 338, 668, 79);
 		contentPanel.add(panelDiseniador);
 		panelDiseniador.setLayout(null);
 		panelDiseniador.setVisible(false);
@@ -184,14 +187,14 @@ public class IngresarEmpleado extends JDialog {
 		JLabel lblImagen = new JLabel("");
 		lblImagen.setIcon(new ImageIcon(IngresarEmpleado.class.getResource("/Imagenes/avatar-grande (3).png")));
 		lblImagen.setHorizontalAlignment(SwingConstants.CENTER);
-		lblImagen.setBounds(30, 39, 178, 178);
+		lblImagen.setBounds(32, 59, 178, 178);
 		contentPanel.add(lblImagen);
 		{
 			JPanel PDatos = new JPanel();
 			PDatos.setFont(new Font("Century Gothic", Font.BOLD | Font.ITALIC, 12));
 			PDatos.setBackground(Color.WHITE);
 			PDatos.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Datos:", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-			PDatos.setBounds(243, 23, 455, 240);
+			PDatos.setBounds(220, 23, 478, 260);
 			contentPanel.add(PDatos);
 			PDatos.setLayout(null);
 			{
@@ -221,13 +224,13 @@ public class IngresarEmpleado extends JDialog {
 			{
 				JLabel lblNewLabel_5 = new JLabel("Sexo:");
 				lblNewLabel_5.setFont(new Font("Century Gothic", Font.BOLD | Font.ITALIC, 11));
-				lblNewLabel_5.setBounds(10, 167, 46, 14);
+				lblNewLabel_5.setBounds(10, 193, 46, 14);
 				PDatos.add(lblNewLabel_5);
 			}
 			{
 				JLabel lblNewLabel_6 = new JLabel("Edad:");
 				lblNewLabel_6.setFont(new Font("Century Gothic", Font.BOLD | Font.ITALIC, 11));
-				lblNewLabel_6.setBounds(10, 203, 46, 14);
+				lblNewLabel_6.setBounds(10, 229, 46, 14);
 				PDatos.add(lblNewLabel_6);
 			}
 			
@@ -252,28 +255,28 @@ public class IngresarEmpleado extends JDialog {
 			rdnFemenino.setBackground(new Color(255, 255, 255));
 			rdnFemenino.setSelected(true);
 			buttonGroup_1.add(rdnFemenino);
-			rdnFemenino.setBounds(71, 163, 103, 23);
+			rdnFemenino.setBounds(71, 189, 103, 23);
 			PDatos.add(rdnFemenino);
 			
 			rdnMaculino = new JRadioButton("Masculino");
 			rdnMaculino.setFont(new Font("Century Gothic", Font.BOLD | Font.ITALIC, 11));
 			rdnMaculino.setBackground(new Color(255, 255, 255));
 			buttonGroup_1.add(rdnMaculino);
-			rdnMaculino.setBounds(187, 163, 144, 23);
+			rdnMaculino.setBounds(187, 189, 144, 23);
 			PDatos.add(rdnMaculino);
 			
 			spnEdad = new JSpinner();
 			spnEdad.setModel(new SpinnerNumberModel(new Integer(18), new Integer(18), null, new Integer(1)));
-			spnEdad.setBounds(71, 203, 62, 20);
+			spnEdad.setBounds(71, 229, 62, 20);
 			PDatos.add(spnEdad);
 			
 			lblSalario = new JLabel("Salario:");
 			lblSalario.setFont(new Font("Century Gothic", Font.BOLD | Font.ITALIC, 11));
-			lblSalario.setBounds(192, 203, 46, 14);
+			lblSalario.setBounds(192, 229, 46, 14);
 			PDatos.add(lblSalario);
 			
 			txtSalario = new JTextField();
-			txtSalario.setBounds(245, 200, 86, 20);
+			txtSalario.setBounds(245, 226, 86, 20);
 			PDatos.add(txtSalario);
 			txtSalario.setColumns(10);
 			
@@ -296,6 +299,21 @@ public class IngresarEmpleado extends JDialog {
 			} catch (Exception e) {}
 			txtId_1.setBounds(106, 20, 147, 20);
 			PDatos.add(txtId_1);
+			
+			lblNewLabel = new JLabel("Contrase\u00F1a:");
+			lblNewLabel.setFont(new Font("Century Gothic", Font.BOLD | Font.ITALIC, 11));
+			lblNewLabel.setBounds(10, 168, 96, 14);
+			PDatos.add(lblNewLabel);
+			
+			JLabel lblNewLabel_10 = new JLabel("*Su c\u00E9dula ser\u00E1 su usuario para login");
+			lblNewLabel_10.setFont(new Font("Tahoma", Font.PLAIN, 10));
+			lblNewLabel_10.setForeground(new Color(255, 0, 51));
+			lblNewLabel_10.setBounds(263, 24, 205, 14);
+			PDatos.add(lblNewLabel_10);
+			
+			passwordField = new JPasswordField();
+			passwordField.setBounds(105, 162, 144, 20);
+			PDatos.add(passwordField);
 		}
 		{
 		    pVacio = new JPanel();
@@ -310,7 +328,7 @@ public class IngresarEmpleado extends JDialog {
 			PCargoDelEmpleado = new JPanel();
 			PCargoDelEmpleado.setBackground(Color.WHITE);
 			PCargoDelEmpleado.setBorder(new TitledBorder(null, "Cargo del empleado", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-			PCargoDelEmpleado.setBounds(30, 262, 668, 54);
+			PCargoDelEmpleado.setBounds(30, 283, 668, 54);
 			contentPanel.add(PCargoDelEmpleado);
 			PCargoDelEmpleado.setLayout(null);
 			{
@@ -419,25 +437,30 @@ public class IngresarEmpleado extends JDialog {
 						String direccion=txtDireccion.getText();
 						String apellidos=txtApellidos.getText();
 						String sexo="Masculino";
+						String password=passwordField.getSelectedText();
 						if(rdnMaculino.isSelected()){ sexo="Masculino";}
 						if(rdnFemenino.isSelected()){ sexo="Femenino";}
 						int edad=(int) spnEdad.getValue();
 					    Double salario=Double.parseDouble(txtSalario.getText());
 					if(rdbJefeDeProyecto.isSelected()){						
 						Empleado aux = new JefeProyecto(identificador, nombre, apellidos, direccion, sexo, edad, salario, "","Bueno", 0, chckbxProjectManager.isSelected());						
+						aux.setPassword(password);
 						Empresa.getInstance().addEmpleado(aux);
 	                
 					}
 					else if(rdbDiseniador.isSelected()){
 						Empleado aux= new Diseniador(identificador, nombre, apellidos, direccion, sexo, edad, salario, "", "Bueno", cmbTipoDisenio.getSelectedItem().toString());				
+						aux.setPassword(password);
 						Empresa.getInstance().addEmpleado(aux);	
 					}
 					else if(rdbPlanificador.isSelected()){
-						Empleado aux=new Planificador(identificador, nombre, apellidos, direccion, sexo, edad, salario, "", "Bueno", (int) spnFrecuencia.getValue());					
+						Empleado aux=new Planificador(identificador, nombre, apellidos, direccion, sexo, edad, salario, "", "Bueno", (int) spnFrecuencia.getValue());	
+						aux.setPassword(password);
 						Empresa.getInstance().addEmpleado(aux);	
 					}
 					else if(rdbProgramador.isSelected()){
 						Empleado aux=new Programador(identificador, nombre, apellidos, direccion, sexo, edad, salario, "", "Bueno", CmbLenguaje.getSelectedItem().toString());		
+						aux.setPassword(password);
 						Empresa.getInstance().addEmpleado(aux);
 					}
 					JOptionPane.showMessageDialog(null, "Empleado registrado satisfactoriamente");
@@ -451,6 +474,7 @@ public class IngresarEmpleado extends JDialog {
 					txtId_1.setText("");
 					txtNombre.setText("");
 					txtSalario.setText("");
+					passwordField.setText("");
 					
 					}
 
