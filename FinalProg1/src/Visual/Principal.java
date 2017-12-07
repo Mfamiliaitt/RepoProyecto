@@ -307,6 +307,12 @@ public class Principal extends JFrame {
 		panel_5.setBackground(new Color(153, 204, 255));
 		panel_5.setBounds(761, 360, 559, 326);
 		contentPane.add(panel_5);
+		panel_5.setLayout(null);
+		
+		JLabel lblCopyright = new JLabel("Copyright \u00A92017");
+		lblCopyright.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblCopyright.setBounds(217, 149, 125, 28);
+		panel_5.add(lblCopyright);
 		setLocationRelativeTo(null);
 		
 		 
