@@ -341,7 +341,14 @@ public class Principal extends JFrame {
 		paneldegrafica.removeAll();
 		paneldegrafica.revalidate();
 		paneldegrafica.add(nuevo.init());
-		
 		paneldegrafica.repaint();
+		
+		panelgrafica2.removeAll();
+		panelgrafica2.revalidate();
+		panelgrafica2.add(nuevo2.init());
+		panelgrafica2.repaint();
+		
+		
+		
 	}
 }
