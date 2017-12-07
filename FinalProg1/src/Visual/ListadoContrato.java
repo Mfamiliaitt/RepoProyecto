@@ -130,7 +130,7 @@ public class ListadoContrato extends JDialog {
 					btnTerminar = new JButton("Terminar");
 					btnTerminar.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
-							
+							Principal.getInstance().loadTable();
 							//Este código es para decidir terminar el proyecto
 							
 							  int dialogButton=JOptionPane.YES_NO_OPTION;

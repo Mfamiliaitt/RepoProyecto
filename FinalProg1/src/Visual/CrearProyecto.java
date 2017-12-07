@@ -160,7 +160,7 @@ public class CrearProyecto extends JDialog {
 				btnFinalizarContrato = new JButton("Finalizar");
 				btnFinalizarContrato.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-
+						Principal.getInstance().loadTable();
 						Contrato contratoAux = new Contrato(txtCodigo.getText(), txtCedulacliente.getText(), new Date(),
 								(Date) spnFechaTermino.getValue(), true);
 						for (Empleado empleado : pAux.getElEquipo()) {
@@ -225,6 +225,7 @@ public class CrearProyecto extends JDialog {
 						.setIcon(new ImageIcon(CrearProyecto.class.getResource("/Imagenes/boton-de-cerrar.png")));
 				btnCancelarcontraro.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
+						Principal.getInstance().loadTable();
 						panelTerminos.setVisible(false);
 						btnAtras.setEnabled(true);
 					}
@@ -869,7 +870,7 @@ public class CrearProyecto extends JDialog {
 							new ImageIcon(CrearProyecto.class.getResource("/Imagenes/signo-de-comprobado.png")));
 					btnRegistrar.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
-
+							Principal.getInstance().loadTable();
 							/* Guardar los datos */
 							panelTerminos.setVisible(true);
 							btnAtras.setEnabled(false);
