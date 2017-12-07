@@ -41,6 +41,7 @@ public class ListadoClientes extends JDialog {
 	private static DefaultTableModel model;
 	private JButton btnBuscarCliente;
 	private JFormattedTextField txtbusc;
+	private JButton btnVerreporte;
 
 	/**
 	 * Launch the application.
@@ -84,6 +85,13 @@ public class ListadoClientes extends JDialog {
 						dispose();
 					}
 				});
+				
+				btnVerreporte = new JButton("Ver reporte");
+				btnVerreporte.setEnabled(false);
+				btnVerreporte.setIcon(new ImageIcon(ListadoClientes.class.getResource("/Imagenes/escribir-documento.png")));
+				btnVerreporte.setFont(new Font("Tahoma", Font.BOLD, 12));
+				btnVerreporte.setBackground(SystemColor.control);
+				buttonPane.add(btnVerreporte);
 				btnSalir.setActionCommand("Cancel");
 				buttonPane.add(btnSalir);
 			}
@@ -140,12 +148,15 @@ public class ListadoClientes extends JDialog {
 					Cliente c=Empresa.getInstance().buscarClientePorCedula(txtbusc.getText());
 					
 					if(c!=null){
-							loadTable2(txtbusc.getText());		
+							loadTable2(txtbusc.getText());	
+							btnVerreporte.setEnabled(true);
+							
 						}
 					else{
 							JOptionPane.showMessageDialog(null, "El cliente no existe");
 							txtbusc.setText("");
 							loadTable();	
+							btnVerreporte.setEnabled(false);
 						}
 				}
 			});
