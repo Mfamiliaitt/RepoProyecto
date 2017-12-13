@@ -149,8 +149,8 @@ public class EvaluacionAnual extends JDialog {
 		fila = new Object[model.getColumnCount()];
 		for (Empleado empleado : Empresa.getInstance().getMisEmpleados()) {			
 			//Filtrado de estado de empleados
-			if(cbmEstado.getSelectedItem().toString().equalsIgnoreCase("Muy bueno")){
-				if(empleado.getEvaluacionAnual().equalsIgnoreCase("Muy bueno")){				
+			if(cbmEstado.getSelectedItem().toString().equalsIgnoreCase("Sobresaliente")){
+				if(empleado.getEvaluacionAnual().equalsIgnoreCase("Sobresaliente")){				
 						fila[0] = empleado.getIdentificador();
 						fila[1] = empleado.getNombre();
 						fila[2] = empleado.getApellidos();
@@ -168,8 +168,8 @@ public class EvaluacionAnual extends JDialog {
 						}
 										
 				}
-				else if(cbmEstado.getSelectedItem().toString().equalsIgnoreCase("Bueno")){
-					if(empleado.getEvaluacionAnual().equalsIgnoreCase("Bueno")){			
+				else if(cbmEstado.getSelectedItem().toString().equalsIgnoreCase("Suficiente")){
+					if(empleado.getEvaluacionAnual().equalsIgnoreCase("Suficiente")){			
 							fila[0] = empleado.getIdentificador();
 							fila[1] = empleado.getNombre();
 							fila[2] = empleado.getApellidos();
@@ -190,8 +190,8 @@ public class EvaluacionAnual extends JDialog {
 						
 						
 				}		
-				else if(cbmEstado.getSelectedItem().toString().equalsIgnoreCase("Malo")){
-					if(empleado.getEvaluacionAnual().equalsIgnoreCase("Malo")){		
+				else if(cbmEstado.getSelectedItem().toString().equalsIgnoreCase("Deficiente")){
+					if(empleado.getEvaluacionAnual().equalsIgnoreCase("Deficiente")){		
 							fila[0] = empleado.getIdentificador();
 							fila[1] = empleado.getNombre();
 							fila[2] = empleado.getApellidos();

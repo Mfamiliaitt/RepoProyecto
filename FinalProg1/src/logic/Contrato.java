@@ -72,7 +72,7 @@ public class Contrato implements Serializable{
 	}
 	
 	public void estadoDeProyecto(){
-		if(VerificacionDeFechas()&& !(miProyecto.getEstado().equalsIgnoreCase("Prorrogado"))){
+		if(VerificacionDeFechas()){
 		 miProyecto.setEstado("Atrazado");	
 		}
 		/*El metodo pone en "atrazado" los proyectos que esten atrazados*/
